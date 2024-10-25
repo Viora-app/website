@@ -5,13 +5,11 @@ import {useNavigation} from '@react-navigation/native';
 import {ButtonThemes} from '../Elements/Button/types';
 import {Button} from '../Elements';
 import {Routes} from '../../config/routes';
-import {useTheme} from '../../hooks/useTheme';
-import themedStyles from './styles';
 import {ScreenNotFoundProps} from './types';
 import cactus from '../../../public/images/cactus.png';
 
 const ScreenNotFound: FC<ScreenNotFoundProps> = ({redirectTo}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const navigation = useNavigation();
 
   const goHome = () => {

@@ -4,18 +4,16 @@ import {Link} from '@react-navigation/native';
 
 import {ENDPOINTS} from '../../config/endpoints';
 import {Routes} from '../../config/routes';
-import {useTheme} from '../../hooks/useTheme';
 import {useAccount} from '../../hooks/useAccount';
 import {useGetData} from '../../hooks/useQuery';
 import {getSmallestSize} from '../../utils/image';
 import {fromBaseToken} from '../../utils/formatters';
 import {ImageFormats} from '../Projects/types';
 import SectionHeader from '../SectionHeader';
-import themedStyles from './styles';
 import type {ContributionProps, Contribution} from './types';
 
 const Contribution: FC<ContributionProps> = ({data}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const projectId = data.attributes.project.data?.id ?? '';
   const formats = data.attributes.project.data?.attributes?.images?.data?.length
     ? data.attributes.project.data.attributes?.images.data[0].attributes.formats
@@ -56,7 +54,7 @@ const Contribution: FC<ContributionProps> = ({data}) => {
 
 // @todo implement loading state
 const Contributions: FC = () => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {account} = useAccount();
   const {data} = useGetData(ENDPOINTS.CONTRIBUTIONS, {
     filters: {users_permissions_user: account?.id},

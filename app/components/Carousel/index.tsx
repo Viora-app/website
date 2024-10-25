@@ -2,8 +2,6 @@ import React, {useEffect, useRef, useState} from 'react';
 import {View, Animated} from 'react-native';
 import {IconButton} from '../Elements';
 import Dots from './Dots';
-import {useTheme} from '../../hooks/useTheme';
-import themedStyles from './styles';
 import {CarouselProps} from './types';
 
 const Carousel = ({
@@ -12,7 +10,7 @@ const Carousel = ({
   loop,
   onEnd,
 }: CarouselProps<Record<string, unknown>>) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const [currentIndex, setCurrentIndex] = useState(0);
   const fadeAnim = useRef(new Animated.Value(0)).current;
 

@@ -1,9 +1,7 @@
 import React, {FC} from 'react';
 import {View, Text, ImageBackground} from 'react-native';
 
-import {useTheme} from '../../hooks/useTheme';
 import {FundingProgressProps} from './types';
-import themedStyles from './styles';
 import stripePattern from '../../../public/images/stripespattern.png';
 import {fromBaseToken} from '../../utils/formatters';
 
@@ -13,7 +11,7 @@ const FundingProgress: FC<FundingProgressProps> = ({
   hardGoal,
   style,
 }) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const fundingPercentage = Math.floor((100 * currentFunding) / hardGoal);
   const softCapPercentage = Math.floor((100 * softGoal) / hardGoal);
   const successPercentage = Math.floor((100 * currentFunding) / softGoal);

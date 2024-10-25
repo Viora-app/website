@@ -5,7 +5,6 @@ import {useNavigation} from '@react-navigation/native';
 import {Project} from '../Projects/types';
 import {ENDPOINTS} from '../../config/endpoints';
 import {useGetData} from '../../hooks/useQuery';
-import {useTheme} from '../../hooks/useTheme';
 import {IconButton} from '../Elements';
 import Gallery from '../ProjectGallery';
 import Deadline from './Deadline';
@@ -15,7 +14,6 @@ import NotFound from '../NotFound/Screen';
 import Loading from '../Loading';
 import FundingProgress from './FundingProgress';
 import {ProjectDetailsProps} from './types';
-import themedStyles from './styles';
 
 const projectParams = {
   include: {
@@ -25,7 +23,7 @@ const projectParams = {
 };
 
 const ProjectDetails: FC<ProjectDetailsProps> = ({id, ...restProps}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {data, isLoading, refresh} = useGetData(
     `${ENDPOINTS.PROJECTS}/${id}`,
     projectParams,

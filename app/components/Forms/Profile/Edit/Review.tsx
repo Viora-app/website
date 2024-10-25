@@ -1,7 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {View, Keyboard} from 'react-native';
 
-import {useTheme} from '../../../../hooks/useTheme';
 import {useAccount} from '../../../../hooks/useAccount';
 import {useModal} from '../../../../hooks/useModal';
 import {FetchStatus} from '../../../../config/types';
@@ -10,12 +9,11 @@ import {ButtonThemes} from '../../../Elements/Button/types';
 import FormSummary from '../../../FormElements/GenericSummary';
 import {Button} from '../../../Elements';
 import type {ProfileEditReviewProps, Feedback} from './types';
-import themedStyles from './styles';
 
 const EditProfileReview = ({data}: ProfileEditReviewProps) => {
   const {update} = useAccount();
   const {show} = useModal();
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const onDone = useCallback(

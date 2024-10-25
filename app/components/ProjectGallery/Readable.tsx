@@ -2,14 +2,12 @@ import React, {FC} from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {useTheme} from '../../hooks/useTheme';
 import {getPreferredSize} from './utils';
 import {GalleryProps, ReadableImageProps} from './types';
-import themedStyles from './styles';
 import {Routes} from '../../config/routes';
 
 const ImageItem: FC<ReadableImageProps> = ({index, image, style}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {navigate} = useNavigation();
   const onPress = params => {
     if (params.uri) {
@@ -33,7 +31,7 @@ const ImageItem: FC<ReadableImageProps> = ({index, image, style}) => {
 };
 
 const Readable: FC<GalleryProps> = ({images = []}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
 
   const formatImages = () => {
     return Array(5)

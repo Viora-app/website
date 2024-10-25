@@ -2,10 +2,8 @@ import React from 'react';
 import {TextInput, View, Text} from 'react-native';
 
 import {colors} from '../../../config/stylesGuides';
-import {useTheme} from '../../../hooks/useTheme';
 import {usePresets} from '../../../hooks/usePresets';
 import type {InputProps} from './types';
-import themedStyles from './styles';
 
 const Input = ({
   style,
@@ -16,7 +14,7 @@ const Input = ({
   inputMode = 'text',
   multiline = false,
 }: InputProps) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {presets} = usePresets();
 
   return (

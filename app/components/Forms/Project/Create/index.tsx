@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View, Keyboard, ScrollView, Dimensions} from 'react-native';
 import {TOKEN_SYMBOL} from '@env';
 
-import {useTheme} from '../../../../hooks/useTheme';
 import {useModal} from '../../../../hooks/useModal';
 import {validateForm} from '../../../../utils/validators';
 import {ProjectAttrs, ProjectType} from '../../../Projects/types';
@@ -12,7 +11,6 @@ import {Button, Input} from '../../../Elements';
 import CreateProjectReview from './Review';
 import type {CreateProjectFormProps} from './types';
 import {schema} from './schema';
-import themedStyles from './styles';
 
 const CreateProjectForm = ({style}: CreateProjectFormProps) => {
   const [data, setData] = useState<Partial<ProjectAttrs>>({
@@ -26,7 +24,7 @@ const CreateProjectForm = ({style}: CreateProjectFormProps) => {
     deadline: '',
   });
   const {show} = useModal();
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const maxHeight = Dimensions.get('window').height * 0.6;
 
   const onSubmit = async () => {

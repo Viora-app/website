@@ -9,11 +9,9 @@ import {ENDPOINTS} from '../../config/endpoints';
 import {FetchStatus} from '../../config/types';
 import {finalMessages} from '../../utils/modal';
 import {usePatchData, useDeleteData} from '../../hooks/useQuery';
-import {useTheme} from '../../hooks/useTheme';
 import {useModal} from '../../hooks/useModal';
 import {Icon} from '../Elements';
 import {getPreferredSize} from './utils';
-import themedStyles from './styles';
 import type {GalleryProps, ImageItemProps} from '../ProjectDetails/types';
 
 const ImageItem: FC<ImageItemProps> = ({
@@ -25,7 +23,7 @@ const ImageItem: FC<ImageItemProps> = ({
   onAdd,
 }) => {
   const {show, hide} = useModal();
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const onPress = () => {
     if (image) {
       show({
@@ -60,7 +58,7 @@ const ImageItem: FC<ImageItemProps> = ({
 };
 
 const Editable: FC<GalleryProps> = ({images = [], id, refresh}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {show, hide} = useModal();
   const patch = usePatchData(ENDPOINTS.PROJECTS);
   const del = useDeleteData(ENDPOINTS.FILES);

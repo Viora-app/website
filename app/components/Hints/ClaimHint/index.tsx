@@ -1,12 +1,10 @@
 import React from 'react';
 import {Text, View, Image} from 'react-native';
 import party from '../../../../public/images/party.png';
-import {useTheme} from '../../../hooks/useTheme';
-import themedStyles from './styles';
 import {ClaimHintProps} from './types';
 
 const ClaimHint = ({formattedPrize, badgeTitle}: ClaimHintProps) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   return (
     <View style={styles.wrapper}>
       <Image source={party} style={styles.image} />

@@ -1,11 +1,9 @@
 import React from 'react';
 import {View} from 'react-native';
 import {DotsProps} from './types';
-import {useTheme} from '../../hooks/useTheme';
-import themedStyles from './styles';
 
 const Dots = ({count, current}: DotsProps) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const arr = Array(count)
     .fill(0)
     .map((_, i) => (current === i ? styles.dotActive : styles.dotInactive));

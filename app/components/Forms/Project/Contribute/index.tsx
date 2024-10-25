@@ -2,7 +2,6 @@ import React, {FC, useState} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {TOKEN_SYMBOL} from '@env';
 
-import {useTheme} from '../../../../hooks/useTheme';
 import {useModal} from '../../../../hooks/useModal';
 import {useGetData} from '../../../../hooks/useQuery';
 import {ENDPOINTS} from '../../../../config/endpoints';
@@ -15,10 +14,9 @@ import {
   ContributeOptionProps,
   ContributionTier,
 } from './types';
-import themedStyles from './styles';
 
 const Option: FC<ContributeOptionProps> = ({data, selected, onSelected}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const onPress = () => onSelected(data.id);
 
   return (
@@ -52,7 +50,7 @@ const Option: FC<ContributeOptionProps> = ({data, selected, onSelected}) => {
 };
 
 const Contribute: FC<ContributeProps> = ({projectId, refresh}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {show} = useModal();
   const [selected, setSelected] = useState<string>('');
   const {data, isLoading} = useGetData(ENDPOINTS.CONTRIBUTION_TIERS, {

@@ -4,7 +4,6 @@ import {TOKEN_SYMBOL} from '@env';
 
 import {ENDPOINTS} from '../../../../config/endpoints';
 import {mapObject} from '../../../../utils/convertors';
-import {useTheme} from '../../../../hooks/useTheme';
 import {useModal} from '../../../../hooks/useModal';
 import {useGetData} from '../../../../hooks/useQuery';
 import {validateForm} from '../../../../utils/validators';
@@ -15,7 +14,6 @@ import {Button, Input} from '../../../Elements';
 import EditProjectReview from './Review';
 import type {EditProjectFormProps} from './types';
 import {schema} from './schema';
-import themedStyles from './styles';
 
 const EditProjectForm = ({style, id}: EditProjectFormProps) => {
   const [data, setData] = useState<Partial<ProjectAttrs>>({
@@ -32,7 +30,7 @@ const EditProjectForm = ({style, id}: EditProjectFormProps) => {
     `${ENDPOINTS.PROJECTS}/${id}`,
   );
   const {show} = useModal();
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const maxHeight = Dimensions.get('window').height * 0.6;
 
   const onSubmit = async () => {

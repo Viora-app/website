@@ -4,7 +4,6 @@ import {TOKEN_SYMBOL} from '@env';
 
 import {FetchStatus} from '../../../../config/types';
 import {ENDPOINTS} from '../../../../config/endpoints';
-import {useTheme} from '../../../../hooks/useTheme';
 import {useModal} from '../../../../hooks/useModal';
 import {usePatchData} from '../../../../hooks/useQuery';
 import {toBaseToken} from '../../../../utils/formatters';
@@ -13,11 +12,10 @@ import {ButtonThemes} from '../../../Elements/Button/types';
 import FormSummary from '../../../FormElements/GenericSummary';
 import {Button} from '../../../Elements';
 import type {EditProjectReviewProps, Feedback} from './types';
-import themedStyles from './styles';
 
 const CreateProjectReview = ({data, id}: EditProjectReviewProps) => {
   const {show} = useModal();
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const [isSubmitted, setIsSubmitted] = useState(false);
   const mutation = usePatchData(ENDPOINTS.PROJECTS);
 

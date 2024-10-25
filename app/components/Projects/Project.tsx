@@ -3,14 +3,12 @@ import {Text, Image, View} from 'react-native';
 import {Link} from '@react-navigation/native';
 import {API_URL} from '@env';
 
-import {useTheme} from '../../hooks/useTheme';
-import themedStyles from './styles';
 import type {ProjectProps} from './types';
 import avatar from '../../../public/images/avatars/a0.jpg';
 import {Routes} from '../../config/routes';
 
 const Project: FC<ProjectProps> = ({item}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {
     attributes: {name, summary, project_type, images, users_permissions_user},
     id,

@@ -7,8 +7,6 @@ import {
 } from 'react-native';
 import {Icon} from '../Icon';
 import {IconButtonProps} from './types';
-import {useTheme} from '../../../hooks/useTheme';
-import themedStyles from './styles';
 
 const IconButton = ({
   onPress,
@@ -18,7 +16,7 @@ const IconButton = ({
   iconName,
   disabled,
 }: IconButtonProps) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   return (
     <TouchableWithoutFeedback onPress={onPress} disabled={disabled}>
       <View style={[styles.wrapper, style]}>

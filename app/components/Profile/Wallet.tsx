@@ -10,9 +10,7 @@ import lightCarrot from '../../../public/images/lightcarrot.png';
 import darkCarrot from '../../../public/images/darkcarrot.png';
 import {usePresets} from '../../hooks/usePresets';
 import {useModal} from '../../hooks/useModal';
-import {useTheme} from '../../hooks/useTheme';
 import {useAccount} from '../../hooks/useAccount';
-import themedStyles from './styles';
 import type {WalletProps} from './types';
 
 const carrots = {
@@ -21,7 +19,7 @@ const carrots = {
 };
 
 const Wallet = ({style}: WalletProps) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const [_, setString] = useClipboard();
   const {show} = useModal();
   const {presets} = usePresets();

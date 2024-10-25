@@ -1,13 +1,11 @@
 import React, {FC, useRef, useEffect} from 'react';
 import {Text, View, Animated, Easing} from 'react-native';
 
-import {useTheme} from '../../hooks/useTheme';
-import themedStyles from './styles';
 import loading from '../../../public/images/loading.png';
 import {LoadingProps} from './types';
 
 const Loading: FC<LoadingProps> = ({wrapper = 'screen'}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const rotateAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {

@@ -2,12 +2,10 @@ import React from 'react';
 import {Text, View, Dimensions, ScrollView} from 'react-native';
 
 import {CapitalizeKey} from '../../../utils/formatters';
-import {useTheme} from '../../../hooks/useTheme';
 import type {FormSummaryProps} from './types';
-import themedStyles from './styles';
 
 const FormSummary = ({data}: FormSummaryProps) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const maxHeight = Dimensions.get('window').height * 0.6; // @todo use subtraction
 
   return (

@@ -2,11 +2,9 @@ import React from 'react';
 import {View, Image} from 'react-native';
 
 import appLogo from '../../../public/images/IconText.png';
-import {useTheme} from '../../hooks/useTheme';
-import themedStyles from './styles';
 
 const Splash = () => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
 
   return (
     <View style={styles.container}>

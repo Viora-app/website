@@ -1,7 +1,6 @@
 import React, {FC, useState} from 'react';
 import {View, Keyboard, ScrollView, Dimensions, Text} from 'react-native';
 
-import {useTheme} from '../../../../hooks/useTheme';
 import {useModal} from '../../../../hooks/useModal';
 import {useGetData} from '../../../../hooks/useQuery';
 import {validateForm} from '../../../../utils/validators';
@@ -11,7 +10,6 @@ import {ButtonThemes} from '../../../Elements/Button/types';
 import {Button, Input, CheckBox} from '../../../Elements';
 import PostExclusiveContentsReview from './Review';
 import {schema} from './schema';
-import themedStyles from './styles';
 import type {ContributionTier} from '../../../Projects/types';
 import type {
   AccessibleTiersSelectProps,
@@ -24,7 +22,7 @@ const AccessibleTiersSelect: FC<AccessibleTiersSelectProps> = ({
   onSelect,
   selection,
 }) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   return (
     <View>
       <Text style={[styles.optionsTitle]}>Which contributors can access?</Text>
@@ -50,7 +48,7 @@ const PostExclusiveContentsForm: FC<PostExclusiveContentsFormProps> = ({
     accessible_tiers: [],
   });
   const {show} = useModal();
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {data: contributionTiers} = useGetData(ENDPOINTS.CONTRIBUTION_TIERS, {
     filters: {
       project: projectId,

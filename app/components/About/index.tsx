@@ -1,12 +1,10 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
-import {useTheme} from '../../hooks/useTheme';
-import themedStyles from './styles';
 import pkg from '../../../package.json';
 import logo from '../../../public/images/applogo.png';
 
 const About = () => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   return (
     <View style={styles.wrapper}>
       <Image style={styles.image} source={logo} />

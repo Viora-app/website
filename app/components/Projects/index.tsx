@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {FlatList, RefreshControl, View, LayoutChangeEvent} from 'react-native';
 
 import {ENDPOINTS} from '../../config/endpoints';
-import {useTheme} from '../../hooks/useTheme';
 import {useGetData} from '../../hooks/useQuery';
 import {calculateItemsToDisplay} from '../../utils/helpers';
 import ScreenNotFound from '../NotFound/Screen';
@@ -10,7 +9,6 @@ import ScreenLoading from '../Loading';
 import {ProjectsHeader} from '../SectionHeader/Named';
 import ListFooter from '../ListFooter';
 import Project from './Project';
-import themedStyles from './styles';
 const params = {
   include: {
     users_permissions_user: ['email'],
@@ -24,7 +22,7 @@ const Projects = () => {
     ENDPOINTS.PROJECTS,
     params,
   );
-  const styles = useTheme(themedStyles);
+  const styles = {};
 
   const onRefresh = async () => {
     await refresh();

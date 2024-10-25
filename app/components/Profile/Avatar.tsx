@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {View, Image} from 'react-native';
 
-import {useTheme} from '../../hooks/useTheme';
 import {useAccount} from '../../hooks/useAccount';
 import {useModal} from '../../hooks/useModal';
 import {Icon, ImagePicker} from '../Elements';
@@ -9,11 +8,10 @@ import {finalMessages} from '../../utils/modal';
 import {FetchStatus} from '../../config/types';
 import {getSmallestSize} from '../../utils/image';
 import {ImageFormats} from '../Projects/types';
-import themedStyles from './styles';
 import type {AvatarProps, FileEvent} from './types';
 
 const Avatar = ({style}: AvatarProps) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {update, account} = useAccount();
   const [isLoading, setIsLoading] = useState(false);
   const {show, hide} = useModal();

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View, Keyboard, ScrollView, Dimensions} from 'react-native';
 import {TOKEN_SYMBOL} from '@env';
 
-import {useTheme} from '../../../../hooks/useTheme';
 import {useModal} from '../../../../hooks/useModal';
 import {validateForm} from '../../../../utils/validators';
 import {ContributionTierAttrs} from '../../../Projects/types';
@@ -12,7 +11,6 @@ import {Button, Input} from '../../../Elements';
 import CreateContributionTierReview from './Review';
 import type {ContributionTier} from './types';
 import {schema} from './schema';
-import themedStyles from './styles';
 
 const CreateContributionTierForm = ({id, style}: ContributionTier) => {
   const [data, setData] = useState<Partial<ContributionTierAttrs>>({
@@ -22,7 +20,7 @@ const CreateContributionTierForm = ({id, style}: ContributionTier) => {
     amount: 0,
   });
   const {show} = useModal();
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const maxHeight = Dimensions.get('window').height * 0.6;
 
   const onSubmit = async () => {

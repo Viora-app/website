@@ -8,14 +8,12 @@ import {FetchStatus} from '../../config/types';
 import {usePatchData} from '../../hooks/useQuery';
 import EditProjectForm from '../Forms/Project/Edit';
 import {useModal} from '../../hooks/useModal';
-import {useTheme} from '../../hooks/useTheme';
 import CreateContributionTierForm from '../Forms/ContributionTier/Create';
 import PostExclusiveContentsForm from '../Forms/ExclusiveContents/create';
 import Contribute from '../Forms/Project/Contribute';
 import {Button} from '../Elements';
 import {ButtonThemes} from '../Elements/Button/types';
 import {ProjectStatus} from '../Projects/types';
-import themedStyles from './styles';
 import successImage from '../../../public/images/success.png';
 import errorImage from '../../../public/images/error.png';
 import {
@@ -27,7 +25,7 @@ import {
 
 const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
   const mutation = usePatchData(ENDPOINTS.PROJECTS);
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {show} = useModal();
 
   const AddContributionTier = () => {
@@ -115,7 +113,7 @@ const SupportProject: FC<FullDataComponentProps> = ({
   artist,
   refresh,
 }) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {show} = useModal();
   const support = () => {
     show({
@@ -158,7 +156,7 @@ const PublishedProjectOwner: FC<PublishedProjectOwnerProps> = ({
   account,
   artist,
 }) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   return (
     <View style={[[styles.publishedWrapper, styles.spacerMini]]}>
       <Text style={[styles.large, styles.statusTitle, styles.spacerMini]}>
@@ -185,7 +183,7 @@ const SuccessfulProjectOwner: FC<SuccessfulProjectOwnerProps> = ({
   projectId,
 }) => {
   const mutation = usePatchData(ENDPOINTS.PROJECTS);
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {show} = useModal();
   const withdraw = () => {
     show({
@@ -241,7 +239,7 @@ const SuccessfulProjectOwner: FC<SuccessfulProjectOwnerProps> = ({
 };
 
 const SuccessfulProjectContributor: FC = () => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
 
   return (
     <View style={[[styles.successWrapper]]}>
@@ -258,7 +256,7 @@ const SuccessfulProjectContributor: FC = () => {
 };
 
 const FailingProjectOwner: FC = () => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
 
   return (
     <View style={[[styles.ownerFailWrapper, styles.spacer]]}>

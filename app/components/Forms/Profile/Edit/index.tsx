@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {TextInput, View, Keyboard} from 'react-native';
 
 import {colors} from '../../../../config/stylesGuides';
-import {useTheme} from '../../../../hooks/useTheme';
 import {usePresets} from '../../../../hooks/usePresets';
 import {useModal} from '../../../../hooks/useModal';
 import {useAccount} from '../../../../hooks/useAccount';
@@ -11,7 +10,6 @@ import {ButtonThemes} from '../../../Elements/Button/types';
 import {Button} from '../../../Elements';
 import EditProfileReview from './Review';
 import type {ProfileEditFormProps} from './types';
-import themedStyles from './styles';
 
 const EditProfileForm = ({style}: ProfileEditFormProps) => {
   const {account} = useAccount();
@@ -20,7 +18,7 @@ const EditProfileForm = ({style}: ProfileEditFormProps) => {
     last_name: account?.last_name ?? '',
   });
   const {show} = useModal();
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {presets} = usePresets();
 
   const onSubmit = async () => {

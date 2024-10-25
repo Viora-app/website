@@ -1,13 +1,11 @@
 import React from 'react';
 import {View} from 'react-native';
 
-import {useTheme} from '../../hooks/useTheme';
 import Avatar from './Avatar';
 import Wallet from './Wallet';
-import themedStyles from './styles';
 
 const Basics = () => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   return (
     <View style={styles.profileDetails}>
       <Avatar />

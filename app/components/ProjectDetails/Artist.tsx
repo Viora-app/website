@@ -1,9 +1,7 @@
 import React, {FC, useCallback} from 'react';
 import {View, Text, Image, TouchableHighlight, Linking} from 'react-native';
 
-import {useTheme} from '../../hooks/useTheme';
 import {ArtistProps} from './types';
-import themedStyles from './styles';
 import instagramIcon from '../../../public/images/instagram.png';
 import xIcon from '../../../public/images/twitter.png';
 import twitchIcon from '../../../public/images/twitch.png';
@@ -16,7 +14,7 @@ enum SocialPlatforms {
 }
 
 const Artist: FC<ArtistProps> = ({data}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
 
   const openPlatform = useCallback(
     (platform: SocialPlatforms) => () => {

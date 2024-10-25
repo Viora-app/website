@@ -1,11 +1,9 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import heart from '../../../../public/images/heart.png';
-import {useTheme} from '../../../hooks/useTheme';
-import themedStyles from './styles';
 
 const VoteHint = () => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   return (
     <View style={styles.wrapper}>
       <Image source={heart} />

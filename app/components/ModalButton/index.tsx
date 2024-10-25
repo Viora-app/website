@@ -2,9 +2,7 @@ import React, {useCallback, FC} from 'react';
 
 import {useModal} from '../../hooks/useModal';
 import {IconButton} from '../../components/Elements';
-import {useTheme} from '../../hooks/useTheme';
 import {ModalButtonProps} from './types';
-import themedStyles from './styles';
 
 const icons = {
   edit: 'feather',
@@ -20,7 +18,7 @@ const ModalButton: FC<ModalButtonProps> = ({
   params = {},
 }) => {
   const {show} = useModal();
-  const styles = useTheme(themedStyles);
+  const styles = {};
 
   const showAddSongModal = useCallback(() => {
     show({

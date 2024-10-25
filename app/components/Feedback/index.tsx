@@ -1,7 +1,5 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import {useTheme} from '../../hooks/useTheme';
-import themedStyles from './styles';
 import {FeedbackProps} from './types';
 import {FetchStatus} from '../../config/types';
 
@@ -13,7 +11,7 @@ const messages = {
 };
 
 const Feedback = ({style, status, message}: FeedbackProps) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
   return (
     <View style={[styles.wrapper, style]}>
       <Text

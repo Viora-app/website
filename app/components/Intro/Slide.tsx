@@ -2,13 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, Image, Dimensions} from 'react-native';
 
 import {boxes} from '../../config/stylesGuides';
-import {useTheme} from '../../hooks/useTheme';
-import themedStyles from './styles';
 import {IntroContentProps} from './types';
 
 const Slide = ({data}: IntroContentProps) => {
   const [dimensions, setDimensions] = useState([0, 0]);
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const {backgroundColor, image, description, color, onSelect} = data;
 
   useEffect(() => {

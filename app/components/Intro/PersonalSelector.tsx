@@ -4,11 +4,9 @@ import {View, Text, Image} from 'react-native';
 import logo from '../../../public/images/applogo.png';
 import {Button} from '../Elements';
 import {ButtonThemes} from '../Elements/Button/types';
-import {useTheme} from '../../hooks/useTheme';
-import themedStyles from './styles';
 
 const PersonaSelector = ({onSelect}) => {
-  const styles = useTheme(themedStyles);
+  const styles = {};
 
   return (
     <View style={[styles.container, styles.column, styles.justifyBetween]}>

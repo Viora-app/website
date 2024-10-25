@@ -2,7 +2,6 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {View, Keyboard} from 'react-native';
 import {TOKEN_SYMBOL} from '@env';
 
-import {useTheme} from '../../../../hooks/useTheme';
 import {useModal} from '../../../../hooks/useModal';
 import {usePostData} from '../../../../hooks/useQuery';
 import {FetchStatus} from '../../../../config/types';
@@ -13,11 +12,10 @@ import {ENDPOINTS} from '../../../../config/endpoints';
 import FormSummary from '../../../FormElements/GenericSummary';
 import {Button} from '../../../Elements';
 import type {CreateProjectReviewProps, Feedback} from './types';
-import themedStyles from './styles';
 
 const CreateProjectReview = ({data}: CreateProjectReviewProps) => {
   const {show} = useModal();
-  const styles = useTheme(themedStyles);
+  const styles = {};
   const [isSubmitted, setIsSubmitted] = useState(false);
   const mutation = usePostData(ENDPOINTS.PROJECTS);
 
