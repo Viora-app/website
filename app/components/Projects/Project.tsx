@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 import {Text, Image, View} from '../Polyfills';
 import {Link} from '@react-navigation/native';
-import {API_URL} from '@env';
 
 import type {ProjectProps} from './types';
 import avatar from '../../../public/images/avatars/a0.jpg';
@@ -20,7 +19,7 @@ const Project: FC<ProjectProps> = ({item}) => {
   } = users_permissions_user;
   const {data} = images;
   const image = data?.length
-    ? {uri: `${API_URL}${data[0].attributes.formats.thumbnail.url}`}
+    ? {uri: `${process.env.NEXT_PUBLIC_API_URL}${data[0].attributes.formats.thumbnail.url}`}
     : avatar;
 
   return (

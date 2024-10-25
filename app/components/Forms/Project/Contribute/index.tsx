@@ -1,6 +1,5 @@
 import React, {FC, useState} from 'react';
 import {Text, TouchableOpacity, View} from '../../../Polyfills';
-import {TOKEN_SYMBOL} from '@env';
 
 import {useModal} from '../../../../hooks/useModal';
 import {useGetData} from '../../../../hooks/useQuery';
@@ -40,7 +39,7 @@ const Option: FC<ContributeOptionProps> = ({data, selected, onSelected}) => {
           style={[
             styles.optionAmount,
             selected ? styles.selectedAmount : styles.normalAmount,
-          ]}>{`${data.attributes.amount} ${TOKEN_SYMBOL}`}</Text>
+          ]}>{`${data.attributes.amount} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`}</Text>
       </View>
       <Text style={[styles.medium, selected ? styles.tender : styles.mild]}>
         {data.attributes.rewards}

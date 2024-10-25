@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, Image} from '../Polyfills';
 import {useClipboard} from '@react-native-clipboard/clipboard';
-import {NETWORK_NAME, TOKEN_SYMBOL} from '@env';
 
 import {truncateAddress} from '../../utils/formatters';
 import {Themes} from '../../context/presetsContext/types';
@@ -29,7 +28,7 @@ const Wallet = ({style}: WalletProps) => {
     setString(account?.address ?? '');
     show({
       title: 'Address copied',
-      description: `The ${NETWORK_NAME} wallet address is copied to your clipboard. Remember yo only need ${TOKEN_SYMBOL} tokens in this account address to use in Viora.`,
+      description: `The ${process.env.NEXT_PUBLIC_NETWORK_NAME} wallet address is copied to your clipboard. Remember yo only need ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL} tokens in this account address to use in Viora.`,
     });
   };
 
@@ -54,7 +53,7 @@ const Wallet = ({style}: WalletProps) => {
         </View>
         <View style={styles.walletContainer}>
           <Text style={[fonts.base, styles.tender, styles.spacerMini]}>{`${
-            NETWORK_NAME || ''
+            process.env.NEXT_PUBLIC_NETWORK_NAME || ''
           } Wallet Address`}</Text>
           <Text
             style={[fonts.h3, styles.primaryStrong, styles.textCenter]}

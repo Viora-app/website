@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {View, ScrollView, Dimensions} from '../../../Polyfills';
-import {TOKEN_SYMBOL} from '@env';
 
 import {ENDPOINTS} from '../../../../config/endpoints';
 import {mapObject} from '../../../../utils/convertors';
@@ -103,14 +102,14 @@ const EditProjectForm = ({style, id}: EditProjectFormProps) => {
           name="planned_release_date"
         />
         <Input
-          placeholder={`Soft goal (in ${TOKEN_SYMBOL})`}
+          placeholder={`Soft goal (in ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL})`}
           onChange={onChange}
           value={String(data.soft_goal)}
           name="soft_goal"
           inputMode="numeric"
         />
         <Input
-          placeholder={`Hard goal (in ${TOKEN_SYMBOL})`}
+          placeholder={`Hard goal (in ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL})`}
           onChange={onChange}
           value={String(data.hard_goal)}
           name="hard_goal"

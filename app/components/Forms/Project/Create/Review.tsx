@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {View} from '../../../Polyfills';
-import {TOKEN_SYMBOL} from '@env';
 
 import {useModal} from '../../../../hooks/useModal';
 import {usePostData} from '../../../../hooks/useQuery';
@@ -53,8 +52,8 @@ const CreateProjectReview = ({data}: CreateProjectReviewProps) => {
 
   const formattedValue = {
     ...data,
-    soft_goal: `${data.soft_goal} ${TOKEN_SYMBOL}`,
-    hard_goal: `${data.hard_goal} ${TOKEN_SYMBOL}`,
+    soft_goal: `${data.soft_goal} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
+    hard_goal: `${data.hard_goal} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
   };
 
   return (

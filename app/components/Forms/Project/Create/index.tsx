@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {View, ScrollView, Dimensions} from '../../../Polyfills';
-import {TOKEN_SYMBOL} from '@env';
 
 import {useModal} from '../../../../hooks/useModal';
 import {validateForm} from '../../../../utils/validators';
@@ -75,14 +74,14 @@ const CreateProjectForm = ({style}: CreateProjectFormProps) => {
           name="planned_release_date"
         />
         <Input
-          placeholder={`Soft goal (in ${TOKEN_SYMBOL})`}
+          placeholder={`Soft goal (in ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL})`}
           onChange={onChange}
           value={String(data.soft_goal)}
           name="soft_goal"
           inputMode="decimal"
         />
         <Input
-          placeholder={`Hard goal (in ${TOKEN_SYMBOL})`}
+          placeholder={`Hard goal (in ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL})`}
           onChange={onChange}
           value={String(data.hard_goal)}
           name="hard_goal"

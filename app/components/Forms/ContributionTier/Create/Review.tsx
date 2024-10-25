@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {View} from '../../../Polyfills';
-import {TOKEN_SYMBOL} from '@env';
 
 import {useModal} from '../../../../hooks/useModal';
 import {usePostData} from '../../../../hooks/useQuery';
@@ -56,7 +55,7 @@ const CreateProjectReview = ({
 
   const formattedValue = {
     ...data,
-    amount: `${data.amount} ${TOKEN_SYMBOL}`,
+    amount: `${data.amount} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
   };
 
   return (

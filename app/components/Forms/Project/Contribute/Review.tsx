@@ -1,6 +1,5 @@
 import React, {FC, useCallback, useEffect, useState} from 'react';
 import {View} from '../../../Polyfills';
-import {TOKEN_SYMBOL} from '@env';
 
 import {FetchStatus} from '../../../../config/types';
 import {ENDPOINTS} from '../../../../config/endpoints';
@@ -52,7 +51,7 @@ const ContributionReview: FC<ContributionReviewProps> = ({
 
   const formattedValue = {
     ...data,
-    amount: `${data.amount} ${TOKEN_SYMBOL}`,
+    amount: `${data.amount} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
   };
 
   return (

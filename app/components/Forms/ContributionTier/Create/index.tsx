@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {View, ScrollView, Dimensions} from '../../../Polyfills';
-import {TOKEN_SYMBOL} from '@env';
 
 import {useModal} from '../../../../hooks/useModal';
 import {validateForm} from '../../../../utils/validators';
@@ -65,7 +64,7 @@ const CreateContributionTierForm = ({id, style}: ContributionTier) => {
           multiline
         />
         <Input
-          placeholder={`Amount (in ${TOKEN_SYMBOL})`}
+          placeholder={`Amount (in ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL})`}
           onChange={onChange}
           value={data.amount}
           name="amount"
