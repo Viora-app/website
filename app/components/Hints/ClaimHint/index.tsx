@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View, Image} from 'react-native';
-import party from '../../../assets/images/party.png';
+import party from '../../../../public/images/party.png';
 import {useTheme} from '../../../hooks/useTheme';
 import themedStyles from './styles';
 import {ClaimHintProps} from './types';

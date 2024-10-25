@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image} from 'react-native';
 
-import appLogo from '../../assets/images/IconText.png';
+import appLogo from '../../../public/images/IconText.png';
 import {useTheme} from '../../hooks/useTheme';
 import themedStyles from './styles';
 

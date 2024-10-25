@@ -4,9 +4,9 @@ import {View, Text, Image, TouchableHighlight, Linking} from 'react-native';
 import {useTheme} from '../../hooks/useTheme';
 import {ArtistProps} from './types';
 import themedStyles from './styles';
-import instagramIcon from '../../assets/images/instagram.png';
-import xIcon from '../../assets/images/twitter.png';
-import twitchIcon from '../../assets/images/twitch.png';
+import instagramIcon from '../../../public/images/instagram.png';
+import xIcon from '../../../public/images/twitter.png';
+import twitchIcon from '../../../public/images/twitch.png';
 import {getSmallestSize} from '../../utils/image';
 
 enum SocialPlatforms {

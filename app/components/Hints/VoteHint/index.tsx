@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
-import heart from '../../../assets/images/heart.png';
+import heart from '../../../../public/images/heart.png';
 import {useTheme} from '../../../hooks/useTheme';
 import themedStyles from './styles';
 

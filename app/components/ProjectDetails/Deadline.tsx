@@ -4,7 +4,7 @@ import {View, Text, Image} from 'react-native';
 import {useTheme} from '../../hooks/useTheme';
 import {DeadlineProps} from './types';
 import themedStyles from './styles';
-import icon from '../../assets/images/deatlineicon.png';
+import icon from '../../../public/images/deatlineicon.png';
 
 const Deadline: FC<DeadlineProps> = ({date}) => {
   const styles = useTheme(themedStyles);

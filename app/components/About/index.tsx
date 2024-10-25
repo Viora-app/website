@@ -3,7 +3,7 @@ import {View, Text, Image} from 'react-native';
 import {useTheme} from '../../hooks/useTheme';
 import themedStyles from './styles';
 import pkg from '../../../package.json';
-import logo from '../../assets/images/applogo.png';
+import logo from '../../../public/images/applogo.png';
 
 const About = () => {
   const styles = useTheme(themedStyles);

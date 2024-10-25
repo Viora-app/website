@@ -1,6 +1,6 @@
-import whyImage from '../../assets/images/why.png';
-import howImage from '../../assets/images/how.png';
-import whatImage from '../../assets/images/what.png';
+import whyImage from '../../../public/images/why.png';
+import howImage from '../../../public/images/how.png';
+import whatImage from '../../../public/images/what.png';
 import {colors} from '../../config/stylesGuides';
 import type {SlideData} from './types';
 

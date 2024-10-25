@@ -8,7 +8,7 @@ import {Routes} from '../../config/routes';
 import {useTheme} from '../../hooks/useTheme';
 import themedStyles from './styles';
 import {ScreenNotFoundProps} from './types';
-import cactus from '../../assets/images/cactus.png';
+import cactus from '../../../public/images/cactus.png';
 
 const ScreenNotFound: FC<ScreenNotFoundProps> = ({redirectTo}) => {
   const styles = useTheme(themedStyles);

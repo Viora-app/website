@@ -3,7 +3,7 @@ import {Text, View, Animated, Easing} from 'react-native';
 
 import {useTheme} from '../../hooks/useTheme';
 import themedStyles from './styles';
-import loading from '../../assets/images/loading.png';
+import loading from '../../../public/images/loading.png';
 import {LoadingProps} from './types';
 
 const Loading: FC<LoadingProps> = ({wrapper = 'screen'}) => {

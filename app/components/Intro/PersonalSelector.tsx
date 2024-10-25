@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 
-import logo from '../../assets/images/applogo.png';
+import logo from '../../../public/images/applogo.png';
 import {Button} from '../Elements';
 import {ButtonThemes} from '../Elements/Button/types';
 import {useTheme} from '../../hooks/useTheme';

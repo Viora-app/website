@@ -5,7 +5,7 @@ import {Button} from '../../Elements';
 import {useAccount} from '../../../hooks/useAccount';
 import {useTheme} from '../../../hooks/useTheme';
 import themedStyles from './styles';
-import coin from '../../../assets/images/coin.png';
+import coin from '../../../../public/images/coin.png';
 
 const FaucetHint = () => {
   const {account} = useAccount();

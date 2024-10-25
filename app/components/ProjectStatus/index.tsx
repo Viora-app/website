@@ -16,8 +16,8 @@ import {Button} from '../Elements';
 import {ButtonThemes} from '../Elements/Button/types';
 import {ProjectStatus} from '../Projects/types';
 import themedStyles from './styles';
-import successImage from '../../assets/images/success.png';
-import errorImage from '../../assets/images/error.png';
+import successImage from '../../../public/images/success.png';
+import errorImage from '../../../public/images/error.png';
 import {
   DefaultProjectStatusProps,
   FullDataComponentProps,

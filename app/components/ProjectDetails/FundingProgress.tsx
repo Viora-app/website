@@ -4,7 +4,7 @@ import {View, Text, ImageBackground} from 'react-native';
 import {useTheme} from '../../hooks/useTheme';
 import {FundingProgressProps} from './types';
 import themedStyles from './styles';
-import stripePattern from '../../assets/images/stripespattern.png';
+import stripePattern from '../../../public/images/stripespattern.png';
 import {fromBaseToken} from '../../utils/formatters';
 
 const FundingProgress: FC<FundingProgressProps> = ({

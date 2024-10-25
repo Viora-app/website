@@ -6,7 +6,7 @@ import {API_URL} from '@env';
 import {useTheme} from '../../hooks/useTheme';
 import themedStyles from './styles';
 import type {ProjectProps} from './types';
-import avatar from '../../assets/images/avatars/a0.jpg';
+import avatar from '../../../public/images/avatars/a0.jpg';
 import {Routes} from '../../config/routes';
 
 const Project: FC<ProjectProps> = ({item}) => {
