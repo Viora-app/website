@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Keyboard, ScrollView, Dimensions} from 'react-native';
+import {View, ScrollView, Dimensions} from '../../../Polyfills';
 import {TOKEN_SYMBOL} from '@env';
 
 import {useModal} from '../../../../hooks/useModal';
@@ -28,7 +28,7 @@ const CreateProjectForm = ({style}: CreateProjectFormProps) => {
   const maxHeight = Dimensions.get('window').height * 0.6;
 
   const onSubmit = async () => {
-    Keyboard.dismiss();
+    // Keyboard.dismiss();
     show({
       title: 'Looking good!',
       description: '',

@@ -1,5 +1,5 @@
 import React, {FC, useCallback, useEffect, useState} from 'react';
-import {View, Keyboard} from 'react-native';
+import {View, Keyboard} from '../../../Polyfills';
 
 import {useModal} from '../../../../hooks/useModal';
 import {usePostData} from '../../../../hooks/useQuery';

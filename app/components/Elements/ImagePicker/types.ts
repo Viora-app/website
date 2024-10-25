@@ -1,8 +1,10 @@
-import {ViewStyle} from 'react-native';
+import {ReactNode} from 'react';
+
+import {ViewStyle} from '../../Polyfills';
 
 export interface ImagePickerProps {
   onSelectImage: (file: any) => void;
   style?: ViewStyle;
-  children: React.ReactNode;
+  children: ReactNode;
   disabled?: boolean;
 }

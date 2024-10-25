@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {View, Keyboard} from 'react-native';
+import {View} from '../../../Polyfills';
 import {TOKEN_SYMBOL} from '@env';
 
 import {FetchStatus} from '../../../../config/types';
@@ -28,7 +28,7 @@ const CreateProjectReview = ({data, id}: EditProjectReviewProps) => {
 
   const onSubmit = async () => {
     setIsSubmitted(true);
-    Keyboard.dismiss();
+    // Keyboard.dismiss();
     try {
       await mutation.mutateAsync({
         data: {

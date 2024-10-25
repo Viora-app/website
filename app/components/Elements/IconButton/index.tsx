@@ -4,7 +4,7 @@ import {
   TouchableWithoutFeedback,
   Text,
   View,
-} from 'react-native';
+} from '../../Polyfills';
 import {Icon} from '../Icon';
 import {IconButtonProps} from './types';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text} from '../Polyfills';
 
 const Loading = () => <Text>Loading.</Text>;
 

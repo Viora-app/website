@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TextInput, View, Keyboard} from 'react-native';
+import {TextInput, View} from '../../../Polyfills';
 
 import {colors} from '../../../../config/stylesGuides';
 import {usePresets} from '../../../../hooks/usePresets';
@@ -22,7 +22,7 @@ const EditProfileForm = ({style}: ProfileEditFormProps) => {
   const {presets} = usePresets();
 
   const onSubmit = async () => {
-    Keyboard.dismiss();
+    // Keyboard.dismiss();
     show({
       title: 'Looking good!',
       description: '',

@@ -1,33 +1,12 @@
-import React, {FC} from 'react';
-import {View} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import React, { FC } from "react";
 
-import {useTheme} from '../../../hooks/useTheme';
-import {SafeAreaProps} from './types';
-import themedStyles from './styles';
+import { SafeAreaProps } from "./types";
 
-const SafeArea: FC<SafeAreaProps> = ({children, safeArea}) => {
-  const styles = useTheme(themedStyles);
-  const insets = useSafeAreaInsets();
-
-  const safeAreaStyle = {
-    flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingTop: insets.top,
-    paddingLeft: insets.left,
-    paddingRight: insets.right,
-  };
-
+const SafeArea: FC<SafeAreaProps> = ({ children }) => {
   return (
-    <View
-      style={[
-        styles.screenContainer,
-        styles.projectsScreen,
-        safeArea ? safeAreaStyle : null,
-      ]}>
+    <div className="w-full h-full md:max-w-[600px] max-h-[900px]">
       {children}
-    </View>
+    </div>
   );
 };
 

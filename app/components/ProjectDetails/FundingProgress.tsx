@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {View, Text, ImageBackground} from 'react-native';
+import {View, Text, ImageBackground} from '../Polyfills';
 
 import {FundingProgressProps} from './types';
 import stripePattern from '../../../public/images/stripespattern.png';

@@ -1,5 +1,5 @@
 import React, {FC, useCallback} from 'react';
-import {View, Text, Image, TouchableHighlight, Linking} from 'react-native';
+import {View, Text, Image, TouchableHighlight, Linking} from '../Polyfills';
 
 import {ArtistProps} from './types';
 import instagramIcon from '../../../public/images/instagram.png';

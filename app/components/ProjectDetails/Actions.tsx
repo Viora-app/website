@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from 'react';
-import {View} from 'react-native';
+import {View} from '../Polyfills';
 
 import {ENDPOINTS} from '../../config/endpoints';
 import {FetchStatus} from '../../config/types';

@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image} from '../Polyfills';
 
 import {DeadlineProps} from './types';
 import icon from '../../../public/images/deatlineicon.png';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TouchableHighlight} from 'react-native';
+import {View, TouchableHighlight} from '../Polyfills';
 import {usePresets} from '../../hooks/usePresets';
 import {Icon} from '../Elements';
 import {colors} from '../../config/stylesGuides';

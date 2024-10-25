@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Dimensions, ScrollView} from 'react-native';
+import {Text, View, Dimensions, ScrollView} from '../../Polyfills';
 
 import {CapitalizeKey} from '../../../utils/formatters';
 import type {FormSummaryProps} from './types';

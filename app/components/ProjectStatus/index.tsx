@@ -1,4 +1,4 @@
-import {Image, Text, View} from 'react-native';
+import {Image, Text, View} from '../Polyfills';
 import React, {FC} from 'react';
 
 import {finalMessages} from '../../utils/modal';

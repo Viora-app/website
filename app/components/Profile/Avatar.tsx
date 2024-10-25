@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image} from '../Polyfills';
 
 import {useAccount} from '../../hooks/useAccount';
 import {useModal} from '../../hooks/useModal';

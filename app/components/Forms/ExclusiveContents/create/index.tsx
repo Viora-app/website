@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {View, Keyboard, ScrollView, Dimensions, Text} from 'react-native';
+import {View, ScrollView, Dimensions, Text} from '../../../Polyfills';
 
 import {useModal} from '../../../../hooks/useModal';
 import {useGetData} from '../../../../hooks/useQuery';
@@ -57,7 +57,7 @@ const PostExclusiveContentsForm: FC<PostExclusiveContentsFormProps> = ({
 
   const maxHeight = Dimensions.get('window').height * 0.6;
   const onSubmit = async () => {
-    Keyboard.dismiss();
+    // Keyboard.dismiss();
     const previewData = {
       title: data.title,
       description: data.description,

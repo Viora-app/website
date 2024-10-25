@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Text, Image, View} from 'react-native';
+import {Text, Image, View} from '../Polyfills';
 import {Link} from '@react-navigation/native';
 import {API_URL} from '@env';
 

@@ -1,4 +1,4 @@
-import type {ViewStyle, StyleProp} from 'react-native';
+import type {ViewStyle, StyleProp} from '../../Polyfills';
 
 export interface IconProps {
   name: string;

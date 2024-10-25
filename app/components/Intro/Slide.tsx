@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image, Dimensions} from 'react-native';
+import {View, Text, Image, Dimensions} from '../Polyfills';
 
 import {boxes} from '../../config/stylesGuides';
 import {IntroContentProps} from './types';

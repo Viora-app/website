@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {View, Image, TouchableOpacity} from 'react-native';
+import {View, Image, TouchableOpacity} from '../Polyfills';
 import {useNavigation} from '@react-navigation/native';
 
 import {getPreferredSize} from './utils';

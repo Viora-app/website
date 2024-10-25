@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import {View, Keyboard} from 'react-native';
+import {View} from '../../../Polyfills';
 
 import {useAccount} from '../../../../hooks/useAccount';
 import {useModal} from '../../../../hooks/useModal';
@@ -25,7 +25,7 @@ const EditProfileReview = ({data}: ProfileEditReviewProps) => {
 
   const onSubmit = async () => {
     setIsSubmitted(true);
-    Keyboard.dismiss();
+    // Keyboard.dismiss();
     const response = await update(data);
     onDone({
       status: response.success ? FetchStatus.success : FetchStatus.error,

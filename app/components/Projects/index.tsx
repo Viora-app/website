@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FlatList, RefreshControl, View, LayoutChangeEvent} from 'react-native';
+import {View} from '../Polyfills';
 
 import {ENDPOINTS} from '../../config/endpoints';
 import {useGetData} from '../../hooks/useQuery';
@@ -28,12 +28,6 @@ const Projects = () => {
     await refresh();
   };
 
-  const handleLayout = (event: LayoutChangeEvent) => {
-    const {height} = event.nativeEvent.layout;
-    const calculatedItemsToDisplay = calculateItemsToDisplay(height);
-    setDisplaySize(calculatedItemsToDisplay);
-  };
-
   if (isLoading && !data?.data.length) {
     return <ScreenLoading />;
   }
@@ -43,23 +37,17 @@ const Projects = () => {
   }
 
   return (
-    <View onLayout={handleLayout} style={styles.wrapper}>
-      <FlatList
-        data={data?.data}
-        ListHeaderComponent={ProjectsHeader}
-        renderItem={({item}) => <Project item={item} />}
-        keyExtractor={item => item.id}
-        ListFooterComponent={
-          data?.length > displaySize ? (
-            <ListFooter isLoading={isLoading} />
-          ) : null
-        }
-        onEndReachedThreshold={0.4}
-        onEndReached={loadMore}
-        refreshControl={
-          <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
-        }
-      />
+    <View style={styles.wrapper}>
+      {
+        data?.data.map((item) => (
+          <Project item={item} />
+        ))
+      }
+      {
+        data?.length > displaySize ? (
+          <ListFooter isLoading={isLoading} />
+        ) : null
+      }
     </View>
   );
 };

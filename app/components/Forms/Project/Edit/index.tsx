@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Keyboard, ScrollView, Dimensions} from 'react-native';
+import {View, ScrollView, Dimensions} from '../../../Polyfills';
 import {TOKEN_SYMBOL} from '@env';
 
 import {ENDPOINTS} from '../../../../config/endpoints';
@@ -35,7 +35,7 @@ const EditProjectForm = ({style, id}: EditProjectFormProps) => {
 
   const onSubmit = async () => {
     if (id) {
-      Keyboard.dismiss();
+      // Keyboard.dismiss();
       show({
         title: 'Looking good!',
         description: '',

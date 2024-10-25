@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image} from '../Polyfills';
 import {useClipboard} from '@react-native-clipboard/clipboard';
 import {NETWORK_NAME, TOKEN_SYMBOL} from '@env';
 

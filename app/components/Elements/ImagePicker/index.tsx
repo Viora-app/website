@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from '../../Polyfills';
 import {
   launchImageLibrary,
   ImageLibraryOptions,

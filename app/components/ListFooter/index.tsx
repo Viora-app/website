@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator} from '../Polyfills';
 import {colors} from '../../config/stylesGuides';
 
 export const ListFooter = ({isLoading}: {isLoading: boolean}) => {

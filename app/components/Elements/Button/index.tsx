@@ -1,6 +1,5 @@
 import React from 'react';
-import {TouchableHighlight, Text, View} from 'react-native';
-import themedStyles from './styles';
+import {TouchableHighlight, Text, View} from '../../Polyfills';
 import {ButtonProps, ButtonThemes} from './types';
 
 const Button = ({

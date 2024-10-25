@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View} from '../Polyfills';
 import {usePresets} from '../../hooks/usePresets';
 import {Themes} from '../../hooks/usePresets/types';
 import {CheckBox} from '../Elements';

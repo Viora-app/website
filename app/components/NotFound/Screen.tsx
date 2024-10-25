@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image} from '../Polyfills';
 import {useNavigation} from '@react-navigation/native';
 
 import {ButtonThemes} from '../Elements/Button/types';

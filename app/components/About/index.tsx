@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image} from '../Polyfills';
 import pkg from '../../../package.json';
 import logo from '../../../public/images/applogo.png';
 

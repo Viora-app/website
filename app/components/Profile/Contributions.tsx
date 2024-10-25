@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image} from '../Polyfills';
 import {Link} from '@react-navigation/native';
 
 import {ENDPOINTS} from '../../config/endpoints';

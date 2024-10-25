@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput, View, Text} from 'react-native';
+import {TextInput, View, Text} from '../../Polyfills';
 
 import {colors} from '../../../config/stylesGuides';
 import {usePresets} from '../../../hooks/usePresets';

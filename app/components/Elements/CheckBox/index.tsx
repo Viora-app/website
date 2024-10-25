@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {View, Text, TouchableHighlight} from 'react-native';
+import {View, Text, TouchableHighlight} from '../../Polyfills';
 import {Icon} from '../Icon';
 import {colors, fonts} from '../../../config/stylesGuides';
 import {usePresets} from '../../../hooks/usePresets';

@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, View} from '../Polyfills';
 import {useNavigation} from '@react-navigation/native';
 
 import {Project} from '../Projects/types';

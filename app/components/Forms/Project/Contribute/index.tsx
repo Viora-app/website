@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from '../../../Polyfills';
 import {TOKEN_SYMBOL} from '@env';
 
 import {useModal} from '../../../../hooks/useModal';

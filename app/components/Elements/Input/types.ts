@@ -1,4 +1,4 @@
-import {InputModeOptions} from 'react-native';
+import {InputModeOptions} from '../../Polyfills';
 
 export interface InputProps {
   value: string | undefined;

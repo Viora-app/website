@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Linking, Image} from 'react-native';
+import {Text, View, Linking, Image} from '../../Polyfills';
 import {useClipboard} from '@react-native-clipboard/clipboard';
 import {Button} from '../../Elements';
 import {useAccount} from '../../../hooks/useAccount';

@@ -1,5 +1,5 @@
 import React, {FC, useCallback, useEffect, useState} from 'react';
-import {View} from 'react-native';
+import {View} from '../../../Polyfills';
 import {TOKEN_SYMBOL} from '@env';
 
 import {FetchStatus} from '../../../../config/types';

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Image} from 'react-native';
+import {View, Image} from '../Polyfills';
 import Modal from 'react-native-modal';
 import {colors} from '../../config/stylesGuides';
 import {IconButton} from '../Elements';
