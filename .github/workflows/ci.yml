@@ -32,7 +32,7 @@ jobs:
           path: |
             .yarn/cache
             node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-yarn-${{ github.repository }}-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
@@ -53,13 +53,16 @@ jobs:
           path: |
             .yarn/cache
             node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          key: ${{ runner.os }}-yarn-${{ github.repository }}-${{ hashFiles('yarn.lock') }}
 
       - name: Install Yarn
         run: corepack enable
 
       - name: Set Yarn version
         run: yarn set version 3.2.3
+
+      - name: Install dependencies (lint backup)
+        run: yarn install --immutable
 
       - name: Run ESLint
         run: yarn lint
