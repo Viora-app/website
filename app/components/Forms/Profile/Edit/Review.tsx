@@ -13,7 +13,6 @@ import type {ProfileEditReviewProps, Feedback} from './types';
 const EditProfileReview = ({data}: ProfileEditReviewProps) => {
   const {update} = useAccount();
   const {show} = useModal();
-  const styles = {};
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const onDone = useCallback(
@@ -34,9 +33,9 @@ const EditProfileReview = ({data}: ProfileEditReviewProps) => {
   };
 
   return (
-    <View style={styles.reviewWrapper}>
+    <View>
       <FormSummary data={data} />
-      <View style={styles.actionBar}>
+      <View>
         <Button
           title={isSubmitted ? 'Updating' : 'Continue'}
           theme={ButtonThemes.primary}

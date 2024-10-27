@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
 import {View, Image} from '../Polyfills';
 
 import {useAccount} from '../../hooks/useAccount';
@@ -8,10 +8,9 @@ import {finalMessages} from '../../utils/modal';
 import {FetchStatus} from '../../config/types';
 import {getSmallestSize} from '../../utils/image';
 import {ImageFormats} from '../Projects/types';
-import type {AvatarProps, FileEvent} from './types';
+import type {FileEvent} from './types';
 
-const Avatar = ({style}: AvatarProps) => {
-  const styles = {};
+const Avatar: FC = () => {
   const {update, account} = useAccount();
   const [isLoading, setIsLoading] = useState(false);
   const {show, hide} = useModal();
@@ -29,7 +28,7 @@ const Avatar = ({style}: AvatarProps) => {
     });
 
     formData.append('data', JSON.stringify({}));
-    // @ts-expect-error
+    // @ts-expect-error Form Data type is not properly defined.
     const result = await update(formData);
 
     show({
@@ -47,13 +46,12 @@ const Avatar = ({style}: AvatarProps) => {
   };
 
   return (
-    <View style={[styles.avatarWrapper, style]}>
+    <View>
       <ImagePicker disabled={isLoading} onSelectImage={onSelectImage}>
-        <Image source={image} style={styles.avatar} />
+        <Image alt="" source={image} />
         <Icon
           name="feather"
           size={32}
-          style={styles.avatarEditIcon}
           color="#fff"
         />
       </ImagePicker>

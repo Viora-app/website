@@ -1,5 +1,9 @@
-import React from "react";
+import React, { FC } from 'react';
 
-const View = ({ children }) => <div>{children}</div>;
+import { BaseElementProps } from './types';
+
+const View: FC<BaseElementProps> = ({ children, ...rest }) => (
+  <div {...(rest || {})}>{children}</div>
+);
 
 export default View;

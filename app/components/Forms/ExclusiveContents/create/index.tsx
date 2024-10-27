@@ -22,10 +22,9 @@ const AccessibleTiersSelect: FC<AccessibleTiersSelectProps> = ({
   onSelect,
   selection,
 }) => {
-  const styles = {};
   return (
     <View>
-      <Text style={[styles.optionsTitle]}>Which contributors can access?</Text>
+      <Text>Which contributors can access?</Text>
       {tiers.map(item => (
         <CheckBox
           key={item.id}
@@ -39,7 +38,6 @@ const AccessibleTiersSelect: FC<AccessibleTiersSelectProps> = ({
 };
 
 const PostExclusiveContentsForm: FC<PostExclusiveContentsFormProps> = ({
-  style,
   projectId,
 }) => {
   const [data, setData] = useState<FormData>({
@@ -48,7 +46,6 @@ const PostExclusiveContentsForm: FC<PostExclusiveContentsFormProps> = ({
     accessible_tiers: [],
   });
   const {show} = useModal();
-  const styles = {};
   const {data: contributionTiers} = useGetData(ENDPOINTS.CONTRIBUTION_TIERS, {
     filters: {
       project: projectId,
@@ -92,7 +89,7 @@ const PostExclusiveContentsForm: FC<PostExclusiveContentsFormProps> = ({
   const validity = validateForm(schema, data);
 
   return (
-    <View style={style}>
+    <View>
       <ScrollView style={{maxHeight}}>
         <Input
           placeholder="Title"
@@ -114,7 +111,7 @@ const PostExclusiveContentsForm: FC<PostExclusiveContentsFormProps> = ({
         />
       </ScrollView>
       <ValidationFeedback {...validity} />
-      <View style={styles.actionBar}>
+      <View>
         <Button
           title="Continue"
           theme={ButtonThemes.primary}

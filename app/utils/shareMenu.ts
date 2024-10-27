@@ -1,9 +1,8 @@
-import {Share, Alert} from 'react-native';
 import {Project} from '../components/Projects/types';
 import {ArtistShareProp} from '../components/ProjectDetails/types';
 
 export const shareProjectInvitation = async (
-  user: any,
+  user: unknown,
   project: Project,
   artist: ArtistShareProp['attributes'],
 ) => {
@@ -27,10 +26,10 @@ export const shareProjectInvitation = async (
   `;
 
   try {
-    await Share.share({
-      message: message.trim(), // Ensure proper formatting
+    await navigator.share({
+      text: message.trim(),
     });
   } catch (err) {
-    Alert.alert('Error', err.message);
+    console.log('Error', err.message);
   }
 };

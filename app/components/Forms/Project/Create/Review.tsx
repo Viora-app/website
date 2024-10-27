@@ -1,3 +1,5 @@
+'use client'
+
 import React, {useCallback, useEffect, useState} from 'react';
 import {View} from '../../../Polyfills';
 
@@ -14,7 +16,6 @@ import type {CreateProjectReviewProps, Feedback} from './types';
 
 const CreateProjectReview = ({data}: CreateProjectReviewProps) => {
   const {show} = useModal();
-  const styles = {};
   const [isSubmitted, setIsSubmitted] = useState(false);
   const mutation = usePostData(ENDPOINTS.PROJECTS);
 
@@ -57,9 +58,9 @@ const CreateProjectReview = ({data}: CreateProjectReviewProps) => {
   };
 
   return (
-    <View style={styles.reviewWrapper}>
+    <View>
       <FormSummary data={formattedValue} />
-      <View style={styles.actionBar}>
+      <View>
         <Button
           title={isSubmitted ? 'Updating' : 'Continue'}
           theme={ButtonThemes.primary}

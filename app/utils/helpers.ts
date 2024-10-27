@@ -23,18 +23,18 @@ export const greet = (timestamp = 0) => {
 /**
  * Returns true if the value is null or undefined.
  *
- * @param {any} value
+ * @param {unknown} value
  * @returns {boolean}
  */
-export const isNil = (value: any) => value === null || value === undefined;
+export const isNil = (value: unknown) => value === null || value === undefined;
 
 /**
  * Returns true if the value is null, undefined, or an empty string, array or object.
  *
- * @param {any} value
+ * @param {unknown} value
  * @returns {boolean}
  */
-export const isEmpty = (value: any) => {
+export const isEmpty = (value: unknown) => {
   if (isNil(value)) {
     return true;
   }
@@ -48,10 +48,10 @@ export const isEmpty = (value: any) => {
 };
 
 /*
- * @param {any} value
+ * @param {unknown} value
  * @returns {boolean}
  */
-export const isNonEmptyBuffer = (value: any): boolean => {
+export const isNonEmptyBuffer = (value: unknown): boolean => {
   if (Buffer.isBuffer(value)) {
     return value.length > 0;
   }
@@ -61,10 +61,10 @@ export const isNonEmptyBuffer = (value: any): boolean => {
 /**
  * Checks if a value is an object or array
  *
- * @param {any} value
+ * @param {unknown} value
  * @returns {boolean} True if the value is an object or array
  */
-export const isObjectLiked = (value: any) =>
+export const isObjectLiked = (value: unknown) =>
   Array.isArray(value) || typeof value === 'object';
 
 /**

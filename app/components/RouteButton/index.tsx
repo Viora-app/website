@@ -1,12 +1,9 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {View, TouchableHighlight} from '../Polyfills';
-import {usePresets} from '../../hooks/usePresets';
 import {Icon} from '../Elements';
-import {colors} from '../../config/stylesGuides';
+import {RouteButtonProps} from './types';
 
-const RouteButton = ({route, navigation, stateIndex, index}: any) => {
-  const {presets} = usePresets();
-  const styles = {};
+const RouteButton: FC<RouteButtonProps> = ({route, navigation, stateIndex, index}) => {
   const isFocused = stateIndex === index;
 
   const onPress = () => {
@@ -23,16 +20,16 @@ const RouteButton = ({route, navigation, stateIndex, index}: any) => {
   };
 
   const iconColor = isFocused
-    ? colors[presets.theme].primaryStrong
-    : colors[presets.theme].neutralTender;
+    ? '#4E344D'
+    : '#919191';
 
   return (
     <TouchableHighlight
       onPress={onPress}
       key={route.key}
       underlayColor="transparent"
-      style={styles.tab}>
-      <View style={styles.iconWrapper}>
+      >
+      <View>
         <Icon name={route.name.replace(' ', '')} color={iconColor} />
       </View>
     </TouchableHighlight>

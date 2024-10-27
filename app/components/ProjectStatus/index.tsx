@@ -25,7 +25,6 @@ import {
 
 const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
   const mutation = usePatchData(ENDPOINTS.PROJECTS);
-  const styles = {};
   const {show} = useModal();
 
   const AddContributionTier = () => {
@@ -74,34 +73,31 @@ const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
     });
   };
   return (
-    <View style={[[styles.editWrapper, styles.spacer]]}>
-      <Text style={[styles.large, styles.statusTitle, styles.spacerMini]}>
+    <View>
+      <Text>
         Now What
       </Text>
-      <Text style={[styles.medium, styles.spacerLarge, styles.neutralZero]}>
+      <Text>
         You Can edit your project if needed, and once ready,publish it.
       </Text>
-      <Text style={[styles.semi, styles.spacerLarge, styles.neutralZero]}>
+      <Text>
         You can add up to 5 contribution tiers.
       </Text>
       <Button
         title="Add contribution tier"
         theme={ButtonThemes.secondary}
         onPress={AddContributionTier}
-        wrapperStyle={styles.spacerMini}
       />
       <Button
         title="Go live"
         theme={ButtonThemes.secondary}
         onPress={publish}
-        wrapperStyle={styles.spacerMini}
       />
 
       <Button
         title="Edit"
         theme={ButtonThemes.primary}
         onPress={edit}
-        wrapperStyle={styles.spacerMini}
       />
     </View>
   );
@@ -113,32 +109,30 @@ const SupportProject: FC<FullDataComponentProps> = ({
   artist,
   refresh,
 }) => {
-  const styles = {};
   const {show} = useModal();
   const support = () => {
     show({
       title: 'Support art & culture',
-      description: "You're about to make a difference",
+      description: 'You\'re about to make a difference',
       content: <Contribute projectId={project.id} refresh={refresh} />,
     });
   };
 
   return (
-    <View style={[[styles.publishedWrapper]]}>
-      <Text style={[styles.large, styles.statusTitle, styles.spacerMini]}>
+    <View>
+      <Text>
         Your time to shine
       </Text>
-      <Text style={[styles.medium, styles.spacerLarge]}>
+      <Text>
         You can now contribute in this project and become a part of it.
       </Text>
-      <Text style={[styles.semi, styles.spacerLarge]}>
+      <Text>
         Every small contribution matters.
       </Text>
       <Button
         title="Support"
         theme={ButtonThemes.secondary}
         onPress={support}
-        wrapperStyle={styles.spacerMini}
       />
       <Button
         title="Share"
@@ -156,16 +150,15 @@ const PublishedProjectOwner: FC<PublishedProjectOwnerProps> = ({
   account,
   artist,
 }) => {
-  const styles = {};
   return (
-    <View style={[[styles.publishedWrapper, styles.spacerMini]]}>
-      <Text style={[styles.large, styles.statusTitle, styles.spacerMini]}>
+    <View>
+      <Text>
         You can win this
       </Text>
-      <Text style={[styles.semi, styles.spacerLarge]}>
+      <Text>
         Your project is published.
       </Text>
-      <Text style={[styles.semi, styles.spacerLarge]}>
+      <Text>
         Reach out to your fans in your socials and ask them to support you.
       </Text>
       <Button
@@ -183,7 +176,6 @@ const SuccessfulProjectOwner: FC<SuccessfulProjectOwnerProps> = ({
   projectId,
 }) => {
   const mutation = usePatchData(ENDPOINTS.PROJECTS);
-  const styles = {};
   const {show} = useModal();
   const withdraw = () => {
     show({
@@ -213,58 +205,52 @@ const SuccessfulProjectOwner: FC<SuccessfulProjectOwnerProps> = ({
   };
 
   return (
-    <View style={[styles.successWrapper, styles.spacer]}>
-      <Text style={[styles.large, styles.statusTitle]}>Successful</Text>
-      <Text style={[styles.summary, styles.spacerLarge]}>
+    <View>
+      <Text>Successful</Text>
+      <Text>
         Your project has successfully raised funds. Now is the time to shine!
       </Text>
-      <Text style={[styles.summary, styles.spacerLarge]}>
+      <Text>
         Once ready, you can post updates to deliver your promise.
       </Text>
-      <Image source={successImage} style={[styles.image, styles.spacerSemi]} />
+      <Image alt="" source={successImage} />
       <Button
         title="Post exclusive content"
         theme={ButtonThemes.secondary}
         onPress={postExclusiveContent}
-        wrapperStyle={styles.spacerMini}
       />
       <Button
         title="Withdraw"
         theme={ButtonThemes.secondary}
         onPress={withdraw}
-        wrapperStyle={styles.spacerMini}
       />
     </View>
   );
 };
 
 const SuccessfulProjectContributor: FC = () => {
-  const styles = {};
-
   return (
-    <View style={[[styles.successWrapper]]}>
-      <Text style={[styles.large, styles.statusTitle, styles.spacerMini]}>
+    <View>
+      <Text>
         Successful
       </Text>
-      <Text style={[styles.semi, styles.spacer]}>
+      <Text>
         This project has successfully raised funds. Once ready, The artist will
         publish updates to deliver your rewards.
       </Text>
-      <Image source={successImage} style={[styles.image, styles.spacerSemi]} />
+      <Image alt="" source={successImage} />
     </View>
   );
 };
 
 const FailingProjectOwner: FC = () => {
-  const styles = {};
-
   return (
-    <View style={[[styles.ownerFailWrapper, styles.spacer]]}>
-      <Text style={[styles.large, styles.statusTitle]}>We're Sorry</Text>
-      <Text style={[styles.semi, styles.spacer]}>
+    <View>
+      <Text>We are Sorry</Text>
+      <Text>
         This project did not raise the required funds.
       </Text>
-      <Image source={errorImage} style={[styles.image, styles.spacerSemi]} />
+      <Image alt="" source={errorImage} />
     </View>
   );
 };

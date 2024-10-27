@@ -3,6 +3,5 @@ export interface OptionProps {
   state?: string;
   onPress?: () => void;
   href?: string;
-  style?: object;
   icon?: string;
 }

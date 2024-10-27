@@ -1,6 +1,8 @@
+'use client'
+
 import React, {FC} from 'react';
 import {ScrollView, Text, View} from '../Polyfills';
-import {useNavigation} from '@react-navigation/native';
+import {useRouter} from 'next/navigation';
 
 import {Project} from '../Projects/types';
 import {ENDPOINTS} from '../../config/endpoints';
@@ -23,7 +25,6 @@ const projectParams = {
 };
 
 const ProjectDetails: FC<ProjectDetailsProps> = ({id, ...restProps}) => {
-  const styles = {};
   const {data, isLoading, refresh} = useGetData(
     `${ENDPOINTS.PROJECTS}/${id}`,
     projectParams,
@@ -34,17 +35,17 @@ const ProjectDetails: FC<ProjectDetailsProps> = ({id, ...restProps}) => {
     },
     filters: {
       users_permissions_user:
-        data?.data?.attributes.users_permissions_user.data.id,
+        data?.data?.attributes?.users_permissions_user?.data.id,
     },
   };
   const {data: artist} = useGetData(ENDPOINTS.PROFILES, artistParams);
-  const navigation = useNavigation();
+  const {back: goBack} = useRouter();
 
   const gotBack = () => {
-    navigation.goBack();
+    goBack();
   };
 
-  if (id && !isLoading && data?.data?.id !== id) {
+  if (id && !isLoading && data?.data?.id != id) {
     return <NotFound />;
   }
 
@@ -65,13 +66,11 @@ const ProjectDetails: FC<ProjectDetailsProps> = ({id, ...restProps}) => {
       // planned_release_date, @todo design this
     },
   } = data?.data as Project;
-
   return (
-    <ScrollView style={styles.container}>
-      <View style={[styles.row, styles.header]}>
+    <ScrollView>
+      <View>
         <IconButton
           onPress={gotBack}
-          style={styles.closeButton}
           iconSize={24}
           iconName="cross"
         />
@@ -80,34 +79,33 @@ const ProjectDetails: FC<ProjectDetailsProps> = ({id, ...restProps}) => {
         images={images?.data || undefined}
         id={data?.data.id}
         projectStatus={data?.data.attributes.status}
-        ownerId={data?.data?.attributes.users_permissions_user.data.id}
+        ownerId={data?.data?.attributes?.users_permissions_user?.data.id}
         refresh={refresh}
       />
-      <Text style={[styles.largest, styles.spacer]}>
+      <Text>
         {restProps.name ?? name}
       </Text>
-      <Text style={[styles.medium, styles.spacer]}>
+      <Text>
         {restProps.summary ?? summary}
       </Text>
       <Deadline date={deadline} />
-      <Text style={[styles.medium, styles.spacer]}>{description}</Text>
+      <Text>{description}</Text>
       <Artist data={artist?.data[0]?.attributes ?? {}} />
-      <Text style={[styles.semi, styles.spacer]}>
-        By supporting her, you're not just funding the music—you’re becoming a
+      <Text>
+        By supporting her, you are not just funding the music—you are becoming a
         part of the creative journey!
       </Text>
       <FundingProgress
         currentFunding={current_funding}
         softGoal={soft_goal}
         hardGoal={hard_goal}
-        style={styles.spacer}
       />
       <Actions
         project={data?.data}
         owner={artist?.data[0] ?? {}}
         refresh={refresh}
       />
-      <View style={styles.spacer} />
+      <View />
     </ScrollView>
   );
 };

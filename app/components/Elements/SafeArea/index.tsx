@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
-import { SafeAreaProps } from "./types";
+import { SafeAreaProps } from './types';
 
 const SafeArea: FC<SafeAreaProps> = ({ children }) => {
   return (

@@ -1,29 +1,21 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {View, Text, TouchableHighlight} from '../../Polyfills';
 import {Icon} from '../Icon';
-import {colors, fonts} from '../../../config/stylesGuides';
-import {usePresets} from '../../../hooks/usePresets';
 import {CheckboxProps} from './types';
 
 const Checkbox = ({
-  title, selected, onSelect, style,
+  title, selected, onSelect,
 }: CheckboxProps) => {
-  const styles = {};
-  const {presets} = usePresets();
-  const selectedStyle = selected ? styles.selected : {};
-
   return (
     <TouchableHighlight
       underlayColor="transparent"
-      onPress={onSelect}
-      style={[styles.container, styles.rowNoWrap, style]}>
+      onPress={onSelect}>
       <>
         <View>
-          <Text style={[fonts.h4, styles.title]}>{title}</Text>
+          <Text>{title}</Text>
         </View>
-        <View style={[styles.box, selectedStyle]}>
-          {selected && <Icon name="check" color={colors[presets.theme].neutralZero} />}
+        <View>
+          {selected && <Icon name="check" color="#fff" />}
         </View>
       </>
     </TouchableHighlight>

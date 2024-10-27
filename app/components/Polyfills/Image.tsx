@@ -1,5 +1,10 @@
-import React from "react";
+import React, { FC } from 'react';
+import NextImage from 'next/image';
 
-const Image = (props) => <img {...props} />;
+import { ImageProps } from './types';
+
+const Image: FC<ImageProps> = ({source, alt, ...rest}) => (
+  <NextImage src={source} alt={alt || 'Image'}  {...(rest || {})} />
+);
 
 export default Image;

@@ -1,10 +1,17 @@
-import React, {useRef, useState} from 'react';
-import ModelContext from './modalContext';
-import {ModalProviderProps, ModalContent} from './types';
+'use client'
+
+import React, {useRef, useState, createContext} from 'react';
+import {ModalProviderProps, ModalContent, ModalContextType} from './types';
 import {Timeout} from '../../config/types';
 import Modal from '../../components/Modal';
 
 export const MODAL_ANIMATION_DURATION = 300;
+
+export const ModalContext = createContext<ModalContextType>({
+  show: () => {},
+  hide: () => {},
+  isVisible: false,
+});
 
 const ModalProvider = ({children}: ModalProviderProps) => {
   const timer = useRef<Timeout>();
@@ -30,10 +37,10 @@ const ModalProvider = ({children}: ModalProviderProps) => {
   };
 
   return (
-    <ModelContext.Provider value={value}>
+    <ModalContext.Provider value={value}>
       {children}
       <Modal data={content} isVisible={isVisible} hide={hide} />
-    </ModelContext.Provider>
+    </ModalContext.Provider>
   );
 };
 

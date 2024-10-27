@@ -1,12 +1,9 @@
 import React from 'react';
 import {TextInput, View, Text} from '../../Polyfills';
 
-import {colors} from '../../../config/stylesGuides';
-import {usePresets} from '../../../hooks/usePresets';
 import type {InputProps} from './types';
 
 const Input = ({
-  style,
   value,
   onChange,
   name,
@@ -14,18 +11,14 @@ const Input = ({
   inputMode = 'text',
   multiline = false,
 }: InputProps) => {
-  const styles = {};
-  const {presets} = usePresets();
-
   return (
-    <View style={styles.wrapper}>
-      <Text style={styles.title}>{placeholder}</Text>
+    <View>
+      <Text>{placeholder}</Text>
       <TextInput
-        style={[styles.input, style]}
         onChangeText={onChange(name)}
         value={value}
         multiline={multiline}
-        placeholderTextColor={colors[presets.theme].neutralStrong}
+        placeholderTextColor="#ccc"
         inputMode={inputMode}
       />
     </View>

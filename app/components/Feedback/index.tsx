@@ -10,12 +10,10 @@ const messages = {
   [FetchStatus.error]: 'Oops, try again later.',
 };
 
-const Feedback = ({style, status, message}: FeedbackProps) => {
-  const styles = {};
+const Feedback = ({status, message}: FeedbackProps) => {
   return (
-    <View style={[styles.wrapper, style]}>
-      <Text
-        style={status === FetchStatus.error ? styles.error : styles.success}>
+    <View>
+      <Text>
         {message || messages[status]}
       </Text>
     </View>

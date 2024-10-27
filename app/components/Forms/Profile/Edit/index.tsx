@@ -1,25 +1,20 @@
 import React, {useState} from 'react';
 import {TextInput, View} from '../../../Polyfills';
 
-import {colors} from '../../../../config/stylesGuides';
-import {usePresets} from '../../../../hooks/usePresets';
 import {useModal} from '../../../../hooks/useModal';
 import {useAccount} from '../../../../hooks/useAccount';
 import {Profile} from '../../../../context/accountContext/types';
 import {ButtonThemes} from '../../../Elements/Button/types';
 import {Button} from '../../../Elements';
 import EditProfileReview from './Review';
-import type {ProfileEditFormProps} from './types';
 
-const EditProfileForm = ({style}: ProfileEditFormProps) => {
+const EditProfileForm = () => {
   const {account} = useAccount();
   const [data, setData] = useState<Partial<Profile>>({
     first_name: account?.first_name ?? '',
     last_name: account?.last_name ?? '',
   });
   const {show} = useModal();
-  const styles = {};
-  const {presets} = usePresets();
 
   const onSubmit = async () => {
     // Keyboard.dismiss();
@@ -38,22 +33,20 @@ const EditProfileForm = ({style}: ProfileEditFormProps) => {
   };
 
   return (
-    <View style={style}>
+    <View>
       <TextInput
-        style={styles.input}
         placeholder="Your name?"
         onChangeText={onChange('first_name')}
         value={data.first_name}
-        placeholderTextColor={colors[presets.theme].neutralStrong}
+        placeholderTextColor="#333"
       />
       <TextInput
-        style={styles.input}
         placeholder="And your last name?"
         onChangeText={onChange('last_name')}
         value={data.last_name}
-        placeholderTextColor={colors[presets.theme].neutralStrong}
+        placeholderTextColor="#333"
       />
-      <View style={styles.actionBar}>
+      <View>
         <Button
           title="Continue"
           theme={ButtonThemes.primary}

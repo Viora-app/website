@@ -1,15 +1,14 @@
-import React, {FC, useRef, useEffect} from 'react';
-import {Text, View} from '../Polyfills';
+import React, {FC} from 'react';
+import {Text, View, Image} from '../Polyfills';
 
 import loading from '../../../public/images/loading.png';
 import {LoadingProps} from './types';
 
-const Loading: FC<LoadingProps> = ({wrapper = 'screen'}) => {
-  const styles = {};
-
+const Loading: FC<LoadingProps> = () => {
   return (
-    <View style={[styles.wrapper, styles[wrapper]]}>
-      <Text style={styles.title}>Loading</Text>
+    <View>
+      <Image alt="" source={loading} />
+      <Text>Loading</Text>
     </View>
   );
 };

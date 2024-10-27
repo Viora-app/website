@@ -1,3 +1,5 @@
+'use client'
+
 import React, {useCallback, useEffect, useState} from 'react';
 import {View} from '../../../Polyfills';
 
@@ -17,7 +19,6 @@ const CreateProjectReview = ({
   project,
 }: CreateContributionTierReviewProps) => {
   const {show} = useModal();
-  const styles = {};
   const [isSubmitted, setIsSubmitted] = useState(false);
   const mutation = usePostData(ENDPOINTS.CONTRIBUTION_TIERS);
 
@@ -59,9 +60,9 @@ const CreateProjectReview = ({
   };
 
   return (
-    <View style={styles.reviewWrapper}>
+    <View>
       <FormSummary data={formattedValue} />
-      <View style={styles.actionBar}>
+      <View>
         <Button
           title={isSubmitted ? 'Updating' : 'Continue'}
           theme={ButtonThemes.primary}

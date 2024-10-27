@@ -1,5 +1,7 @@
+'use client'
+
 import React, {FC, useCallback, useEffect, useState} from 'react';
-import {View, Keyboard} from '../../../Polyfills';
+import {View} from '../../../Polyfills';
 
 import {useModal} from '../../../../hooks/useModal';
 import {usePostData} from '../../../../hooks/useQuery';
@@ -15,7 +17,6 @@ const PostExclusiveContentsReview: FC<PostExclusiveContentsReviewProps> = ({
   data,
 }) => {
   const {show} = useModal();
-  const styles = {};
   const [isSubmitted, setIsSubmitted] = useState(false);
   const mutation = usePostData(ENDPOINTS.EXCLUSIVE_CONTENT);
 
@@ -61,9 +62,9 @@ const PostExclusiveContentsReview: FC<PostExclusiveContentsReviewProps> = ({
   };
 
   return (
-    <View style={styles.reviewWrapper}>
+    <View>
       <FormSummary data={previewData} />
-      <View style={styles.actionBar}>
+      <View>
         <Button
           title={isSubmitted ? 'Updating' : 'Create'}
           theme={ButtonThemes.primary}

@@ -2,7 +2,6 @@ import {SongAttributes, FetchStatus} from '../../../../config/types';
 import {ContributionTierAttrs} from '../../../Projects/types';
 
 export interface ContributionTier {
-  style?: object;
   id: string;
 }
 

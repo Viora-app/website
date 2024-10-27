@@ -1,10 +1,7 @@
 import {ReactNode} from 'react';
 
-import {ViewStyle} from '../../Polyfills';
-
 export interface ImagePickerProps {
-  onSelectImage: (file: any) => void;
-  style?: ViewStyle;
+  onSelectImage: (file: unknown) => void;
   children: ReactNode;
   disabled?: boolean;
 }

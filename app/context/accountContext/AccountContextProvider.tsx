@@ -1,5 +1,6 @@
+'use client'
+
 import React, {createContext, useEffect, useState, ReactNode} from 'react';
-import EncryptedStorage from 'react-native-encrypted-storage';
 import {USER_CREDENTIALS} from '../../config/constants';
 import {ENDPOINTS} from '../../config/endpoints';
 import {authenticate, register, getProfile, patchData} from '../../utils/api';
@@ -25,7 +26,7 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
     // Retrieve stored credentials when the app starts
     const loadStoredAccount = async () => {
       try {
-        const storedAccount = await EncryptedStorage.getItem(USER_CREDENTIALS);
+        const storedAccount = await localStorage.getItem(USER_CREDENTIALS);
         if (storedAccount) {
           setAccount(JSON.parse(storedAccount));
         }
@@ -55,7 +56,7 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
         ...((prevAccount as Account) ?? {}),
         ...(profile ?? {}),
       }));
-      await EncryptedStorage.setItem(
+      await localStorage.setItem(
         USER_CREDENTIALS,
         JSON.stringify({
           ...account,
@@ -63,6 +64,7 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
         }),
       );
     } catch (err) {
+      console.log(err);
       setError('Failed to fetch profile');
     }
   };
@@ -75,11 +77,11 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
       const response = await authenticate(email, password);
       const {jwt, user} = response;
       const info = {jwt, ...user};
-      await EncryptedStorage.setItem(USER_CREDENTIALS, JSON.stringify(info));
+      await localStorage.setItem(USER_CREDENTIALS, JSON.stringify(info));
 
       setAccount(info);
       await fetchAndMergeProfile(jwt);
-    } catch (err: any) {
+    } catch (err: unknown) {
       const message = err.response
         ? err.response.data.error.message
         : err?.message;
@@ -97,11 +99,11 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
       const response = await register(email, password, username);
       const {jwt, user} = response;
       const info = {jwt, ...user};
-      await EncryptedStorage.setItem(USER_CREDENTIALS, JSON.stringify(info));
+      await localStorage.setItem(USER_CREDENTIALS, JSON.stringify(info));
 
       setAccount(info);
       await fetchAndMergeProfile(jwt);
-    } catch (err: any) {
+    } catch (err: unknown) {
       const message = err.response
         ? err.response.data.error.message
         : err?.message;
@@ -117,9 +119,10 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
 
     try {
       // Clear stored credentials
-      await EncryptedStorage.removeItem(USER_CREDENTIALS);
+      await localStorage.removeItem(USER_CREDENTIALS);
       setAccount(null);
-    } catch (e) {
+    } catch (err) {
+      console.log(err);
       setError('Failed to sign out.');
     } finally {
       setLoading(false);
@@ -136,7 +139,8 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
         account?.jwt,
       );
       return {success: !!response.data};
-    } catch (e) {
+    } catch (err) {
+      console.log(err);
       setError('Failed to update the profile.');
       return {success: false};
     } finally {

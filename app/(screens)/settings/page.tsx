@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {useRouter} from 'next/navigation';
 
 import {Routes} from '../../config/routes';
 import {usePresets} from '../../hooks/usePresets';
@@ -36,7 +36,7 @@ const THEME_TITLES = {
 const SettingsScreen = () => {
   const {presets} = usePresets();
   const {show} = useModal();
-  const navigation = useNavigation();
+  const {push: navigate} = useRouter();
   const {signOut} = useAccount();
   const theme = THEME_TITLES[presets.theme];
 
@@ -58,7 +58,7 @@ const SettingsScreen = () => {
 
   const Logout = async () => {
     await signOut();
-    navigation.navigate(Routes.Login as never);
+    navigate(Routes.Login as never);
   };
 
   return (

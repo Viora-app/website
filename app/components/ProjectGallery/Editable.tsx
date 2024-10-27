@@ -1,9 +1,5 @@
 import React, {FC, useState} from 'react';
-import {View, Image, TouchableOpacity} from '../Polyfills';
-import {
-  launchImageLibrary,
-  ImageLibraryOptions,
-} from 'react-native-image-picker';
+import {View, Image} from '../Polyfills';
 
 import {ENDPOINTS} from '../../config/endpoints';
 import {FetchStatus} from '../../config/types';
@@ -17,14 +13,12 @@ import type {GalleryProps, ImageItemProps} from '../ProjectDetails/types';
 const ImageItem: FC<ImageItemProps> = ({
   index,
   image,
-  style,
   disabled,
   onRemove,
   onAdd,
 }) => {
   const {show, hide} = useModal();
-  const styles = {};
-  const onPress = () => {
+  const onPress = (event) => {
     if (image) {
       show({
         title: 'Are you sure?',
@@ -35,96 +29,77 @@ const ImageItem: FC<ImageItemProps> = ({
         },
       });
     } else {
-      onAdd();
+      onAdd(event);
     }
   };
 
   const img = getPreferredSize(image?.attributes.formats ?? {}, index);
   return (
-    <TouchableOpacity
-      disabled={disabled}
-      onPress={onPress}
-      style={[
-        styles.imageWrapper,
-        index === 0 ? styles.galleryMain : styles.galleryOther,
-        style,
-      ]}>
-      <Image source={img} style={styles.image} />
-      <View style={styles.addRemoveIcon}>
+    <label
+      for={`image-item-${index}`}
+      >
+        <input
+          disabled={disabled}
+          id="image-selector"
+          type="file"
+          accept="image/*"
+          onChange={onPress}
+        />
+      <Image alt="" source={img}/>
+      <View>
         {image && <Icon name="cross" size={20} />}
       </View>
-    </TouchableOpacity>
+    </label>
   );
 };
 
 const Editable: FC<GalleryProps> = ({images = [], id, refresh}) => {
-  const styles = {};
   const {show, hide} = useModal();
   const patch = usePatchData(ENDPOINTS.PROJECTS);
   const del = useDeleteData(ENDPOINTS.FILES);
   const [isLoading, setIsLoading] = useState(false);
 
-  const onAdd = async () => {
-    const options: ImageLibraryOptions = {
-      mediaType: 'photo',
-    };
+  const onAdd = async (event) => {
+    const file = event.target.files[0];
+    const newImage = URL.createObjectURL(file)
+   
+    const formData = new FormData();
+    formData.append('files.images', newImage);
+    formData.append('data', JSON.stringify({}));
 
-    launchImageLibrary(options, async response => {
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.errorCode) {
-        show(
-          finalMessages({
-            status: FetchStatus.error,
-            message: 'Failed to upload your photo',
-          }),
-        );
-      } else if (response.assets && response.assets.length > 0) {
-        const selectedAsset = response.assets[0];
-        const newImage = {
-          uri: selectedAsset.uri,
-          type: selectedAsset.type,
-          name: selectedAsset.fileName,
-        };
+    try {
+      // Send the formData to the API
+      const result = await patch.mutateAsync({
+        id,
+        data: formData,
+      });
 
-        const formData = new FormData();
-        formData.append('files.images', newImage);
-        formData.append('data', JSON.stringify({}));
-
-        try {
-          // Send the formData to the API
-          const result = await patch.mutateAsync({
-            id,
-            data: formData,
-          });
-
-          const feedback = {
-            status: FetchStatus.error,
-            message: 'Error uploading your photos',
-          };
-          if (result.data) {
-            feedback.status = FetchStatus.success;
-            feedback.message = 'Your photos should be available soon';
-            refresh();
-          }
-
-          show({
-            ...finalMessages(feedback),
-            onPrimaryPress: () => {
-              setIsLoading(false);
-              hide();
-            },
-          });
-        } catch (error) {
-          show(
-            finalMessages({
-              status: FetchStatus.error,
-              message: 'Failed to upload your images.',
-            }),
-          );
-        }
+      const feedback = {
+        status: FetchStatus.error,
+        message: 'Error uploading your photos',
+      };
+      if (result.data) {
+        feedback.status = FetchStatus.success;
+        feedback.message = 'Your photos should be available soon';
+        refresh();
       }
-    });
+
+      show({
+        ...finalMessages(feedback),
+        onPrimaryPress: () => {
+          setIsLoading(false);
+          hide();
+        },
+      });
+    } catch (err) {
+      console.log(err);
+      show(
+        finalMessages({
+          status: FetchStatus.error,
+          message: 'Failed to upload your images.',
+        }),
+      );
+    }
   };
 
   const onRemove = async (index: number) => {
@@ -154,7 +129,7 @@ const Editable: FC<GalleryProps> = ({images = [], id, refresh}) => {
   };
 
   return (
-    <View style={[styles.galleryWrapper, styles.spacer]}>
+    <View>
       {formatImages().map((image, index) => (
         <ImageItem
           image={image}

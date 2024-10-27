@@ -1,5 +1,9 @@
-import React from "react";
+import React, { FC } from 'react';
 
-const Text = ({ children }) => <span>{children}</span>;
+import { BaseElementProps } from './types';
+
+const Text: FC<BaseElementProps> = ({children, ...rest}) => (
+  <span {...(rest || {})}>{children}</span>
+);
 
 export default Text;

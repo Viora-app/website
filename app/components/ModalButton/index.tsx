@@ -14,11 +14,9 @@ const ModalButton: FC<ModalButtonProps> = ({
   title,
   description = '',
   modalContent: Content,
-  unsafeScreen,
   params = {},
 }) => {
   const {show} = useModal();
-  const styles = {};
 
   const showAddSongModal = useCallback(() => {
     show({
@@ -32,11 +30,6 @@ const ModalButton: FC<ModalButtonProps> = ({
     <IconButton
       iconName={icons[type]}
       iconSize={28}
-      style={[
-        styles.button,
-        styles.shadow,
-        unsafeScreen ? styles.spacerDouble : styles.spacer,
-      ]}
       onPress={showAddSongModal}
     />
   );

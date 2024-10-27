@@ -1,13 +1,12 @@
 import React, {FC} from 'react';
-import {Text, Image, View} from '../Polyfills';
-import {Link} from '@react-navigation/native';
+import {Text, Image, View, Link} from '../Polyfills';
+
 
 import type {ProjectProps} from './types';
 import avatar from '../../../public/images/avatars/a0.jpg';
 import {Routes} from '../../config/routes';
 
 const Project: FC<ProjectProps> = ({item}) => {
-  const styles = {};
   const {
     attributes: {name, summary, project_type, images, users_permissions_user},
     id,
@@ -23,19 +22,18 @@ const Project: FC<ProjectProps> = ({item}) => {
     : avatar;
 
   return (
-    <View style={styles.container}>
+    <View>
       <Link
-        to={{screen: Routes.ProjectDetails as never, params: {id} as never}}
-        style={styles.link}>
-        <View style={styles.row}>
-          <Image source={image} style={styles.thumbnail} />
-          <View style={styles.info}>
-            <View style={styles.row}>
-              <Text style={styles.projectType}>{`${project_type} by`}</Text>
-              <Text style={styles.artist}>{email}</Text>
+        to={{screen: `${Routes.Projects}/${id}`}}>
+        <View>
+          <Image alt="" source={image} />
+          <View>
+            <View>
+              <Text>{`${project_type} by`}</Text>
+              <Text>{email}</Text>
             </View>
-            <Text style={styles.title}>{name}</Text>
-            <Text style={styles.summary}>{summary}</Text>
+            <Text>{name}</Text>
+            <Text>{summary}</Text>
           </View>
         </View>
       </Link>

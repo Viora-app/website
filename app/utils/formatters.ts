@@ -1,4 +1,3 @@
-import {TOKEN_SYMBOL} from '@env';
 import BigNumber from 'bignumber.js';
 
 export const formatThousands = (num: number): string => {
@@ -39,7 +38,7 @@ export const fromBaseToken = (
   floatingPoints: number = 8,
   showSymbol?: boolean,
 ): string => {
-  const token: SupportedTokens = TOKEN_SYMBOL;
+  const token: SupportedTokens = process.env.NEXT_PUBLIC_TOKEN_SYMBOL;
   const formatted = BigNumber(num)
     .dividedBy(factors[token])
     .toFixed(floatingPoints);
@@ -47,7 +46,7 @@ export const fromBaseToken = (
 };
 
 export const toBaseToken = (num: string | number): string => {
-  const token: SupportedTokens = TOKEN_SYMBOL;
+  const token: SupportedTokens = process.env.NEXT_PUBLIC_TOKEN_SYMBOL;
   return BigNumber(num).multipliedBy(factors[token]).toFixed(0);
 };
 

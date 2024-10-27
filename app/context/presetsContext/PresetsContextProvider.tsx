@@ -1,8 +1,9 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import PresetsContext from './presetsContext';
+'use client'
+
+import React, {useState, useEffect, useCallback, createContext} from 'react';
 import {USER_PRESETS} from '../../config/constants';
 import {
+  PresetsContextType,
   PresetsProviderProps,
   StoreResponse,
   StorePresetsProps,
@@ -18,13 +19,18 @@ const DEFAULT_PRESETS = {
   theme: Themes.light,
 };
 
+export const PresetsContext = createContext<PresetsContextType>({
+  presets: {} as Presets,
+  storePresets: async () => ({success: false, message: ''}),
+});
+
 const PresetsProvider = ({children}: PresetsProviderProps) => {
   const [presets, setPresets] = useState<Presets>(DEFAULT_PRESETS);
 
   const storePresets = useCallback(
     async (params: StorePresetsProps): Promise<StoreResponse> => {
       try {
-        const previousValues = await AsyncStorage.getItem(USER_PRESETS);
+        const previousValues = await localStorage.getItem(USER_PRESETS);
         const previousValuesObject = previousValues
           ? JSON.parse(previousValues)
           : DEFAULT_PRESETS;
@@ -34,7 +40,7 @@ const PresetsProvider = ({children}: PresetsProviderProps) => {
           ...params,
         };
 
-        await AsyncStorage.setItem(USER_PRESETS, JSON.stringify(newValues));
+        await localStorage.setItem(USER_PRESETS, JSON.stringify(newValues));
         setPresets(newValues);
         return {
           success: true,
@@ -53,7 +59,7 @@ const PresetsProvider = ({children}: PresetsProviderProps) => {
   const retrievePresets = useCallback(async (): Promise<void> => {
     let value = DEFAULT_PRESETS;
     try {
-      const storedValue = await AsyncStorage.getItem(USER_PRESETS);
+      const storedValue = await localStorage.getItem(USER_PRESETS);
       value = {
         ...DEFAULT_PRESETS,
         ...(storedValue ? JSON.parse(storedValue) : {}),

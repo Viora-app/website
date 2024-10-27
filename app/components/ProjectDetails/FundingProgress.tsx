@@ -9,49 +9,43 @@ const FundingProgress: FC<FundingProgressProps> = ({
   currentFunding,
   softGoal,
   hardGoal,
-  style,
 }) => {
-  const styles = {};
   const fundingPercentage = Math.floor((100 * currentFunding) / hardGoal);
   const softCapPercentage = Math.floor((100 * softGoal) / hardGoal);
   const successPercentage = Math.floor((100 * currentFunding) / softGoal);
 
   return (
-    <View style={[styles.progressWrapper, style]}>
-      <View style={styles.row}>
-        <View style={styles.percentageWrapper}>
-          <Text style={[styles.small, styles.tender]}>Progress</Text>
-          <Text
-            style={[
-              styles.largest,
-              styles.percentage,
-            ]}>{`${successPercentage}%`}</Text>
+    <View>
+      <View>
+        <View>
+          <Text>Progress</Text>
+          <Text>{`${successPercentage}%`}</Text>
         </View>
-        <View style={styles.goalsWrapper}>
-          <View style={[styles.row, styles.alignCenter]}>
-            <Text style={[styles.small, styles.reassureMild]}>Goal:&nbsp;</Text>
-            <Text style={[styles.large, styles.reassureMild]}>
+        <View>
+          <View>
+            <Text>Goal:&nbsp;</Text>
+            <Text>
               {fromBaseToken(softGoal, 2, true)}
             </Text>
           </View>
-          <View style={[styles.row, styles.alignCenter]}>
-            <Text style={[styles.small, styles.zero]}>
+          <View>
+            <Text>
               Max acceptable:&nbsp;
             </Text>
-            <Text style={[styles.base, styles.zero]}>
+            <Text>
               {fromBaseToken(hardGoal, 2, true)}
             </Text>
           </View>
         </View>
       </View>
 
-      <View style={styles.barWrapper}>
-        <View style={[styles.softCap, {width: `${softCapPercentage}%`}]} />
-        <View style={[styles.hardCap, {width: `${fundingPercentage}%`}]}>
+      <View>
+        <View style={{width: `${softCapPercentage}%`}} />
+        <View style={{width: `${fundingPercentage}%`}}>
           <ImageBackground
             source={stripePattern}
             resizeMode="repeat"
-            style={styles.stripe}
+            alt=""
           />
         </View>
       </View>

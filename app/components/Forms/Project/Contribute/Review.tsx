@@ -1,3 +1,5 @@
+'use client'
+
 import React, {FC, useCallback, useEffect, useState} from 'react';
 import {View} from '../../../Polyfills';
 
@@ -18,7 +20,6 @@ const ContributionReview: FC<ContributionReviewProps> = ({
   data,
   refresh,
 }) => {
-  const styles = {};
   const {show} = useModal();
   const mutation = usePostData(ENDPOINTS.CONTRIBUTIONS);
   const [clicked, setClicked] = useState(false);
@@ -55,7 +56,7 @@ const ContributionReview: FC<ContributionReviewProps> = ({
   };
 
   return (
-    <View style={styles.contributionReview}>
+    <View>
       <FormSummary data={formattedValue} />
       <Button
         title="Pay now"

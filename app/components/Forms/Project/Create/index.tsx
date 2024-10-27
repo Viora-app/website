@@ -8,10 +8,9 @@ import ValidationFeedback from '../../../FormElements/ValidationFeedback';
 import {ButtonThemes} from '../../../Elements/Button/types';
 import {Button, Input} from '../../../Elements';
 import CreateProjectReview from './Review';
-import type {CreateProjectFormProps} from './types';
 import {schema} from './schema';
 
-const CreateProjectForm = ({style}: CreateProjectFormProps) => {
+const CreateProjectForm = () => {
   const [data, setData] = useState<Partial<ProjectAttrs>>({
     name: '',
     summary: '',
@@ -23,7 +22,6 @@ const CreateProjectForm = ({style}: CreateProjectFormProps) => {
     deadline: '',
   });
   const {show} = useModal();
-  const styles = {};
   const maxHeight = Dimensions.get('window').height * 0.6;
 
   const onSubmit = async () => {
@@ -45,7 +43,7 @@ const CreateProjectForm = ({style}: CreateProjectFormProps) => {
   const validity = validateForm(schema, data);
 
   return (
-    <View style={style}>
+    <View>
       <ScrollView style={{maxHeight}}>
         <Input
           placeholder="Name"
@@ -95,7 +93,7 @@ const CreateProjectForm = ({style}: CreateProjectFormProps) => {
         />
       </ScrollView>
       <ValidationFeedback {...validity} />
-      <View style={styles.actionBar}>
+      <View>
         <Button
           title="Continue"
           theme={ButtonThemes.primary}

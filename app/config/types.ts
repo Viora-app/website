@@ -1,5 +1,5 @@
 export interface KeyValue {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 interface LockedBalance {

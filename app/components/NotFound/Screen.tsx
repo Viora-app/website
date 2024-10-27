@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {Text, View, Image} from '../Polyfills';
-import {useNavigation} from '@react-navigation/native';
+import {useRouter} from 'next/navigation';
 
 import {ButtonThemes} from '../Elements/Button/types';
 import {Button} from '../Elements';
@@ -9,22 +9,21 @@ import {ScreenNotFoundProps} from './types';
 import cactus from '../../../public/images/cactus.png';
 
 const ScreenNotFound: FC<ScreenNotFoundProps> = ({redirectTo}) => {
-  const styles = {};
-  const navigation = useNavigation();
+  const {push: navigate} = useRouter();
 
   const goHome = () => {
     if (redirectTo && redirectTo in Routes) {
-      navigation.navigate(Routes[redirectTo] as never);
+      navigate(Routes[redirectTo] as never);
     }
   };
 
   return (
-    <View style={styles.wrapper}>
-      <Image source={cactus} style={styles.spacer} />
-      <Text style={styles.title}>Uh-oh!</Text>
-      <Text style={[styles.title, styles.spacer]}>We couldn't find it</Text>
+    <View>
+      <Image alt="" source={cactus}/>
+      <Text>Uh-oh!</Text>
+      <Text>We could not find it</Text>
       {redirectTo && (
-        <View style={styles.actionBar}>
+        <View>
           <Button
             title="Back to home"
             theme={ButtonThemes.primary}

@@ -1,10 +1,13 @@
-import { ReactNode } from "react";
-import type { Metadata } from "next";
-import "./globals.css";
+import { ReactNode } from 'react';
+import type { Metadata } from 'next';
+
+import Providers from './context';
+
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Viora",
-  description: "Empowering artists, connecting superfans",
+  title: 'Viora',
+  description: 'Empowering artists, connecting superfans',
 };
 
 export default function RootLayout({
@@ -15,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className=""
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

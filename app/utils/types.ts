@@ -47,13 +47,13 @@ export interface IncomingHttpHeaders {
 export type StrapiResponse = {
   id: number;
   attributes: {
-    [key: string]: any;
+    [key: string]: unknown;
   };
 };
 
 export type FlattenedResponse = {
   id: number;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 export interface Feedback {
@@ -65,7 +65,7 @@ export type MapObjectConfig<Input, Output> =
   | keyof Input
   | {from: keyof Input; to: keyof Output};
 
-type ValidatorFunction = (value: any) => boolean;
+type ValidatorFunction = (value: unknown) => boolean;
 export type ValidatorSchema = {
   [key: string]: ValidatorFunction | RegExp;
 };
@@ -83,6 +83,6 @@ export interface RouteParams {
     goBack: () => void;
     navigate: (
       params: string | {name: string; params?: Record<string, unknown>},
-    ) => {};
+    ) => void;
   };
 }

@@ -14,8 +14,6 @@ enum SocialPlatforms {
 }
 
 const Artist: FC<ArtistProps> = ({data}) => {
-  const styles = {};
-
   const openPlatform = useCallback(
     (platform: SocialPlatforms) => () => {
       const {instagram, twitter, twitch} = data ?? {};
@@ -40,36 +38,33 @@ const Artist: FC<ArtistProps> = ({data}) => {
     twitch,
   } = data;
   const image = getSmallestSize(avatar?.data?.attributes.formats ?? {});
-  const name = [first_name, last_name].join(' ') || "What's his face?";
+  const name = [first_name, last_name].join(' ') || 'What\'s his face?';
 
   return (
-    <View style={[styles.artistWrapper, styles.spacer]}>
-      <View style={[styles.row, styles.artistInfo]}>
-        <View style={styles.artistAvatarWrapper}>
-          <Image source={image} style={styles.artistAvatar} />
+    <View>
+      <View>
+        <View>
+          <Image alt="" source={image} />
         </View>
-        <Text style={[styles.large, styles.artistName]}>{name}</Text>
+        <Text>{name}</Text>
       </View>
-      <View style={[styles.row, styles.socialLinks]}>
+      <View>
         {instagram && (
           <TouchableHighlight
-            style={styles.socialLink}
             onPress={openPlatform(SocialPlatforms.Instagram)}>
-            <Image source={instagramIcon} style={styles.socialIcon} />
+            <Image alt="" source={instagramIcon} />
           </TouchableHighlight>
         )}
         {twitch && (
           <TouchableHighlight
-            style={styles.socialLink}
             onPress={openPlatform(SocialPlatforms.Twitch)}>
-            <Image source={twitchIcon} style={styles.socialIcon} />
+            <Image alt="" source={twitchIcon} />
           </TouchableHighlight>
         )}
         {twitter && (
           <TouchableHighlight
-            style={styles.socialLink}
             onPress={openPlatform(SocialPlatforms.Twitter)}>
-            <Image source={xIcon} style={styles.socialIcon} />
+            <Image alt="" source={xIcon} />
           </TouchableHighlight>
         )}
       </View>

@@ -33,13 +33,11 @@ export interface FundingProgressProps {
   currentFunding: number;
   softGoal: number;
   hardGoal: number;
-  style: string;
 }
 
 export interface ImageItemProps {
   index: number;
   image: FileEvent;
-  style?: string;
   disabled: boolean;
   onRemove: (index: number) => Promise<void>;
   onAdd: () => Promise<void>;

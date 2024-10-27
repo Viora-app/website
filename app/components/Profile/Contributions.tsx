@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
-import {View, Text, Image} from '../Polyfills';
-import {Link} from '@react-navigation/native';
+import {View, Text, Image, Link} from '../Polyfills';
 
 import {ENDPOINTS} from '../../config/endpoints';
 import {Routes} from '../../config/routes';
@@ -13,7 +12,6 @@ import SectionHeader from '../SectionHeader';
 import type {ContributionProps, Contribution} from './types';
 
 const Contribution: FC<ContributionProps> = ({data}) => {
-  const styles = {};
   const projectId = data.attributes.project.data?.id ?? '';
   const formats = data.attributes.project.data?.attributes?.images?.data?.length
     ? data.attributes.project.data.attributes?.images.data[0].attributes.formats
@@ -23,27 +21,20 @@ const Contribution: FC<ContributionProps> = ({data}) => {
   return (
     <Link
       to={{
-        screen: Routes.ProjectDetails as never,
-        params: {id: projectId} as never,
-      }}
-      style={[styles.link, styles.spacerMini]}>
-      <View style={[styles.wrapper]}>
-        <Image source={image} style={styles.contributionsThumbnail} />
-        <View
-          style={[
-            styles.column,
-            styles.justifyBetween,
-            styles.contributionsInfo,
-          ]}>
-          <View style={[styles.row, styles.justifyBetween]}>
-            <Text style={styles.semi}>
+        screen: `${Routes.Projects}/${projectId}`as never,
+      }}>
+      <View>
+        <Image alt="" source={image} />
+        <View>
+          <View>
+            <Text>
               {data.attributes.contribution_tier.data.attributes.name}
             </Text>
-            <Text style={styles.semi}>
+            <Text>
               {fromBaseToken(data.attributes.amount, 2, true)}
             </Text>
           </View>
-          <Text style={[styles.base, styles.mild]}>
+          <Text>
             {data.attributes.project.data?.attributes.name ?? '-'}
           </Text>
         </View>
@@ -54,7 +45,6 @@ const Contribution: FC<ContributionProps> = ({data}) => {
 
 // @todo implement loading state
 const Contributions: FC = () => {
-  const styles = {};
   const {account} = useAccount();
   const {data} = useGetData(ENDPOINTS.CONTRIBUTIONS, {
     filters: {users_permissions_user: account?.id},
@@ -67,9 +57,9 @@ const Contributions: FC = () => {
   const contributions: Contribution[] = data?.data ?? [];
 
   return (
-    <View style={[styles.contributions, styles.column]}>
+    <View>
       {contributions.length > 0 && (
-        <SectionHeader title="Contributions" style={styles.sectionHeader} />
+        <SectionHeader title="Contributions" />
       )}
       {contributions.map(item => (
         <Contribution data={item} key={item.id} />

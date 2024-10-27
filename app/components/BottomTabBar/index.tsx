@@ -1,21 +1,17 @@
 import React from 'react';
 import {View} from '../Polyfills';
-// import Player from '../Player';
 import RouteButton from '../RouteButton';
 import {EnhancedBottomTabBarProps} from './types';
 
 const BottomTabBar = ({
   state,
   navigation,
-  theme,
 }: EnhancedBottomTabBarProps) => {
-  const styles = {};
-  
   return (
-    <View style={[styles.tabBar, styles[`${theme}TabBar`]]}>
-      <View style={[styles.wrapper, styles[`${theme}Wrapper`]]}>
+    <View>
+      <View>
         {/* <Player /> */}
-        <View style={styles.tabs}>
+        <View>
           {state.routes.map((route, index: number) => (
             <RouteButton
               navigation={navigation}

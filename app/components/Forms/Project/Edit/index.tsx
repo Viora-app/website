@@ -1,3 +1,5 @@
+'use client'
+
 import React, {useEffect, useState} from 'react';
 import {View, ScrollView, Dimensions} from '../../../Polyfills';
 
@@ -14,7 +16,7 @@ import EditProjectReview from './Review';
 import type {EditProjectFormProps} from './types';
 import {schema} from './schema';
 
-const EditProjectForm = ({style, id}: EditProjectFormProps) => {
+const EditProjectForm = ({id}: EditProjectFormProps) => {
   const [data, setData] = useState<Partial<ProjectAttrs>>({
     name: '',
     summary: '',
@@ -29,7 +31,6 @@ const EditProjectForm = ({style, id}: EditProjectFormProps) => {
     `${ENDPOINTS.PROJECTS}/${id}`,
   );
   const {show} = useModal();
-  const styles = {};
   const maxHeight = Dimensions.get('window').height * 0.6;
 
   const onSubmit = async () => {
@@ -73,7 +74,7 @@ const EditProjectForm = ({style, id}: EditProjectFormProps) => {
   }, [existingData, isLoading]);
 
   return (
-    <View style={style}>
+    <View>
       <ScrollView style={{maxHeight}}>
         <Input
           placeholder="Name"
@@ -123,7 +124,7 @@ const EditProjectForm = ({style, id}: EditProjectFormProps) => {
         />
       </ScrollView>
       <ValidationFeedback {...validity} />
-      <View style={styles.actionBar}>
+      <View>
         <Button
           title="Continue"
           theme={ButtonThemes.primary}

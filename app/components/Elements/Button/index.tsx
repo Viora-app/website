@@ -1,28 +1,19 @@
 import React from 'react';
 import {TouchableHighlight, Text, View} from '../../Polyfills';
-import {ButtonProps, ButtonThemes} from './types';
+import {ButtonProps} from './types';
 
 const Button = ({
   onPress,
-  style,
-  wrapperStyle,
-  theme,
   title,
   disabled,
 }: ButtonProps) => {
-  const styles = {};
-  const disabledTouchable = disabled ? styles.disabled : {};
-  const disabledText = disabled
-    ? styles.disabled
-    : styles[theme || ButtonThemes.primary];
   return (
-    <View style={[styles.wrapper, wrapperStyle]}>
+    <View>
       <TouchableHighlight
         disabled={disabled}
         onPress={onPress}
-        underlayColor="transparent"
-        style={[styles.touchable, disabledTouchable, style]}>
-        <Text style={[styles.title, disabledText]}>{title}</Text>
+        underlayColor="transparent">
+        <Text>{title}</Text>
       </TouchableHighlight>
     </View>
   );

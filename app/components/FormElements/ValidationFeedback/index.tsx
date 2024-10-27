@@ -3,11 +3,10 @@ import {Text, View} from '../../Polyfills';
 
 import {FeedbackProps} from './types';
 
-const ValidationFeedback = ({style, message}: FeedbackProps) => {
-  const styles = {};
+const ValidationFeedback = ({message}: FeedbackProps) => {
   return (
-    <View style={[styles.wrapper, style]}>
-      <Text style={styles.error}>{message}</Text>
+    <View>
+      <Text>{message}</Text>
     </View>
   );
 };

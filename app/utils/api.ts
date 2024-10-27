@@ -1,16 +1,15 @@
 import axios from 'axios';
-import {API_URL} from '@env';
 import {API_SUFFIX} from '../config/network';
 import {ENDPOINTS} from '../config/endpoints';
 import type {ProfileResponse} from '../context/accountContext/types';
 
 const api = axios.create({
-  baseURL: `${API_URL}/${API_SUFFIX}`,
+  baseURL: `${process.env.NEXT_PUBLIC_API_URL}/${API_SUFFIX}`,
 });
 
 export const getData = async (
   endpoint: string,
-  params: any = {},
+  params: unknown = {},
   jwt: string | undefined,
 ) => {
   const response = await api.get(endpoint, {
@@ -25,7 +24,7 @@ export const getData = async (
 
 export const postData = async (
   endpoint: string,
-  data: any,
+  data: unknown,
   jwt: string | undefined,
 ) => {
   const response = await api.post(endpoint, data, {
@@ -39,7 +38,7 @@ export const postData = async (
 
 export const patchData = async (
   endpoint: string,
-  data: any,
+  data: unknown,
   jwt: string | undefined,
 ) => {
   const isFormData = data?.data instanceof FormData;

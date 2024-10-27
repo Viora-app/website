@@ -1,12 +1,7 @@
 import {SongAttributes, FetchStatus} from '../../../../config/types';
 import {ProjectAttrs} from '../../../Projects/types';
 
-export interface CreateProjectFormProps {
-  style?: object;
-}
-
 export interface EditProjectFormProps {
-  style?: object;
   id?: string;
 }
 

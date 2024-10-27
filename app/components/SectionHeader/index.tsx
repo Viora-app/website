@@ -1,14 +1,12 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {View, Text} from '../Polyfills';
 import {SectionHeaderProps} from './types';
 
-const SectionHeader = ({title, subtitle, style}: SectionHeaderProps) => {
-  const styles = {};
-
+const SectionHeader: FC<SectionHeaderProps> = ({title, subtitle}) => {
   return (
-    <View style={[styles.container, style]}>
-      <Text style={styles.title}>{title}</Text>
-      {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+    <View>
+      <Text>{title}</Text>
+      {subtitle && <Text>{subtitle}</Text>}
     </View>
   );
 };

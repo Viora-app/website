@@ -5,9 +5,8 @@ import Avatar from './Avatar';
 import Wallet from './Wallet';
 
 const Basics = () => {
-  const styles = {};
   return (
-    <View style={styles.profileDetails}>
+    <View>
       <Avatar />
       <Wallet />
     </View>

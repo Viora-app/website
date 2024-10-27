@@ -1,14 +1,13 @@
 import React, {FC} from 'react';
 import {View, Image, TouchableOpacity} from '../Polyfills';
-import {useNavigation} from '@react-navigation/native';
+import {useRouter} from 'next/navigation';
 
 import {getPreferredSize} from './utils';
 import {GalleryProps, ReadableImageProps} from './types';
 import {Routes} from '../../config/routes';
 
-const ImageItem: FC<ReadableImageProps> = ({index, image, style}) => {
-  const styles = {};
-  const {navigate} = useNavigation();
+const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
+  const {push: navigate} = useRouter();
   const onPress = params => {
     if (params.uri) {
       navigate(Routes.Picture, params);
@@ -20,19 +19,13 @@ const ImageItem: FC<ReadableImageProps> = ({index, image, style}) => {
     <TouchableOpacity
       disabled={typeof img === 'number'}
       onPress={() => onPress(img)}
-      style={[
-        styles.imageWrapper,
-        index === 0 ? styles.galleryMain : styles.galleryOther,
-        style,
-      ]}>
-      <Image source={img} style={styles.image} />
+      >
+      <Image alt="" source={img} />
     </TouchableOpacity>
   );
 };
 
 const Readable: FC<GalleryProps> = ({images = []}) => {
-  const styles = {};
-
   const formatImages = () => {
     return Array(5)
       .fill(null)
@@ -40,7 +33,7 @@ const Readable: FC<GalleryProps> = ({images = []}) => {
   };
 
   return (
-    <View style={[styles.galleryWrapper, styles.spacer]}>
+    <View>
       {formatImages().map((image, index) => (
         <ImageItem image={image} index={index} key={`image-${index}`} />
       ))}

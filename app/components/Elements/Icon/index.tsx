@@ -1,8 +1,5 @@
-import React from 'react';
-import Svg, {Path} from 'react-native-svg';
-import {usePresets} from '../../../hooks/usePresets';
+import React, {FC} from 'react';
 import {IconProps, IconsConfig} from './types';
-import {colors} from '../../../config/stylesGuides';
 
 const icons: IconsConfig = {
   Home: [
@@ -86,22 +83,14 @@ const icons: IconsConfig = {
   ],
 };
 
-export const Icon = ({name, color, size = 28, style = {}}: IconProps) => {
-  const {presets} = usePresets();
-  if (!icons[name]) {
-    name = 'Default';
-  }
-  if (!color) {
-    color = colors[presets.theme].primaryStrong;
-  }
+export const Icon: FC<IconProps> = ({
+  name = 'Default', color = '#000', size = 28
+}) => (
+  <svg width={size} height={size} viewBox="0 0 28 28">
+    {icons[name].map((path, index) => (
+      <path key={index} d={path} fill={color} />
+    ))}
+  </svg>
+);
 
-  return (
-    <Svg width={size} height={size} viewBox="0 0 28 28" style={style}>
-      {icons[name].map((path, index) => (
-        <Path key={index} d={path} fill={color} />
-      ))}
-    </Svg>
-  );
-};
-
-export default Icon;
+  export default Icon;

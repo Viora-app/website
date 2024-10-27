@@ -11,7 +11,7 @@ import CreateContributionTierReview from './Review';
 import type {ContributionTier} from './types';
 import {schema} from './schema';
 
-const CreateContributionTierForm = ({id, style}: ContributionTier) => {
+const CreateContributionTierForm = ({id}: ContributionTier) => {
   const [data, setData] = useState<Partial<ContributionTierAttrs>>({
     name: '',
     description: '',
@@ -19,7 +19,6 @@ const CreateContributionTierForm = ({id, style}: ContributionTier) => {
     amount: 0,
   });
   const {show} = useModal();
-  const styles = {};
   const maxHeight = Dimensions.get('window').height * 0.6;
 
   const onSubmit = async () => {
@@ -41,7 +40,7 @@ const CreateContributionTierForm = ({id, style}: ContributionTier) => {
   const validity = validateForm(schema, data);
 
   return (
-    <View style={style}>
+    <View>
       <ScrollView style={{maxHeight}}>
         <Input
           placeholder="Name"
@@ -72,7 +71,7 @@ const CreateContributionTierForm = ({id, style}: ContributionTier) => {
         />
       </ScrollView>
       <ValidationFeedback {...validity} />
-      <View style={styles.actionBar}>
+      <View>
         <Button
           title="Continue"
           theme={ButtonThemes.primary}

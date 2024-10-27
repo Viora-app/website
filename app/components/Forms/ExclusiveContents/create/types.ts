@@ -2,7 +2,6 @@ import {SongAttributes, FetchStatus} from '../../../../config/types';
 import {ContributionTier} from '../../../Projects/types';
 
 export interface PostExclusiveContentsFormProps {
-  style?: object;
   projectId: string;
 }
 export interface FormData {

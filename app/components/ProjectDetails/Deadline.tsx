@@ -5,14 +5,12 @@ import {DeadlineProps} from './types';
 import icon from '../../../public/images/deatlineicon.png';
 
 const Deadline: FC<DeadlineProps> = ({date}) => {
-  const styles = {};
-
   return (
-    <View style={[styles.row, styles.deadlineWrapper, styles.spacer]}>
-      <Image source={icon} style={styles.deadlineIcon} />
+    <View>
+      <Image alt="" source={icon} />
       <View>
-        <Text style={styles.base}>Deadline</Text>
-        <Text style={styles.large}>{date}</Text>
+        <Text>Deadline</Text>
+        <Text>{date}</Text>
       </View>
     </View>
   );

@@ -15,33 +15,19 @@ import {
 } from './types';
 
 const Option: FC<ContributeOptionProps> = ({data, selected, onSelected}) => {
-  const styles = {};
   const onPress = () => onSelected(data.id);
 
   return (
     <TouchableOpacity
-      onPress={onPress}
-      style={[
-        styles.column,
-        styles.contributeOption,
-        styles.spacerMini,
-        selected ? styles.selectedOption : null,
-      ]}>
-      <View style={[styles.row, styles.spacerMini, styles.justifyBetween]}>
-        <Text
-          style={[
-            styles.semi,
-            selected ? styles.reassureStrong : styles.strong,
-          ]}>
+      onPress={onPress}>
+      <View>
+        <Text>{selected ? 'X' : 'O'}</Text>
+        <Text>
           {data.attributes.name}
         </Text>
-        <Text
-          style={[
-            styles.optionAmount,
-            selected ? styles.selectedAmount : styles.normalAmount,
-          ]}>{`${data.attributes.amount} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`}</Text>
+        <Text>{`${data.attributes.amount} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`}</Text>
       </View>
-      <Text style={[styles.medium, selected ? styles.tender : styles.mild]}>
+      <Text>
         {data.attributes.rewards}
       </Text>
     </TouchableOpacity>
@@ -49,7 +35,6 @@ const Option: FC<ContributeOptionProps> = ({data, selected, onSelected}) => {
 };
 
 const Contribute: FC<ContributeProps> = ({projectId, refresh}) => {
-  const styles = {};
   const {show} = useModal();
   const [selected, setSelected] = useState<string>('');
   const {data, isLoading} = useGetData(ENDPOINTS.CONTRIBUTION_TIERS, {
@@ -78,8 +63,8 @@ const Contribute: FC<ContributeProps> = ({projectId, refresh}) => {
   };
 
   return (
-    <View style={[styles.column, styles.justifyCenter, styles.alignCenter]}>
-      <View style={[styles.column, styles.spacerMini, styles.optionsWrapper]}>
+    <View>
+      <View>
         {isLoading && !options.length && <Loading wrapper="section" />}
         {options.map(item => (
           <Option

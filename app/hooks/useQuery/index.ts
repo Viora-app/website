@@ -4,7 +4,7 @@ import {getData, postData, patchData, deleteData} from '../../utils/api';
 import {useAccount} from '../useAccount';
 import {API_CALL_LIMIT} from '../../config/constants';
 
-const constructQueryParams = (params: any) => {
+const constructQueryParams = (params: unknown) => {
   const queryParams: Record<string, string> = {};
 
   // Flattening include params for population
@@ -32,7 +32,7 @@ const constructQueryParams = (params: any) => {
 
 export const useGetData = (
   endpoint: string,
-  params: Record<string, any> = {},
+  params: Record<string, unknown> = {},
   initialPage = 1,
 ) => {
   const queryClient = useQueryClient();
@@ -98,7 +98,7 @@ export const usePostData = (endpoint: string) => {
   const queryClient = useQueryClient();
   const {account} = useAccount();
 
-  return useMutation((data: any) => postData(endpoint, data, account?.jwt), {
+  return useMutation((data: unknown) => postData(endpoint, data, account?.jwt), {
     onSuccess: () => {
       // Invalidate and refetch queries after a successful mutation
       queryClient.invalidateQueries([endpoint]);
@@ -112,7 +112,7 @@ export const usePatchData = (endpoint: string) => {
   const {account} = useAccount();
 
   return useMutation(
-    ({id, data}: {id: string; data: any}) =>
+    ({id, data}: {id: string; data: unknown}) =>
       patchData(`${endpoint}/${id}`, {data}, account?.jwt),
     {
       onSuccess: () => {

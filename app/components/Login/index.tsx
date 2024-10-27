@@ -1,15 +1,15 @@
+'use client'
+
 import React, {FC, useEffect, useState} from 'react';
-import {Text, View, Image, TextInput} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {Text, View, Image, TextInput} from '../Polyfills';
+import {useRouter} from 'next/navigation';
 
 import {Routes} from '../../config/routes';
-import {Button} from '../../components/Elements';
+import {Button} from '../Elements';
 import {useAccount} from '../../hooks/useAccount';
-import appLogo from '../../assets/images/applogo.png';
+import appLogo from '../../../public/images/applogo.png';
 
 const ErrorMessage: FC<{errorMessage: string}> = ({errorMessage}) => {
-  const styles = {};
-
   if (typeof errorMessage !== 'string' || !errorMessage) {
     return null;
   }
@@ -23,17 +23,16 @@ const ErrorMessage: FC<{errorMessage: string}> = ({errorMessage}) => {
   }
 
   return (
-    <View style={styles.errorContainer}>
-      <Text style={styles.errorText}>{formattedMessage}</Text>
+    <View>
+      <Text>{formattedMessage}</Text>
     </View>
   );
 };
 
-const LoginScreen = () => {
-  const styles = {};
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigation = useNavigation();
+const Login = () => {
+  const [email, setEmail] = useState('ali@muzikie.com');
+  const [password, setPassword] = useState('Sina1373ksh');
+  const {push: navigate} = useRouter();
   const {signIn, signUp, account, error} = useAccount();
   const [isNavigating, setIsNavigating] = useState(false);
 
@@ -52,19 +51,19 @@ const LoginScreen = () => {
   useEffect(() => {
     if (!!account?.jwt && !isNavigating) {
       setIsNavigating(true);
-      navigation.navigate(Routes.Tabs as never);
+      navigate(Routes.Projects as never);
     }
-  }, [account, isNavigating, navigation]);
+  }, [account, isNavigating, navigate]);
 
   const isButtonDisabled = !email || !password;
 
   return (
-    <View style={styles.screenContainer}>
-      <View style={styles.logoContainer}>
-        <Image source={appLogo} style={styles.logo} />
+    <View>
+      <View>
+        <Image alt="" source={appLogo} />
       </View>
 
-      <Text style={styles.title}>Login</Text>
+      <Text>Login</Text>
 
       <TextInput
         onChangeText={setEmail}
@@ -72,8 +71,6 @@ const LoginScreen = () => {
         placeholder="Email"
         keyboardType="email-address"
         autoCapitalize="none"
-        style={[styles.input, error ? styles.inputError : null]}
-        placeholderTextColor={styles.placeholderTextColor}
       />
       <TextInput
         onChangeText={setPassword}
@@ -81,13 +78,11 @@ const LoginScreen = () => {
         placeholder="Password"
         secureTextEntry
         autoCapitalize="none"
-        style={[styles.input, error ? styles.inputError : null]}
-        placeholderTextColor={styles.placeholderTextColor}
       />
 
       <ErrorMessage errorMessage={error} />
 
-      <View style={styles.buttonContainer}>
+      <View>
         <Button
           onPress={onSubmit}
           title="Sign in"
@@ -103,4 +98,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default Login;

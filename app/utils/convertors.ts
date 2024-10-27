@@ -7,9 +7,9 @@ export const flattenStrapiResponse = (
   const result: FlattenedResponse = {id};
 
   const processAttributes = (attrs: {
-    [key: string]: any;
-  }): {[key: string]: any} => {
-    const processedAttrs: {[key: string]: any} = {};
+    [key: string]: unknown;
+  }): {[key: string]: unknown} => {
+    const processedAttrs: {[key: string]: unknown} = {};
 
     for (const key in attrs) {
       if (attrs.hasOwnProperty(key)) {
@@ -73,7 +73,7 @@ export function mapObject<Input extends object, Output extends object>(
     if (typeof item === 'string') {
       // Direct property mapping
       if (item in input) {
-        // @ts-expect-error
+        // @ts-expect-error the type check is not well crafted
         result[item] = input[item];
       } else {
         console.warn(
@@ -83,7 +83,7 @@ export function mapObject<Input extends object, Output extends object>(
     } else if (typeof item === 'object' && 'from' in item && 'to' in item) {
       // Property mapping with renaming
       if (item.from in input) {
-        // @ts-expect-error
+        // @ts-expect-error the type check is not well crafted
         result[item.to] = input[item.from];
       } else {
         console.warn(
