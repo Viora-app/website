@@ -61,5 +61,8 @@ jobs:
       - name: Set Yarn version
         run: yarn set version 3.2.3
 
+      - name: Install dependencies (lint backup)
+        run: yarn install --immutable
+
       - name: Run ESLint
         run: yarn lint
