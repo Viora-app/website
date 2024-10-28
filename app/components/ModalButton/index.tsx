@@ -1,3 +1,5 @@
+'use client'
+
 import React, {useCallback, FC} from 'react';
 
 import {useModal} from '../../hooks/useModal';
