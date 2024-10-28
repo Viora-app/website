@@ -1,14 +1,11 @@
-
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "setupCommand": [
-      "nvm install $(cat .nvmrc)",
-      "corepack enable",
-      "yarn set version 3.2.3"
-    ],
-    "buildCommand": "yarn install --immutable && yarn build"
+    "buildCommand": "yarn install --immutable && yarn build",
+    "environment": {
+      "NIXPACKS_YARN_VERSION": "3.2.3"
+    }
   },
   "deploy": {
     "runtime": "V2",
