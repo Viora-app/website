@@ -1,0 +1,21 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "yarn install --immutable && yarn build",
+    "environment": {
+      "NIXPACKS_YARN_VERSION": "3.2.3"
+    }
+  },
+  "deploy": {
+    "runtime": "V2",
+    "numReplicas": 1,
+    "startCommand": "yarn start",
+    "sleepApplication": false,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10,
+    "environment": {
+      "PORT": "8080"
+    }
+  }
+}

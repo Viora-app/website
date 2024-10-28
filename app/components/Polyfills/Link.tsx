@@ -5,7 +5,7 @@ import { LinkProps } from './types';
 
 const Link: FC<LinkProps> = ({children, to, className}) => {
 
-  const url = new URL(to.screen, 'http://localhost:3000');
+  const url = new URL(to.screen, 'http://localhost:8080');
   Object.entries(to.params ?? {}).forEach(([key, value]) => {
     url.searchParams.append(key, value as string);
   });

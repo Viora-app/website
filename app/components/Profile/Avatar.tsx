@@ -1,3 +1,5 @@
+'use client'
+
 import React, {useState, FC} from 'react';
 import {View, Image} from '../Polyfills';
 

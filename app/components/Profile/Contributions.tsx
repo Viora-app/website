@@ -1,3 +1,5 @@
+'use client'
+
 import React, {FC} from 'react';
 import {View, Text, Image, Link} from '../Polyfills';
 
@@ -9,7 +11,7 @@ import {getSmallestSize} from '../../utils/image';
 import {fromBaseToken} from '../../utils/formatters';
 import {ImageFormats} from '../Projects/types';
 import SectionHeader from '../SectionHeader';
-import type {ContributionProps, Contribution} from './types';
+import type {ContributionProps, Contribution as ContributionType} from './types';
 
 const Contribution: FC<ContributionProps> = ({data}) => {
   const projectId = data.attributes.project.data?.id ?? '';
@@ -54,7 +56,7 @@ const Contributions: FC = () => {
     },
   });
 
-  const contributions: Contribution[] = data?.data ?? [];
+  const contributions: ContributionType[] = data?.data ?? [];
 
   return (
     <View>
