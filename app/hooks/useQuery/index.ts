@@ -1,3 +1,5 @@
+'use client'
+
 import {useState} from 'react';
 import {useMutation, useQuery, useQueryClient} from 'react-query';
 import {getData, postData, patchData, deleteData} from '../../utils/api';
