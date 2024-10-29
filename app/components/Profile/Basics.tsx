@@ -6,7 +6,7 @@ import Wallet from './Wallet';
 
 const Basics = () => {
   return (
-    <View>
+    <View className="w-full p-6">
       <Avatar />
       <Wallet />
     </View>

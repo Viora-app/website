@@ -48,13 +48,14 @@ const Avatar: FC = () => {
   };
 
   return (
-    <View>
-      <ImagePicker disabled={isLoading} onSelectImage={onSelectImage}>
-        <Image alt="" source={image} />
+    <View className="flex flex-row justify-center">
+      <ImagePicker disabled={isLoading} onSelectImage={onSelectImage} className="w-[124px] h-[124px]">
+        <Image alt="Profile picture" source={image} className="w-full relative z-0" />
         <Icon
           name="feather"
           size={32}
-          color="#fff"
+          color="#999"
+          className="absolute z-10 right-1 bottom-1"
         />
       </ImagePicker>
     </View>

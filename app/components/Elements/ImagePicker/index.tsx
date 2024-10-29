@@ -7,6 +7,7 @@ const ImagePicker: FC<ImagePickerProps> = ({
   onSelectImage,
   children,
   disabled,
+  className,
 }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const pickImage = (event) => {
@@ -25,8 +26,9 @@ const ImagePicker: FC<ImagePickerProps> = ({
   }, [selectedImage, onSelectImage]);
 
   return (
-    <label for="image-selector">
+    <label htmlFor="image-selector" className={`relative rounded-3xl overflow-hidden cursor-pointer ${className}`}>
       <input
+        className="hidden"
         disabled={disabled}
         id="image-selector"
         type="file"

@@ -1,12 +1,13 @@
 import React, {FC} from 'react';
-import {View, Text} from '../Polyfills';
+
+import {View, H3, Span} from '../Polyfills';
 import {SectionHeaderProps} from './types';
 
 const SectionHeader: FC<SectionHeaderProps> = ({title, subtitle}) => {
   return (
-    <View>
-      <Text>{title}</Text>
-      {subtitle && <Text>{subtitle}</Text>}
+    <View className="pb-4">
+      <H3 className="!font-normal">{title}</H3>
+      {subtitle && <Span>{subtitle}</Span>}
     </View>
   );
 };

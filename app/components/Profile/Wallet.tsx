@@ -1,7 +1,6 @@
 'use client'
 
 import React, {FC} from 'react';
-import {View, Text, Image} from '../Polyfills';
 
 import {truncateAddress} from '../../utils/formatters';
 import {Themes} from '../../context/presetsContext/types';
@@ -10,6 +9,7 @@ import darkCarrot from '../../../public/images/darkcarrot.png';
 import {usePresets} from '../../hooks/usePresets';
 import {useModal} from '../../hooks/useModal';
 import {useAccount} from '../../hooks/useAccount';
+import {View, Image, H1, H2, H4, Span} from '../Polyfills';
 
 const carrots = {
   [Themes.light]: lightCarrot,
@@ -34,28 +34,29 @@ const Wallet: FC = () => {
     .join(' ');
 
   return (
-    <View>
-      <Image alt="" source={carrots[presets.theme]} />
+    <View className="w-full bg-neutralDead rounded-3xl relative mt-14 pb-6">
+      <Image alt="Carrot" source={carrots[presets.theme]} className="relative mx-auto top-[-44px]" />
       <View>
         {fullName.length ? (
-          <View>
-            <Text>{fullName}</Text>
+          <View className="w-full text-center mb-6">
+            <H2 className="text-primaryStrong font-light">{fullName}</H2>
           </View>
         ) : null}
-        <View>
-          <Text>Points</Text>
-          <Text>
+        <View className="w-full text-center mb-6">
+          <Span className="text-neutralMild font-light">Points</Span>
+          <H1 className="text-primaryStrong">
             {account?.points ?? 0}
-          </Text>
+          </H1>
         </View>
-        <View>
-          <Text>{`${
+        <View className="w-full text-center">
+          <Span className="text-neutralMild font-light">{`${
             process.env.NEXT_PUBLIC_NETWORK_NAME || ''
-          } Wallet Address`}</Text>
-          <Text
+          } Wallet Address`}</Span>
+          <H4
+            className="font-light"
             onPress={onPress}>
-            {truncateAddress(account?.address ?? '') ?? 'Loading'}
-          </Text>
+            {truncateAddress(account?.address ?? 'asdasdasdasd') ?? 'Loading'}
+          </H4>
         </View>
       </View>
     </View>

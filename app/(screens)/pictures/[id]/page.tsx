@@ -12,7 +12,7 @@ const PictureScreen: FC = ({params}) => {
   const getUri = async () => {
     const awaitedParams = await params;
     if (awaitedParams.uri) {
-      setSource({uri: awaitedParams.uri});
+      setSource(awaitedParams.uri);
     }
   };
   

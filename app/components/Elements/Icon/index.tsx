@@ -84,9 +84,9 @@ const icons: IconsConfig = {
 };
 
 export const Icon: FC<IconProps> = ({
-  name = 'Default', color = '#000', size = 28
+  name = 'Default', color = '#000', size = 28, className,
 }) => (
-  <svg width={size} height={size} viewBox="0 0 28 28">
+  <svg width={size} height={size} viewBox="0 0 28 28" className={className}>
     {icons[name].map((path, index) => (
       <path key={index} d={path} fill={color} />
     ))}

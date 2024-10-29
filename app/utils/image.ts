@@ -12,7 +12,7 @@ const priorities = [
 export const getSmallestSize = (obj: ImageFormats) => {
   for (const size of priorities) {
     if (obj.hasOwnProperty(size)) {
-      return {uri: `${process.env.NEXT_PUBLIC_API_URL}${obj[size].url}`};
+      return `${process.env.NEXT_PUBLIC_API_URL}${obj[size].url}`;
     } else {
       return thumbnailPlaceholder;
     }
@@ -24,7 +24,7 @@ export const getLargestSize = (obj: ImageFormats) => {
 
   for (const size of reversePriorities) {
     if (obj.hasOwnProperty(size)) {
-      return {uri: `${process.env.NEXT_PUBLIC_API_URL}${obj[size].url}`};
+      return `${process.env.NEXT_PUBLIC_API_URL}${obj[size].url}`;
     } else {
       return largePlaceholder;
     }
