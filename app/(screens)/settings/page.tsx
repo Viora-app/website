@@ -64,10 +64,10 @@ const SettingsScreen = () => {
   };
 
   return (
-    <SafeArea>
+    <SafeArea className="p-6">
       <SectionHeader title="Account" />
       <Option title="Connect" state="Coming soon" onPress={connect} />
-      <SectionHeader title="Other settings" />
+      <SectionHeader title="Other settings" className="pt-6" />
       <Option title="Theme" state={theme} onPress={setTheme} />
       <Option title="Terms of use" href="https://viora.app/terms" />
       <Option title="About" onPress={showAbout} />
