@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-export {default as Text} from './Text';
+export * from './Text';
 export {default as View} from './View';
 export {default as ScrollView} from './ScrollView';
 export {default as TextInput} from './TextInput';

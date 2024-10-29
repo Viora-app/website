@@ -1,36 +1,20 @@
 import React, {FC} from 'react';
-import {Text, View, Image} from '../Polyfills';
-import {useRouter} from 'next/navigation';
 
-import {ButtonThemes} from '../Elements/Button/types';
-import {Button} from '../Elements';
+import {H4, View, Image, Link} from '../Polyfills';
 import {Routes} from '../../config/routes';
 import {ScreenNotFoundProps} from './types';
-import cactus from '../../../public/images/cactus.png';
+import cactus from '../../../public/images/not-found.svg';
 
 const ScreenNotFound: FC<ScreenNotFoundProps> = ({redirectTo}) => {
-  const {push: navigate} = useRouter();
-
-  const goHome = () => {
-    if (redirectTo && redirectTo in Routes) {
-      navigate(Routes[redirectTo] as never);
-    }
-  };
+  const screen:Routes = (redirectTo && redirectTo in Routes) ? redirectTo : Routes.Home;
 
   return (
-    <View>
-      <Image alt="" source={cactus}/>
-      <Text>Uh-oh!</Text>
-      <Text>We could not find it</Text>
-      {redirectTo && (
-        <View>
-          <Button
-            title="Back to home"
-            theme={ButtonThemes.primary}
-            onPress={goHome}
-          />
-        </View>
-      )}
+    <View className="w-full h-full flex flex-row justify-center items-center">
+      <View className="flex flex-col justify-center items-center">
+        <Image alt="Not Found" source={cactus} width={60} />
+        <H4 className="mb-6 mt-4">That&apos;s gone!</H4>
+        <Link to={{screen}}>Back to home</Link>
+      </View>
     </View>
   );
 };

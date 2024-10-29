@@ -10,7 +10,7 @@ const api = axios.create({
 export const getData = async (
   endpoint: string,
   params: unknown = {},
-  jwt: string | undefined,
+  jwt: string | undefined = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTAsImlhdCI6MTczMDAyMDI4MCwiZXhwIjoxNzMyNjEyMjgwfQ.HPD171NrQ1cUvVv5l4lGuBTQfrqeeSeHlqRvhqW5yMo',
 ) => {
   const response = await api.get(endpoint, {
     params,

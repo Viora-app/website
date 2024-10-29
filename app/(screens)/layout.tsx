@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
 
-import Providers from './context';
-import {Routes} from './config/routes';
-import {Icon} from './components/Elements';
-import logo from '../public/images/app-logo-white.svg';
-import './globals.css';
+import Providers from '../context';
+import {Routes} from '../config/routes';
+import {Icon} from '../components/Elements';
+import logo from '../../public/images/app-logo-white.svg';
+import '../globals.css';
 
 export const metadata: Metadata = {
   title: 'Viora',

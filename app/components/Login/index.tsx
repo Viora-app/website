@@ -51,7 +51,7 @@ const Login = () => {
   useEffect(() => {
     if (!!account?.jwt && !isNavigating) {
       setIsNavigating(true);
-      navigate(Routes.Projects as never);
+      navigate(Routes.Home as never);
     }
   }, [account, isNavigating, navigate]);
 
@@ -60,7 +60,7 @@ const Login = () => {
   return (
     <View>
       <View>
-        <Image alt="" source={appLogo} />
+        <Image alt="App Logo" source={appLogo} />
       </View>
 
       <Text>Login</Text>

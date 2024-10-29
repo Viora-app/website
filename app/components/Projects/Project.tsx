@@ -22,7 +22,7 @@ const Project: FC<ProjectProps> = ({item}) => {
     : avatar;
 
   return (
-    <View>
+    <View className="w-full px-6">
       <Link
         to={{screen: `${Routes.Projects}/${id}`}}>
         <View>
