@@ -1,7 +1,6 @@
 'use client'
 
 import React, {FC} from 'react';
-import {View, Text, Image, Link} from '../Polyfills';
 
 import {ENDPOINTS} from '../../config/endpoints';
 import {Routes} from '../../config/routes';
@@ -9,6 +8,7 @@ import {useAccount} from '../../hooks/useAccount';
 import {useGetData} from '../../hooks/useQuery';
 import {getSmallestSize} from '../../utils/image';
 import {fromBaseToken} from '../../utils/formatters';
+import {View, H4, Span, Image, Link} from '../Polyfills';
 import {ImageFormats} from '../Projects/types';
 import SectionHeader from '../SectionHeader';
 import type {ContributionProps, Contribution as ContributionType} from './types';
@@ -22,23 +22,24 @@ const Contribution: FC<ContributionProps> = ({data}) => {
 
   return (
     <Link
+      className="w-full"
       to={{
         screen: `${Routes.Projects}/${projectId}`as never,
       }}>
-      <View>
-        <Image alt="" source={image} />
-        <View>
-          <View>
-            <Text>
-              {data.attributes.contribution_tier.data.attributes.name}
-            </Text>
-            <Text>
-              {fromBaseToken(data.attributes.amount, 2, true)}
-            </Text>
-          </View>
-          <Text>
+      <View className="flex flex-row no-wrap justify-between mb-4">
+        <View className="flex flex-row nowrap items-center">
+          <Image alt="Contribution" source={image} width={65} height={65} className="bg-secondaryMild rounded-xl overflow-hidden !p-0" />
+          <H4 className="pl-2 text-primaryStrong">
             {data.attributes.project.data?.attributes.name ?? '-'}
-          </Text>
+          </H4>
+        </View>
+        <View className="text-right">
+          <H4 className="text-primaryStrong">
+            {data.attributes.contribution_tier.data.attributes.name}
+          </H4>
+          <Span className="text-primaryStrong font-light">
+            {fromBaseToken(data.attributes.amount, 2, true)}
+          </Span>
         </View>
       </View>
     </Link>
@@ -59,7 +60,7 @@ const Contributions: FC = () => {
   const contributions: ContributionType[] = data?.data ?? [];
 
   return (
-    <View>
+    <View className="w-full p-6">
       {contributions.length > 0 && (
         <SectionHeader title="Contributions" />
       )}

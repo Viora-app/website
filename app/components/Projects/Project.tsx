@@ -17,12 +17,13 @@ const Project: FC<ProjectProps> = ({item}) => {
     },
   } = users_permissions_user;
   const {data} = images;
+  const baseURl = `${process.env.NEXT_PUBLIC_IMAGE_PROTOCOL}://${process.env.NEXT_PUBLIC_IMAGE_HOSTNAME}${process.env.NEXT_PUBLIC_IMAGE_PORT ? ':' + process.env.NEXT_PUBLIC_IMAGE_PORT : ''}`
   const image = data?.length
-    ? {uri: `${process.env.NEXT_PUBLIC_API_URL}${data[0].attributes.formats.thumbnail.url}`}
+    ? {uri: `${baseURl}${data[0].attributes.formats.thumbnail.url}`}
     : avatar;
 
   return (
-    <View>
+    <View className="w-full px-6">
       <Link
         to={{screen: `${Routes.Projects}/${id}`}}>
         <View>

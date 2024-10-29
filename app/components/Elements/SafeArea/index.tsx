@@ -4,7 +4,7 @@ import { SafeAreaProps } from './types';
 
 const SafeArea: FC<SafeAreaProps> = ({ children }) => {
   return (
-    <div className="w-full h-full md:max-w-[600px] max-h-[900px]">
+    <div className="w-full h-full max-h-[900px] bg-secondaryStrong">
       {children}
     </div>
   );

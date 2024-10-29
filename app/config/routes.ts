@@ -1,12 +1,12 @@
 export enum Routes {
-  Home = 'home',
-  Feed = 'Feed',
+  Home = '/',
+  Feed = 'feed',
   Login = 'login',
   SignUp = 'signUp',
   Projects = 'projects',
   Profile = 'profile',
   Splash = 'splash',
-  Intro = 'intro',
   Settings = 'settings',
   Picture = 'picture',
+  Logout = 'logout',
 }

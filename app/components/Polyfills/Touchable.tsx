@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-const Touchable = ({ children, onPress }) => (
+import {TouchableProps} from './types';
+
+const Touchable: FC<TouchableProps> = ({ children, onPress, ...restProps }) => (
   <div
     onClick={onPress}
+    {...(restProps || {})}
   >
     {children}
   </div>

@@ -2,6 +2,7 @@ export const LAUNCH_PROTOCOL = 'viora://';
 
 export const ENDPOINTS = {
   SONGS: '/songs',
+  FEED: '/projects/feed',
   VOTES: '/votes',
   BADGES: '/badges',
   SONG_BADGES: '/song-badges',

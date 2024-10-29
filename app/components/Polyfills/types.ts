@@ -7,7 +7,10 @@ export interface BaseElementProps {
 
 export interface ImageProps {
   source: string;
+  alt?: string;
   className?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface LinkProps {
@@ -23,4 +26,10 @@ export interface TextInputProps {
   className?: string;
   keyboardType?: string;
   onChangeText: (e: unknown) => void;
+}
+
+export interface TouchableProps {
+  className?: string;
+  onPress: (e: unknown) => void;
+  children?: ReactNode;
 }

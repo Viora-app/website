@@ -3,14 +3,15 @@ import {API_SUFFIX} from '../config/network';
 import {ENDPOINTS} from '../config/endpoints';
 import type {ProfileResponse} from '../context/accountContext/types';
 
+const baseURl = `${process.env.NEXT_PUBLIC_IMAGE_PROTOCOL}://${process.env.NEXT_PUBLIC_IMAGE_HOSTNAME}${process.env.NEXT_PUBLIC_IMAGE_PORT ? ':' + process.env.NEXT_PUBLIC_IMAGE_PORT : ''}`
 const api = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_API_URL}/${API_SUFFIX}`,
+  baseURL: `${baseURl}/${API_SUFFIX}`,
 });
 
 export const getData = async (
   endpoint: string,
   params: unknown = {},
-  jwt: string | undefined,
+  jwt: string | undefined = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTAsImlhdCI6MTczMDAyMDI4MCwiZXhwIjoxNzMyNjEyMjgwfQ.HPD171NrQ1cUvVv5l4lGuBTQfrqeeSeHlqRvhqW5yMo',
 ) => {
   const response = await api.get(endpoint, {
     params,

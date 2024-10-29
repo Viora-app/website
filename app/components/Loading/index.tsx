@@ -1,14 +1,16 @@
 import React, {FC} from 'react';
-import {Text, View, Image} from '../Polyfills';
 
-import loading from '../../../public/images/loading.png';
+import {H4, View, Image} from '../Polyfills';
+import loading from '../../../public/images/loading.svg';
 import {LoadingProps} from './types';
 
 const Loading: FC<LoadingProps> = () => {
   return (
-    <View>
-      <Image alt="" source={loading} />
-      <Text>Loading</Text>
+    <View className="w-full h-full flex flex-row justify-center items-center">
+      <View className="flex flex-col justify-center items-center">
+        <Image alt="Loading" source={loading} className="animate-spin" />
+        <H4 className="mt-6 text-neutralMild">Loading</H4>
+      </View>
     </View>
   );
 };

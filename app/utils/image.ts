@@ -9,10 +9,12 @@ const priorities = [
   ImageSizes.Large,
 ];
 
+const baseURl = `${process.env.NEXT_PUBLIC_IMAGE_PROTOCOL}://${process.env.NEXT_PUBLIC_IMAGE_HOSTNAME}${process.env.NEXT_PUBLIC_IMAGE_PORT ? ':' + process.env.NEXT_PUBLIC_IMAGE_PORT : ''}`
+
 export const getSmallestSize = (obj: ImageFormats) => {
   for (const size of priorities) {
     if (obj.hasOwnProperty(size)) {
-      return {uri: `${process.env.NEXT_PUBLIC_API_URL}${obj[size].url}`};
+      return `${baseURl}${obj[size].url}`;
     } else {
       return thumbnailPlaceholder;
     }
@@ -24,7 +26,7 @@ export const getLargestSize = (obj: ImageFormats) => {
 
   for (const size of reversePriorities) {
     if (obj.hasOwnProperty(size)) {
-      return {uri: `${process.env.NEXT_PUBLIC_API_URL}${obj[size].url}`};
+      return `${baseURl}${obj[size].url}`;
     } else {
       return largePlaceholder;
     }

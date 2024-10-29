@@ -1,3 +1,5 @@
+'use client'
+
 import React, {useState} from 'react';
 import {View, ScrollView, Dimensions} from '../../../Polyfills';
 

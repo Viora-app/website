@@ -1,6 +1,6 @@
 import React from 'react';
-import {View} from '../Polyfills';
 
+import {ScrollView} from '../Polyfills';
 import {ENDPOINTS} from '../../config/endpoints';
 import {useGetData} from '../../hooks/useQuery';
 import ScreenNotFound from '../NotFound/Screen';
@@ -28,13 +28,13 @@ const Projects = () => {
   }
 
   return (
-    <View>
+    <ScrollView>
       {
         data?.data.map((item) => (
           <Project item={item} key={item.id} />
         ))
       }
-    </View>
+    </ScrollView>
   );
 };
 

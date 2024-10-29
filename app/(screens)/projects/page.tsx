@@ -7,14 +7,13 @@ import Projects from '../../components/Projects';
 import Form from '../../components/Forms/Project/Create';
 import ModalButton from '../../components/ModalButton';
 import {ButtonType} from '../../components/ModalButton/types';
-import {RouteParams} from '../../utils/types';
 
 const modalProps = {
   title: 'Let the world know',
   description: 'and receive love and support',
 };
 
-const ProjectsScreen: FC<RouteParams> = () => {
+const ProjectsScreen: FC = () => {
   return (
     <SafeArea>
       <Projects />
