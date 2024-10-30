@@ -1,8 +1,7 @@
 import React, {FC} from 'react';
 
 import {FundingProgressProps} from './types';
-import {View, Text, Span, Small, H1, H2, H3, H4, ImageBackground} from '../Polyfills';
-import stripePattern from '../../../public/images/stripespattern.png';
+import {View, Span, H1, H3, H4} from '../Polyfills';
 import {fromBaseToken} from '../../utils/formatters';
 
 const FundingProgress: FC<FundingProgressProps> = ({

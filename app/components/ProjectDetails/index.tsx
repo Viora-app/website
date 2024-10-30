@@ -1,7 +1,6 @@
 'use client'
 
 import React, {FC} from 'react';
-import {useRouter} from 'next/navigation';
 
 import {Project} from '../Projects/types';
 import {ENDPOINTS} from '../../config/endpoints';
@@ -38,11 +37,6 @@ const ProjectDetails: FC<ProjectDetailsProps> = ({id}) => {
     },
   };
   const {data: artist} = useGetData(ENDPOINTS.PROFILES, artistParams);
-  const {back: goBack} = useRouter();
-
-  const gotBack = () => {
-    goBack();
-  };
 
   if (id && !isLoading && data?.data?.id != id) {
     return <NotFound />;
