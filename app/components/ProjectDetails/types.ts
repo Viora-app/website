@@ -4,8 +4,6 @@ import type {FetchStatus} from '../../config/types';
 
 export interface ProjectDetailsProps {
   id: string;
-  name: string;
-  summary: string;
 }
 
 export interface ArtistProps {

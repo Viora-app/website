@@ -19,8 +19,15 @@ const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
     <TouchableOpacity
       disabled={typeof img === 'number'}
       onPress={() => onPress(img)}
+      className={`${index === 0 ? 'flex-[4] h-full' : 'flex-1'} bg-[#FFEEFF] overflow-hidden ${typeof img === 'string' ? '' : 'flex flex-row justify-center items-center'}`}
       >
-      <Image alt="" source={img} />
+      <Image
+        alt="Gallery photo"
+        source={img}
+        width={400}
+        height={400}
+        className={typeof img === 'string' ? 'w-full h-full object-cover' : ''}
+      />
     </TouchableOpacity>
   );
 };
@@ -33,10 +40,12 @@ const Readable: FC<GalleryProps> = ({images = []}) => {
   };
 
   return (
-    <View>
-      {formatImages().map((image, index) => (
-        <ImageItem image={image} index={index} key={`image-${index}`} />
-      ))}
+    <View className="p-5">
+      <View className="flex w-full flex-row gap-2 rounded-xl overflow-hidden h-[500px]wrap">
+        {formatImages().map((image, index) => (
+          <ImageItem image={image} index={index} key={`image-${index}`} />
+        ))}
+      </View>
     </View>
   );
 };

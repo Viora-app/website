@@ -1,5 +1,5 @@
 import React, {FC, useCallback} from 'react';
-import {View, Text, Image, TouchableHighlight, Linking} from '../Polyfills';
+import {View, H3, Image, TouchableHighlight, Linking} from '../Polyfills';
 
 import {ArtistProps} from './types';
 import instagramIcon from '../../../public/images/instagram.png';
@@ -41,12 +41,18 @@ const Artist: FC<ArtistProps> = ({data}) => {
   const name = [first_name, last_name].join(' ') || 'What\'s his face?';
 
   return (
-    <View>
-      <View>
-        <View>
-          <Image alt="" source={image} />
+    <View className="w-full flex flex-row items-center bg-amberMild rounded-md p-4 my-6">
+      <View className="flex flex-row items-center">
+        <View className="w-[50px] h-[50px] rounded-xl overflow-hidden">
+          <Image
+            alt="Artist photo"
+            source={image}
+            width={100}
+            height={100}
+            className="w-[50px] h-[50px]"
+          />
         </View>
-        <Text>{name}</Text>
+        <H3 className="pl-4 text-neutralPure !font-normal">{name}</H3>
       </View>
       <View>
         {instagram && (

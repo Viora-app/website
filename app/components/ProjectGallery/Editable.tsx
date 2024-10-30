@@ -36,7 +36,8 @@ const ImageItem: FC<ImageItemProps> = ({
   const img = getPreferredSize(image?.attributes.formats ?? {}, index);
   return (
     <label
-      for={`image-item-${index}`}
+      className={`${index === 0 ? 'flex-[4] h-full' : 'flex-1'} bg-[#FFEEFF] relative overflow-hidden ${typeof img === 'string' ? '' : 'flex flex-row justify-center items-center'}`}
+      htmlFor={`image-item-${index}`}
       >
         <input
           disabled={disabled}
@@ -45,7 +46,13 @@ const ImageItem: FC<ImageItemProps> = ({
           accept="image/*"
           onChange={onPress}
         />
-      <Image alt="" source={img}/>
+      <Image
+        alt="Some Photo"
+        source={img}
+        width={100}
+        height={100}
+        className={typeof img === 'string' ? 'w-full h-full object-cover' : ''}
+      />
       <View>
         {image && <Icon name="cross" size={20} />}
       </View>
@@ -129,7 +136,7 @@ const Editable: FC<GalleryProps> = ({images = [], id, refresh}) => {
   };
 
   return (
-    <View>
+    <View className="flex w-full flex-row gap-2 h-[500px] wrap">
       {formatImages().map((image, index) => (
         <ImageItem
           image={image}

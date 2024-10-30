@@ -2,9 +2,13 @@ import React, {FC} from 'react';
 
 import {TouchableProps} from './types';
 
-const Touchable: FC<TouchableProps> = ({ children, onPress, ...restProps }) => (
+const Touchable: FC<TouchableProps> = ({ children, onPress, disabled, ...restProps }) => (
   <div
-    onClick={onPress}
+    onClick={(...rest) => {
+      if (!disabled) {
+        onPress(...rest);
+      }
+    }}
     {...(restProps || {})}
   >
     {children}
