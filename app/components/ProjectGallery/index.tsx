@@ -8,7 +8,7 @@ import Readable from './Readable';
 const Gallery = ({id, images, ownerId, projectStatus, refresh}) => {
   const {account} = useAccount();
 
-  if (ownerId === account.id && projectStatus === ProjectStatus.Draft) {
+  if (ownerId === account?.id && projectStatus === ProjectStatus.Draft) {
     return <Editable id={id} images={images} refresh={refresh} />;
   }
   return <Readable id={id} images={images} />;

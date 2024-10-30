@@ -9,7 +9,7 @@ const Loading: FC<LoadingProps> = () => {
     <View className="w-full h-full flex flex-row justify-center items-center">
       <View className="flex flex-col justify-center items-center">
         <Image alt="Loading" source={loading} className="animate-spin" />
-        <H4 className="mt-6 text-neutralMild">Loading</H4>
+        <H4 className="mt-6 text-neutralSteady">Loading</H4>
       </View>
     </View>
   );

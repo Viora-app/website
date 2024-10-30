@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, TouchableHighlight, Linking} from '../../Polyfills';
+
+import {View, H4, TouchableHighlight, Linking} from '../../Polyfills';
 import {Icon} from '../index';
 import {OptionProps} from './types';
 
@@ -18,14 +19,15 @@ const Option = ({
 
   return (
     <TouchableHighlight
+      className="w-full flex flex-row nowrap justify-between items-center mb-4"
       underlayColor="transparent"
       onPress={onPress}>
       <>
-        <View>
-          <Text>{title}</Text>
-        </View>
-        <View>
-          <Text>{state}</Text>
+        <H4 className="!font-light">
+          {title}
+        </H4>
+        <View className="flex flex-row nowrap justify-between items-center">
+          <H4 className="!font-light">{state}</H4>
           <View>
             <Icon name={icon} />
           </View>

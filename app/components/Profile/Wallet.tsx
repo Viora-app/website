@@ -34,7 +34,7 @@ const Wallet: FC = () => {
     .join(' ');
 
   return (
-    <View className="w-full bg-neutralDead rounded-3xl relative mt-14 pb-6">
+    <View className="w-full bg-neutralPure rounded-3xl relative mt-14 pb-6">
       <Image alt="Carrot" source={carrots[presets.theme]} className="relative mx-auto top-[-44px]" />
       <View>
         {fullName.length ? (
@@ -43,13 +43,13 @@ const Wallet: FC = () => {
           </View>
         ) : null}
         <View className="w-full text-center mb-6">
-          <Span className="text-neutralMild font-light">Points</Span>
+          <Span className="text-neutralSteady font-light">Points</Span>
           <H1 className="text-primaryStrong">
             {account?.points ?? 0}
           </H1>
         </View>
         <View className="w-full text-center">
-          <Span className="text-neutralMild font-light">{`${
+          <Span className="text-neutralSteady font-light">{`${
             process.env.NEXT_PUBLIC_NETWORK_NAME || ''
           } Wallet Address`}</Span>
           <H4

@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 
 export interface BaseElementProps {
-  children: ReactNode;
+  children?: ReactNode;
+  style?: Record<string, unknown>;
   className?: string;
 }
 
@@ -32,4 +33,5 @@ export interface TouchableProps {
   className?: string;
   onPress: (e: unknown) => void;
   children?: ReactNode;
+  disabled?: boolean;
 }

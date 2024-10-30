@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 
+import {Routes} from '@/app/config/routes';
 import {Small, Span, View, Link} from '../Polyfills';
 import {Icon} from '../Elements';
 import {LinkToProjectProps} from './types';
@@ -7,9 +8,10 @@ import {LinkToProjectProps} from './types';
 const LinkToProject: FC<LinkToProjectProps> = ({name, id}) => (
   <Link
     className="w-full"
-    to={{screen: 'ProjectDetails', params: {id}}}>
-    <View className="w-full flex flex-row nowrap items-center bg-neutralDead rounded-md px-6 mb-4">
-      <Small className="text-neutralMild font-light">From</Small>
+    to={{screen: `${Routes.Projects}/${id}`}}
+  >
+    <View className="w-full flex flex-row nowrap items-center bg-neutralPure rounded-md px-6 mb-4">
+      <Small className="text-neutralSteady font-light">From</Small>
       <Icon name="link" size={26} />
       <Span className="text-neutralStrong">{name}</Span>
     </View>

@@ -2,8 +2,8 @@
 
 import React, {FC, useEffect, useState} from 'react';
 
-import {SafeArea} from '../../../components/Elements';
-import ProjectDetails from '../../../components/ProjectDetails';
+import {SafeArea} from '@/app/components/Elements';
+import ProjectDetails from '@/app/components/ProjectDetails';
 
 const ProjectDetailsScreen: FC = ({params}) => {
   const [id, setId] = useState('');

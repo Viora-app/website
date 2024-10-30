@@ -19,21 +19,21 @@ const Meta: FC<MetaProps> = ({reactionCount, backers, type, status}) => {
         <View className="flex flex row nowrap items-center">
           <Icon name="thumbsUp" size={18} color="#6D6C6C" />
           {reactionCount && reactionCount > 0 ? (
-            <Span className="text-neutralMild font-light">{reactionCount}</Span>
+            <Span className="text-neutralSteady font-light">{reactionCount}</Span>
           ) : null}
         </View>
 
         {type === FeedType.Project && reactionCount && reactionCount > 0 ? (
           <View className="flex flex row nowrap items-center">
             <Icon name="Profile" size={18} color="#6D6C6C" />
-            <Span className="text-neutralMild font-light">{`${backers} fans`}</Span>
+            <Span className="text-neutralSteady font-light">{`${backers} fans`}</Span>
           </View>
         ) : null}
       </View>
       <View
         className={`${statusTag === 'Successful' ? 'text-assureStrong' : ''} ${
           statusTag === 'Successful' ? 'text-warnStrong' : ''
-        } text-neutralDead rounded-xl`}>
+        } text-neutralPure rounded-xl`}>
         <Span>{statusTag}</Span>
       </View>
     </View>

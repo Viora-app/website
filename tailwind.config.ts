@@ -9,12 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        neutralAbsolute: "var(--neutral-absolute)",
         neutralMighty: "var(--neutral-mighty)",
         neutralStrong: "var(--neutral-strong)",
-        neutralMild: "var(--neutral-mild)",
-        neutralOk: "var(--neutral-ok)",
-        neutralWeak: "var(--neutral-weak)",
-        neutralDead: "var(--neutral-dead)",
+        neutralSteady: "var(--neutral-steady)",
+        neutralSoft: "var(--neutral-soft)",
+        neutralLight: "var(--neutral-light)",
+        neutralPale: "var(--neutral-pale)",
+        neutralPure: "var(--neutral-pure)",
         primaryStrong: "var(--primary-strong)",
         primaryMild: "var(--primary-mild)",
         secondaryStrong: "var(--secondary-strong)",
@@ -23,11 +25,18 @@ const config: Config = {
         warnMild: "var(--warn-mild)",
         assureStrong: "var(--assure-strong)",
         assureMild: "var(--assure-mild)",
+        skyStrong: "var(--sky-strong)",
+        skyMild: "var(--sky-mild)",
+        skyWeak: "var(--sky-weak)",
+        amberMild: "var(--amber-mild)",
         bodyBg: "var(--body-bg)",
         bodyColor: "var(--body-color)",
         wrapperBg: "var(--wrapper-bg)",
         menuBg: "var(--menu-bg)",
       },
+      backgroundImage: {
+        stripes: "url('/images/stripespattern.png')",
+      }
     },
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
