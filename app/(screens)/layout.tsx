@@ -33,7 +33,7 @@ export default function RootLayout({
               <NextImage src={logo} alt="Viora" width="32" />
               <h1 className="font-poppins text-bodyColor text-3xl font-bold pl-4">Viora</h1>
             </header>
-            <div className="flex flex-col md:flex-row nowrap flex-1">
+            <div className="flex flex-col md:flex-row nowrap flex-1 h-full pt-[55px] relative top-[-55px]">
               <aside className="h-[76px] w-auto md:w-[76px] md:h-auto flex flex-row md:flex-col mt-[30px] md:mt-0 md:mr-[30px] justify-between order-2 md:order-1">
                 <div className="bg-wrapperBg border-wrapperBg rounded-3xl border-[13px] overflow-hidden flex flex-row md:flex-col gap-4">
                   <NextLink href={Routes.Home} className="block w-[50px] h-[50px] p-[13px] bg-menuBg rounded-xl"><Icon name="Home" size={28} color="#fff" /></NextLink>
@@ -44,7 +44,7 @@ export default function RootLayout({
                   <NextLink href={Routes.Logout} className="block w-[50px] h-[50px] p-[13px] bg-menuBg rounded-xl"><Icon name="logout" size={28} color="#fff" /></NextLink>
                 </div>
               </aside>
-              <main className="bg-wrapperBg border-wrapperBg rounded-3xl border-[13px] overflow-hidden grow order-1 md:order-2">
+              <main className="h-full bg-wrapperBg border-wrapperBg rounded-3xl border-[13px] overflow-hidden grow order-1 md:order-2">
                 <Providers>
                   {children}
                 </Providers>
