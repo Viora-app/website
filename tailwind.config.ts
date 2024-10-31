@@ -33,6 +33,7 @@ const config: Config = {
         bodyColor: "var(--body-color)",
         wrapperBg: "var(--wrapper-bg)",
         menuBg: "var(--menu-bg)",
+        inputBg: "var(--input-bg)",
       },
       backgroundImage: {
         stripes: "url('/images/stripespattern.png')",

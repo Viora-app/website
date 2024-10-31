@@ -24,7 +24,7 @@ const ModalHolder = ({data, hide, isVisible}: ModalProps) => {
           inset: 0,
         });
       }
-    }, 100);
+    }, 1);
   }
 
   useEffect(() => {
@@ -50,8 +50,8 @@ const ModalHolder = ({data, hide, isVisible}: ModalProps) => {
       parentSelector={() => document.getElementById('app-main')}
       className="w-full h-full absolute bottom-1/2 right-1/2 translate-y-1/2 translate-x-1/2 flex flex-row justify-center items-center"
       isOpen={isVisible}>
-      <View className="min-w-[500px] min-h-[500px] bg-neutralPure rounded-xl p-6 border border-neutralPale">
-        <View className="w-full relative">
+      <View className="w-full h-full bg-neutralPure rounded-xl p-6 border border-neutralPale box-border">
+        <View className="w-full h-full relative">
           <SectionHeader
             title={data?.title as string}
             subtitle={data?.description}

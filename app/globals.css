@@ -27,6 +27,7 @@
   --body-bg: #453248;
   --body-color: #FFFFFF;
   --wrapper-bg: #3D3D3D;
+  --input-bg: #EDEDED;
   --menu-bg: #1E191E;
 }
 
@@ -57,6 +58,7 @@
     --body-color: #FFFFFF;
     --wrapper-bg: #3D3D3D;
     --menu-bg: #1E191E;
+    --input-bg: #19141A;
   }
 }
 

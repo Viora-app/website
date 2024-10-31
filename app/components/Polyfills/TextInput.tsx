@@ -13,6 +13,7 @@ const TextInput: FC<TextInputProps> = ({
 
   return (
     <input
+      className="w-full h-[44px] bg-inputBg rounded-md mt-2 mb-4 px-4"
       type={keyboardType}
       onChange={onChange}
       {...(rest || {})}

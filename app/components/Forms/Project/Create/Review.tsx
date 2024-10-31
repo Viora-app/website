@@ -58,9 +58,9 @@ const CreateProjectReview = ({data}: CreateProjectReviewProps) => {
   };
 
   return (
-    <View>
+    <View className="w-full h-[calc(100%-100px)]">
       <FormSummary data={formattedValue} />
-      <View>
+      <View className="flex flex-row justify-center">
         <Button
           title={isSubmitted ? 'Updating' : 'Continue'}
           theme={ButtonThemes.primary}
