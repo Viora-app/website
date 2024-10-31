@@ -1,19 +1,29 @@
 import React from 'react';
 import {TouchableHighlight, H4} from '../../Polyfills';
-import {ButtonProps} from './types';
+import {ButtonProps, ButtonThemes} from './types';
 
 const Button = ({
   onPress,
   title,
   disabled,
+  theme,
 }: ButtonProps) => {
+  const config = {
+    wrapper: 'bg-primaryStrong hover:shadow-xl',
+    text: 'text-neutralPure',
+  };
+  if (theme === ButtonThemes.secondary) {
+    config.wrapper = 'bg-neutralPure border border-neutralSteady hover:shadow-xl';
+    config.text = 'text-neutralStrong';
+  }
+
   return (
     <TouchableHighlight
       disabled={disabled}
       onPress={onPress}
-      className="rounded-md min-w-[200px] text-center bg-primaryStrong hover:shadow-xl h-[50px] cursor-pointer"
+      className={`rounded-md min-w-[200px] text-center h-[50px] cursor-pointer ${config.wrapper}`}
     >
-      <H4 className="text-neutralPure !font-light !pb-0 leading-[50px]">{title}</H4>
+      <H4 className={`!font-light !pb-0 leading-[50px] ${config.text}`}>{title}</H4>
     </TouchableHighlight>
   );
 };
