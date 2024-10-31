@@ -1,16 +1,41 @@
 'use client'
 
-import React, {useEffect, useState} from 'react';
-import {View, Image} from '../Polyfills';
+import React, {useEffect, useRef, useState} from 'react';
 import Modal from 'react-modal';
 
 import {IconButton} from '../Elements';
+import {View, Image} from '../Polyfills';
 import {Button} from '../Elements';
 import {ModalProps} from './types';
 import SectionHeader from '../SectionHeader';
 
 const ModalHolder = ({data, hide, isVisible}: ModalProps) => {
   const [primaryPressed, setPrimaryPressed] = useState(false);
+  const timeout = useRef();
+
+  const positionOverlay = () => {
+    setTimeout(() => {
+      const overlay = document.querySelector('.ReactModal__Overlay');
+      const parent = document.getElementById('app-main');
+
+      if (overlay && parent) {
+        Object.assign(overlay.style, {
+          position: 'absolute',
+          inset: 0,
+        });
+      }
+    }, 100);
+  }
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeout.current)
+    }
+  });
+
+  useEffect(() => {
+    positionOverlay();
+  }, [isVisible]);
 
   useEffect(() => {
     if (primaryPressed) {
@@ -22,9 +47,11 @@ const ModalHolder = ({data, hide, isVisible}: ModalProps) => {
 
   return (
     <Modal
+      parentSelector={() => document.getElementById('app-main')}
+      className="w-full h-full absolute bottom-1/2 right-1/2 translate-y-1/2 translate-x-1/2 flex flex-row justify-center items-center"
       isOpen={isVisible}>
-      <View>
-        <View>
+      <View className="min-w-[500px] min-h-[500px] bg-neutralPure rounded-xl p-6 border border-neutralPale">
+        <View className="w-full relative">
           <SectionHeader
             title={data?.title as string}
             subtitle={data?.description}
@@ -33,6 +60,7 @@ const ModalHolder = ({data, hide, isVisible}: ModalProps) => {
             onPress={hide}
             iconSize={24}
             iconName="cross"
+            className="absolute right-0 top-0"
           />
           {data?.image && <Image alt="" source={data?.image} />}
           {data?.content}
