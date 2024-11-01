@@ -9,7 +9,7 @@ import darkCarrot from '../../../public/images/darkcarrot.png';
 import {usePresets} from '../../hooks/usePresets';
 import {useModal} from '../../hooks/useModal';
 import {useAccount} from '../../hooks/useAccount';
-import {View, Image, H1, H2, H4, Span} from '../Polyfills';
+import {View, Image, H1, H2, H4, Span, TouchableHighlight} from '../Polyfills';
 
 const carrots = {
   [Themes.light]: lightCarrot,
@@ -53,11 +53,12 @@ const Wallet: FC = () => {
           <Span className="text-neutralSteady font-light">{`${
             process.env.NEXT_PUBLIC_NETWORK_NAME || ''
           } Wallet Address`}</Span>
-          <H4
-            className="font-light"
-            onPress={onPress}>
-            {truncateAddress(account?.address ?? 'asdasdasdasd') ?? 'Loading'}
-          </H4>
+          <TouchableHighlight onPress={onPress}>
+            <H4
+              className="font-light">
+              {truncateAddress(account?.address ?? 'asdasdasdasd') ?? 'Loading'}
+            </H4>
+          </TouchableHighlight>
         </View>
       </View>
     </View>
