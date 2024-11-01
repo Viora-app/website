@@ -79,6 +79,7 @@ const Login = () => {
           placeholder="Password"
           secureTextEntry
           autoCapitalize="none"
+          keyboardType="password"
         />
 
         <ErrorMessage errorMessage={error} />

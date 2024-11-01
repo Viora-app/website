@@ -52,7 +52,7 @@ const Artist: FC<ArtistProps> = ({data}) => {
             className="w-[50px] h-[50px]"
           />
         </View>
-        <H3 className="pl-4 text-neutralPure !font-normal">{name}</H3>
+        <H3 className="pl-4 text-neutralPure dark:text-primaryMighty !font-normal">{name}</H3>
       </View>
       <View>
         {instagram && (

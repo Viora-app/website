@@ -11,6 +11,7 @@
   --neutral-light: #AAAAAA;
   --neutral-pale: #CCCCCC;
   --neutral-pure: #FFFFFF;
+  --primary-mighty: #130C14;
   --primary-strong: #453248;
   --primary-mild: #A687AB;
   --secondary-strong: #FEEAE3;
@@ -31,35 +32,34 @@
   --menu-bg: #1E191E;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --neutral-absolute: #FFFFFF;
-    --neutral-mighty: #CCCCCC;
-    --neutral-srong: #999999;
-    --neutral-steady: #5D5D5D;
-    --neutral-soft: #323131;
-    --neutral-light: #222222;
-    --neutral-pale: #111111;
-    --neutral-pure: #000000;
-    --primary-strong: #825E87;
-    --primary-mild: #573F5A;
-    --secondary-strong: #0B080C;
-    --secondary-mild: #1E161F;
-    --warn-strong: #F47081;
-    --warn-mild: #FF9DAA;
-    --assure-strong: #42BFC7;
-    --assure-strong: #BDDFE1;
-    --sky-strong: #1C74E9;
-    --sky-mild: #4C92EE;
-    --sky-weak: #BBE1FF;
-    --amber-mild: #F3B173;
+html.dark {
+  --neutral-absolute: #FFFFFF;
+  --neutral-mighty: #CCCCCC;
+  --neutral-strong: #999999;
+  --neutral-steady: #5D5D5D;
+  --neutral-soft: #323131;
+  --neutral-light: #222222;
+  --neutral-pale: #111111;
+  --neutral-pure: #000000;
+  --primary-mighty: #130C14;
+  --primary-strong: #825E87;
+  --primary-mild: #573F5A;
+  --secondary-strong: #0B080C;
+  --secondary-mild: #1E161F;
+  --warn-strong: #F47081;
+  --warn-mild: #FF9DAA;
+  --assure-strong: #42BFC7;
+  --assure-strong: #BDDFE1;
+  --sky-strong: #1C74E9;
+  --sky-mild: #4C92EE;
+  --sky-weak: #BBE1FF;
+  --amber-mild: #F3B173;
 
-    --body-bg: #4E344D;
-    --body-color: #FFFFFF;
-    --wrapper-bg: #3D3D3D;
-    --menu-bg: #1E191E;
-    --input-bg: #19141A;
-  }
+  --body-bg: #4E344D;
+  --body-color: #FFFFFF;
+  --wrapper-bg: #3D3D3D;
+  --menu-bg: #1E191E;
+  --input-bg: #19141A;
 }
 
 body {

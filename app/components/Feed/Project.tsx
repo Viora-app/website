@@ -18,7 +18,7 @@ const Project: FC<ProjectProps> = ({item}) => {
       <Link to={{screen: `${Routes.Projects}/${id}`}}>
         <View>
           <H4 className="pt-4 pb-2">{name}</H4>
-          <Span className="text-neutralStrong font-light">{summary}</Span>
+          <Span className="text-neutralMighty font-light">{summary}</Span>
           <Meta
             reactionCount={reaction_count}
             type={type}

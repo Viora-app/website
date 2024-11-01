@@ -22,6 +22,7 @@ const ModalHolder = ({data, hide, isVisible}: ModalProps) => {
         Object.assign(overlay.style, {
           position: 'absolute',
           inset: 0,
+          zIndex: 10000,
         });
       }
     }, 1);
@@ -60,6 +61,7 @@ const ModalHolder = ({data, hide, isVisible}: ModalProps) => {
             onPress={hide}
             iconSize={24}
             iconName="cross"
+            iconColor="#A687AB"
             className="absolute right-0 top-0"
           />
           {data?.image && <Image alt="" source={data?.image} />}

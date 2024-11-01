@@ -29,7 +29,7 @@ const Option = ({
         <View className="flex flex-row nowrap justify-between items-center">
           <H4 className="!font-light">{state}</H4>
           <View>
-            <Icon name={icon} />
+            <Icon name={icon} color="#825E87" />
           </View>
         </View>
       </>

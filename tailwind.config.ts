@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: 'selector',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -17,6 +18,7 @@ const config: Config = {
         neutralLight: "var(--neutral-light)",
         neutralPale: "var(--neutral-pale)",
         neutralPure: "var(--neutral-pure)",
+        primaryMighty: "var(--primary-mighty)",
         primaryStrong: "var(--primary-strong)",
         primaryMild: "var(--primary-mild)",
         secondaryStrong: "var(--secondary-strong)",
