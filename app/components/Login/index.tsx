@@ -30,8 +30,8 @@ const ErrorMessage: FC<{errorMessage: string}> = ({errorMessage}) => {
 };
 
 const Login = () => {
-  const [email, setEmail] = useState('ali@muzikie.com');
-  const [password, setPassword] = useState('Sina1373ksh');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const {push: navigate} = useRouter();
   const {signIn, signUp, account, error} = useAccount();
   const [isNavigating, setIsNavigating] = useState(false);
