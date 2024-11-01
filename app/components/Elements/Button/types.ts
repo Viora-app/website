@@ -4,7 +4,7 @@ export enum ButtonThemes {
 }
 
 export interface ButtonProps {
-  onPress: () => void;
+  onPress?: () => void;
   theme?: ButtonThemes;
   title: string;
   shadow?: boolean;

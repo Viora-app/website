@@ -4,7 +4,7 @@ import React, {FC, useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
 
 import {Routes} from '../../config/routes';
-import {Text, H3, Span, View, Image, TextInput} from '../Polyfills';
+import {Small, H3, Span, View, Image, TextInput} from '../Polyfills';
 import {Button, SafeArea} from '../Elements';
 import {useAccount} from '../../hooks/useAccount';
 import appLogo from '../../../public/images/applogo.png';
@@ -23,8 +23,8 @@ const ErrorMessage: FC<{errorMessage: string}> = ({errorMessage}) => {
   }
 
   return (
-    <View>
-      <Text>{formattedMessage}</Text>
+    <View className="pb-4">
+      <Small className="text-warnStrong">{formattedMessage}</Small>
     </View>
   );
 };
@@ -49,7 +49,6 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log('useEffect', account);
     if (!!account?.jwt && !isNavigating) {
       setIsNavigating(true);
       navigate(Routes.Home as never);

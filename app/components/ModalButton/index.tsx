@@ -33,7 +33,7 @@ const ModalButton: FC<ModalButtonProps> = ({
       iconName={icons[type]}
       iconSize={28}
       onPress={showAddSongModal}
-      className="absolute right-8 bottom-8 w-[44px] h-[44px] rounded-3xl bg-neutralPure p-2 shadow-lg hover:shadow-xl cursor-pointer"
+      className="absolute right-8 bottom-8 w-[44px] h-[44px] rounded-3xl bg-assureStrong p-2 shadow-lg hover:shadow-xl cursor-pointer"
     />
   );
 };

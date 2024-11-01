@@ -31,7 +31,7 @@ export interface TextInputProps {
 
 export interface TouchableProps {
   className?: string;
-  onPress: (e: unknown) => void;
+  onPress?: (e: unknown) => void;
   children?: ReactNode;
   disabled?: boolean;
 }
