@@ -48,7 +48,7 @@ const EditProfileForm = () => {
         value={data.last_name}
         placeholderTextColor="#333"
       />
-      <View>
+      <View className="flex flex-row justify-center">
         <Button
           title="Continue"
           theme={ButtonThemes.primary}

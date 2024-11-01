@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput, View, Text} from '../../Polyfills';
+import {TextInput, View, Span} from '../../Polyfills';
 
 import type {InputProps} from './types';
 
@@ -12,8 +12,8 @@ const Input = ({
   multiline = false,
 }: InputProps) => {
   return (
-    <View>
-      <Text>{placeholder}</Text>
+    <View className="w-full">
+      <Span>{placeholder}</Span>
       <TextInput
         onChangeText={onChange(name)}
         value={value}

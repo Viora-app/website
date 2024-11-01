@@ -12,7 +12,7 @@ const SelectTheme = () => {
   };
 
   return (
-    <View>
+    <View className="w-full pt-4">
       <CheckBox
         title="Light"
         onSelect={() => onSelect(Themes.light)}

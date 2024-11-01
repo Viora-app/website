@@ -1,11 +1,11 @@
 'use client'
 
 import React, {FC, useEffect, useState} from 'react';
-import {Text, View, Image, TextInput} from '../Polyfills';
 import {useRouter} from 'next/navigation';
 
 import {Routes} from '../../config/routes';
-import {Button} from '../Elements';
+import {Text, H3, Span, View, Image, TextInput} from '../Polyfills';
+import {Button, SafeArea} from '../Elements';
 import {useAccount} from '../../hooks/useAccount';
 import appLogo from '../../../public/images/applogo.png';
 
@@ -49,6 +49,7 @@ const Login = () => {
   };
 
   useEffect(() => {
+    console.log('useEffect', account);
     if (!!account?.jwt && !isNavigating) {
       setIsNavigating(true);
       navigate(Routes.Home as never);
@@ -58,43 +59,46 @@ const Login = () => {
   const isButtonDisabled = !email || !password;
 
   return (
-    <View>
-      <View>
-        <Image alt="App Logo" source={appLogo} />
-      </View>
+    <SafeArea className="!bg-neutralPure flex flex-col justify-center items-center">
+      <View className="px-6 w-[510px]">
+        <View className="p-6 flex flex-row justify-center items-center">
+          <Image alt="App Logo" source={appLogo} />
+        </View>
 
-      <Text>Login</Text>
+        <H3 className="text-primaryStrong py-6">Login</H3>
 
-      <TextInput
-        onChangeText={setEmail}
-        value={email}
-        placeholder="Email"
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      <TextInput
-        onChangeText={setPassword}
-        value={password}
-        placeholder="Password"
-        secureTextEntry
-        autoCapitalize="none"
-      />
-
-      <ErrorMessage errorMessage={error} />
-
-      <View>
-        <Button
-          onPress={onSubmit}
-          title="Sign in"
-          disabled={isButtonDisabled}
+        <TextInput
+          onChangeText={setEmail}
+          value={email}
+          placeholder="Email"
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
-        <Button
-          onPress={onRegister}
-          title="Sign up"
-          disabled={isButtonDisabled}
+        <TextInput
+          onChangeText={setPassword}
+          value={password}
+          placeholder="Password"
+          secureTextEntry
+          autoCapitalize="none"
         />
+
+        <ErrorMessage errorMessage={error} />
+
+        <View className="flex flex-row nowrap gap-6 justify-center items-center">
+          <Button
+            onPress={onSubmit}
+            title="Sign in"
+            disabled={isButtonDisabled}
+          />
+          <Span>Or</Span>
+          <Button
+            onPress={onRegister}
+            title="Sign up"
+            disabled={isButtonDisabled}
+          />
+        </View>
       </View>
-    </View>
+    </SafeArea>
   );
 };
 

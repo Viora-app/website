@@ -1,12 +1,12 @@
 'use client'
 
 import React, {useState} from 'react';
-import {View, ScrollView, Dimensions} from '../../../Polyfills';
 
 import {useModal} from '../../../../hooks/useModal';
 import {validateForm} from '../../../../utils/validators';
 import {ProjectAttrs, ProjectType} from '../../../Projects/types';
 import ValidationFeedback from '../../../FormElements/ValidationFeedback';
+import {View, ScrollView} from '../../../Polyfills';
 import {ButtonThemes} from '../../../Elements/Button/types';
 import {Button, Input} from '../../../Elements';
 import CreateProjectReview from './Review';
@@ -14,17 +14,16 @@ import {schema} from './schema';
 
 const CreateProjectForm = () => {
   const [data, setData] = useState<Partial<ProjectAttrs>>({
-    name: '',
-    summary: '',
-    description: '',
+    name: 'To Be Deleted',
+    summary: 'A powerful and energetic single that captures the vibrant nightlife of a bustling metropolis.',
+    description: 'To Be Deleted is a single that blends electronic dance music with urban beats to create a high-energy anthem for the night. With driving bass lines, infectious rhythms, and futuristic sound design, this track is a tribute to the non-stop energy of city life after dark. The lyrics capture the thrill and excitement of midnight adventures, making it a perfect addition to any party playlist. This single represents the pulse of the modern world, set against the backdrop of a vibrant, neon-lit cityscape.',
     project_type: ProjectType.Single,
-    planned_release_date: '',
-    soft_goal: 0,
-    hard_goal: 0,
-    deadline: '',
+    planned_release_date: '2024-11-01',
+    soft_goal: 1,
+    hard_goal: 2,
+    deadline: '2024-11-01',
   });
   const {show} = useModal();
-  const maxHeight = Dimensions.get('window').height * 0.6;
 
   const onSubmit = async () => {
     // Keyboard.dismiss();
@@ -45,8 +44,8 @@ const CreateProjectForm = () => {
   const validity = validateForm(schema, data);
 
   return (
-    <View>
-      <ScrollView style={{maxHeight}}>
+    <View className="w-full h-[calc(100%-160px)]">
+      <ScrollView className="w-full h-full">
         <Input
           placeholder="Name"
           onChange={onChange}
@@ -95,7 +94,7 @@ const CreateProjectForm = () => {
         />
       </ScrollView>
       <ValidationFeedback {...validity} />
-      <View>
+      <View className="w-full flex flex-row justify-center pt-4">
         <Button
           title="Continue"
           theme={ButtonThemes.primary}

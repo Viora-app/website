@@ -3,5 +3,6 @@ export interface IconButtonProps {
   iconSize: number;
   iconName: string;
   iconColor?: string;
+  className?: string;
   disabled?: boolean;
 }

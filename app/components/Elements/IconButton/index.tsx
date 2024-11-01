@@ -13,10 +13,11 @@ const IconButton = ({
   iconSize,
   iconColor,
   iconName,
+  className,
   disabled,
 }: IconButtonProps) => {
   return (
-    <TouchableWithoutFeedback onPress={onPress} disabled={disabled}>
+    <TouchableWithoutFeedback onPress={onPress} disabled={disabled} className={className}>
       <View>
         <Icon
           name={iconName}

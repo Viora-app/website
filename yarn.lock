@@ -2640,6 +2640,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-cookie@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "js-cookie@npm:3.0.5"
+  checksum: 2dbd2809c6180fbcf060c6957cb82dbb47edae0ead6bd71cbeedf448aa6b6923115003b995f7d3e3077bfe2cb76295ea6b584eb7196cca8ba0a09f389f64967a
+  languageName: node
+  linkType: hard
+
 "js-sha3@npm:0.8.0":
   version: 0.8.0
   resolution: "js-sha3@npm:0.8.0"
@@ -4471,6 +4478,7 @@ __metadata:
     bignumber.js: ^9.1.2
     eslint: ^8
     eslint-config-next: 15.0.1
+    js-cookie: ^3.0.5
     next: 15.0.1
     postcss: ^8
     prettier: ^3.3.3
