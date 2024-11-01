@@ -16,7 +16,7 @@ const Feed: FC = () => {
   }
 
   if (!data?.data.length) {
-    return <ScreenNotFound />;
+    return <ScreenNotFound redirectTo={false} />;
   }
 
   return (

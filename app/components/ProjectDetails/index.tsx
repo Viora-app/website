@@ -5,7 +5,7 @@ import React, {FC} from 'react';
 import {Project} from '../Projects/types';
 import {ENDPOINTS} from '../../config/endpoints';
 import {useGetData} from '../../hooks/useQuery';
-import {ScrollView, Span, H3, H2, View} from '../Polyfills';
+import {ScrollView, H2, H4, View} from '../Polyfills';
 import Gallery from '../ProjectGallery';
 import Deadline from './Deadline';
 import Artist from './Artist';
@@ -69,19 +69,19 @@ const ProjectDetails: FC<ProjectDetailsProps> = ({id}) => {
         refresh={refresh}
       />
       <View className="p-4">
-        <H2 className="text-primaryStrong">
+        <H2>
           {name}
         </H2>
-        <Span className="text-primaryStrong mb-4">
+        <H4 className="mb-4 !font-light">
           {summary}
-        </Span>
+        </H4>
         <Deadline date={deadline} />
-        <Span className="text-primaryStrong">{description}</Span>
+        <H4 className="!font-light">{description}</H4>
         <Artist data={artist?.data[0]?.attributes ?? {}} />
-        <H3 className="text-primaryStrong !font-light pt-4 pb-6">
+        <H2 className="!font-light pt-4 pb-6">
           By supporting her, you are not just funding the music—you are becoming a
           part of the creative journey!
-        </H3>
+        </H2>
         <FundingProgress
           currentFunding={current_funding}
           softGoal={soft_goal}

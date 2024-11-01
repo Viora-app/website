@@ -1,6 +1,8 @@
 'use client'
 
-import React, {useRef, useState, createContext} from 'react';
+import React, {useRef, useState, createContext, useEffect} from 'react';
+import {usePathname} from 'next/navigation';
+
 import {ModalProviderProps, ModalContent, ModalContextType} from './types';
 import {Timeout} from '../../config/types';
 import Modal from '../../components/Modal';
@@ -17,6 +19,7 @@ const ModalProvider = ({children}: ModalProviderProps) => {
   const timer = useRef<Timeout>();
   const [isVisible, setIsVisible] = useState(false);
   const [content, setContent] = useState<ModalContent | null>(null);
+  const route = usePathname();
 
   const show = (value: ModalContent) => {
     setContent(value);
@@ -29,6 +32,12 @@ const ModalProvider = ({children}: ModalProviderProps) => {
       setContent(null);
     }, MODAL_ANIMATION_DURATION);
   };
+
+  useEffect(() => {
+    if (isVisible) {
+      hide();
+    }
+  }, [route]);
 
   const value = {
     show,

@@ -14,14 +14,14 @@ import {schema} from './schema';
 
 const CreateProjectForm = () => {
   const [data, setData] = useState<Partial<ProjectAttrs>>({
-    name: 'To Be Deleted',
-    summary: 'A powerful and energetic single that captures the vibrant nightlife of a bustling metropolis.',
-    description: 'To Be Deleted is a single that blends electronic dance music with urban beats to create a high-energy anthem for the night. With driving bass lines, infectious rhythms, and futuristic sound design, this track is a tribute to the non-stop energy of city life after dark. The lyrics capture the thrill and excitement of midnight adventures, making it a perfect addition to any party playlist. This single represents the pulse of the modern world, set against the backdrop of a vibrant, neon-lit cityscape.',
+    name: '',
+    summary: '',
+    description: '',
     project_type: ProjectType.Single,
-    planned_release_date: '2024-11-01',
-    soft_goal: 1,
-    hard_goal: 2,
-    deadline: '2024-11-01',
+    planned_release_date: '',
+    soft_goal: 0,
+    hard_goal: 0,
+    deadline: '',
   });
   const {show} = useModal();
 

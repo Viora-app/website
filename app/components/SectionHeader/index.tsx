@@ -6,8 +6,8 @@ import {SectionHeaderProps} from './types';
 const SectionHeader: FC<SectionHeaderProps> = ({title, subtitle, className}) => {
   return (
     <View className={`pb-4 ${className}`}>
-      <H3 className="!font-normal">{title}</H3>
-      {subtitle && <Span>{subtitle}</Span>}
+      <H3 className="!font-normal text-neutralMighty">{title}</H3>
+      {subtitle && <Span className="text-neutralMighty">{subtitle}</Span>}
     </View>
   );
 };

@@ -8,8 +8,8 @@ const FormSummary = ({data}: FormSummaryProps) => (
   <ScrollView>
     {Object.entries(data).map(([key, value], index) => (
       <View key={`${key}${index}`} className="pb-4">
-        <Span>{CapitalizeKey(key)}</Span>
-        <H4 className="!font-light">{value}</H4>
+        <Span className="text-neutralStrong">{CapitalizeKey(key)}</Span>
+        <H4 className="!font-light text-neutralMighty">{value}</H4>
       </View>
     ))}
   </ScrollView>

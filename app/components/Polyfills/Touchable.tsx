@@ -5,7 +5,7 @@ import {TouchableProps} from './types';
 const Touchable: FC<TouchableProps> = ({ children, onPress, disabled, ...restProps }) => (
   <div
     onClick={(...rest) => {
-      if (!disabled) {
+      if (!disabled && typeof onPress === 'function') {
         onPress(...rest);
       }
     }}

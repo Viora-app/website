@@ -15,8 +15,8 @@ const Deadline: FC<DeadlineProps> = ({date}) => {
         height={40}
       />
       <View className="flex flex-col pl-4">
-        <Span className="text-primaryStrong">Deadline</Span>
-        <H3 className="text-primaryStrong !font-normal">{date}</H3>
+        <Span className="!text-primaryMighty">Deadline</Span>
+        <H3 className="!text-primaryMighty !font-normal">{date}</H3>
       </View>
     </View>
   );

@@ -27,6 +27,12 @@ export const PresetsContext = createContext<PresetsContextType>({
 const PresetsProvider = ({children}: PresetsProviderProps) => {
   const [presets, setPresets] = useState<Presets>(DEFAULT_PRESETS);
 
+  const getSystemTheme = (): Themes => {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? Themes.dark
+      : Themes.light;
+  };
+
   const storePresets = useCallback(
     async (params: StorePresetsProps): Promise<StoreResponse> => {
       try {
@@ -42,6 +48,11 @@ const PresetsProvider = ({children}: PresetsProviderProps) => {
 
         await localStorage.setItem(USER_PRESETS, JSON.stringify(newValues));
         setPresets(newValues);
+
+        if (params.theme) {
+          document.documentElement.classList.toggle('dark', params.theme === Themes.dark);
+        }
+
         return {
           success: true,
           message: '',
@@ -64,11 +75,17 @@ const PresetsProvider = ({children}: PresetsProviderProps) => {
         ...DEFAULT_PRESETS,
         ...(storedValue ? JSON.parse(storedValue) : {}),
       };
+
+      if (!storedValue || !value.theme) {
+        value.theme = getSystemTheme();
+      }
     } catch (e) {
       console.log(e);
     }
 
     setPresets(value);
+
+    document.documentElement.classList.toggle('dark', value.theme === Themes.dark);
   }, [setPresets]);
 
   useEffect(() => {
