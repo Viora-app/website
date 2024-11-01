@@ -1,6 +1,8 @@
 'use client'
 
 import React, {createContext, useEffect, useState, ReactNode} from 'react';
+import Cookies from 'js-cookie';
+
 import {USER_CREDENTIALS} from '../../config/constants';
 import {ENDPOINTS} from '../../config/endpoints';
 import {authenticate, register, getProfile, patchData} from '../../utils/api';
@@ -27,8 +29,9 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
     const loadStoredAccount = async () => {
       try {
         const storedAccount = await localStorage.getItem(USER_CREDENTIALS);
+        const jwt = Cookies.get('jwt');
         if (storedAccount) {
-          setAccount(JSON.parse(storedAccount));
+          setAccount({...JSON.parse(storedAccount), jwt});
         }
       } catch (e) {
         console.error('Failed to load stored credentials:', e);
@@ -74,12 +77,14 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
     setError('');
 
     try {
+      console.log(' --- signIn --- ');
       const response = await authenticate(email, password);
+      console.log('response', response);
       const {jwt, user} = response;
-      const info = {jwt, ...user};
-      await localStorage.setItem(USER_CREDENTIALS, JSON.stringify(info));
+      await localStorage.setItem(USER_CREDENTIALS, JSON.stringify(user));
+      Cookies.set('jwt', jwt, { expires: 7 });
 
-      setAccount(info);
+      setAccount({jwt, ...user});
       await fetchAndMergeProfile(jwt);
     } catch (err: unknown) {
       const message = err.response
@@ -98,10 +103,10 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
     try {
       const response = await register(email, password, username);
       const {jwt, user} = response;
-      const info = {jwt, ...user};
-      await localStorage.setItem(USER_CREDENTIALS, JSON.stringify(info));
+      await localStorage.setItem(USER_CREDENTIALS, JSON.stringify(user));
+      Cookies.set('jwt', jwt, { expires: 7 });
 
-      setAccount(info);
+      setAccount({jwt, ...user});
       await fetchAndMergeProfile(jwt);
     } catch (err: unknown) {
       const message = err.response
@@ -120,6 +125,7 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
     try {
       // Clear stored credentials
       await localStorage.removeItem(USER_CREDENTIALS);
+      Cookies.remove('jwt');
       setAccount(null);
     } catch (err) {
       console.log(err);

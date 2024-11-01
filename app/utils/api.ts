@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import {API_SUFFIX} from '../config/network';
 import {ENDPOINTS} from '../config/endpoints';
 import type {ProfileResponse} from '../context/accountContext/types';

@@ -49,6 +49,7 @@ const Login = () => {
   };
 
   useEffect(() => {
+    console.log('useEffect', account);
     if (!!account?.jwt && !isNavigating) {
       setIsNavigating(true);
       navigate(Routes.Home as never);
