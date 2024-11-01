@@ -5,7 +5,7 @@ import React, {FC} from 'react';
 import {Project} from '../Projects/types';
 import {ENDPOINTS} from '../../config/endpoints';
 import {useGetData} from '../../hooks/useQuery';
-import {ScrollView, Span, H2, H3, H4, View} from '../Polyfills';
+import {ScrollView, H2, H4, View} from '../Polyfills';
 import Gallery from '../ProjectGallery';
 import Deadline from './Deadline';
 import Artist from './Artist';
