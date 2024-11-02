@@ -4,8 +4,11 @@ import {API_SUFFIX} from '../config/network';
 import {ENDPOINTS} from '../config/endpoints';
 import type {ProfileResponse} from '../context/accountContext/types';
 
-const baseURl = `${process.env.NEXT_PUBLIC_IMAGE_PROTOCOL || process.env.IMAGE_PROTOCOL}://${process.env.NEXT_PUBLIC_IMAGE_HOSTNAME}${process.env.NEXT_PUBLIC_IMAGE_PORT ? ':' + process.env.NEXT_PUBLIC_IMAGE_PORT : ''}`
-console.log('baseURl', baseURl);
+const IMAGE_PROTOCOL = process.env.NEXT_PUBLIC_IMAGE_PROTOCOL;
+const IMAGE_HOSTNAME = process.env.NEXT_PUBLIC_IMAGE_HOSTNAME;
+const IMAGE_PORT = process.env.NEXT_PUBLIC_IMAGE_PORT;
+
+const baseURl = `${IMAGE_PROTOCOL}://${IMAGE_HOSTNAME}${IMAGE_PORT ? ':' + IMAGE_PORT : ''}`
 const api = axios.create({
   baseURL: `${baseURl}/${API_SUFFIX}`,
 });
@@ -71,7 +74,6 @@ export const authenticate = async (identifier: string, password: string) => {
       identifier,
       password,
     });
-    console.log('response', response.data);
     return response.data;
   } catch (error) {
     console.error('Error during authentication', error);
