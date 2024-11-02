@@ -33,7 +33,6 @@ const Wallet: FC = () => {
     .filter(item => !!item)
     .join(' ');
 
-  console.log('THEME', presets.theme);
   return (
     <View className="w-full bg-neutralPale rounded-3xl relative mt-14 pb-6">
       <Image alt="Carrot" source={carrots[presets.theme]} className="relative mx-auto top-[-44px]" />

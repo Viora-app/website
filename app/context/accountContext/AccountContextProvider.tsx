@@ -77,9 +77,7 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
     setError('');
 
     try {
-      console.log(' --- signIn --- ');
       const response = await authenticate(email, password);
-      console.log('response', response);
       const {jwt, user} = response;
       await localStorage.setItem(USER_CREDENTIALS, JSON.stringify(user));
       Cookies.set('jwt', jwt, { expires: 7 });

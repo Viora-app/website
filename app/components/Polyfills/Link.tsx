@@ -12,7 +12,6 @@ const Link: FC<LinkProps> = ({children, to, className, markActive}) => {
   const searchParams = new URLSearchParams(to.params as Record<string, string>).toString();
   const href = `${pathname}${searchParams ? `?${searchParams}` : ''}`;
   const isActive = markActive !== false && route.replace(/^\//, '') === to.screen.replace(/^\//, '');
-  console.log('isActive', isActive);
 
   return <NextLink href={href} className={`cursor-pointer ${isActive ? '!bg-assureStrong' : ''} ${className}`}>{children}</NextLink>;
 };
