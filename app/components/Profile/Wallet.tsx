@@ -3,7 +3,6 @@
 import React, {FC} from 'react';
 
 import {truncateAddress} from '../../utils/formatters';
-import {Themes} from '../../context/presetsContext/types';
 import {usePresets} from '../../hooks/usePresets';
 import {useModal} from '../../hooks/useModal';
 import {useAccount} from '../../hooks/useAccount';

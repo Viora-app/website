@@ -7,7 +7,7 @@ import {FetchStatus} from '../../config/types';
 import {usePatchData} from '../../hooks/useQuery';
 import EditProjectForm from '../Forms/Project/Edit';
 import {useModal} from '../../hooks/useModal';
-import {Image, Text, View, H3, H4, Span} from '../Polyfills';
+import {Image, View, H3, Span} from '../Polyfills';
 import CreateContributionTierForm from '../Forms/ContributionTier/Create';
 import PostExclusiveContentsForm from '../Forms/ExclusiveContents/create';
 import Contribute from '../Forms/Project/Contribute';

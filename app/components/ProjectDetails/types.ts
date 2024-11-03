@@ -1,5 +1,4 @@
-import type {ImageData, ImageFormats, Project} from '../Projects/types';
-import type {FileEvent} from '../Profile/types';
+import type {ImageFormats, Project} from '../Projects/types';
 import type {FetchStatus} from '../../config/types';
 
 export interface ProjectDetailsProps {

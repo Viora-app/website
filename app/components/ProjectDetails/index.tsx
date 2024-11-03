@@ -2,7 +2,6 @@
 
 import React, {FC} from 'react';
 
-import {Project} from '../Projects/types';
 import {ENDPOINTS} from '../../config/endpoints';
 import {useGetData} from '../../hooks/useQuery';
 import {ScrollView, H2, H3, Span, View} from '../Polyfills';
