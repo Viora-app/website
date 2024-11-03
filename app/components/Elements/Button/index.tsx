@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableHighlight, H4} from '../../Polyfills';
+import {TouchableHighlight, Span} from '../../Polyfills';
 import {ButtonProps, ButtonThemes} from './types';
 
 const Button = ({
@@ -7,23 +7,24 @@ const Button = ({
   title,
   disabled,
   theme,
+  className,
 }: ButtonProps) => {
   const config = {
     wrapper: 'bg-primaryStrong hover:shadow-xl',
     text: 'text-neutralPure',
   };
   if (theme === ButtonThemes.secondary) {
-    config.wrapper = 'bg-neutralPure border border-neutralSteady hover:shadow-xl';
-    config.text = 'text-neutralStrong';
+    config.wrapper = 'bg-neutralPure dark:bg-neutral-950/50 border border-neutral-300/30 hover:shadow-xl';
+    config.text = 'text-primaryMighty dark:text-neutralMighty';
   }
 
   return (
     <TouchableHighlight
       disabled={disabled}
       onPress={onPress}
-      className={`rounded-md min-w-[200px] text-center h-[50px] cursor-pointer ${config.wrapper}`}
+      className={`rounded-md min-w-[200px] grow text-center h-[50px] cursor-pointer ${config.wrapper} ${className}`}
     >
-      <H4 className={`!font-light !pb-0 leading-[50px] ${config.text}`}>{title}</H4>
+      <Span className={`!pb-0 leading-[50px] ${config.text}`}>{title}</Span>
     </TouchableHighlight>
   );
 };

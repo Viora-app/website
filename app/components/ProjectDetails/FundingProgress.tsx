@@ -14,24 +14,24 @@ const FundingProgress: FC<FundingProgressProps> = ({
   const successPercentage = Math.floor((100 * currentFunding) / softGoal);
 
   return (
-    <View className="bg-neutralStrong rounded-md p-4">
+    <View className="bg-neutralStrong dark:bg-neutralLight rounded-md p-4">
       <View className="flex flex-row justify-between">
         <View className="flex flex-col items-start justify-end">
-          <Span className="text-neutralLight pb-4">Progress</Span>
-          <H1 className="text-neutralPure dark:text-primaryMighty">{`${successPercentage}%`}</H1>
+          <Span className="text-neutralLight dark:text-neutralSteady pb-4">Progress</Span>
+          <H1 className="text-neutralPure dark:text-neutralMighty">{`${successPercentage}%`}</H1>
         </View>
         <View className="flex flex-col items-end">
           <View className="flex flex-row items-center gap-2">
-            <Span className="text-neutralLight">Goal:&nbsp;</Span>
-            <H4 className="text-neutralPure dark:text-primaryMighty">
+            <Span className="text-neutralLight dark:text-neutralSteady">Goal:&nbsp;</Span>
+            <H4 className="text-neutralPure dark:text-neutralMighty">
               {fromBaseToken(softGoal, 2, true)}
             </H4>
           </View>
           <View className="flex flex-row items-center gap-2">
-            <Span className="text-neutralLight">
+            <Span className="text-neutralLight dark:text-neutralSteady">
               Max acceptable:&nbsp;
             </Span>
-            <H3 className="text-neutralPure dark:text-primaryMighty">
+            <H3 className="text-neutralPure dark:text-neutralMighty">
               {fromBaseToken(hardGoal, 2, true)}
             </H3>
           </View>

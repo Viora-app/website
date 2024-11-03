@@ -7,6 +7,7 @@ export interface ButtonProps {
   onPress?: () => void;
   theme?: ButtonThemes;
   title: string;
+  className?: string;
   shadow?: boolean;
   disabled?: boolean;
 }

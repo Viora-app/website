@@ -23,7 +23,9 @@
   --sky-strong: #1C74E9;
   --sky-mild: #4C92EE;
   --sky-weak: #BBE1FF;
+  --amber-mild: #FF9939;
   --amber-mild: #F3B173;
+  --amber-weak: #FFDAB8;
 
   --body-bg: #453248;
   --body-color: #FFFFFF;
@@ -50,10 +52,12 @@ html.dark {
   --warn-mild: #FF9DAA;
   --assure-strong: #42BFC7;
   --assure-strong: #BDDFE1;
-  --sky-strong: #1C74E9;
+  --sky-strong: #0B346A;
   --sky-mild: #4C92EE;
   --sky-weak: #BBE1FF;
+  --amber-strong: #864D17;
   --amber-mild: #F3B173;
+  --amber-weak: #FFDAB8;
 
   --body-bg: #4E344D;
   --body-color: #FFFFFF;

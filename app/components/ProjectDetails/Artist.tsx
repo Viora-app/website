@@ -41,7 +41,7 @@ const Artist: FC<ArtistProps> = ({data}) => {
   const name = [first_name, last_name].join(' ') || 'What\'s his face?';
 
   return (
-    <View className="w-full flex flex-row items-center bg-amberMild rounded-md p-4 my-6">
+    <View className="w-full flex flex-row items-center bg-amberMild dark:bg-amberStrong rounded-md p-4 my-6">
       <View className="flex flex-row items-center">
         <View className="w-[50px] h-[50px] rounded-xl overflow-hidden">
           <Image

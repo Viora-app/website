@@ -1,4 +1,4 @@
-import type {ImageData, ImageFormats, Project} from '../Projects/types';
+import type {ImageData, ImageFormats, Project, ProjectStatus} from '../Projects/types';
 import type {FileEvent} from '../Profile/types';
 import type {FetchStatus} from '../../config/types';
 
@@ -52,9 +52,23 @@ export interface EditableImageProps {
   onAdd: () => Promise<void>;
 }
 
+export interface GalleryReadableProps {
+  images: ImageData[];
+  id: string;
+}
+
+export interface GalleryEditableProps {
+  images: ImageData[];
+  id: string;
+  refresh: () => Promise<void>;
+}
+
 export interface GalleryProps {
   images: ImageData[];
   id: string;
+  ownerId: number;
+  projectStatus: ProjectStatus;
+  refresh: () => Promise<void>;
 }
 
 export interface ArtistShareProp {

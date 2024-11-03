@@ -33,21 +33,8 @@ export interface FundingProgressProps {
   hardGoal: number;
 }
 
-export interface ImageItemProps {
-  index: number;
-  image: FileEvent;
-  disabled: boolean;
-  onRemove: (index: number) => Promise<void>;
-  onAdd: () => Promise<void>;
-}
-
-export interface GalleryProps {
-  images: ImageData[];
-  id: string;
-  refresh: () => Promise<void>;
-}
-
 export interface ArtistShareProp {
+  id: number;
   attributes: {
     formats?: ImageFormats;
     first_name: string;

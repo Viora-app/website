@@ -3,7 +3,7 @@ import {View, Image, TouchableOpacity} from '../Polyfills';
 import {useRouter} from 'next/navigation';
 
 import {getPreferredSize} from './utils';
-import {GalleryProps, ReadableImageProps} from './types';
+import {GalleryReadableProps, ReadableImageProps} from './types';
 import {Routes} from '../../config/routes';
 
 const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
@@ -32,7 +32,7 @@ const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
   );
 };
 
-const Readable: FC<GalleryProps> = ({images = []}) => {
+const Readable: FC<GalleryReadableProps> = ({images = []}) => {
   const formatImages = () => {
     return Array(5)
       .fill(null)

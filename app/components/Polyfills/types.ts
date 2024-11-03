@@ -27,6 +27,7 @@ export interface LinkProps {
 export interface TextInputProps {
   className?: string;
   keyboardType?: string;
+  multiline?: boolean;
   onChangeText: (e: unknown) => void;
 }
 

@@ -10,19 +10,17 @@ const Input = ({
   placeholder,
   inputMode = 'text',
   multiline = false,
-}: InputProps) => {
-  return (
-    <View className="w-full">
-      <Span>{placeholder}</Span>
-      <TextInput
-        onChangeText={onChange(name)}
-        value={value}
-        multiline={multiline}
-        placeholderTextColor="#ccc"
-        inputMode={inputMode}
-      />
-    </View>
-  );
-};
+}: InputProps) => (
+  <View className="w-full">
+    <Span>{placeholder}</Span>
+    <TextInput
+      onChangeText={onChange(name)}
+      value={value}
+      multiline={multiline}
+      placeholderTextColor="#ccc"
+      inputMode={inputMode}
+    />
+  </View>
+);
 
 export default Input;

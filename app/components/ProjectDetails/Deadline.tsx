@@ -6,7 +6,7 @@ import icon from '../../../public/images/deatlineicon.png';
 
 const Deadline: FC<DeadlineProps> = ({date}) => {
   return (
-    <View className="w-full flex flex-row items-center bg-skyWeak rounded-md p-4 my-6">
+    <View className="w-full flex flex-row items-center bg-skyWeak dark:bg-skyStrong rounded-md p-4 my-6">
       <Image
         alt="Deadline icon"
         source={icon}
@@ -15,8 +15,8 @@ const Deadline: FC<DeadlineProps> = ({date}) => {
         height={40}
       />
       <View className="flex flex-col pl-4">
-        <Span className="!text-primaryMighty">Deadline</Span>
-        <H3 className="!text-primaryMighty !font-normal">{date}</H3>
+        <Span className="!text-primaryMighty dark:!text-neutralMighty">Deadline</Span>
+        <H3 className="!text-primaryMighty dark:!text-neutralMighty !font-normal">{date}</H3>
       </View>
     </View>
   );

@@ -73,7 +73,7 @@ export interface ProjectAttrs {
 }
 
 export interface Project {
-  id: string;
+  id: number;
   attributes: ProjectAttrs & {
     current_funding: number;
     reaction_count: number;

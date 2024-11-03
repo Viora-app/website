@@ -8,9 +8,9 @@ import {usePatchData, useDeleteData} from '../../hooks/useQuery';
 import {useModal} from '../../hooks/useModal';
 import {Icon} from '../Elements';
 import {getPreferredSize} from './utils';
-import type {GalleryProps, ImageItemProps} from '../ProjectDetails/types';
+import type {GalleryEditableProps, EditableImageProps} from './types';
 
-const ImageItem: FC<ImageItemProps> = ({
+const ImageItem: FC<EditableImageProps> = ({
   index,
   image,
   disabled,
@@ -40,8 +40,9 @@ const ImageItem: FC<ImageItemProps> = ({
       htmlFor={`image-item-${index}`}
       >
         <input
+          className="text-[0px] invisible absolute"
           disabled={disabled}
-          id="image-selector"
+          id={`image-item-${index}`}
           type="file"
           accept="image/*"
           onChange={onPress}
@@ -49,8 +50,8 @@ const ImageItem: FC<ImageItemProps> = ({
       <Image
         alt="Some Photo"
         source={img}
-        width={100}
-        height={100}
+        width={index === 0 ? 250 : 100}
+        height={index === 0 ? 250 : 100}
         className={typeof img === 'string' ? 'w-full h-full object-cover' : ''}
       />
       <View>
@@ -60,7 +61,7 @@ const ImageItem: FC<ImageItemProps> = ({
   );
 };
 
-const Editable: FC<GalleryProps> = ({images = [], id, refresh}) => {
+const Editable: FC<GalleryEditableProps> = ({images = [], id, refresh}) => {
   const {show, hide} = useModal();
   const patch = usePatchData(ENDPOINTS.PROJECTS);
   const del = useDeleteData(ENDPOINTS.FILES);

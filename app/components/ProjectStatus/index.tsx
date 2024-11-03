@@ -1,4 +1,3 @@
-import {Image, Text, View} from '../Polyfills';
 import React, {FC} from 'react';
 
 import {finalMessages} from '../../utils/modal';
@@ -8,6 +7,7 @@ import {FetchStatus} from '../../config/types';
 import {usePatchData} from '../../hooks/useQuery';
 import EditProjectForm from '../Forms/Project/Edit';
 import {useModal} from '../../hooks/useModal';
+import {Image, Text, View, H3, H4, Span} from '../Polyfills';
 import CreateContributionTierForm from '../Forms/ContributionTier/Create';
 import PostExclusiveContentsForm from '../Forms/ExclusiveContents/create';
 import Contribute from '../Forms/Project/Contribute';
@@ -73,32 +73,35 @@ const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
     });
   };
   return (
-    <View>
-      <Text>
-        Now What
-      </Text>
-      <Text>
-        You Can edit your project if needed, and once ready,publish it.
-      </Text>
-      <Text>
-        You can add up to 5 contribution tiers.
-      </Text>
-      <Button
-        title="Add contribution tier"
-        theme={ButtonThemes.secondary}
-        onPress={AddContributionTier}
-      />
-      <Button
-        title="Go live"
-        theme={ButtonThemes.secondary}
-        onPress={publish}
-      />
-
-      <Button
-        title="Edit"
-        theme={ButtonThemes.primary}
-        onPress={edit}
-      />
+    <View className="bg-primaryMild rounded-md p-4 mt-4">
+      <H3 className="text-primaryMighty !font-normal pb-2">
+        Now What?
+      </H3>
+      <Span className="text-neutralMighty">
+        You Can edit your project if needed, and once ready, publish it.
+      </Span>
+      <View className="w-full pt-2">
+        <Span className="text-neutralMighty !font-medium">
+          You can add up to 5 contribution tiers.
+        </Span>
+      </View>
+      <View className="flex flex-row justify-stretch gap-4 my-4">
+        <Button
+          title="Add contribution tier"
+          theme={ButtonThemes.secondary}
+          onPress={AddContributionTier}
+        />
+        <Button
+          title="Edit"
+          theme={ButtonThemes.secondary}
+          onPress={edit}
+        />
+        <Button
+          title="Go live"
+          theme={ButtonThemes.primary}
+          onPress={publish}
+        />
+      </View>
     </View>
   );
 };
@@ -119,28 +122,32 @@ const SupportProject: FC<FullDataComponentProps> = ({
   };
 
   return (
-    <View>
-      <Text>
+    <View className="bg-skyWeak p-4 rounded-md mt-6">
+      <H3 className="text-primaryStrong !font-normal pb-2">
         Your time to shine
-      </Text>
-      <Text>
+      </H3>
+      <Span className="text-neutralSteady">
         You can now contribute in this project and become a part of it.
-      </Text>
-      <Text>
-        Every small contribution matters.
-      </Text>
-      <Button
-        title="Support"
-        theme={ButtonThemes.secondary}
-        onPress={support}
-      />
-      <Button
-        title="Share"
-        theme={ButtonThemes.secondary}
-        onPress={() =>
-          shareProjectInvitation(account, project, artist && artist.attributes)
-        }
-      />
+      </Span>
+      <View className="w-full pt-2 pb-4">
+        <Span className="text-neutralSteady !font-medium">
+          Every small contribution matters.
+        </Span>
+      </View>
+      <View className="flex flex-row justify-stretch gap-4">
+        <Button
+          title="Support"
+          theme={ButtonThemes.secondary}
+          onPress={support}
+        />
+        <Button
+          title="Share"
+          theme={ButtonThemes.secondary}
+          onPress={() =>
+            shareProjectInvitation(account, project, artist && artist.attributes)
+          }
+        />
+      </View>
     </View>
   );
 };
@@ -151,16 +158,18 @@ const PublishedProjectOwner: FC<PublishedProjectOwnerProps> = ({
   artist,
 }) => {
   return (
-    <View>
-      <Text>
+    <View className="bg-skyWeak p-4 rounded-md mt-6">
+      <H3 className="text-primaryStrong !font-normal pb-2">
         You can win this
-      </Text>
-      <Text>
-        Your project is published.
-      </Text>
-      <Text>
-        Reach out to your fans in your socials and ask them to support you.
-      </Text>
+      </H3>
+      <Span className="text-neutralSteady">
+        Your project is now published.
+      </Span>
+      <View className="w-full pt-2 pb-4">
+        <Span className="text-neutralSteady !font-medium">
+            Reach out to your fans in your socials and ask them to support you.
+        </Span>
+      </View>
       <Button
         title="Share"
         theme={ButtonThemes.secondary}
@@ -205,55 +214,53 @@ const SuccessfulProjectOwner: FC<SuccessfulProjectOwnerProps> = ({
   };
 
   return (
-    <View>
-      <Text>Successful</Text>
-      <Text>
+    <View className="bg-skyWeak p-4 rounded-md mt-6">
+      <H3 className="text-primaryStrong !font-normal pb-2">Successful</H3>
+      <Span className="text-neutralSteady">
         Your project has successfully raised funds. Now is the time to shine!
-      </Text>
-      <Text>
-        Once ready, you can post updates to deliver your promise.
-      </Text>
-      <Image alt="" source={successImage} />
-      <Button
-        title="Post exclusive content"
-        theme={ButtonThemes.secondary}
-        onPress={postExclusiveContent}
-      />
-      <Button
-        title="Withdraw"
-        theme={ButtonThemes.secondary}
-        onPress={withdraw}
-      />
+      </Span>
+      <View className="w-full pt-2 pb-4">
+        <Span className="text-neutralSteady">
+          Once ready, you can post updates to deliver your promise.
+        </Span>
+      </View>
+      <Image alt="Successful" source={successImage} className="w-[80px] pb-4" />
+      <View className="flex flex-row justify-stretch gap-4">
+        <Button
+          title="Post exclusive content"
+          theme={ButtonThemes.secondary}
+          onPress={postExclusiveContent}
+        />
+        <Button
+          title="Withdraw"
+          theme={ButtonThemes.secondary}
+          onPress={withdraw}
+        />
+      </View>
     </View>
   );
 };
 
-const SuccessfulProjectContributor: FC = () => {
-  return (
-    <View>
-      <Text>
-        Successful
-      </Text>
-      <Text>
-        This project has successfully raised funds. Once ready, The artist will
-        publish updates to deliver your rewards.
-      </Text>
-      <Image alt="" source={successImage} />
-    </View>
-  );
-};
+const SuccessfulProjectContributor: FC = () => (
+  <View className="bg-skyWeak p-4 rounded-md mt-6">
+    <H3 className="text-primaryStrong !font-normal pb-2">Successful</H3>
+    <Span className="text-neutralSteady">
+      This project has successfully raised funds. Once ready, The artist will
+      publish updates to deliver your rewards.
+    </Span>
+    <Image alt="Successful" source={successImage} className="w-[80px] py-4" />
+  </View>
+);
 
-const FailingProjectOwner: FC = () => {
-  return (
-    <View>
-      <Text>We are Sorry</Text>
-      <Text>
-        This project did not raise the required funds.
-      </Text>
-      <Image alt="" source={errorImage} />
-    </View>
-  );
-};
+const FailingProjectOwner: FC = () => (
+  <View className="bg-amberWeak p-4 rounded-md mt-6">
+    <H3 className="text-primaryStrong !font-normal pb-2">We are Sorry</H3>
+    <Span className="text-neutralSteady">
+      This project did not raise the required funds.
+    </Span>
+    <Image alt="Failed" source={errorImage} className="w-[60px] py-4" />
+  </View>
+);
 
 export {
   EditProject,

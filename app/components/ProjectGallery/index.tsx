@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {FC} from 'react';
 
 import {ProjectStatus} from '../Projects/types';
 import {useAccount} from '../../hooks/useAccount';
 import Editable from './Editable';
 import Readable from './Readable';
+import {GalleryProps} from './types';
 
-const Gallery = ({id, images, ownerId, projectStatus, refresh}) => {
+const Gallery: FC<GalleryProps> = ({id, images, ownerId, projectStatus, refresh}) => {
   const {account} = useAccount();
 
   if (ownerId === account?.id && projectStatus === ProjectStatus.Draft) {

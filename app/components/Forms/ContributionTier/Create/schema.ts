@@ -3,5 +3,8 @@ export const schema = {
   description: (value: unknown) =>
     typeof value === 'string' && value.length >= 10 && value.length < 100,
   rewards: (value: unknown) => typeof value === 'string' && value.length >= 140,
-  amount: (value: unknown) => typeof value === 'number' && value > 0,
+  amount: (value: unknown) => (value: unknown) => {
+    const parsedValue = parseFloat(value);
+    return !isNaN(parsedValue) && isFinite(parsedValue);
+  },
 };

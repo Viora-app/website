@@ -4,17 +4,10 @@ import React, {FC} from 'react';
 
 import {truncateAddress} from '../../utils/formatters';
 import {Themes} from '../../context/presetsContext/types';
-import lightCarrot from '../../../public/images/lightcarrot.png';
-import darkCarrot from '../../../public/images/darkcarrot.png';
 import {usePresets} from '../../hooks/usePresets';
 import {useModal} from '../../hooks/useModal';
 import {useAccount} from '../../hooks/useAccount';
-import {View, Image, H1, H2, H4, Span, TouchableHighlight} from '../Polyfills';
-
-const carrots = {
-  [Themes.light]: lightCarrot,
-  [Themes.dark]: darkCarrot,
-};
+import {View, H1, H2, H4, Span, TouchableHighlight} from '../Polyfills';
 
 const Wallet: FC = () => {
   const {show} = useModal();
@@ -35,7 +28,9 @@ const Wallet: FC = () => {
 
   return (
     <View className="w-full bg-neutralPale rounded-3xl relative mt-14 pb-6">
-      <Image alt="Carrot" source={carrots[presets.theme]} className="relative mx-auto top-[-44px]" />
+      <svg width="98" height="44" viewBox="0 0 49 22" fill={presets.theme === 'dark' ? '#111111' : '#CCCCCC'} xmlns="http://www.w3.org/2000/svg" className="relative mx-auto top-[-44px] ">
+        <path d="M49 22C38 22 38.031 22 24.5 22C10.969 22 11 22 0 22C24.5 22 10.969 0 24.5 0C38.031 0 26.2093 22 49 22Z" />
+      </svg>
       <View>
         {fullName.length ? (
           <View className="w-full text-center mb-6">
