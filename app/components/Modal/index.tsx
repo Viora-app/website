@@ -51,7 +51,7 @@ const ModalHolder = ({data, hide, isVisible}: ModalProps) => {
       parentSelector={() => document.getElementById('app-main')}
       className="w-full h-full absolute bottom-[0px] right-0 flex flex-row justify-center items-end z-1000"
       isOpen={isVisible}>
-      <View className="w-full bg-neutralPure rounded-xl p-6 border border-neutralPale box-border">
+      <View className="w-full max-h-full overflow-y-scroll bg-neutralPure rounded-xl p-6 border border-neutralPale box-border">
         <View className="w-full h-full relative">
           <SectionHeader
             title={data?.title as string}
