@@ -26,7 +26,12 @@ const ProjectDetails: FC<ProjectDetailsProps> = ({id}) => {
     `${ENDPOINTS.PROJECTS}/${id}`,
     projectParams,
   );
-  const projectData = data?.data ?? {attributes: {}};
+  let projectData = {attributes: {}};
+  if (Array.isArray(data?.data)) {
+    projectData = data?.data[0];
+  } else if (data?.data?.attributes) {
+    projectData = data?.data;
+  }
   const artistParams = {
     include: {
       avatar: ['*'],

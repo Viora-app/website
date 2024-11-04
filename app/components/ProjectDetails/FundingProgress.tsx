@@ -14,7 +14,7 @@ const FundingProgress: FC<FundingProgressProps> = ({
   const successPercentage = Math.floor((100 * currentFunding) / softGoal);
 
   return (
-    <View className="bg-neutralStrong dark:bg-neutralLight rounded-md p-4">
+    <View className="bg-neutralStrong dark:bg-neutralPale rounded-md p-4">
       <View className="flex flex-row justify-between">
         <View className="flex flex-col items-start justify-end">
           <Span className="text-neutralLight dark:text-neutralSteady pb-4">Progress</Span>
@@ -38,7 +38,7 @@ const FundingProgress: FC<FundingProgressProps> = ({
         </View>
       </View>
 
-      <View className="w-full bg-warnStrong h-[80px] rounded-md relative overflow-hidden mt-4">
+      <View className="w-full bg-warnStrong h-[40px] rounded-md relative overflow-hidden mt-4">
         <View className="h-full absolute left-0 top-0 bg-gradient-to-r from-warnStrong to-warnMild rounded-lg" style={{ width: `${softCapPercentage}%` }} />
         <View className="h-full absolute left-0 top-0 bg-assureStrong bg-stripes bg-cover bg-center rounded-lg" style={{ width: `${fundingPercentage}%` }} />
       </View>
