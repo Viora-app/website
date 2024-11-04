@@ -18,17 +18,11 @@ const IconButton = ({
 }: IconButtonProps) => {
   return (
     <TouchableWithoutFeedback onPress={onPress} disabled={disabled} className={className}>
-      <View>
-        <Icon
-          name={iconName}
-          size={iconSize}
-          color={iconColor}
-        />
-        <TouchableHighlight
-          onPress={onPress}>
-          <Text>.</Text>
-        </TouchableHighlight>
-      </View>
+      <Icon
+        name={iconName}
+        size={iconSize}
+        color={iconColor}
+      />
     </TouchableWithoutFeedback>
   );
 };

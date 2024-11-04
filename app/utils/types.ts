@@ -1,4 +1,5 @@
 import {FetchStatus} from '../config/types';
+import {StaticImageData} from 'next/image';
 
 export type EndpointParams = Partial<
   Record<
@@ -59,6 +60,12 @@ export type FlattenedResponse = {
 export interface Feedback {
   status: FetchStatus;
   message: string;
+}
+
+export interface FeedbackFnReturn {
+  title: string;
+  description: string;
+  image?: string | StaticImageData;
 }
 
 export type MapObjectConfig<Input, Output> =

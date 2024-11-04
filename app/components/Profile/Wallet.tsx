@@ -46,10 +46,10 @@ const Wallet: FC = () => {
           <Span className="text-neutralSteady font-light">{`${
             process.env.NEXT_PUBLIC_NETWORK_NAME || ''
           } Wallet Address`}</Span>
-          <TouchableHighlight onPress={onPress}>
+          <TouchableHighlight onPress={onPress} className="w-full">
             <H4
               className="font-light">
-              {truncateAddress(account?.address ?? 'asdasdasdasd') ?? 'Loading'}
+              {truncateAddress(account?.address ?? '') ?? 'Loading'}
             </H4>
           </TouchableHighlight>
         </View>

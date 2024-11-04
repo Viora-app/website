@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState, FC} from 'react';
+import React, {useState, FC, useEffect} from 'react';
 import {View, Image} from '../Polyfills';
 
 import {useAccount} from '../../hooks/useAccount';
@@ -16,18 +16,22 @@ const Avatar: FC = () => {
   const {update, account} = useAccount();
   const [isLoading, setIsLoading] = useState(false);
   const {show, hide} = useModal();
-  const image = getSmallestSize(
+  const [image, setImage] = useState(null);
+  const source = getSmallestSize(
     account?.avatar?.formats ?? ({} as ImageFormats),
   );
 
   const onSelectImage = async (file: FileEvent) => {
-    setIsLoading(true);
-    const formData = new FormData();
-    formData.append('files.avatar', {
+    setImage({
       uri: file.uri,
       name: file.name,
       type: file.type,
     });
+  };
+
+  const submit = async () => {
+    setIsLoading(true);
+    const formData = new FormData();
 
     formData.append('data', JSON.stringify({}));
     // @ts-expect-error Form Data type is not properly defined.
@@ -41,16 +45,23 @@ const Avatar: FC = () => {
           : 'Error uploading your avatar',
       }),
       onPrimaryPress: () => {
+        setImage(null);
         setIsLoading(false);
         hide();
       },
     });
   };
 
+  useEffect(() => {
+    if (!isLoading && image) {
+      submit();
+    }
+  }, [isLoading, image]);
+
   return (
     <View className="flex flex-row justify-center">
       <ImagePicker disabled={isLoading} onSelectImage={onSelectImage} className="w-[124px] h-[124px]">
-        <Image alt="Profile picture" source={image} className="w-full relative z-0" />
+        <Image alt="Profile picture" source={source} className="w-full relative z-0" />
         <Icon
           name="feather"
           size={32}

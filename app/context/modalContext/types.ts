@@ -1,4 +1,5 @@
 import {ReactElement} from 'react';
+import {StaticImageData} from 'next/image';
 
 export interface ModalProviderProps {
   children: ReactElement;
@@ -7,7 +8,7 @@ export interface ModalProviderProps {
 export interface ModalContent {
   title: string;
   description: string;
-  image?: string;
+  image?: string | StaticImageData;
   content?: ReactElement;
   onPrimaryPress?: () => void;
   onSecondaryPress?: () => void;
