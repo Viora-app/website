@@ -8,6 +8,7 @@ export interface ButtonProps {
   theme?: ButtonThemes;
   title: string;
   className?: string;
+  type?: 'submit' | 'reset' | 'button' | undefined;
   shadow?: boolean;
   disabled?: boolean;
 }

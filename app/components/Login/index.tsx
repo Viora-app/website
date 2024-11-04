@@ -36,16 +36,13 @@ const Login = () => {
   const {signIn, signUp, account, error} = useAccount();
   const [isNavigating, setIsNavigating] = useState(false);
 
-  const onSubmit = async () => {
-    if (email && password) {
-      await signIn(email, password);
-    }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    signIn(email, password);
   };
 
   const onRegister = async () => {
-    if (email && password) {
-      await signUp(email, password, email);
-    }
+    signUp(email, password, email);
   };
 
   useEffect(() => {
@@ -59,7 +56,7 @@ const Login = () => {
 
   return (
     <SafeArea className="!bg-neutralPure flex flex-col justify-center items-center">
-      <View className="px-6 w-[510px]">
+      <form className="px-6 w-[510px]" onSubmit={onSubmit}>
         <View className="p-6 flex flex-row justify-center items-center">
           <Image alt="App Logo" source={appLogo} />
         </View>
@@ -86,9 +83,9 @@ const Login = () => {
 
         <View className="flex flex-row nowrap gap-6 justify-center items-center">
           <Button
-            onPress={onSubmit}
             title="Sign in"
             disabled={isButtonDisabled}
+            type="submit"
           />
           <Span>Or</Span>
           <Button
@@ -97,7 +94,7 @@ const Login = () => {
             disabled={isButtonDisabled}
           />
         </View>
-      </View>
+      </form>
     </SafeArea>
   );
 };

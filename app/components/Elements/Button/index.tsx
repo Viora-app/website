@@ -7,6 +7,7 @@ const Button = ({
   title,
   disabled,
   theme,
+  type,
   className,
 }: ButtonProps) => {
   const config = {
@@ -22,6 +23,7 @@ const Button = ({
     <TouchableHighlight
       disabled={disabled}
       onPress={onPress}
+      type={type}
       className={`rounded-md min-w-[200px] grow text-center h-[50px] cursor-pointer ${config.wrapper} ${className}`}
     >
       <Span className={`!pb-0 leading-[50px] ${config.text}`}>{title}</Span>

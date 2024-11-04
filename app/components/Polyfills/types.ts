@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import {ReactNode} from 'react';
 
 export interface BaseElementProps {
   children?: ReactNode;
@@ -17,7 +17,7 @@ export interface ImageProps {
 export interface LinkProps {
   to: {
     screen: string;
-    params: Record<string, unknown>
+    params: Record<string, unknown>;
   };
   children: ReactNode;
   className?: string;
@@ -33,6 +33,7 @@ export interface TextInputProps {
 
 export interface TouchableProps {
   className?: string;
+  type?: 'submit' | 'reset' | 'button' | undefined;
   onPress?: (e: unknown) => void;
   children?: ReactNode;
   disabled?: boolean;
