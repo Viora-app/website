@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
-import NextImage from 'next/image';
+import React, {FC} from 'react';
 
-import { ImageProps } from './types';
+import {ImageProps} from './types';
 
 const Image: FC<ImageProps> = ({source, alt, className, ...rest}) => (
-  <NextImage
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
     src={source}
     alt={alt || 'Image'}
     className={`text-[0px] ${className}`}

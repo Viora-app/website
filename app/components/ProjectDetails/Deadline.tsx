@@ -1,15 +1,16 @@
 import React, {FC} from 'react';
+import NextImage from 'next/image';
 
 import {DeadlineProps} from './types';
-import {View, H3, Span, Image} from '../Polyfills';
+import {View, H3, Span} from '../Polyfills';
 import icon from '../../../public/images/deatlineicon.png';
 
 const Deadline: FC<DeadlineProps> = ({date}) => {
   return (
     <View className="w-full flex flex-row items-center bg-skyWeak dark:bg-skyStrong rounded-md p-4 my-6">
-      <Image
+      <NextImage
         alt="Deadline icon"
-        source={icon}
+        src={icon}
         className="w-[40px] h-[40px]"
         width={40}
         height={40}

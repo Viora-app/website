@@ -1,5 +1,7 @@
+import {ImageFormats} from '../Projects/types';
+
 export interface AvatarProps {
   className?: string;
-  id?: number;
+  data: ImageFormats;
   size?: number;
 }

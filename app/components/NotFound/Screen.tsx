@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
+import NextImage from 'next/image';
 
-import {H4, View, Image, Link} from '../Polyfills';
+import {H4, View, Link} from '../Polyfills';
 import { Button, ButtonThemes } from '../Elements';
 import {Routes} from '../../config/routes';
 import {ScreenNotFoundProps} from './types';
@@ -12,7 +13,7 @@ const ScreenNotFound: FC<ScreenNotFoundProps> = ({redirectTo}) => {
   return (
     <View className="w-full h-full flex flex-row justify-center items-center">
       <View className="flex flex-col justify-center items-center">
-        <Image alt="Not Found" source={cactus} width={60} />
+        <NextImage alt="Not Found" src={cactus} width={60} />
         <H4 className="mb-6 mt-4 text-neutralMighty">That&apos;s gone!</H4>
 
         {redirectTo !== false && (

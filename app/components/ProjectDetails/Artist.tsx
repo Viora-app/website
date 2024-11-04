@@ -46,9 +46,9 @@ const Artist: FC<ArtistProps> = ({data}) => {
         <View className="w-[50px] h-[50px] rounded-xl overflow-hidden">
           <Image
             alt="Artist photo"
-            source={image}
-            width={100}
-            height={100}
+            source={image?.src}
+            width={image?.width}
+            height={image?.height}
             className="w-[50px] h-[50px]"
           />
         </View>

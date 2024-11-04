@@ -7,7 +7,7 @@ import {finalMessages} from '../../utils/modal';
 import {usePatchData, useDeleteData} from '../../hooks/useQuery';
 import {useModal} from '../../hooks/useModal';
 import {Icon} from '../Elements';
-import {getPreferredSize} from './utils';
+import {getLargestSize} from '@/app/utils/image';
 import type {GalleryEditableProps, EditableImageProps} from './types';
 
 const ImageItem: FC<EditableImageProps> = ({
@@ -33,7 +33,7 @@ const ImageItem: FC<EditableImageProps> = ({
     }
   };
 
-  const img = getPreferredSize(image?.attributes.formats ?? {}, index);
+  const img = getLargestSize(image?.attributes.formats ?? {});
   return (
     <label
       className={`${index === 0 ? 'flex-[4] h-full' : 'flex-1'} bg-[#FFEEFF] relative overflow-hidden ${typeof img === 'string' ? '' : 'flex flex-row justify-center items-center'}`}
@@ -49,10 +49,10 @@ const ImageItem: FC<EditableImageProps> = ({
         />
       <Image
         alt="Some Photo"
-        source={img}
-        width={index === 0 ? 250 : 100}
-        height={index === 0 ? 250 : 100}
-        className={typeof img === 'string' ? 'w-full h-full object-cover' : ''}
+        source={img?.src}
+        width={img?.width}
+        height={img?.height}
+        className="min-w-full min-h-full object-cover"
       />
       <View>
         {image && <Icon name="cross" size={20} />}

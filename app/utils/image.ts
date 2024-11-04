@@ -14,9 +14,13 @@ const baseURl = `${process.env.NEXT_PUBLIC_IMAGE_PROTOCOL}://${process.env.NEXT_
 export const getSmallestSize = (obj: ImageFormats) => {
   for (const size of priorities) {
     if (obj.hasOwnProperty(size)) {
-      return `${baseURl}${obj[size].url}`;
+      return {
+        src: `${baseURl}${obj[size].url}`,
+        width: obj[size].width,
+        height: obj[size].height,
+      };
     } else {
-      return thumbnailPlaceholder;
+      return {src: thumbnailPlaceholder};
     }
   }
 };
@@ -26,9 +30,13 @@ export const getLargestSize = (obj: ImageFormats) => {
 
   for (const size of reversePriorities) {
     if (obj.hasOwnProperty(size)) {
-      return `${baseURl}${obj[size].url}`;
+      return {
+        src: `${baseURl}${obj[size].url}`,
+        width: obj[size].width,
+        height: obj[size].height,
+      };
     } else {
-      return largePlaceholder;
+      return {src: largePlaceholder};
     }
   }
 };

@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {View, Image, TouchableOpacity} from '../Polyfills';
 import {useRouter} from 'next/navigation';
 
-import {getPreferredSize} from './utils';
+import { getLargestSize } from '@/app/utils/image';
 import {GalleryReadableProps, ReadableImageProps} from './types';
 import {Routes} from '../../config/routes';
 
@@ -14,7 +14,7 @@ const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
     }
   };
 
-  const img = getPreferredSize(image?.attributes.formats, index);
+  const img = getLargestSize(image?.attributes.formats ?? {});
   return (
     <TouchableOpacity
       disabled={typeof img === 'number'}
@@ -23,10 +23,10 @@ const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
       >
       <Image
         alt="Gallery photo"
-        source={img}
-        width={400}
-        height={400}
-        className={typeof img === 'string' ? 'w-full h-full object-cover' : ''}
+        source={img?.src}
+        width={img?.width}
+        height={img?.height}
+        className="min-w-full min-h-full object-cover"
       />
     </TouchableOpacity>
   );

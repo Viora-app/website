@@ -18,18 +18,26 @@ export interface ImageFormats {
   [ImageSizes.Large]: {
     url: string;
     name: string;
+    width: number;
+    height: number;
   };
   [ImageSizes.Medium]: {
     url: string;
     name: string;
+    width: number;
+    height: number;
   };
   [ImageSizes.Small]: {
     url: string;
     name: string;
+    width: number;
+    height: number;
   };
   [ImageSizes.Thumbnail]: {
     url: string;
     name: string;
+    width: number;
+    height: number;
   };
 }
 
