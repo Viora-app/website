@@ -2,9 +2,10 @@
 
 import React, {useEffect, useRef, useState} from 'react';
 import Modal from 'react-modal';
+import NextImage from 'next/image';
 
 import {IconButton} from '../Elements';
-import {View, Image} from '../Polyfills';
+import {View} from '../Polyfills';
 import {Button} from '../Elements';
 import {ModalProps} from './types';
 import SectionHeader from '../SectionHeader';
@@ -64,7 +65,7 @@ const ModalHolder = ({data, hide, isVisible}: ModalProps) => {
             iconColor="#A687AB"
             className="absolute right-0 top-0"
           />
-          {data?.image && <Image alt="" source={data?.image} />}
+          {data?.image && <NextImage alt={data?.title} src={data?.image} />}
           {data?.content}
           <View>
             {typeof data?.onSecondaryPress === 'function' && (

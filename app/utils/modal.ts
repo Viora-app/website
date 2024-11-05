@@ -1,6 +1,6 @@
 import {FetchStatus} from '../config/types';
-import successImage from '../../public/images/success.png';
-import errorImage from '../../public/images/error.png';
+import successImage from '../../public/images/success.svg';
+import errorImage from '../../public/images/error.svg';
 import {Feedback, FeedbackFnReturn} from './types';
 
 export const finalMessages = (feedback: Feedback):FeedbackFnReturn  => {
