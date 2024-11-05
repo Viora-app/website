@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import NextImage from 'next/image';
 
 import {H4, View, Link} from '../Polyfills';
-import { Button, ButtonThemes } from '../Elements';
+import {Button, ButtonThemes} from '../Elements';
 import {Routes} from '../../config/routes';
 import {ScreenNotFoundProps} from './types';
 import cactus from '../../../public/images/not-found.svg';

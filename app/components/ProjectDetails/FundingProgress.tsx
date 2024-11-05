@@ -39,8 +39,8 @@ const FundingProgress: FC<FundingProgressProps> = ({
       </View>
 
       <View className="w-full bg-warnStrong h-[40px] rounded-md relative overflow-hidden mt-4">
-        <View className="h-full absolute left-0 top-0 bg-gradient-to-r from-warnStrong to-warnMild rounded-lg" style={{ width: `${softCapPercentage}%` }} />
-        <View className="h-full absolute left-0 top-0 bg-assureStrong bg-stripes bg-cover bg-center rounded-lg" style={{ width: `${fundingPercentage}%` }} />
+        <View className="h-full absolute left-0 top-0 bg-gradient-to-r from-warnStrong to-warnMild rounded-lg" style={{width: `${softCapPercentage}%`}} />
+        <View className="h-full absolute left-0 top-0 bg-assureStrong bg-stripes bg-cover bg-center rounded-lg" style={{width: `${fundingPercentage}%`}} />
       </View>
     </View>
   );

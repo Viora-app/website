@@ -32,14 +32,14 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
         const jwt = Cookies.get('jwt');
         if (storedAccount) {
           setAccount({...JSON.parse(storedAccount), jwt});
-        }
-      } catch (e) {
+       }
+     } catch (e) {
         console.error('Failed to load stored credentials:', e);
-      }
-    };
+     }
+   };
 
     loadStoredAccount();
-  }, []);
+ }, []);
 
   const fetchAndMergeProfile = async (jwt: string) => {
     try {
@@ -58,19 +58,19 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
       setAccount((prevAccount: Account | null) => ({
         ...((prevAccount as Account) ?? {}),
         ...(profile ?? {}),
-      }));
+     }));
       await localStorage.setItem(
         USER_CREDENTIALS,
         JSON.stringify({
           ...account,
           ...profile,
-        }),
+       }),
       );
-    } catch (err) {
+   } catch (err) {
       console.log(err);
       setError('Failed to fetch profile');
-    }
-  };
+   }
+ };
 
   const signIn = async (email: string, password: string) => {
     setLoading(true);
@@ -80,19 +80,19 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
       const response = await authenticate(email, password);
       const {jwt, user} = response;
       await localStorage.setItem(USER_CREDENTIALS, JSON.stringify(user));
-      Cookies.set('jwt', jwt, { expires: 7 });
+      Cookies.set('jwt', jwt, {expires: 7});
 
       setAccount({jwt, ...user});
       await fetchAndMergeProfile(jwt);
-    } catch (err: unknown) {
+   } catch (err: unknown) {
       const message = err.response
         ? err.response.data.error.message
         : err?.message;
       setError(message ?? 'Failed to sign in.');
-    } finally {
+   } finally {
       setLoading(false);
-    }
-  };
+   }
+ };
 
   const signUp = async (email: string, password: string, username: string) => {
     setLoading(true);
@@ -102,19 +102,19 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
       const response = await register(email, password, username);
       const {jwt, user} = response;
       await localStorage.setItem(USER_CREDENTIALS, JSON.stringify(user));
-      Cookies.set('jwt', jwt, { expires: 7 });
+      Cookies.set('jwt', jwt, {expires: 7});
 
       setAccount({jwt, ...user});
       await fetchAndMergeProfile(jwt);
-    } catch (err: unknown) {
+   } catch (err: unknown) {
       const message = err.response
         ? err.response.data.error.message
         : err?.message;
       setError(message ?? 'Failed to sign up.');
-    } finally {
+   } finally {
       setLoading(false);
-    }
-  };
+   }
+ };
 
   const signOut = async () => {
     setLoading(true);
@@ -125,13 +125,13 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
       await localStorage.removeItem(USER_CREDENTIALS);
       Cookies.remove('jwt');
       setAccount(null);
-    } catch (err) {
+   } catch (err) {
       console.log(err);
       setError('Failed to sign out.');
-    } finally {
+   } finally {
       setLoading(false);
-    }
-  };
+   }
+ };
 
   const update = async (data: Partial<ProfileMerged>) => {
     setLoading(true);
@@ -143,15 +143,15 @@ const AccountProvider = ({children}: {children: ReactNode}) => {
         account?.jwt,
       );
       return {success: !!response.data};
-    } catch (err) {
+   } catch (err) {
       console.log(err);
       setError('Failed to update the profile.');
       return {success: false};
-    } finally {
+   } finally {
       setLoading(false);
       await fetchAndMergeProfile(account?.jwt ?? '');
-    }
-  };
+   }
+ };
 
   return (
     <AccountContext.Provider

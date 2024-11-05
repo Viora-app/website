@@ -2,7 +2,7 @@ import React from 'react';
 
 import {View, Image} from '../Polyfills';
 import type {AvatarProps} from './types';
-import { getSmallestSize } from '@/app/utils/image';
+import {getSmallestSize} from '@/app/utils/image';
 
 const Avatar = ({className, data, size = 124}: AvatarProps) => {
   const source = getSmallestSize(data);

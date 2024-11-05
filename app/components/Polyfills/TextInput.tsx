@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 
-import { TextInputProps } from './types';
+import {TextInputProps} from './types';
 
 const TextInput: FC<TextInputProps> = ({
   onChangeText,
@@ -10,7 +10,7 @@ const TextInput: FC<TextInputProps> = ({
 }) => {
   const onChange = (e) => {
     onChangeText(e.target.value)
-  };
+ };
 
   if (multiline) {
     return (
@@ -20,7 +20,7 @@ const TextInput: FC<TextInputProps> = ({
         {...(rest || {})}
       />
     );
-  }
+ }
 
   return (
     <input

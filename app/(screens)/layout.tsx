@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import type { Metadata } from 'next';
+import {ReactNode} from 'react';
+import type {Metadata} from 'next';
 import NextImage from 'next/image';
 
 import Providers from '../context';

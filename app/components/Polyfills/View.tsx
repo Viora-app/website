@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 
-import { BaseElementProps } from './types';
+import {BaseElementProps} from './types';
 
-const View: FC<BaseElementProps> = ({ children, ...rest }) => (
+const View: FC<BaseElementProps> = ({children, ...rest}) => (
   <div {...(rest || {})}>{children}</div>
 );
 

@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation';
+import {redirect} from 'next/navigation';
 
 export * from './Text';
 export {default as View} from './View';
@@ -18,7 +18,7 @@ export const Dimensions = {
   get: () => ({
     height: '800px',
     width: '600px',
-  }),
+ }),
 };
 
 export interface StyleProp<Type> {

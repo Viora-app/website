@@ -18,8 +18,8 @@ const Project: FC<ContentProps> = ({item}) => {
       <LinkToProject name={project.name} id={project.id} />
       <Artist data={owner} />
       <View className="mt-2">
-        { title && <H4 className="pt-4 pb-2">{title}</H4> }
-        {description && <Span className="text-neutralStrong font-light">{description}</Span> }
+        {title && <H4 className="pt-4 pb-2">{title}</H4>}
+        {description && <Span className="text-neutralStrong font-light">{description}</Span>}
       </View>
       <Meta reactionCount={reaction_count} type={type} />
     </View>

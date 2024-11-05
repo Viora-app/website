@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {View, Image, TouchableOpacity} from '../Polyfills';
 import {useRouter} from 'next/navigation';
 
-import { getLargestSize } from '@/app/utils/image';
+import {getLargestSize} from '@/app/utils/image';
 import {GalleryReadableProps, ReadableImageProps} from './types';
 import {Routes} from '../../config/routes';
 
@@ -11,8 +11,8 @@ const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
   const onPress = params => {
     if (params.uri) {
       navigate(Routes.Picture, params);
-    }
-  };
+   }
+ };
 
   const img = getLargestSize(image?.attributes.formats ?? {});
   return (
@@ -37,7 +37,7 @@ const Readable: FC<GalleryReadableProps> = ({images = []}) => {
     return Array(5)
       .fill(null)
       .map((_, index) => images[index] || null);
-  };
+ };
 
   return (
     <View className="p-5">

@@ -4,7 +4,7 @@ import {Span, H4, View, Link} from '../Polyfills';
 import {ProjectStatus, type ProjectProps} from './types';
 import Artist from '../Artist';
 import Meta from './Meta';
-import { Routes } from '@/app/config/routes';
+import {Routes} from '@/app/config/routes';
 
 const Project: FC<ProjectProps> = ({item}) => {
   const {id, name, summary, owner, reaction_count, type} = item;

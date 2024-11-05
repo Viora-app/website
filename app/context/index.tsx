@@ -7,7 +7,7 @@ import ModalProvider from './modalContext/ModalContextProvider';
 import PresetsProvider from './presetsContext/PresetsContextProvider';
 
 
-const Providers = ({ children }) => (
+const Providers = ({children}) => (
   <PresetsProvider>
     <QueryClientProvider client={queryClient}>
       <AccountProvider>

@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 
-import { BaseElementProps } from './types';
+import {BaseElementProps} from './types';
 
 export const Text: FC<BaseElementProps> = ({children, ...rest}) => (
   <span {...(rest || {})}>{children}</span>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, ScrollView, Dimensions} from '../../../Polyfills';
+import {View, ScrollView} from '../../../Polyfills';
 
 import {useModal} from '../../../../hooks/useModal';
 import {validateForm} from '../../../../utils/validators';
@@ -17,31 +17,28 @@ const CreateContributionTierForm = ({id}: ContributionTier) => {
     description: '',
     rewards: '',
     amount: 0,
-  });
+ });
   const {show} = useModal();
-  const maxHeight = Dimensions.get('window').height * 0.6;
-
   const onSubmit = async () => {
-    // Keyboard.dismiss();
     show({
       title: 'Looking good!',
       description: '',
       content: <CreateContributionTierReview data={data} project={id} />,
-    });
-  };
+   });
+ };
 
   const onChange = (fieldName: string) => (value: string) => {
     setData({
       ...data,
       [fieldName]: value,
-    });
-  };
+   });
+ };
 
   const validity = validateForm(schema, data);
 
   return (
     <View>
-      <ScrollView style={{maxHeight}}>
+      <ScrollView>
         <Input
           placeholder="Name"
           onChange={onChange}
