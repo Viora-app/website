@@ -3,7 +3,7 @@ import NextImage from 'next/image';
 
 import {DeadlineProps} from './types';
 import {View, H3, Span} from '@/app/components/Polyfills';
-import icon from '../../../public/images/deatlineicon.png';
+import icon from '@/public/images/deatlineicon.png';
 
 const Deadline: FC<DeadlineProps> = ({date}) => {
   return (

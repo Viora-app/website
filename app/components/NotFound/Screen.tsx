@@ -5,7 +5,7 @@ import {H4, View, Link} from '@/app/components/Polyfills';
 import {Button, ButtonThemes} from '@/app/components/Elements';
 import {Routes} from '@/app/config/routes';
 import {ScreenNotFoundProps} from './types';
-import cactus from '../../../public/images/not-found.svg';
+import cactus from '@/public/images/not-found.svg';
 
 const ScreenNotFound: FC<ScreenNotFoundProps> = ({redirectTo}) => {
   const screen:Routes = (redirectTo && redirectTo in Routes) ? redirectTo : Routes.Home;

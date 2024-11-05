@@ -1,5 +1,5 @@
-import thumbnailPlaceholder from '../../public/images/gallerymini.png';
-import largePlaceholder from '../../public/images/gallerymain.png';
+import thumbnailPlaceholder from '@/public/images/gallerymini.png';
+import largePlaceholder from '@/public/images/gallerymain.png';
 import {ImageFormats, ImageSizes} from '@/app/components/Projects/types';
 
 const priorities = [

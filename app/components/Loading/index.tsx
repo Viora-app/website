@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import NextImage from 'next/image';
 
 import {H4, View} from '@/app/components/Polyfills';
-import loading from '../../../public/images/loading.svg';
+import loading from '@/public/images/loading.svg';
 import {LoadingProps} from './types';
 
 const Loading: FC<LoadingProps> = () => {

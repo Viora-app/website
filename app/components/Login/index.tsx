@@ -8,7 +8,7 @@ import {Routes} from '@/app/config/routes';
 import {Small, H3, Span, View, TextInput} from '@/app/components/Polyfills';
 import {Button, SafeArea} from '@/app/components/Elements';
 import {useAccount} from '@/app/hooks/useAccount';
-import appLogo from '../../../public/images/applogo.png';
+import appLogo from '@/public/images/applogo.png';
 
 const ErrorMessage: FC<{errorMessage: string}> = ({errorMessage}) => {
   if (typeof errorMessage !== 'string' || !errorMessage) {

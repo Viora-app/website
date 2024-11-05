@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image} from '@/app/components/Polyfills';
 
-import appLogo from '../../../public/images/IconText.png';
+import appLogo from '@/public/images/IconText.png';
 
 const Splash = () => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {View, H1, H4, Image} from '@/app/components/Polyfills';
 import pkg from '../../../package.json';
-import logo from '../../../public/images/applogo.png';
+import logo from '@/public/images/applogo.png';
 
 const About = () => {
   return (

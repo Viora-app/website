@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Image} from '@/app/components/Polyfills';
-import heart from '../../../../public/images/heart.png';
+import heart from '@/public/images/heart.png';
 
 const VoteHint = () => {
   return (

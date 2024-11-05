@@ -6,7 +6,7 @@ import Providers from '../context';
 import {Routes} from '@/app/config/routes';
 import {Icon} from '@/app/components/Elements';
 import {Link} from '@/app/components/Polyfills';
-import logo from '../../public/images/app-logo-white.svg';
+import logo from '@/public/images/app-logo-white.svg';
 import '../globals.css';
 
 export const metadata: Metadata = {

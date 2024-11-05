@@ -4,7 +4,7 @@ import React, {FC, useEffect, useState} from 'react';
 import {Image} from '@/app/components/Polyfills';
 
 import {SafeArea} from '@/app/components/Elements';
-import largePlaceholder from '../../../../public/images/gallerymain.png';
+import largePlaceholder from '@/public/images/gallerymain.png';
 
 const PictureScreen: FC = ({params}) => {
   const [source, setSource] = useState(largePlaceholder);

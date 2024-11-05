@@ -14,8 +14,8 @@ import Contribute from '../Forms/Project/Contribute';
 import {Button} from '@/app/components/Elements';
 import {ButtonThemes} from '@/app/components/Elements/Button/types';
 import {ProjectStatus} from '../Projects/types';
-import successImage from '../../../public/images/success.png';
-import errorImage from '../../../public/images/error.png';
+import successImage from '@/public/images/success.png';
+import errorImage from '@/public/images/error.png';
 import {
   DefaultProjectStatusProps,
   FullDataComponentProps,
