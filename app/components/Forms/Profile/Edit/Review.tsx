@@ -1,13 +1,13 @@
 import React, {useCallback, useState} from 'react';
-import {View} from '../../../Polyfills';
+import {View} from '@/app/components/Polyfills';
 
-import {useAccount} from '../../../../hooks/useAccount';
-import {useModal} from '../../../../hooks/useModal';
-import {FetchStatus} from '../../../../config/types';
-import {finalMessages} from '../../../../utils/modal';
-import {ButtonThemes} from '../../../Elements/Button/types';
-import FormSummary from '../../../FormElements/GenericSummary';
-import {Button} from '../../../Elements';
+import {useAccount} from '@/app/hooks/useAccount';
+import {useModal} from '@/app/hooks/useModal';
+import {FetchStatus} from '@/app/config/types';
+import {finalMessages} from '@/app/utils/modal';
+import {ButtonThemes} from '@/app/components/Elements/Button/types';
+import FormSummary from '@/app/components/FormElements/GenericSummary';
+import {Button} from '@/app/components/Elements';
 import type {ProfileEditReviewProps, Feedback} from './types';
 
 const EditProfileReview = ({data}: ProfileEditReviewProps) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from '../Polyfills';
+import {Text} from '@/app/components/Polyfills';
 
 const Loading = () => <Text>Loading.</Text>;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, H4, TouchableHighlight} from '../../Polyfills';
+import {View, H4, TouchableHighlight} from '@/app/components/Polyfills';
 import {Icon} from '../Icon';
 import {CheckboxProps} from './types';
 

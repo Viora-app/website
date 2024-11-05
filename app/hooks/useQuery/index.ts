@@ -2,9 +2,9 @@
 
 import {useState} from 'react';
 import {useMutation, useQuery, useQueryClient} from 'react-query';
-import {getData, postData, patchData, deleteData} from '../../utils/api';
+import {getData, postData, patchData, deleteData} from '@/app/utils/api';
 import {useAccount} from '../useAccount';
-import {API_CALL_LIMIT} from '../../config/constants';
+import {API_CALL_LIMIT} from '@/app/config/constants';
 
 const constructQueryParams = (params: unknown) => {
   const queryParams: Record<string, string> = {};

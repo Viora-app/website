@@ -1,17 +1,17 @@
 'use client'
 
 import React, {useCallback, useEffect, useState} from 'react';
-import {View} from '../../../Polyfills';
+import {View} from '@/app/components/Polyfills';
 
-import {FetchStatus} from '../../../../config/types';
-import {ENDPOINTS} from '../../../../config/endpoints';
-import {useModal} from '../../../../hooks/useModal';
-import {usePatchData} from '../../../../hooks/useQuery';
-import {toBaseToken} from '../../../../utils/formatters';
-import {finalMessages} from '../../../../utils/modal';
-import {ButtonThemes} from '../../../Elements/Button/types';
-import FormSummary from '../../../FormElements/GenericSummary';
-import {Button} from '../../../Elements';
+import {FetchStatus} from '@/app/config/types';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import {useModal} from '@/app/hooks/useModal';
+import {usePatchData} from '@/app/hooks/useQuery';
+import {toBaseToken} from '@/app/utils/formatters';
+import {finalMessages} from '@/app/utils/modal';
+import {ButtonThemes} from '@/app/components/Elements/Button/types';
+import FormSummary from '@/app/components/FormElements/GenericSummary';
+import {Button} from '@/app/components/Elements';
 import type {EditProjectReviewProps, Feedback} from './types';
 
 const CreateProjectReview = ({data, id}: EditProjectReviewProps) => {

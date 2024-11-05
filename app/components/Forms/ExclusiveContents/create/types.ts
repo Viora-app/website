@@ -1,4 +1,4 @@
-import {SongAttributes, FetchStatus} from '../../../../config/types';
+import {SongAttributes, FetchStatus} from '@/app/config/types';
 import {ContributionTier} from '../../../Projects/types';
 
 export interface PostExclusiveContentsFormProps {

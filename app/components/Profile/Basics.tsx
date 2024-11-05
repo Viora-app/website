@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from '../Polyfills';
+import {View} from '@/app/components/Polyfills';
 
 import Avatar from './Avatar';
 import Wallet from './Wallet';

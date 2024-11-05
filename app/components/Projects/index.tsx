@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {ScrollView} from '../Polyfills';
-import {ENDPOINTS} from '../../config/endpoints';
-import {useGetData} from '../../hooks/useQuery';
+import {ScrollView} from '@/app/components/Polyfills';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import {useGetData} from '@/app/hooks/useQuery';
 import ScreenNotFound from '../NotFound/Screen';
 import ScreenLoading from '../Loading';
 import Project from './Project';

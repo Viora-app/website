@@ -1,4 +1,4 @@
-import {FetchStatus} from '../../config/types';
+import {FetchStatus} from '@/app/config/types';
 
 export interface FeedbackProps {
   status: FetchStatus;

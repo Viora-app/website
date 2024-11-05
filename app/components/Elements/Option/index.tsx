@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View, H4, TouchableHighlight, Linking} from '../../Polyfills';
+import {View, H4, TouchableHighlight, Linking} from '@/app/components/Polyfills';
 import {Icon} from '../index';
 import {OptionProps} from './types';
 

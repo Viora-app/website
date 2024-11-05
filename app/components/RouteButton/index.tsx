@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import {View, TouchableHighlight} from '../Polyfills';
-import {Icon} from '../Elements';
+import {View, TouchableHighlight} from '@/app/components/Polyfills';
+import {Icon} from '@/app/components/Elements';
 import {RouteButtonProps} from './types';
 
 const RouteButton: FC<RouteButtonProps> = ({route, navigation, stateIndex, index}) => {

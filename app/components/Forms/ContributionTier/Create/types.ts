@@ -1,4 +1,4 @@
-import {SongAttributes, FetchStatus} from '../../../../config/types';
+import {SongAttributes, FetchStatus} from '@/app/config/types';
 import {ContributionTierAttrs} from '../../../Projects/types';
 
 export interface ContributionTier {

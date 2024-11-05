@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput, View, Span} from '../../Polyfills';
+import {TextInput, View, Span} from '@/app/components/Polyfills';
 
 import type {InputProps} from './types';
 

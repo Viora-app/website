@@ -1,16 +1,16 @@
 'use client'
 
 import React, {FC, useCallback, useEffect, useState} from 'react';
-import {View} from '../../../Polyfills';
+import {View} from '@/app/components/Polyfills';
 
-import {useModal} from '../../../../hooks/useModal';
-import {usePostData} from '../../../../hooks/useQuery';
-import {FetchStatus} from '../../../../config/types';
-import {finalMessages} from '../../../../utils/modal';
-import {ButtonThemes} from '../../../Elements/Button/types';
-import {ENDPOINTS} from '../../../../config/endpoints';
-import FormSummary from '../../../FormElements/GenericSummary';
-import {Button} from '../../../Elements';
+import {useModal} from '@/app/hooks/useModal';
+import {usePostData} from '@/app/hooks/useQuery';
+import {FetchStatus} from '@/app/config/types';
+import {finalMessages} from '@/app/utils/modal';
+import {ButtonThemes} from '@/app/components/Elements/Button/types';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import FormSummary from '@/app/components/FormElements/GenericSummary';
+import {Button} from '@/app/components/Elements';
 import type {PostExclusiveContentsReviewProps, Feedback} from './types';
 
 const PostExclusiveContentsReview: FC<PostExclusiveContentsReviewProps> = ({

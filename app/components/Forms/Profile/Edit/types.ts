@@ -1,5 +1,5 @@
-import {SongAttributes, FetchStatus} from '../../../../config/types';
-import {Profile} from '../../../../context/accountContext/types';
+import {SongAttributes, FetchStatus} from '@/app/config/types';
+import {Profile} from '@/app/context/accountContext/types';
 
 export interface ProfileEditReviewProps {
   data: Partial<Omit<Profile, 'avatar'>>;

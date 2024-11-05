@@ -1,4 +1,4 @@
-import {Routes} from '../../config/routes';
+import {Routes} from '@/app/config/routes';
 
 export interface ScreenNotFoundProps {
   redirectTo?: Routes | false;

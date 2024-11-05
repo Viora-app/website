@@ -1,12 +1,12 @@
 import React, {FC, useState} from 'react';
-import {Text, TouchableOpacity, View} from '../../../Polyfills';
+import {Text, TouchableOpacity, View} from '@/app/components/Polyfills';
 
-import {useModal} from '../../../../hooks/useModal';
-import {useGetData} from '../../../../hooks/useQuery';
-import {ENDPOINTS} from '../../../../config/endpoints';
-import {Button} from '../../../Elements';
+import {useModal} from '@/app/hooks/useModal';
+import {useGetData} from '@/app/hooks/useQuery';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import {Button} from '@/app/components/Elements';
 import Loading from '../../../Loading';
-import {ButtonThemes} from '../../../Elements/Button/types';
+import {ButtonThemes} from '@/app/components/Elements/Button/types';
 import ContributionReview from './Review';
 import {
   ContributeProps,

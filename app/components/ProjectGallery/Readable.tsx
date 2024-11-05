@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
-import {View, Image, TouchableOpacity} from '../Polyfills';
+import {View, Image, TouchableOpacity} from '@/app/components/Polyfills';
 import {useRouter} from 'next/navigation';
 
 import {getLargestSize} from '@/app/utils/image';
 import {GalleryReadableProps, ReadableImageProps} from './types';
-import {Routes} from '../../config/routes';
+import {Routes} from '@/app/config/routes';
 
 const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
   const {push: navigate} = useRouter();

@@ -2,9 +2,9 @@
 
 import React, {FC} from 'react';
 
-import {ENDPOINTS} from '../../config/endpoints';
-import {useGetData} from '../../hooks/useQuery';
-import {ScrollView, H2, H3, Span, View} from '../Polyfills';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import {useGetData} from '@/app/hooks/useQuery';
+import {ScrollView, H2, H3, Span, View} from '@/app/components/Polyfills';
 import Gallery from '../ProjectGallery';
 import Deadline from './Deadline';
 import Artist from './Artist';

@@ -3,15 +3,15 @@
 import React from 'react';
 import {useRouter} from 'next/navigation';
 
-import {Routes} from '../../config/routes';
-import {usePresets} from '../../hooks/usePresets';
-import {useModal} from '../../hooks/useModal';
-import {SafeArea} from '../../components/Elements';
-import Option from '../../components/Elements/Option';
-import SelectTheme from '../../components/SelectTheme';
-import SectionHeader from '../../components/SectionHeader';
-import About from '../../components/About';
-import {useAccount} from '../../hooks/useAccount';
+import {Routes} from '@/app/config/routes';
+import {usePresets} from '@/app/hooks/usePresets';
+import {useModal} from '@/app/hooks/useModal';
+import {SafeArea} from '@/app/components/Elements';
+import Option from '@/app/components/Elements/Option';
+import SelectTheme from '@/app/components/SelectTheme';
+import SectionHeader from '@/app/components/SectionHeader';
+import About from '@/app/components/About';
+import {useAccount} from '@/app/hooks/useAccount';
 
 const config = {
   backup: {

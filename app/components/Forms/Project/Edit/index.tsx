@@ -1,17 +1,17 @@
 'use client'
 
 import React, {useEffect, useState} from 'react';
-import {View, ScrollView, Dimensions} from '../../../Polyfills';
+import {View, ScrollView, Dimensions} from '@/app/components/Polyfills';
 
-import {ENDPOINTS} from '../../../../config/endpoints';
-import {mapObject} from '../../../../utils/convertors';
-import {useModal} from '../../../../hooks/useModal';
-import {useGetData} from '../../../../hooks/useQuery';
-import {validateForm} from '../../../../utils/validators';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import {mapObject} from '@/app/utils/convertors';
+import {useModal} from '@/app/hooks/useModal';
+import {useGetData} from '@/app/hooks/useQuery';
+import {validateForm} from '@/app/utils/validators';
 import {ProjectAttrs, ProjectType} from '../../../Projects/types';
-import ValidationFeedback from '../../../FormElements/ValidationFeedback';
-import {ButtonThemes} from '../../../Elements/Button/types';
-import {Button, Input} from '../../../Elements';
+import ValidationFeedback from '@/app/components/FormElements/ValidationFeedback';
+import {ButtonThemes} from '@/app/components/Elements/Button/types';
+import {Button, Input} from '@/app/components/Elements';
 import EditProjectReview from './Review';
 import type {EditProjectFormProps} from './types';
 import {schema} from './schema';

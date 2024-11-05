@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableHighlight, Span} from '../../Polyfills';
+import {TouchableHighlight, Span} from '@/app/components/Polyfills';
 import {ButtonProps, ButtonThemes} from './types';
 
 const Button = ({

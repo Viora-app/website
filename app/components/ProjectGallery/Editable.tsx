@@ -1,12 +1,12 @@
 import React, {FC, useState} from 'react';
-import {View, Image} from '../Polyfills';
+import {View, Image} from '@/app/components/Polyfills';
 
-import {ENDPOINTS} from '../../config/endpoints';
-import {FetchStatus} from '../../config/types';
-import {finalMessages} from '../../utils/modal';
-import {usePatchData, useDeleteData} from '../../hooks/useQuery';
-import {useModal} from '../../hooks/useModal';
-import {Icon} from '../Elements';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import {FetchStatus} from '@/app/config/types';
+import {finalMessages} from '@/app/utils/modal';
+import {usePatchData, useDeleteData} from '@/app/hooks/useQuery';
+import {useModal} from '@/app/hooks/useModal';
+import {Icon} from '@/app/components/Elements';
 import {getLargestSize} from '@/app/utils/image';
 import type {GalleryEditableProps, EditableImageProps} from './types';
 

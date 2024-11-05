@@ -2,11 +2,11 @@
 
 import React, {FC} from 'react';
 
-import {truncateAddress} from '../../utils/formatters';
-import {usePresets} from '../../hooks/usePresets';
-import {useModal} from '../../hooks/useModal';
-import {useAccount} from '../../hooks/useAccount';
-import {View, H1, H2, H4, Span, TouchableHighlight} from '../Polyfills';
+import {truncateAddress} from '@/app/utils/formatters';
+import {usePresets} from '@/app/hooks/usePresets';
+import {useModal} from '@/app/hooks/useModal';
+import {useAccount} from '@/app/hooks/useAccount';
+import {View, H1, H2, H4, Span, TouchableHighlight} from '@/app/components/Polyfills';
 
 const Wallet: FC = () => {
   const {show} = useModal();

@@ -1,5 +1,5 @@
-import {Project} from '../components/Projects/types';
-import {ArtistShareProp} from '../components/ProjectDetails/types';
+import {Project} from '@/app/components/Projects/types';
+import {ArtistShareProp} from '@/app/components/ProjectDetails/types';
 
 export const shareProjectInvitation = async (
   user: unknown,

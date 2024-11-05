@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ActivityIndicator} from '../Polyfills';
+import {View, ActivityIndicator} from '@/app/components/Polyfills';
 
 export const ListFooter = ({isLoading}: {isLoading: boolean}) => {
   return (

@@ -4,9 +4,9 @@ import React, {useEffect, useRef, useState} from 'react';
 import Modal from 'react-modal';
 import NextImage from 'next/image';
 
-import {IconButton} from '../Elements';
-import {View} from '../Polyfills';
-import {Button} from '../Elements';
+import {IconButton} from '@/app/components/Elements';
+import {View} from '@/app/components/Polyfills';
+import {Button} from '@/app/components/Elements';
 import {ModalProps} from './types';
 import SectionHeader from '../SectionHeader';
 

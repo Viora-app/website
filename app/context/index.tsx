@@ -1,7 +1,7 @@
 'use client'
 import {QueryClientProvider} from 'react-query';
 
-import queryClient from '../utils/queryClient';
+import queryClient from '@/app/utils/queryClient';
 import AccountProvider from './accountContext/AccountContextProvider';
 import ModalProvider from './modalContext/ModalContextProvider';
 import PresetsProvider from './presetsContext/PresetsContextProvider';

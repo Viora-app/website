@@ -1,14 +1,14 @@
 'use client'
 
 import React, {FC, useEffect} from 'react';
-import {View} from '../Polyfills';
+import {View} from '@/app/components/Polyfills';
 
-import {ENDPOINTS} from '../../config/endpoints';
-import {FetchStatus} from '../../config/types';
-import {finalMessages} from '../../utils/modal';
-import {useModal} from '../../hooks/useModal';
-import {usePatchData} from '../../hooks/useQuery';
-import {useAccount} from '../../hooks/useAccount';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import {FetchStatus} from '@/app/config/types';
+import {finalMessages} from '@/app/utils/modal';
+import {useModal} from '@/app/hooks/useModal';
+import {usePatchData} from '@/app/hooks/useQuery';
+import {useAccount} from '@/app/hooks/useAccount';
 import {
   EditProject,
   SupportProject,

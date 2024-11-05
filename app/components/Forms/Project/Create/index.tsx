@@ -2,13 +2,13 @@
 
 import React, {useState} from 'react';
 
-import {useModal} from '../../../../hooks/useModal';
-import {validateForm} from '../../../../utils/validators';
+import {useModal} from '@/app/hooks/useModal';
+import {validateForm} from '@/app/utils/validators';
 import {ProjectAttrs, ProjectType} from '../../../Projects/types';
-import ValidationFeedback from '../../../FormElements/ValidationFeedback';
-import {View, ScrollView} from '../../../Polyfills';
-import {ButtonThemes} from '../../../Elements/Button/types';
-import {Button, Input} from '../../../Elements';
+import ValidationFeedback from '@/app/components/FormElements/ValidationFeedback';
+import {View, ScrollView} from '@/app/components/Polyfills';
+import {ButtonThemes} from '@/app/components/Elements/Button/types';
+import {Button, Input} from '@/app/components/Elements';
 import CreateProjectReview from './Review';
 import {schema} from './schema';
 

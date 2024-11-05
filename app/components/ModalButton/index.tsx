@@ -2,8 +2,8 @@
 
 import React, {useCallback, FC} from 'react';
 
-import {useModal} from '../../hooks/useModal';
-import {IconButton} from '../../components/Elements';
+import {useModal} from '@/app/hooks/useModal';
+import {IconButton} from '@/app/components/Elements';
 import {ModalButtonProps} from './types';
 
 const icons = {

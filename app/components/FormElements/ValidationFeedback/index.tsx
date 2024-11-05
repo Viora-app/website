@@ -1,5 +1,5 @@
 import React from 'react';
-import {Small, View} from '../../Polyfills';
+import {Small, View} from '@/app/components/Polyfills';
 
 import {FeedbackProps} from './types';
 

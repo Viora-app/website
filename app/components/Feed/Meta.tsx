@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
-import {Span, View} from '../Polyfills';
-import {Icon} from '../Elements';
+import {Span, View} from '@/app/components/Polyfills';
+import {Icon} from '@/app/components/Elements';
 import {MetaProps, FeedType, ProjectStatus} from './types';
 
 const Meta: FC<MetaProps> = ({reactionCount, backers, type, status}) => {

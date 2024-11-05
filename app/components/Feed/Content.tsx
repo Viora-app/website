@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import {View, H4, Span} from '../Polyfills';
+import {View, H4, Span} from '@/app/components/Polyfills';
 import {ContentProps} from './types';
 import LinkToProject from './LinkToProject';
 import Artist from '../Artist';

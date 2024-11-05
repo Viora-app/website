@@ -1,4 +1,4 @@
-import {ImageFormats} from '../../components/Projects/types';
+import {ImageFormats} from '@/app/components/Projects/types';
 
 export interface Profile {
   first_name: string;

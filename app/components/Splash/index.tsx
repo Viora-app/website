@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image} from '../Polyfills';
+import {View, Image} from '@/app/components/Polyfills';
 
 import appLogo from '../../../public/images/IconText.png';
 

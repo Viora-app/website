@@ -1,13 +1,13 @@
 import React, {FC, useState} from 'react';
-import {View, ScrollView, Dimensions, Text} from '../../../Polyfills';
+import {View, ScrollView, Dimensions, Text} from '@/app/components/Polyfills';
 
-import {useModal} from '../../../../hooks/useModal';
-import {useGetData} from '../../../../hooks/useQuery';
-import {validateForm} from '../../../../utils/validators';
-import {ENDPOINTS} from '../../../../config/endpoints';
-import ValidationFeedback from '../../../FormElements/ValidationFeedback';
-import {ButtonThemes} from '../../../Elements/Button/types';
-import {Button, Input, CheckBox} from '../../../Elements';
+import {useModal} from '@/app/hooks/useModal';
+import {useGetData} from '@/app/hooks/useQuery';
+import {validateForm} from '@/app/utils/validators';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import ValidationFeedback from '@/app/components/FormElements/ValidationFeedback';
+import {ButtonThemes} from '@/app/components/Elements/Button/types';
+import {Button, Input, CheckBox} from '@/app/components/Elements';
 import PostExclusiveContentsReview from './Review';
 import {schema} from './schema';
 import type {ContributionTier} from '../../../Projects/types';

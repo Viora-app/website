@@ -4,10 +4,10 @@ import React, {FC, useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import NextImage from 'next/image';
 
-import {Routes} from '../../config/routes';
-import {Small, H3, Span, View, TextInput} from '../Polyfills';
-import {Button, SafeArea} from '../Elements';
-import {useAccount} from '../../hooks/useAccount';
+import {Routes} from '@/app/config/routes';
+import {Small, H3, Span, View, TextInput} from '@/app/components/Polyfills';
+import {Button, SafeArea} from '@/app/components/Elements';
+import {useAccount} from '@/app/hooks/useAccount';
 import appLogo from '../../../public/images/applogo.png';
 
 const ErrorMessage: FC<{errorMessage: string}> = ({errorMessage}) => {

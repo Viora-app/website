@@ -1,5 +1,5 @@
 import type {ImageFormats, Project} from '../Projects/types';
-import type {FetchStatus} from '../../config/types';
+import type {FetchStatus} from '@/app/config/types';
 
 export interface ProjectDetailsProps {
   id: string;

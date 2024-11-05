@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Logout from '../../components/Logout';
+import Logout from '@/app/components/Logout';
 const LogoutScreen = () => (
   <Logout />
 );

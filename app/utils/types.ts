@@ -1,4 +1,4 @@
-import {FetchStatus} from '../config/types';
+import {FetchStatus} from '@/app/config/types';
 import {StaticImageData} from 'next/image';
 
 export type EndpointParams = Partial<

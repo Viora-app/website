@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableWithoutFeedback} from '../../Polyfills';
+import {TouchableWithoutFeedback} from '@/app/components/Polyfills';
 import {Icon} from '../Icon';
 import {IconButtonProps} from './types';
 

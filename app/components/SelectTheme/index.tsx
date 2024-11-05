@@ -1,8 +1,9 @@
 import React from 'react';
-import {View} from '../Polyfills';
-import {usePresets} from '../../hooks/usePresets';
-import {Themes} from '../../hooks/usePresets/types';
-import {CheckBox} from '../Elements';
+
+import {View} from '@/app/components/Polyfills';
+import {usePresets} from '@/app/hooks/usePresets';
+import {Themes} from '@/app/hooks/usePresets/types';
+import {CheckBox} from '@/app/components/Elements';
 
 const SelectTheme = () => {
   const {presets, storePresets} = usePresets();

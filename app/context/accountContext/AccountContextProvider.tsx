@@ -3,11 +3,11 @@
 import React, {createContext, useEffect, useState, ReactNode} from 'react';
 import Cookies from 'js-cookie';
 
-import {USER_CREDENTIALS} from '../../config/constants';
-import {ENDPOINTS} from '../../config/endpoints';
-import {authenticate, register, getProfile, patchData} from '../../utils/api';
-import {MapObjectConfig} from '../../utils/types';
-import {mapObject} from '../../utils/convertors';
+import {USER_CREDENTIALS} from '@/app/config/constants';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import {authenticate, register, getProfile, patchData} from '@/app/utils/api';
+import {MapObjectConfig} from '@/app/utils/types';
+import {mapObject} from '@/app/utils/convertors';
 import type {
   Account,
   AccountContextType,

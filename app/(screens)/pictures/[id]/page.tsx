@@ -1,9 +1,9 @@
 'use client'
 
 import React, {FC, useEffect, useState} from 'react';
-import {Image} from '../../../components/Polyfills';
+import {Image} from '@/app/components/Polyfills';
 
-import {SafeArea} from '../../../components/Elements';
+import {SafeArea} from '@/app/components/Elements';
 import largePlaceholder from '../../../../public/images/gallerymain.png';
 
 const PictureScreen: FC = ({params}) => {

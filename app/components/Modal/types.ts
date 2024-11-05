@@ -1,4 +1,4 @@
-import {ModalContent} from '../../context/modalContext/types';
+import {ModalContent} from '@/app/context/modalContext/types';
 
 export interface ModalProps {
   data: ModalContent | null;

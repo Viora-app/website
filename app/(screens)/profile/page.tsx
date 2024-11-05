@@ -1,12 +1,12 @@
 import React from 'react';
-import {ScrollView} from '../../components/Polyfills';
+import {ScrollView} from '@/app/components/Polyfills';
 
-import Contributions from '../../components/Profile/Contributions';
-import EditProfileForm from '../../components/Forms/Profile/Edit';
-import {SafeArea} from '../../components/Elements';
-import ModalButton from '../../components/ModalButton';
-import {ButtonType} from '../../components/ModalButton/types';
-import Basics from '../../components/Profile/Basics';
+import Contributions from '@/app/components/Profile/Contributions';
+import EditProfileForm from '@/app/components/Forms/Profile/Edit';
+import {SafeArea} from '@/app/components/Elements';
+import ModalButton from '@/app/components/ModalButton';
+import {ButtonType} from '@/app/components/ModalButton/types';
+import Basics from '@/app/components/Profile/Basics';
 
 const ProfileScreen = () => (
   <SafeArea>

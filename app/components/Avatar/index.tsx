@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View, Image} from '../Polyfills';
+import {View, Image} from '@/app/components/Polyfills';
 import type {AvatarProps} from './types';
 import {getSmallestSize} from '@/app/utils/image';
 

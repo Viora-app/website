@@ -1,13 +1,13 @@
 'use client'
 
 import React, {useState} from 'react';
-import {TextInput, View} from '../../../Polyfills';
+import {TextInput, View} from '@/app/components/Polyfills';
 
-import {useModal} from '../../../../hooks/useModal';
-import {useAccount} from '../../../../hooks/useAccount';
-import {Profile} from '../../../../context/accountContext/types';
-import {ButtonThemes} from '../../../Elements/Button/types';
-import {Button} from '../../../Elements';
+import {useModal} from '@/app/hooks/useModal';
+import {useAccount} from '@/app/hooks/useAccount';
+import {Profile} from '@/app/context/accountContext/types';
+import {ButtonThemes} from '@/app/components/Elements/Button/types';
+import {Button} from '@/app/components/Elements';
 import EditProfileReview from './Review';
 
 const EditProfileForm = () => {

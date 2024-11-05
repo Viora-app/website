@@ -1,7 +1,7 @@
 'use client'
 
 import React, {useState, useEffect, useCallback, createContext} from 'react';
-import {USER_PRESETS} from '../../config/constants';
+import {USER_PRESETS} from '@/app/config/constants';
 import {
   PresetsContextType,
   PresetsProviderProps,

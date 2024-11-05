@@ -4,8 +4,8 @@ import React, {useRef, useState, createContext, useEffect} from 'react';
 import {usePathname} from 'next/navigation';
 
 import {ModalProviderProps, ModalContent, ModalContextType} from './types';
-import {Timeout} from '../../config/types';
-import Modal from '../../components/Modal';
+import {Timeout} from '@/app/config/types';
+import Modal from '@/app/components/Modal';
 
 export const MODAL_ANIMATION_DURATION = 300;
 

@@ -3,10 +3,10 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import {useRouter} from 'next/navigation';
 
-import {Routes} from '../../config/routes';
-import {H3} from '../Polyfills';
-import {SafeArea} from '../Elements';
-import {useAccount} from '../../hooks/useAccount';
+import {Routes} from '@/app/config/routes';
+import {H3} from '@/app/components/Polyfills';
+import {SafeArea} from '@/app/components/Elements';
+import {useAccount} from '@/app/hooks/useAccount';
 
 const Logout = () => {
   const {push: navigate} = useRouter();

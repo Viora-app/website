@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
-import {Text, Image, View, Link} from '../Polyfills';
+import {Text, Image, View, Link} from '@/app/components/Polyfills';
 
 
 import type {ProjectProps} from './types';
 import avatar from '../../../public/images/avatars/a0.jpg';
-import {Routes} from '../../config/routes';
+import {Routes} from '@/app/config/routes';
 
 const Project: FC<ProjectProps> = ({item}) => {
   const {

@@ -2,11 +2,11 @@
 
 import React, {FC} from 'react';
 
-import {SafeArea} from '../../components/Elements';
-import Projects from '../../components/Projects';
-import Form from '../../components/Forms/Project/Create';
-import ModalButton from '../../components/ModalButton';
-import {ButtonType} from '../../components/ModalButton/types';
+import {SafeArea} from '@/app/components/Elements';
+import Projects from '@/app/components/Projects';
+import Form from '@/app/components/Forms/Project/Create';
+import ModalButton from '@/app/components/ModalButton';
+import {ButtonType} from '@/app/components/ModalButton/types';
 
 const modalProps = {
   title: 'Let the world know',

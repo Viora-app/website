@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import {API_SUFFIX} from '../config/network';
-import {ENDPOINTS} from '../config/endpoints';
-import type {ProfileResponse} from '../context/accountContext/types';
+import {API_SUFFIX} from '@/app/config/network';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import type {ProfileResponse} from '@/app/context/accountContext/types';
 
 const IMAGE_PROTOCOL = process.env.NEXT_PUBLIC_IMAGE_PROTOCOL;
 const IMAGE_HOSTNAME = process.env.NEXT_PUBLIC_IMAGE_HOSTNAME;

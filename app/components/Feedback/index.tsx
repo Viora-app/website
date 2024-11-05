@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, View} from '../Polyfills';
+import {Text, View} from '@/app/components/Polyfills';
 import {FeedbackProps} from './types';
-import {FetchStatus} from '../../config/types';
+import {FetchStatus} from '@/app/config/types';
 
 const messages = {
   [FetchStatus.idle]: '',

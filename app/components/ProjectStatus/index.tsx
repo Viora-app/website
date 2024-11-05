@@ -1,18 +1,18 @@
 import React, {FC} from 'react';
 
-import {finalMessages} from '../../utils/modal';
-import {shareProjectInvitation} from '../../utils/shareMenu';
-import {ENDPOINTS} from '../../config/endpoints';
-import {FetchStatus} from '../../config/types';
-import {usePatchData} from '../../hooks/useQuery';
+import {finalMessages} from '@/app/utils/modal';
+import {shareProjectInvitation} from '@/app/utils/shareMenu';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import {FetchStatus} from '@/app/config/types';
+import {usePatchData} from '@/app/hooks/useQuery';
 import EditProjectForm from '../Forms/Project/Edit';
-import {useModal} from '../../hooks/useModal';
-import {Image, View, H3, Span} from '../Polyfills';
+import {useModal} from '@/app/hooks/useModal';
+import {Image, View, H3, Span} from '@/app/components/Polyfills';
 import CreateContributionTierForm from '../Forms/ContributionTier/Create';
 import PostExclusiveContentsForm from '../Forms/ExclusiveContents/create';
 import Contribute from '../Forms/Project/Contribute';
-import {Button} from '../Elements';
-import {ButtonThemes} from '../Elements/Button/types';
+import {Button} from '@/app/components/Elements';
+import {ButtonThemes} from '@/app/components/Elements/Button/types';
 import {ProjectStatus} from '../Projects/types';
 import successImage from '../../../public/images/success.png';
 import errorImage from '../../../public/images/error.png';

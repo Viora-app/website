@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {View, ScrollView} from '../../../Polyfills';
+import {View, ScrollView} from '@/app/components/Polyfills';
 
-import {useModal} from '../../../../hooks/useModal';
-import {validateForm} from '../../../../utils/validators';
+import {useModal} from '@/app/hooks/useModal';
+import {validateForm} from '@/app/utils/validators';
 import {ContributionTierAttrs} from '../../../Projects/types';
-import ValidationFeedback from '../../../FormElements/ValidationFeedback';
-import {ButtonThemes} from '../../../Elements/Button/types';
-import {Button, Input} from '../../../Elements';
+import ValidationFeedback from '@/app/components/FormElements/ValidationFeedback';
+import {ButtonThemes} from '@/app/components/Elements/Button/types';
+import {Button, Input} from '@/app/components/Elements';
 import CreateContributionTierReview from './Review';
 import type {ContributionTier} from './types';
 import {schema} from './schema';

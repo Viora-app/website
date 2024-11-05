@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 
 import {FundingProgressProps} from './types';
-import {View, Span, H1, H3, H4} from '../Polyfills';
-import {fromBaseToken} from '../../utils/formatters';
+import {View, Span, H1, H3, H4} from '@/app/components/Polyfills';
+import {fromBaseToken} from '@/app/utils/formatters';
 
 const FundingProgress: FC<FundingProgressProps> = ({
   currentFunding,

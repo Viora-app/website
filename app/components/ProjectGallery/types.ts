@@ -1,6 +1,6 @@
 import type {ImageData, ImageFormats, Project, ProjectStatus} from '../Projects/types';
 import type {FileEvent} from '../Profile/types';
-import type {FetchStatus} from '../../config/types';
+import type {FetchStatus} from '@/app/config/types';
 
 export interface ProjectDetailsProps {
   id: string;

@@ -1,5 +1,5 @@
 import {Buffer} from 'buffer';
-import type {KeyValue} from '../config/types';
+import type {KeyValue} from '@/app/config/types';
 
 export const truncateText = (text: string, length: number): string => {
   if (text.length > length) {

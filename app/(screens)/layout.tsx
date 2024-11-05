@@ -3,9 +3,9 @@ import type {Metadata} from 'next';
 import NextImage from 'next/image';
 
 import Providers from '../context';
-import {Routes} from '../config/routes';
-import {Icon} from '../components/Elements';
-import {Link} from '../components/Polyfills';
+import {Routes} from '@/app/config/routes';
+import {Icon} from '@/app/components/Elements';
+import {Link} from '@/app/components/Polyfills';
 import logo from '../../public/images/app-logo-white.svg';
 import '../globals.css';
 

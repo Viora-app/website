@@ -1,14 +1,14 @@
 'use client'
 
 import React, {useState, FC, useEffect} from 'react';
-import {View, Image} from '../Polyfills';
+import {View, Image} from '@/app/components/Polyfills';
 
-import {useAccount} from '../../hooks/useAccount';
-import {useModal} from '../../hooks/useModal';
-import {Icon, ImagePicker} from '../Elements';
-import {finalMessages} from '../../utils/modal';
-import {FetchStatus} from '../../config/types';
-import {getSmallestSize} from '../../utils/image';
+import {useAccount} from '@/app/hooks/useAccount';
+import {useModal} from '@/app/hooks/useModal';
+import {Icon, ImagePicker} from '@/app/components/Elements';
+import {finalMessages} from '@/app/utils/modal';
+import {FetchStatus} from '@/app/config/types';
+import {getSmallestSize} from '@/app/utils/image';
 import {ImageFormats} from '../Projects/types';
 
 const Avatar: FC = () => {

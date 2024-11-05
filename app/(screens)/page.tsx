@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import {SafeArea} from '../components/Elements';
-import Feed from '../components/Feed';
-import Form from '../components/Forms/Project/Create';
-import ModalButton from '../components/ModalButton';
-import {ButtonType} from '../components/ModalButton/types';
+import {SafeArea} from '@/app/components/Elements';
+import Feed from '@/app/components/Feed';
+import Form from '@/app/components/Forms/Project/Create';
+import ModalButton from '@/app/components/ModalButton';
+import {ButtonType} from '@/app/components/ModalButton/types';
 
 const FeedScreen = () => (
   <SafeArea>

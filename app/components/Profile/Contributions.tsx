@@ -2,13 +2,13 @@
 
 import React, {FC} from 'react';
 
-import {ENDPOINTS} from '../../config/endpoints';
-import {Routes} from '../../config/routes';
-import {useAccount} from '../../hooks/useAccount';
-import {useGetData} from '../../hooks/useQuery';
-import {getSmallestSize} from '../../utils/image';
-import {fromBaseToken} from '../../utils/formatters';
-import {View, H4, Span, Image, Link} from '../Polyfills';
+import {ENDPOINTS} from '@/app/config/endpoints';
+import {Routes} from '@/app/config/routes';
+import {useAccount} from '@/app/hooks/useAccount';
+import {useGetData} from '@/app/hooks/useQuery';
+import {getSmallestSize} from '@/app/utils/image';
+import {fromBaseToken} from '@/app/utils/formatters';
+import {View, H4, Span, Image, Link} from '@/app/components/Polyfills';
 import {ImageFormats} from '../Projects/types';
 import SectionHeader from '../SectionHeader';
 import type {ContributionProps, Contribution as ContributionType} from './types';

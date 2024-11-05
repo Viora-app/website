@@ -1,11 +1,11 @@
 import React, {FC, useCallback} from 'react';
-import {View, H3, Image, TouchableHighlight, Linking} from '../Polyfills';
+import {View, H3, Image, TouchableHighlight, Linking} from '@/app/components/Polyfills';
 
 import {ArtistProps} from './types';
 import instagramIcon from '../../../public/images/instagram.png';
 import xIcon from '../../../public/images/twitter.png';
 import twitchIcon from '../../../public/images/twitch.png';
-import {getSmallestSize} from '../../utils/image';
+import {getSmallestSize} from '@/app/utils/image';
 
 enum SocialPlatforms {
   Instagram = 'instagram',

@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 import {ProjectStatus} from '../Projects/types';
-import {useAccount} from '../../hooks/useAccount';
+import {useAccount} from '@/app/hooks/useAccount';
 import Editable from './Editable';
 import Readable from './Readable';
 import {GalleryProps} from './types';

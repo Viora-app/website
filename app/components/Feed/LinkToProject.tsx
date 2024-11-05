@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 
 import {Routes} from '@/app/config/routes';
-import {Small, Span, View, Link} from '../Polyfills';
-import {Icon} from '../Elements';
+import {Small, Span, View, Link} from '@/app/components/Polyfills';
+import {Icon} from '@/app/components/Elements';
 import {LinkToProjectProps} from './types';
 
 const LinkToProject: FC<LinkToProjectProps> = ({name, id}) => (

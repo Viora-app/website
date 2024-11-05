@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import {View, H3, Span} from '../Polyfills';
+import {View, H3, Span} from '@/app/components/Polyfills';
 import {SectionHeaderProps} from './types';
 
 const SectionHeader: FC<SectionHeaderProps> = ({title, subtitle, className}) => {

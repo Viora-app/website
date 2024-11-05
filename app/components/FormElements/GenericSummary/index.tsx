@@ -1,7 +1,7 @@
 import React from 'react';
-import {Span, H4, View, ScrollView} from '../../Polyfills';
 
-import {CapitalizeKey} from '../../../utils/formatters';
+import {Span, H4, View, ScrollView} from '@/app/components/Polyfills';
+import {CapitalizeKey} from '@/app/utils/formatters';
 import type {FormSummaryProps} from './types';
 
 const FormSummary = ({data}: FormSummaryProps) => (
