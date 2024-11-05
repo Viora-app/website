@@ -37,7 +37,7 @@ const ProjectDetails: FC<ProjectDetailsProps> = ({id}) => {
       avatar: ['*'],
     },
     filters: {
-      users_permissions_user: projectData.users_permissions_user?.data.id,
+      users_permissions_user: projectData.attributes.users_permissions_user?.data.id,
     },
   };
   const {data: artist} = useGetData(ENDPOINTS.PROFILES, artistParams);
