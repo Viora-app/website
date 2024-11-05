@@ -49,14 +49,16 @@ const ImageItem: FC<EditableImageProps> = ({
         />
       <Image
         alt="Some Photo"
-        source={img?.src}
-        width={img?.width}
-        height={img?.height}
+        source={image ? img?.src : img?.src?.src}
+        width={img?.src?.width}
+        height={img?.src?.height}
         className="min-w-full min-h-full object-cover"
       />
-      <View>
-        {image && <Icon name="cross" size={20} />}
-      </View>
+      {image && (
+        <View className="absolute left-2 top-2 bg-neutralPure rounded-md">
+          <Icon name="cross" size={20} />
+        </View>
+      )}
     </label>
   );
 };
@@ -68,11 +70,10 @@ const Editable: FC<GalleryEditableProps> = ({images = [], id, refresh}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const onAdd = async (event) => {
-    const file = event.target.files[0];
-    const newImage = URL.createObjectURL(file)
+    const file = (event.target as HTMLInputElement).files![0];
    
     const formData = new FormData();
-    formData.append('files.images', newImage);
+    formData.append('files.images', file);
     formData.append('data', JSON.stringify({}));
 
     try {
