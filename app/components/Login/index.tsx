@@ -2,9 +2,10 @@
 
 import React, {FC, useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
+import NextImage from 'next/image';
 
 import {Routes} from '../../config/routes';
-import {Small, H3, Span, View, Image, TextInput} from '../Polyfills';
+import {Small, H3, Span, View, TextInput} from '../Polyfills';
 import {Button, SafeArea} from '../Elements';
 import {useAccount} from '../../hooks/useAccount';
 import appLogo from '../../../public/images/applogo.png';
@@ -58,7 +59,7 @@ const Login = () => {
     <SafeArea className="!bg-neutralPure flex flex-col justify-center items-center">
       <form className="px-6 w-[510px]" onSubmit={onSubmit}>
         <View className="p-6 flex flex-row justify-center items-center">
-          <Image alt="App Logo" source={appLogo} />
+          <NextImage alt="App Logo" src={appLogo} />
         </View>
 
         <H3 className="text-primaryStrong py-6">Login</H3>
