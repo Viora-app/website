@@ -23,7 +23,7 @@ const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
       >
       <Image
         alt="Gallery photo"
-        source={img?.src}
+        source={image ? img?.src : img?.src?.src}
         width={img?.width}
         height={img?.height}
         className="min-w-full min-h-full object-cover"
