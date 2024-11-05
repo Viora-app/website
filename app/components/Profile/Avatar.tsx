@@ -10,57 +10,49 @@ import {finalMessages} from '../../utils/modal';
 import {FetchStatus} from '../../config/types';
 import {getSmallestSize} from '../../utils/image';
 import {ImageFormats} from '../Projects/types';
-import type {FileEvent} from './types';
 
 const Avatar: FC = () => {
   const {update, account} = useAccount();
   const [isLoading, setIsLoading] = useState(false);
   const {show, hide} = useModal();
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<Blob | null>(null);
   const source = getSmallestSize(
     account?.avatar?.formats ?? ({} as ImageFormats),
   );
 
-  const onSelectImage = async (file: FileEvent) => {
-    setImage({
-      uri: file.uri,
-      name: file.name,
-      type: file.type,
-    });
-  };
-
   const submit = async () => {
-    setIsLoading(true);
-    const formData = new FormData();
+    if (!isLoading && image) {
+      setIsLoading(true);
+      const formData = new FormData();
 
-    formData.append('data', JSON.stringify({}));
-    // @ts-expect-error Form Data type is not properly defined.
-    const result = await update(formData);
+      formData.append('files.avatar', image);
+      formData.append('data', JSON.stringify({}));
+      // @ts-expect-error Form Data type is not properly defined.
+      const result = await update(formData);
 
-    show({
-      ...finalMessages({
-        status: result.success ? FetchStatus.success : FetchStatus.error,
-        message: result.success
-          ? 'Your avatar should be available soon'
-          : 'Error uploading your avatar',
-      }),
-      onPrimaryPress: () => {
-        setImage(null);
-        setIsLoading(false);
-        hide();
-      },
-    });
+      show({
+        ...finalMessages({
+          status: result.success ? FetchStatus.success : FetchStatus.error,
+          message: result.success
+            ? 'Your avatar should be available soon'
+            : 'Error uploading your avatar',
+        }),
+        onPrimaryPress: () => {
+          setImage(null);
+          setIsLoading(false);
+          hide();
+        },
+      });
+    }
   };
 
   useEffect(() => {
-    if (!isLoading && image) {
-      submit();
-    }
+    submit();
   }, [isLoading, image]);
 
   return (
     <View className="flex flex-row justify-center">
-      <ImagePicker disabled={isLoading} onSelectImage={onSelectImage} className="w-[124px] h-[124px]">
+      <ImagePicker disabled={isLoading} onSelectImage={setImage} className="w-[124px] h-[124px]">
         <Image alt="Profile picture" source={source?.src} width={source?.width} height={source?.height}  className="w-full relative z-0" />
         <Icon
           name="feather"

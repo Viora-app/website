@@ -10,9 +10,9 @@ const ImagePicker: FC<ImagePickerProps> = ({
   className,
 }) => {
   const pickImage = (event) => {
-    const file = event.target.files[0];
+    const file = (event.target as HTMLInputElement).files![0];
     if (file) {
-      onSelectImage(URL.createObjectURL(file)); // Preview the image
+      onSelectImage(file);
     } else {
       console.log('No file was selected');
     }
