@@ -138,17 +138,19 @@ const Editable: FC<GalleryEditableProps> = ({images = [], id, refresh}) => {
   };
 
   return (
-    <View className="flex w-full flex-row gap-2 h-[500px] wrap">
-      {formatImages().map((image, index) => (
-        <ImageItem
-          image={image}
-          disabled={isLoading}
-          onRemove={onRemove}
-          onAdd={onAdd}
-          index={index}
-          key={`image-${index}`}
-        />
-      ))}
+    <View className="p-5">
+      <View className="flex w-full flex-row gap-2 rounded-xl overflow-hidden h-[500px] wrap">
+        {formatImages().map((image, index) => (
+          <ImageItem
+            image={image}
+            disabled={isLoading}
+            onRemove={onRemove}
+            onAdd={onAdd}
+            index={index}
+            key={`image-${index}`}
+          />
+        ))}
+      </View>
     </View>
   );
 };

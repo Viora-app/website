@@ -32,22 +32,14 @@ const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
   );
 };
 
-const Readable: FC<GalleryReadableProps> = ({images = []}) => {
-  const formatImages = () => {
-    return Array(5)
-      .fill(null)
-      .map((_, index) => images[index] || null);
- };
-
-  return (
-    <View className="p-5">
-      <View className="flex w-full flex-row gap-2 rounded-xl overflow-hidden h-[500px]wrap">
-        {formatImages().map((image, index) => (
-          <ImageItem image={image} index={index} key={`image-${index}`} />
-        ))}
-      </View>
+const Readable: FC<GalleryReadableProps> = ({images = []}) => (
+  <View className="p-5">
+    <View className="flex w-full flex-row gap-2 rounded-xl overflow-hidden h-[500px]wrap">
+      {images.map((image, index) => (
+        <ImageItem image={image} index={index} key={`image-${index}`} />
+      ))}
     </View>
-  );
-};
+  </View>
+);
 
 export default Readable;
