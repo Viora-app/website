@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 
-import {Text, H3, H4, Span, TouchableOpacity, View} from '@/app/components/Polyfills';
+import {H3, H4, Span, TouchableOpacity, View} from '@/app/components/Polyfills';
 import {useModal} from '@/app/hooks/useModal';
 import {useGetData} from '@/app/hooks/useQuery';
 import {ENDPOINTS} from '@/app/config/endpoints';
