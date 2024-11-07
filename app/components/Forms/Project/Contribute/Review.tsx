@@ -1,14 +1,14 @@
 'use client'
 
 import React, {FC, useCallback, useEffect, useState} from 'react';
-import {View} from '@/app/components/Polyfills';
 
+import {View} from '@/app/components/Polyfills';
 import {FetchStatus} from '@/app/config/types';
 import {ENDPOINTS} from '@/app/config/endpoints';
 import {usePostData} from '@/app/hooks/useQuery';
 import {useModal} from '@/app/hooks/useModal';
 import {finalMessages} from '@/app/utils/modal';
-import {toBaseToken} from '@/app/utils/formatters';
+import {fromBaseToken, toBaseToken} from '@/app/utils/formatters';
 import {Button} from '@/app/components/Elements';
 import FormSummary from '@/app/components/FormElements/GenericSummary';
 import {ButtonThemes} from '@/app/components/Elements/Button/types';
@@ -52,7 +52,7 @@ const ContributionReview: FC<ContributionReviewProps> = ({
 
   const formattedValue = {
     ...data,
-    amount: `${data.amount} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
+    amount: fromBaseToken(data.amount, 3, true),
   };
 
   return (

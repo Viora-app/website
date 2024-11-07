@@ -1,10 +1,10 @@
 import React, {FC, useState} from 'react';
-import {Text, TouchableOpacity, View} from '@/app/components/Polyfills';
 
+import {Text, H3, H4, Span, TouchableOpacity, View} from '@/app/components/Polyfills';
 import {useModal} from '@/app/hooks/useModal';
 import {useGetData} from '@/app/hooks/useQuery';
 import {ENDPOINTS} from '@/app/config/endpoints';
-import {Button} from '@/app/components/Elements';
+import {Button, CheckBox} from '@/app/components/Elements';
 import Loading from '../../../Loading';
 import {ButtonThemes} from '@/app/components/Elements/Button/types';
 import ContributionReview from './Review';
@@ -13,23 +13,33 @@ import {
   ContributeOptionProps,
   ContributionTier,
 } from './types';
+import { fromBaseToken } from '@/app/utils/formatters';
 
 const Option: FC<ContributeOptionProps> = ({data, selected, onSelected}) => {
   const onPress = () => onSelected(data.id);
 
   return (
     <TouchableOpacity
+      className="pb-4"
       onPress={onPress}>
-      <View>
-        <Text>{selected ? 'X' : 'O'}</Text>
-        <Text>
-          {data.attributes.name}
-        </Text>
-        <Text>{`${data.attributes.amount} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`}</Text>
+      <View className="w-full flex flex-row justify-between items-start">
+        <CheckBox
+          key={data.attributes.name}
+          selected={selected}
+          className="!w-[45px]"
+        />
+        <View className="pl-4">
+          <View className="w-full flex flex-row justify-between">
+            <H3>
+              {data.attributes.name}
+            </H3>
+            <H4>{fromBaseToken(data.attributes.amount, 3, true)}</H4>
+          </View>
+          <Span className="w-full text-left">
+            {data.attributes.rewards}
+          </Span>
+        </View>
       </View>
-      <Text>
-        {data.attributes.rewards}
-      </Text>
     </TouchableOpacity>
   );
 };

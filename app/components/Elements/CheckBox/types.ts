@@ -1,5 +1,6 @@
 export interface CheckboxProps {
-  title: string;
+  className?: string;
+  title?: string;
   selected?: boolean;
   onSelect?: () => void;
 }
