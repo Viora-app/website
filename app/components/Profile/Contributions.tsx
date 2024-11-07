@@ -28,7 +28,7 @@ const Contribution: FC<ContributionProps> = ({data}) => {
       }}>
       <View className="flex flex-row no-wrap justify-between mb-4">
         <View className="flex flex-row nowrap items-center">
-          <Image alt="Contribution" source={image} width={65} height={65} className="bg-secondaryMild rounded-xl overflow-hidden !p-0" />
+          <Image alt="Contribution" source={image.src} width={image?.width} height={image?.height} className="bg-secondaryMild rounded-xl overflow-hidden !p-0 w-[65px] h-[65px]" />
           <H4 className="pl-2 text-primaryStrong">
             {data.attributes.project.data?.attributes.name ?? '-'}
           </H4>
