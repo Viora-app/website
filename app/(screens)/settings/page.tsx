@@ -60,7 +60,7 @@ const SettingsScreen = () => {
 
   const Logout = async () => {
     await signOut();
-    navigate(Routes.Login as never);
+    navigate(Routes.Home as never);
   };
 
   return (

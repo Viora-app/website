@@ -1,23 +1,21 @@
-'use client'
-
 import React from 'react';
+import {redirect} from 'next/navigation';
+import { getServerSession } from 'next-auth';
 
-import {SafeArea} from '@/app/components/Elements';
-import Feed from '@/app/components/Feed';
-import Form from '@/app/components/Forms/Project/Create';
-import ModalButton from '@/app/components/ModalButton';
-import {ButtonType} from '@/app/components/ModalButton/types';
+import Login from '@/app/components/Login';
+import { authConfig } from '@/lib/auth';
+import { Routes } from '../config/routes';
 
-const FeedScreen = () => (
-  <SafeArea>
-    <Feed />
-    <ModalButton
-      type={ButtonType.Add}
-      title="Let the world know"
-      description="and receive love and support"
-      modalContent={Form}
-    />
-  </SafeArea>
-);
+const LoginScreen = async () => {
+  const session = await getServerSession(authConfig);
 
-export default FeedScreen;
+  if (session?.user) {
+    redirect(Routes.Feed);
+  }
+
+  return (
+    <Login />
+  );
+};
+
+export default LoginScreen;

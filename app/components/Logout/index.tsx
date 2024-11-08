@@ -18,7 +18,7 @@ const Logout = () => {
       await signOut();
     }
     setIsNavigating(true);
-    navigate(Routes.Login as never);
+    navigate(Routes.Home as never);
   }, [account?.jwt, isNavigating])
 
   useEffect(() => {
