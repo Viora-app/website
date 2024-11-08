@@ -1,3 +1,5 @@
+import {ReactNode, ReactElement} from 'react';
+
 export interface KeyValue {
   [key: string]: unknown;
 }
@@ -117,4 +119,12 @@ export interface QuickAction {
   userInfo: {
     url: string;
   };
+}
+
+export interface HocProps {
+  children: ReactNode;
+}
+
+export interface HocWithElementProps {
+  children: ReactElement;
 }
