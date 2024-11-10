@@ -1,5 +1,3 @@
-'use client'
-
 import React, {FC, useEffect} from 'react';
 import {View} from '@/app/components/Polyfills';
 
@@ -21,7 +19,7 @@ import {ProjectStatus} from '../Projects/types';
 import {ActionsProps} from './types';
 
 const Actions: FC<ActionsProps> = ({owner, project, refresh}) => {
-  const {show} = useModal();
+  // const {show} = useModal();
   const mutation = usePatchData(ENDPOINTS.PROJECTS);
   const {account} = useAccount();
 
@@ -36,7 +34,7 @@ const Actions: FC<ActionsProps> = ({owner, project, refresh}) => {
         message: 'Oops! Something went wrong.',
       };
     }
-    show(finalMessages(feedback));
+    // show(finalMessages(feedback));
   };
 
   useEffect(() => {

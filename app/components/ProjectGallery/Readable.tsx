@@ -1,24 +1,16 @@
 import React, {FC} from 'react';
-import {View, Image, TouchableOpacity} from '@/app/components/Polyfills';
-import {useRouter} from 'next/navigation';
 
+import {View, Image, Link} from '@/app/components/Polyfills';
 import {getLargestSize} from '@/app/utils/image';
 import {GalleryReadableProps, ReadableImageProps} from './types';
 import {Routes} from '@/app/config/routes';
 
 const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
-  const {push: navigate} = useRouter();
-  const onPress = params => {
-    if (params.uri) {
-      navigate(Routes.Picture, params);
-   }
- };
-
   const img = getLargestSize(image?.attributes.formats ?? {});
   return (
-    <TouchableOpacity
+    <Link
       disabled={typeof img === 'number'}
-      onPress={() => onPress(img)}
+      to={{screen: Routes.Picture, params: {url: image?.attributes.formats?.large.url}}}
       className={`${index === 0 ? 'flex-[4] h-full' : 'flex-1'} bg-[#FFEEFF] overflow-hidden ${typeof img === 'string' ? '' : 'flex flex-row justify-center items-center'}`}
       >
       <Image
@@ -28,7 +20,7 @@ const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
         height={img?.height}
         className="min-w-full min-h-full object-cover"
       />
-    </TouchableOpacity>
+    </Link>
   );
 };
 
