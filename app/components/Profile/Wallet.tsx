@@ -1,27 +1,28 @@
 'use client'
 
-import React, {FC} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 
+import {Timeout} from '@/app/config/types';
 import {truncateAddress} from '@/app/utils/formatters';
-import {usePresets} from '@/app/hooks/usePresets';
-import {useModal} from '@/app/hooks/useModal';
-import {useAccount} from '@/app/hooks/useAccount';
 import {View, H1, H2, H4, Span, TouchableHighlight} from '@/app/components/Polyfills';
 
-const Wallet: FC = () => {
-  const {show} = useModal();
-  const {presets} = usePresets();
-  const {account} = useAccount();
-
+const Wallet: FC = ({data}) => {
+  const [copied, setCopied] = useState(false);
+  const timer = useRef<Timeout>();
+  const presets = {};
   const onPress = async () => {
-    navigator.clipboard.writeText(account?.address ?? '')
-    show({
-      title: 'Address copied',
-      description: `The ${process.env.NEXT_PUBLIC_NETWORK_NAME} wallet address is copied to your clipboard. Remember yo only need ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL} tokens in this account address to use in Viora.`,
-    });
+    setCopied(true);
+    timer.current = setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+    navigator.clipboard.writeText(data?.address ?? '');
   };
 
-  const fullName = [account?.first_name, account?.last_name]
+  useEffect(() => () => {
+    clearTimeout(timer.current);
+  }, []);
+
+  const fullName = [data?.first_name, data?.last_name]
     .filter(item => !!item)
     .join(' ');
 
@@ -39,7 +40,7 @@ const Wallet: FC = () => {
         <View className="w-full text-center mb-6">
           <Span className="text-neutralSteady font-light">Points</Span>
           <H1 className="text-primaryStrong">
-            {account?.points ?? 0}
+            {data?.points ?? 0}
           </H1>
         </View>
         <View className="w-full text-center">
@@ -49,7 +50,7 @@ const Wallet: FC = () => {
           <TouchableHighlight onPress={onPress} className="w-full">
             <H4
               className="font-light">
-              {truncateAddress(account?.address ?? '') ?? 'Loading'}
+              {copied ? 'Copied to clipboard' : (truncateAddress(data?.address ?? '') ?? 'Loading')}
             </H4>
           </TouchableHighlight>
         </View>

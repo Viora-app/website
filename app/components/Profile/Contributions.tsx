@@ -1,17 +1,13 @@
-'use client'
-
 import React, {FC} from 'react';
 
-import {ENDPOINTS} from '@/app/config/endpoints';
 import {Routes} from '@/app/config/routes';
-import {useAccount} from '@/app/hooks/useAccount';
-import {useGetData} from '@/app/hooks/useQuery';
 import {getSmallestSize} from '@/app/utils/image';
 import {fromBaseToken} from '@/app/utils/formatters';
 import {View, H4, Span, Image, Link} from '@/app/components/Polyfills';
 import {ImageFormats} from '../Projects/types';
 import SectionHeader from '../SectionHeader';
 import type {ContributionProps, Contribution as ContributionType} from './types';
+import {getUserContributions, getUserAccount} from '@/app/utils/api';
 
 const Contribution: FC<ContributionProps> = ({data}) => {
   const projectId = data.attributes.project.data?.id ?? '';
@@ -47,17 +43,9 @@ const Contribution: FC<ContributionProps> = ({data}) => {
 };
 
 // @todo implement loading state
-const Contributions: FC = () => {
-  const {account} = useAccount();
-  const {data} = useGetData(ENDPOINTS.CONTRIBUTIONS, {
-    filters: {users_permissions_user: account?.id},
-    include: {
-      project: ['*'],
-      contribution_tier: ['*'],
-    },
-  });
-
-  const contributions: ContributionType[] = data?.data ?? [];
+const Contributions: FC = async () => {
+  const account = await getUserAccount();
+  const contributions: ContributionType[] = await getUserContributions(account.id);
 
   return (
     <View className="w-full p-6">
