@@ -22,6 +22,7 @@ export interface LinkProps {
   children: ReactNode;
   className?: string;
   markActive?: boolean;
+  disabled: boolean;
 }
 
 export interface TextInputProps {
