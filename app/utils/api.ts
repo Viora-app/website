@@ -1,134 +1,198 @@
-import axios from 'axios';
-
-import {API_SUFFIX} from '@/app/config/network';
 import {ENDPOINTS} from '@/app/config/endpoints';
-import type {ProfileResponse} from '@/app/context/accountContext/types';
+import type {ApiOptions, QueryParams} from './types';
 
 const IMAGE_PROTOCOL = process.env.NEXT_PUBLIC_IMAGE_PROTOCOL;
 const IMAGE_HOSTNAME = process.env.NEXT_PUBLIC_IMAGE_HOSTNAME;
 const IMAGE_PORT = process.env.NEXT_PUBLIC_IMAGE_PORT;
 
 const baseURl = `${IMAGE_PROTOCOL}://${IMAGE_HOSTNAME}${IMAGE_PORT ? ':' + IMAGE_PORT : ''}`
-const api = axios.create({
-  baseURL: `${baseURl}/${API_SUFFIX}`,
-});
 
-export const getData = async (
-  endpoint: string,
-  params: unknown = {},
-  jwt: string | undefined = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTAsImlhdCI6MTczMDAyMDI4MCwiZXhwIjoxNzMyNjEyMjgwfQ.HPD171NrQ1cUvVv5l4lGuBTQfrqeeSeHlqRvhqW5yMo',
-) => {
-  const response = await api.get(endpoint, {
-    params,
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-      'Content-Type': 'application/json',
-    },
-  });
-  return response.data;
-};
+export const getApiUrl = () => baseURl;
 
-export const postData = async (
-  endpoint: string,
-  data: unknown,
-  jwt: string | undefined,
-) => {
-  const response = await api.post(endpoint, data, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-      'Content-Type': 'application/json',
-    },
-  });
-  return response.data;
-};
+const constructQueryParams = (params: QueryParams) => {
+  const queryParams: Record<string, string | number | boolean> = {};
 
-export const patchData = async (
-  endpoint: string,
-  data: unknown,
-  jwt: string | undefined,
-) => {
-  const isFormData = data?.data instanceof FormData;
-  const body = isFormData ? data.data : data;
-  const response = await api.put(endpoint, body, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-      'Content-Type': isFormData ? 'multipart/form-data' : 'application/json',
-    },
-  });
-  return response.data;
-};
-
-export const deleteData = async (endpoint: string, jwt: string | undefined) => {
-  const response = await api.delete(endpoint, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-      'Content-Type': 'application/json',
-    },
-  });
-  return response.data;
-};
-
-export const authenticate = async (identifier: string, password: string) => {
-  try {
-    const response = await api.post('/auth/local', {
-      identifier,
-      password,
+  // Flattening include params for population
+  if (params.include) {
+    Object.entries(params.include).forEach(([key, value]) => {
+      value.forEach((field: string) => {
+        if (field === '*') {
+          queryParams[`populate[${key}][populate]`] = '*';
+        } else {
+          const index = value.indexOf(field);
+          queryParams[`populate[${key}][fields][${index}]`] = field;
+        }
+      });
     });
-    return response.data;
-  } catch (error) {
-    console.error('Error during authentication', error);
-    throw error;
   }
-};
 
-export const register = async (
-  email: string,
-  password: string,
-  username: string,
-) => {
-  try {
-    const response = await api.post('/auth/local/register', {
-      email,
-      password,
-      username,
+  // Handling filters
+  if (params.filters) {
+    Object.entries(params.filters).forEach(([key, value]) => {
+      queryParams[`filters[${key}]`] = value;
     });
-    return response.data;
-  } catch (error) {
-    console.error('Error during registration', error);
-    throw error;
   }
+
+  // Handling pagination
+  if (params.pagination) {
+    Object.entries(params.pagination).forEach(([key, value]) => {
+      queryParams[`pagination[${key}]`] = value;
+    });
+  }
+
+  // Converting queryParams object to a query string
+  const query = Object.keys(queryParams)
+    .map((key) => `${key}=${encodeURIComponent(queryParams[key])}`)
+    .join('&');
+
+  return query;
 };
 
-export const getProfile = async (jwt: string): Promise<ProfileResponse> => {
-  const response = await api.get('/profiles/me', {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-      'Content-Type': 'application/json',
+export const apiClient = async (endpoint: string, options: ApiOptions = {}) => {
+  const query = constructQueryParams(options?.params ?? {});
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/${endpoint}?${query}`.replace('//', '/'), options);
+
+  if (!res.ok) {
+    throw new Error(`API call failed: ${res.status}`);
+  }
+
+  return await res.json();
+};
+
+export const getProjectDetails = async (id: string) => {
+  const projectParams = {
+    include: {
+      users_permissions_user: ['email'],
+      images: ['*'],
     },
-  });
-  return response.data;
+  };
+  
+  const artistParams = {
+    include: {
+      avatar: ['*'],
+    },
+    filters: {
+      users_permissions_user: '',
+    },
+  };
+
+  let project = {attributes: {}};
+  let artist = {attributes: {}};
+  try {
+    const data = await apiClient(`${ENDPOINTS.PROJECTS}/${id}`, {params: projectParams});
+    if (Array.isArray(data?.data)) {
+      project = data?.data[0];
+    } else if (data?.data?.attributes) {
+      project = data?.data;
+    }
+
+    if (project.attributes?.users_permissions_user?.data.id) {
+      artistParams.filters.users_permissions_user = project.attributes?.users_permissions_user?.data.id;
+      const data = await apiClient(ENDPOINTS.PROFILES, {params: artistParams});
+      if (data?.data?.length) {
+        artist = data?.data[0];
+      }
+    }
+  } catch (error) {
+    console.error('Failed to fetch data:', error);
+  }
+
+  return {
+    project,
+    artist,
+  };
 };
 
-export const getSongFromPlatform = async (
-  platform: string,
-  id: string,
-  jwt: string,
-) => {
+export const deleteProjectPhoto = async (projectId: string, removedId: string, remainingIds: string[]) => {
   try {
-    const response = await api.get(
-      `${ENDPOINTS.SONG_FETCH}/${platform}/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${jwt}`,
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-    return response.data;
-  } catch (e) {
-    console.log('e', e);
-    return {
-      error: 'Not found',
-    };
+    const data = JSON.stringify({images: remainingIds});
+    const project = await apiClient(`${ENDPOINTS.PROJECTS}/${projectId}`, {method: 'PUT', data});
+    await apiClient(`${ENDPOINTS.FILES}/${removedId}`, {method: 'DELETE'});
+
+    return project;
+  } catch (error) {
+    console.error('Failed to delete photo:', error);
   }
+};
+
+// @todo not used yet
+export const addProjectPhoto = async (projectId: string, data: unknown) => {
+  const project = await apiClient(`${ENDPOINTS.PROJECTS}/${projectId}`, {method: 'PUT', data});
+};
+
+export const getUserContributions = async (id: string | undefined) => {
+  let contributions = [];
+  if (id) {
+    try {
+      const result = await apiClient(ENDPOINTS.CONTRIBUTIONS, {
+        params: {
+          filters: {users_permissions_user: id},
+          include: {
+            project: ['*'],
+            contribution_tier: ['*'],
+          },
+        }
+      });
+      if (Array.isArray(result.data)) {
+        contributions = result.data;
+      }
+    } catch (error) {
+      console.error('Failed to delete photo:', error);
+    }
+  }
+
+  return contributions;
+};
+
+export const getUserAccount = async () => {
+  let account = {};
+
+  try {
+    const result = await apiClient(ENDPOINTS.ME);
+    account = result;
+  } catch (error) {
+    console.error('Failed to delete photo:', error);
+  }
+
+  return account;
+};
+
+export const logout = async () => {
+  const result = {success: false};
+
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/disconnect`);
+  
+    if (!res.ok) {
+      throw new Error(`API call failed: ${res.status}`);
+    }
+  
+    await res.json();
+    result.success = true;
+  } catch (error) {
+    console.error('Failed to logout:', error);
+  }
+
+  return result;
+};
+
+export const createProject = async (data) => {
+  const result = {
+    success: false,
+    error: '',
+  };
+
+  try {
+    const result = await apiClient(ENDPOINTS.PROJECTS, {
+      method: 'POST',
+      data,
+    });
+
+    console.log('createProject', createProject);
+  } catch (error) {
+    console.error('Failed to create project:', error);
+  }
+
+  return result;
 };

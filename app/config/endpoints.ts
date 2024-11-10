@@ -8,6 +8,7 @@ export const ENDPOINTS = {
   SONG_BADGES: '/song-badges',
   SONG_FETCH: '/song/fetch',
   PROFILES: '/profiles',
+  ME: '/profiles/me',
   PROJECTS: '/projects',
   CONTRIBUTION_TIERS: '/contribution-tiers',
   CONTRIBUTIONS: '/contributions',
