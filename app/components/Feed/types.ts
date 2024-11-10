@@ -86,7 +86,7 @@ export interface ExclusiveContentAttrs {
 }
 
 export interface ProjectProps {
-  item: ProjectAttrs & {
+  data: ProjectAttrs & {
     id: number;
     current_funding: number;
     reaction_count: number;
@@ -98,7 +98,7 @@ export interface ProjectProps {
 }
 
 export interface ContentProps {
-  item: ExclusiveContentAttrs & {
+  data: ExclusiveContentAttrs & {
     id: number;
     reaction_count: number;
     owner: Owner;

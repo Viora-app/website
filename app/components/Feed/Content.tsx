@@ -6,8 +6,8 @@ import LinkToProject from './LinkToProject';
 import Artist from '../Artist';
 import Meta from './Meta';
 
-const Project: FC<ContentProps> = ({item}) => {
-  const {reaction_count, description, title, project, owner, type} = item;
+const Project: FC<ContentProps> = ({data}) => {
+  const {reaction_count, description, title, project, owner, type} = data;
   // const {data} = images;
   // const image = data?.length
   //   ? {uri: `${API_URL}${data[0].attributes.formats.thumbnail.url}`}

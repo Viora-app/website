@@ -6,8 +6,8 @@ import Artist from '../Artist';
 import Meta from './Meta';
 import {Routes} from '@/app/config/routes';
 
-const Project: FC<ProjectProps> = ({item}) => {
-  const {id, name, summary, owner, reaction_count, type} = item;
+const Project: FC<ProjectProps> = ({data}) => {
+  const {id, name, summary, owner, reaction_count, type} = data;
   // const image = data?.length
   //   ? {uri: `${API_URL}${data[0].attributes.formats.thumbnail.url}`}
   //   : avatar;
