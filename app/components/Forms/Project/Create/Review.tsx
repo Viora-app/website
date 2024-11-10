@@ -1,55 +1,30 @@
 'use client'
 
-import React, {useCallback, useEffect, useState} from 'react';
-import {View} from '@/app/components/Polyfills';
+import React, {FC, useState} from 'react';
 
-import {useModal} from '@/app/hooks/useModal';
-import {usePostData} from '@/app/hooks/useQuery';
-import {FetchStatus} from '@/app/config/types';
+import {View, ScrollView} from '@/app/components/Polyfills';
 import {toBaseToken} from '@/app/utils/formatters';
-import {finalMessages} from '@/app/utils/modal';
 import {ButtonThemes} from '@/app/components/Elements/Button/types';
-import {ENDPOINTS} from '@/app/config/endpoints';
 import FormSummary from '@/app/components/FormElements/GenericSummary';
 import {Button} from '@/app/components/Elements';
-import type {CreateProjectReviewProps, Feedback} from './types';
+import type {CreateProjectReviewProps} from './types';
 
-const CreateProjectReview = ({data}: CreateProjectReviewProps) => {
-  const {show} = useModal();
+const CreateProjectReview: FC<CreateProjectReviewProps> = ({data, onEdit, onSubmit}) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const mutation = usePostData(ENDPOINTS.PROJECTS);
 
-  const onDone = useCallback(
-    (feedback: Feedback) => {
-      show(finalMessages(feedback));
-    },
-    [show],
-  );
-
-  const onSubmit = async () => {
+  const handleSubmit = async () => {
     setIsSubmitted(true);
-    // Keyboard.dismiss();
     try {
-      await mutation.mutateAsync({
-        data: {
-          ...data,
-          soft_goal: toBaseToken(data.soft_goal ?? ''),
-          hard_goal: toBaseToken(data.hard_goal ?? ''),
-        },
+      onSubmit({
+        ...data,
+        soft_goal: toBaseToken(data.soft_goal ?? ''),
+        hard_goal: toBaseToken(data.hard_goal ?? ''),
       });
     } catch (e) {
+      setIsSubmitted(false);
       console.error('Error creating project:', e);
     }
   };
-
-  useEffect(() => {
-    if (!mutation.isLoading && (mutation.isError || mutation.isSuccess)) {
-      onDone({
-        status: mutation.isSuccess ? FetchStatus.success : FetchStatus.error,
-        message: mutation.isSuccess ? '' : 'Error creating your project.',
-      });
-    }
-  }, [mutation, onDone]);
 
   const formattedValue = {
     ...data,
@@ -58,17 +33,22 @@ const CreateProjectReview = ({data}: CreateProjectReviewProps) => {
   };
 
   return (
-    <View className="w-full h-[calc(100%-100px)]">
+    <ScrollView className="w-full h-full p-4">
       <FormSummary data={formattedValue} />
-      <View className="flex flex-row justify-center">
+      <View className="flex flex-row justify-center gap-4">
+        <Button
+          title={'Edit'}
+          theme={ButtonThemes.secondary}
+          onPress={onEdit}
+        />
         <Button
           title={isSubmitted ? 'Updating' : 'Continue'}
           theme={ButtonThemes.primary}
-          onPress={onSubmit}
+          onPress={handleSubmit}
           disabled={isSubmitted}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
