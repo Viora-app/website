@@ -1,13 +1,12 @@
 import React, {FC} from 'react';
-import {Image, Link} from '@/app/components/Polyfills';
 
-import {Icon, SafeArea} from '@/app/components/Elements';
-import { getApiUrl } from '@/app/utils/api';
+import {Image} from '@/app/components/Polyfills';
+import {SafeArea} from '@/app/components/Elements';
+import {apiBaseUrl} from '@/app/config/endpoints';
 
 const PictureScreen: FC = async ({searchParams}) => {
   const awaitedSearchParams = await searchParams;
-  const apiUrl = getApiUrl();
-  const uri = `${apiUrl}${awaitedSearchParams.url}`;
+  const uri = `${apiBaseUrl.replace('/api', '')}${awaitedSearchParams.url}`;
 
   return (
     <SafeArea>
