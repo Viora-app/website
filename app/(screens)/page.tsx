@@ -1,21 +1,14 @@
 import React from 'react';
+import {cookies} from 'next/headers';
 
-import {SafeArea} from '@/app/components/Elements';
+import {Routes} from '@/app/config/routes';
+import {getFeed} from '@/app/actions/getFeed';
+import {Link} from '../components/Polyfills';
+import {SafeArea, Icon} from '@/app/components/Elements';
 import Feed from '@/app/components/Feed';
-import {Icon} from '@/app/components/Elements';
-import {ENDPOINTS} from '@/app/config/endpoints';
-import {Routes} from '@/app/config//routes';
-import {apiClient} from '@/app/utils/api';
-import { Link } from '../components/Polyfills';
 
 const FeedScreen = async () => {
-  let data;
-  try {
-    data = await apiClient(ENDPOINTS.FEED);
-  } catch (error) {
-    console.error('Failed to fetch data:', error);
-    // Handle the error (e.g., redirect to login if unauthorized)
-  }
+  const data = await getFeed();
 
   return (
     <SafeArea>
