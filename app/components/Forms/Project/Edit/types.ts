@@ -2,7 +2,7 @@ import {SongAttributes, FetchStatus} from '@/app/config/types';
 import {ProjectAttrs} from '../../../Projects/types';
 
 export interface EditProjectFormProps {
-  id?: string;
+  projectId?: number;
 }
 
 export interface CreateProjectReviewProps {
@@ -11,7 +11,7 @@ export interface CreateProjectReviewProps {
 
 export interface EditProjectReviewProps {
   data: Partial<ProjectAttrs>;
-  id: string;
+  projectId: number;
 }
 
 export interface Feedback {

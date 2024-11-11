@@ -31,14 +31,14 @@ const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
     show({
       title: 'Add contribution tier',
       description: 'And enable fans to support you',
-      content: <CreateContributionTierForm id={projectId} />,
+      content: <CreateContributionTierForm projectId={projectId} />,
     });
   };
   const edit = () => {
     show({
       title: 'Edit your project',
       description: 'Improvement is always a good thing',
-      content: <EditProjectForm id={projectId} />,
+      content: <EditProjectForm projectId={projectId} />,
     });
   };
   const publish = () => {
@@ -55,11 +55,11 @@ const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
             },
           });
           const feedback = {
-            status: FetchStatus.error,
+            status: FetchStatus.Error,
             message: 'Failed to upload your images.',
           };
           if (result.data) {
-            feedback.status = FetchStatus.success;
+            feedback.status = FetchStatus.Success;
             feedback.message =
               'Wonderful! now your project is available for fans to support.';
           }

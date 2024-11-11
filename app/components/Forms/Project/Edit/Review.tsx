@@ -14,7 +14,7 @@ import FormSummary from '@/app/components/FormElements/GenericSummary';
 import {Button} from '@/app/components/Elements';
 import type {EditProjectReviewProps, Feedback} from './types';
 
-const CreateProjectReview = ({data, id}: EditProjectReviewProps) => {
+const CreateProjectReview = ({data, projectId}: EditProjectReviewProps) => {
   const {show} = useModal();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const mutation = usePatchData(ENDPOINTS.PROJECTS);
@@ -36,7 +36,7 @@ const CreateProjectReview = ({data, id}: EditProjectReviewProps) => {
           ...(data.soft_goal ? {soft_goal: toBaseToken(data.soft_goal)} : {}),
           ...(data.hard_goal ? {hard_goal: toBaseToken(data.hard_goal)} : {}),
         },
-        id,
+        id: projectId,
       });
     } catch (e) {
       console.error('Error creating project:', e);
@@ -46,7 +46,7 @@ const CreateProjectReview = ({data, id}: EditProjectReviewProps) => {
   useEffect(() => {
     if (!mutation.isLoading && (mutation.isError || mutation.isSuccess)) {
       onDone({
-        status: mutation.isSuccess ? FetchStatus.success : FetchStatus.error,
+        status: mutation.isSuccess ? FetchStatus.Success : FetchStatus.Error,
         message: mutation.isSuccess ? '' : 'Error creating your project.',
       });
     }

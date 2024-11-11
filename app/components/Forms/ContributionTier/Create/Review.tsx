@@ -16,7 +16,7 @@ import type {CreateContributionTierReviewProps, Feedback} from './types';
 
 const CreateProjectReview = ({
   data,
-  project,
+  projectId,
 }: CreateContributionTierReviewProps) => {
   const {show} = useModal();
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -37,7 +37,7 @@ const CreateProjectReview = ({
         data: {
           ...data,
           amount: toBaseToken(data.amount ?? ''),
-          project,
+          project: projectId,
         },
       });
     } catch (e) {
@@ -48,7 +48,7 @@ const CreateProjectReview = ({
   useEffect(() => {
     if (!mutation.isLoading && (mutation.isError || mutation.isSuccess)) {
       onDone({
-        status: mutation.isSuccess ? FetchStatus.success : FetchStatus.error,
+        status: mutation.isSuccess ? FetchStatus.Success : FetchStatus.Error,
         message: mutation.isSuccess ? '' : 'Error creating your project.',
       });
     }

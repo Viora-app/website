@@ -16,7 +16,7 @@ import EditProjectReview from './Review';
 import type {EditProjectFormProps} from './types';
 import {schema} from './schema';
 
-const EditProjectForm = ({id}: EditProjectFormProps) => {
+const EditProjectForm = ({projectId}: EditProjectFormProps) => {
   const [data, setData] = useState<Partial<ProjectAttrs>>({
     name: '',
     summary: '',
@@ -28,18 +28,18 @@ const EditProjectForm = ({id}: EditProjectFormProps) => {
     hard_goal: 0,
   });
   const {data: existingData, isLoading} = useGetData(
-    `${ENDPOINTS.PROJECTS}/${id}`,
+    `${ENDPOINTS.PROJECTS}/${projectId}`,
   );
   const {show} = useModal();
   const maxHeight = Dimensions.get('window').height * 0.6;
 
   const onSubmit = async () => {
-    if (id) {
+    if (projectId) {
       // Keyboard.dismiss();
       show({
         title: 'Looking good!',
         description: '',
-        content: <EditProjectReview data={data} id={id} />,
+        content: <EditProjectReview data={data} projectId={projectId} />,
       });
     }
   };
@@ -129,7 +129,7 @@ const EditProjectForm = ({id}: EditProjectFormProps) => {
           title="Continue"
           theme={ButtonThemes.primary}
           onPress={onSubmit}
-          disabled={!validity.isValid || !id}
+          disabled={!validity.isValid || !projectId}
         />
       </View>
     </View>

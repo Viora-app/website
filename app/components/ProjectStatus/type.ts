@@ -15,10 +15,10 @@ export interface FullDataComponentProps {
 }
 
 export interface SuccessfulProjectOwnerProps {
-  projectId: string;
+  projectId: number;
 }
 
 export interface DefaultProjectStatusProps {
-  projectId: string;
+  projectId: number;
   refresh: () => Promise<void>;
 }

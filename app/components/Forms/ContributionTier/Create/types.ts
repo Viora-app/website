@@ -2,12 +2,12 @@ import {SongAttributes, FetchStatus} from '@/app/config/types';
 import {ContributionTierAttrs} from '../../../Projects/types';
 
 export interface ContributionTier {
-  id: string;
+  projectId: number;
 }
 
 export interface CreateContributionTierReviewProps {
   data: Partial<ContributionTierAttrs>;
-  project: string;
+  projectId: number;
 }
 
 export interface Feedback {
