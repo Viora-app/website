@@ -75,9 +75,9 @@ export interface ProjectAttrs {
   description: string;
   project_type: ProjectType;
   planned_release_date: string;
-  soft_goal: number;
+  soft_goal: number | string;
   deadline: string;
-  hard_goal: number;
+  hard_goal: number | string;
 }
 
 export interface Project {

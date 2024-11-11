@@ -1,6 +1,7 @@
-'use client'
+'use client';
 
 import React, {useState, FC} from 'react';
+import {useRouter} from 'next/navigation';
 
 import {validateForm} from '@/app/utils/validators';
 import {ProjectAttrs, ProjectType} from '@/app/components/Projects/types';
@@ -11,11 +12,14 @@ import {Button, Input} from '@/app/components/Elements';
 import SectionHeader from '@/app/components/SectionHeader';
 import {schema} from './schema';
 import {CreateProjectFormProps} from './types';
+import { Routes } from '@/app/config/routes';
 
 const emptyFormValues = {
-  name: "It's pouring rain",
-  summary: 'A powerful and energetic single that captures the vibrant nightlife of a bustling metropolis.',
-  description: "It's pouring rain is a single that blends electronic dance music with urban beats to create a high-energy anthem for the night. With driving bass lines, infectious rhythms, and futuristic sound design, this track is a tribute to the non-stop energy of city life after dark. The lyrics capture the thrill and excitement of midnight adventures, making it a perfect addition to any party playlist. This single represents the pulse of the modern world, set against the backdrop of a vibrant, neon-lit cityscape.",
+  name: 'It\'s pouring rain',
+  summary:
+    'A powerful and energetic single that captures the vibrant nightlife of a bustling metropolis.',
+  description:
+    'It\'s pouring rain is a single that blends electronic dance music with urban beats to create a high-energy anthem for the night. With driving bass lines, infectious rhythms, and futuristic sound design, this track is a tribute to the non-stop energy of city life after dark. The lyrics capture the thrill and excitement of midnight adventures, making it a perfect addition to any party playlist. This single represents the pulse of the modern world, set against the backdrop of a vibrant, neon-lit cityscape.',
   project_type: ProjectType.Single,
   planned_release_date: '2024-12-01',
   soft_goal: 0.1,
@@ -23,12 +27,22 @@ const emptyFormValues = {
   deadline: '2024-12-01',
 };
 
-const CreateProjectForm: FC<CreateProjectFormProps> = ({initialData, onProceed}) => {
-  const [data, setData] = useState<Partial<ProjectAttrs>>(initialData || emptyFormValues);
+const CreateProjectForm: FC<CreateProjectFormProps> = ({
+  initialData,
+  onProceed,
+}) => {
+  const {push} = useRouter();
+  const [data, setData] = useState<Partial<ProjectAttrs>>(
+    initialData || emptyFormValues,
+  );
   const validity = validateForm(schema, data);
 
   const handleSubmit = () => {
     onProceed(data);
+  };
+
+  const handleCancel = () => {
+    push(Routes.Home);
   };
 
   const onChange = (fieldName: string) => (value: string) => {
@@ -93,7 +107,12 @@ const CreateProjectForm: FC<CreateProjectFormProps> = ({initialData, onProceed})
         />
       </View>
       <ValidationFeedback {...validity} />
-      <View className="w-full flex flex-row justify-center pt-4">
+      <View className="w-full flex flex-row justify-center gap-4 pt-4">
+        <Button
+          title="Cancel"
+          theme={ButtonThemes.secondary}
+          onPress={handleCancel}
+        />
         <Button
           title="Continue"
           theme={ButtonThemes.primary}

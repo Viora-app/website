@@ -87,10 +87,10 @@ export interface Badge {
   claimed: boolean;
 }
 export enum FetchStatus {
-  idle = 'idle',
-  pending = 'pending',
-  success = 'success',
-  error = 'error',
+  Idle = 'idle',
+  Pending = 'pending',
+  Success = 'success',
+  Error = 'error',
 }
 
 export interface Feedback {

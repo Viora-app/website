@@ -1,6 +1,6 @@
 'use client'
 
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 
 import {View, ScrollView} from '@/app/components/Polyfills';
 import {toBaseToken} from '@/app/utils/formatters';
@@ -8,28 +8,34 @@ import {ButtonThemes} from '@/app/components/Elements/Button/types';
 import FormSummary from '@/app/components/FormElements/GenericSummary';
 import {Button} from '@/app/components/Elements';
 import type {CreateProjectReviewProps} from './types';
+import {FetchStatus} from '@/app/config/types';
+import Feedback from '@/app/components/Feedback';
 
-const CreateProjectReview: FC<CreateProjectReviewProps> = ({data, onEdit, onSubmit}) => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const SubmitTitle = {
+  [FetchStatus.Idle]: 'Submit',
+  [FetchStatus.Pending]: 'Submitting',
+  [FetchStatus.Error]: 'Failed',
+  [FetchStatus.Success]: 'Succeeded',
+};
 
+const CreateProjectReview: FC<CreateProjectReviewProps> = ({data, onEdit, onSubmit, feedback}) => {
   const handleSubmit = async () => {
-    setIsSubmitted(true);
     try {
-      onSubmit({
+      const result = await onSubmit({
         ...data,
-        soft_goal: toBaseToken(data.soft_goal ?? ''),
-        hard_goal: toBaseToken(data.hard_goal ?? ''),
+        soft_goal: toBaseToken(data?.soft_goal ?? ''),
+        hard_goal: toBaseToken(data?.hard_goal ?? ''),
       });
+      console.log('result', result);
     } catch (e) {
-      setIsSubmitted(false);
       console.error('Error creating project:', e);
     }
   };
 
   const formattedValue = {
     ...data,
-    soft_goal: `${data.soft_goal} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
-    hard_goal: `${data.hard_goal} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
+    soft_goal: `${data?.soft_goal} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
+    hard_goal: `${data?.hard_goal} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
   };
 
   return (
@@ -42,12 +48,13 @@ const CreateProjectReview: FC<CreateProjectReviewProps> = ({data, onEdit, onSubm
           onPress={onEdit}
         />
         <Button
-          title={isSubmitted ? 'Updating' : 'Continue'}
+          title={SubmitTitle[feedback.status]}
           theme={ButtonThemes.primary}
+          disabled={feedback.status !== FetchStatus.Idle}
           onPress={handleSubmit}
-          disabled={isSubmitted}
         />
       </View>
+      <Feedback {...feedback} />
     </ScrollView>
   );
 };

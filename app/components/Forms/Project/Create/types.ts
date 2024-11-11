@@ -5,6 +5,10 @@ export interface CreateProjectReviewProps {
   data?: Partial<ProjectAttrs>;
   onEdit: () => void;
   onSubmit: (data: Partial<ProjectAttrs>) => Promise<void>;
+  feedback: {
+    status: FetchStatus;
+    message: string;
+  };
 }
 
 export interface Feedback {
