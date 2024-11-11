@@ -95,5 +95,5 @@ export interface ApiOptions {
   headers?: IncomingHttpHeaders;
   params?: QueryParams;
   method?: 'POST'|'GET'|'DELETE'|'PUT';
-  data?: string;
+  body?: string;
 }

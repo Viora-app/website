@@ -1,6 +1,8 @@
-import {NextResponse} from 'next/server';
 import {cookies} from 'next/headers';
-import { Routes } from '@/app/config/routes';
+import {NextResponse} from 'next/server';
+
+import {Routes} from '@/app/config/routes';
+import {AUTH_COOKIE} from '@/app/config/constants';
 
 export const dynamic = 'force-dynamic'; 
 export async function GET(
@@ -8,11 +10,10 @@ export async function GET(
 ) {
   try {
     const awaitedCookie = await cookies();
-    awaitedCookie.delete('jwt');
-    console.log('URL', request.url);
-    console.log('Route', Routes.Login);
-    return Response.json({success: true})
-  } catch (e) {
-    return Response.json({success: false})
+    awaitedCookie.delete(AUTH_COOKIE);
+    return NextResponse.redirect(new URL(Routes.Login, request.url));
+  } catch (error) {
+    console.log('Error disconnecting account', error);
+    return NextResponse.redirect(new URL(Routes.Home, request.url));
   }
 }

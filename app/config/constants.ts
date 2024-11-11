@@ -23,3 +23,4 @@ export const HTTP_STATUS = {
 
 export const USER_CREDENTIALS = 'user_session';
 export const USER_PRESETS = 'user_presets';
+export const AUTH_COOKIE = 'jwt';

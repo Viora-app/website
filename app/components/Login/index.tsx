@@ -1,38 +1,17 @@
 'use client'
 
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC} from 'react';
 import {redirect} from 'next/navigation';
 import NextImage from 'next/image';
 
-import {Routes} from '@/app/config/routes';
-import {Small, H3, Span, View, TextInput} from '@/app/components/Polyfills';
+import {H3, View} from '@/app/components/Polyfills';
 import {Button, SafeArea} from '@/app/components/Elements';
-import {useAccount} from '@/app/hooks/useAccount';
 import appLogo from '@/public/images/applogo.png';
 
-const ErrorMessage: FC<{errorMessage: string}> = ({errorMessage}) => {
-  if (typeof errorMessage !== 'string' || !errorMessage) {
-    return null;
-  }
-  const networkReg = /network/i;
-  let formattedMessage = errorMessage;
-
-  if (networkReg.test(errorMessage)) {
-    formattedMessage = 'Check your internet connection';
-  } else {
-    formattedMessage = 'The email/password combination was not correct.';
-  }
-
-  return (
-    <View className="pb-4">
-      <Small className="text-warnStrong">{formattedMessage}</Small>
-    </View>
-  );
-};
-
-const Login = () => {
+const Login: FC = () => {
   const onPress = () => {
     const baseApiUrl = `${process.env.NEXT_PUBLIC_IMAGE_PROTOCOL}://${process.env.NEXT_PUBLIC_IMAGE_HOSTNAME}${process.env.NEXT_PUBLIC_IMAGE_PORT ? ':' + process.env.NEXT_PUBLIC_IMAGE_PORT : ''}`
+    console.log('TO HERE:', `${baseApiUrl}/api/connect/google`);
     redirect(`${baseApiUrl}/api/connect/google`);
   }
 

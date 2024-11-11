@@ -1,8 +1,9 @@
 import {NextResponse} from 'next/server';
 import {cookies} from 'next/headers';
 
-import {getApiUrl} from '@/app/utils/api';
-import { Routes } from '@/app/config/routes';
+import {apiBaseUrl} from '@/app/config/endpoints';
+import {Routes} from '@/app/config/routes';
+import {AUTH_COOKIE} from '@/app/config/constants';
 
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
@@ -12,7 +13,7 @@ const config = {
   secure: process.env.NODE_ENV === 'production',
 };
 
-export const dynamic = 'force-dynamic'; 
+export const dynamic = 'force-dynamic';
 export async function GET(
   request: Request,
   params: {params: {provider: string}},
@@ -25,16 +26,16 @@ export async function GET(
     }
 
     const parsedParams = await params.params;
-    const backendUrl = getApiUrl();
-    const path = `/api/auth/${parsedParams.provider}/callback`;
-    const url = `${backendUrl}${path}?access_token=${token}`
+    const path = `/auth/${parsedParams.provider}/callback`;
+    const url = `${apiBaseUrl}${path}?access_token=${token}`;
 
     const res = await fetch(url);
     const data = await res.json();
     const awaitedCookie = await cookies();
-    awaitedCookie.set('jwt', data.jwt, config);
+    awaitedCookie.set(AUTH_COOKIE, data.jwt, config);
     return NextResponse.redirect(new URL(Routes.Home, request.url));
-  } catch (e) {
+  } catch (error) {
+    console.log('Error connecting account', error);
     return NextResponse.redirect(new URL(Routes.Login, request.url));
   }
 }

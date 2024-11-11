@@ -2,7 +2,6 @@ import {ReactNode} from 'react';
 import type {Metadata} from 'next';
 import NextImage from 'next/image';
 
-import Providers from '../context';
 import {Routes} from '@/app/config/routes';
 import {Icon} from '@/app/components/Elements';
 import {Link} from '@/app/components/Polyfills';

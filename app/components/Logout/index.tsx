@@ -5,7 +5,7 @@ import {redirect} from 'next/navigation';
 import {Routes} from '@/app/config/routes';
 import loading from '@/public/images/loading.svg';
 import {View, H4} from '@/app/components/Polyfills';
-import {logout} from '@/app/utils/api';
+import {logout} from '@/app/actions/logout';
 
 const Logout = async () => {
   const result = await logout();
