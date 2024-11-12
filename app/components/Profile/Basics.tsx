@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {View} from '@/app/components/Polyfills';
-import {getUserAccount} from '@/app/utils/api';
+import {getUserAccount} from '@/app/actions/getUserAccount';
 import Avatar from './Avatar';
 import Wallet from './Wallet';
 

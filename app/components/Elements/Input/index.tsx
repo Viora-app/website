@@ -8,6 +8,7 @@ const Input = ({
   onChange,
   name,
   placeholder,
+  className,
   inputMode = 'text',
   multiline = false,
 }: InputProps) => (
@@ -19,6 +20,7 @@ const Input = ({
       multiline={multiline}
       placeholderTextColor="#ccc"
       inputMode={inputMode}
+      className={className}
     />
   </View>
 );
