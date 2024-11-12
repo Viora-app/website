@@ -1,4 +1,4 @@
-import {Account} from '@/app/context/accountContext/types';
+import {Account} from '@/app/config/types';
 import {ArtistShareProp} from '../ProjectDetails/types';
 import {Project} from '../Projects/types';
 

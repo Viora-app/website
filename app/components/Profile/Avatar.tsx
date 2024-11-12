@@ -5,7 +5,7 @@ import {View, Image} from '@/app/components/Polyfills';
 
 import {Icon, ImagePicker} from '@/app/components/Elements';
 import {getSmallestSize} from '@/app/utils/image';
-import {ImageFormats} from '../Projects/types';
+import {ImageFormats} from '@/app/config/types';
 
 const Avatar: FC<{data: ImageFormats}> = ({data}) => {
   const source = getSmallestSize(data);

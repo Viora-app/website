@@ -1,4 +1,4 @@
-import type {ImageFormats} from '../Projects/types';
+import type {ImageFormats} from '@/app/config/types';
 export interface ArtistProps {
   data: {
     first_name: string;

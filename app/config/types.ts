@@ -19,6 +19,55 @@ export interface Auth {
   mandatoryKeys: Buffer[];
 }
 
+export enum ImageSizes {
+  Large = 'large',
+  Medium = 'medium',
+  Small = 'small',
+  Thumbnail = 'thumbnail',
+}
+
+export interface ImageFormats {
+  [ImageSizes.Large]: {
+    url: string;
+    name: string;
+    width: number;
+    height: number;
+  };
+  [ImageSizes.Medium]: {
+    url: string;
+    name: string;
+    width: number;
+    height: number;
+  };
+  [ImageSizes.Small]: {
+    url: string;
+    name: string;
+    width: number;
+    height: number;
+  };
+  [ImageSizes.Thumbnail]: {
+    url: string;
+    name: string;
+    width: number;
+    height: number;
+  };
+}
+
+export interface Account {
+  first_name: string;
+  last_name: string;
+  points: number;
+  email: string;
+  id: number;
+  profileId: number;
+  address: string;
+  avatarUrl: string | null;
+  avatar: {
+    id: number;
+    formats: ImageFormats;
+  };
+}
+
 export interface SongAttributes {
   apple_music_url?: string;
   spotify_url?: string;
