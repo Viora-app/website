@@ -12,6 +12,8 @@ const Logout = async () => {
 
   if (result.success) {
     redirect(Routes.Login);
+  } else {
+    redirect(Routes.Home);
   }
 
   return (
