@@ -4,10 +4,11 @@ import {Routes} from '@/app/config/routes';
 import {getSmallestSize} from '@/app/utils/image';
 import {fromBaseToken} from '@/app/utils/formatters';
 import {View, H4, Span, Image, Link} from '@/app/components/Polyfills';
-import {ImageFormats} from '../Projects/types';
+import {ImageFormats} from '@/app/config/types';
 import SectionHeader from '../SectionHeader';
 import type {ContributionProps, Contribution as ContributionType} from './types';
-import {getUserContributions, getUserAccount} from '@/app/utils/api';
+import {getUserContributions} from '@/app/actions/getUserContributions';
+import {getUserAccount} from '@/app/actions/getUserAccount';
 
 const Contribution: FC<ContributionProps> = ({data}) => {
   const projectId = data.attributes.project.data?.id ?? '';

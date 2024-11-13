@@ -8,8 +8,12 @@ export enum FormStep {
 export interface FormStepsProps {
   Form: ElementType;
   Review: ElementType;
-  submit: (data: Record<string, unknown>) => Promise<{
+  submit: (data: Record<string, unknown>, _?: number) => Promise<{
     success: boolean;
     error: string;
-  }>
+  }>;
+  initialData: {
+    id: number;
+    attributes: unknown;
+  }
 }

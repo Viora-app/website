@@ -2,7 +2,7 @@ import type {Project} from '../Projects/types';
 import type {FetchStatus, ImageFormats} from '@/app/config/types';
 
 export interface ProjectDetailsProps {
-  id: string;
+  projectId: number;
 }
 
 export interface ArtistProps {

@@ -1,6 +1,6 @@
 import {ENDPOINTS} from '@/app/config/endpoints';
 import {apiClient} from '@/app/utils/apiClient';
-import {Account} from '../config/types';
+import {AccountAttrs} from '../config/types';
 
 export const getUserAccount = async () => {
   let account = {};
@@ -11,5 +11,5 @@ export const getUserAccount = async () => {
     console.error('Failed to delete photo:', error);
   }
 
-  return account as Account;
+  return account as AccountAttrs;
 };

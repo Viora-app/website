@@ -17,12 +17,12 @@ export interface ImageProps {
 export interface LinkProps {
   to: {
     screen: string;
-    params: Record<string, unknown>;
+    params?: Record<string, unknown>;
   };
   children: ReactNode;
   className?: string;
   markActive?: boolean;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export interface TextInputProps {

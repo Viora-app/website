@@ -1,19 +1,11 @@
+'use client'
+
 import React, {FC} from 'react';
 
-import {finalMessages} from '@/app/utils/modal';
+import {Image, View, H3, Span, Link} from '@/app/components/Polyfills';
 import {shareProjectInvitation} from '@/app/utils/shareMenu';
-import {ENDPOINTS} from '@/app/config/endpoints';
-import {FetchStatus} from '@/app/config/types';
-import {usePatchData} from '@/app/hooks/useQuery';
-import EditProjectForm from '../Forms/Project/Edit';
-import {useModal} from '@/app/hooks/useModal';
-import {Image, View, H3, Span} from '@/app/components/Polyfills';
-import CreateContributionTierForm from '../Forms/ContributionTier/Create';
-import PostExclusiveContentsForm from '../Forms/ExclusiveContents/create';
-import Contribute from '../Forms/Project/Contribute';
 import {Button} from '@/app/components/Elements';
 import {ButtonThemes} from '@/app/components/Elements/Button/types';
-import {ProjectStatus} from '../Projects/types';
 import successImage from '@/public/images/success.png';
 import errorImage from '@/public/images/error.png';
 import {
@@ -22,56 +14,15 @@ import {
   PublishedProjectOwnerProps,
   SuccessfulProjectOwnerProps,
 } from './type';
+import { Routes } from '@/app/config/routes';
 
-const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
-  const mutation = usePatchData(ENDPOINTS.PROJECTS);
-  const {show} = useModal();
-
-  const AddContributionTier = () => {
-    show({
-      title: 'Add contribution tier',
-      description: 'And enable fans to support you',
-      content: <CreateContributionTierForm projectId={projectId} />,
-    });
-  };
-  const edit = () => {
-    show({
-      title: 'Edit your project',
-      description: 'Improvement is always a good thing',
-      content: <EditProjectForm projectId={projectId} />,
-    });
-  };
+export const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
   const publish = () => {
-    show({
-      title: 'Are you done editing?',
-      description:
-        'Once you go live, your fans will be able to contribute in your project. Please note that you will no longer be able to edit this project.',
-      onPrimaryPress: async () => {
-        try {
-          const result = await mutation.mutate({
-            id: projectId,
-            data: {
-              status: ProjectStatus.Published,
-            },
-          });
-          const feedback = {
-            status: FetchStatus.Error,
-            message: 'Failed to upload your images.',
-          };
-          if (result.data) {
-            feedback.status = FetchStatus.Success;
-            feedback.message =
-              'Wonderful! now your project is available for fans to support.';
-          }
+    // publish first, then
 
-          show(finalMessages(feedback));
-          refresh();
-        } catch (e) {
-          console.error('Error updating project status:', e);
-        }
-      },
-    });
+    // refresh();
   };
+
   return (
     <View className="bg-primaryMild rounded-md p-4 mt-4">
       <H3 className="text-primaryMighty !font-normal pb-2">
@@ -86,16 +37,18 @@ const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
         </Span>
       </View>
       <View className="flex flex-row justify-stretch gap-4 my-4">
-        <Button
-          title="Add contribution tier"
-          theme={ButtonThemes.secondary}
-          onPress={AddContributionTier}
-        />
-        <Button
-          title="Edit"
-          theme={ButtonThemes.secondary}
-          onPress={edit}
-        />
+        <Link to={{screen: Routes.CreateContributionTier, params: {projectId}}}>
+          <Button
+            title="Add contribution tier"
+            theme={ButtonThemes.secondary}
+          />
+        </Link>
+        <Link to={{screen: `${Routes.Projects}/${projectId}/edit`}}>
+          <Button
+            title="Edit"
+            theme={ButtonThemes.secondary}
+          />
+        </Link>
         <Button
           title="Go live"
           theme={ButtonThemes.primary}
@@ -106,20 +59,13 @@ const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
   );
 };
 
-const SupportProject: FC<FullDataComponentProps> = ({
+export const SupportProject: FC<FullDataComponentProps> = ({
   account,
   project,
   artist,
   refresh,
 }) => {
-  const {show} = useModal();
-  const support = () => {
-    show({
-      title: 'Support art & culture',
-      description: 'You\'re about to make a difference',
-      content: <Contribute projectId={project.id} refresh={refresh} />,
-    });
-  };
+  const support = () => {};
 
   return (
     <View className="bg-skyWeak p-4 rounded-md mt-6">
@@ -152,66 +98,38 @@ const SupportProject: FC<FullDataComponentProps> = ({
   );
 };
 
-const PublishedProjectOwner: FC<PublishedProjectOwnerProps> = ({
+export const PublishedProjectOwner: FC<PublishedProjectOwnerProps> = ({
   project,
   account,
   artist,
-}) => {
-  return (
-    <View className="bg-skyWeak p-4 rounded-md mt-6">
-      <H3 className="text-primaryStrong !font-normal pb-2">
-        You can win this
-      </H3>
-      <Span className="text-neutralSteady">
-        Your project is now published.
+}) => (
+  <View className="bg-skyWeak p-4 rounded-md mt-6">
+    <H3 className="text-primaryStrong !font-normal pb-2">
+      You can win this
+    </H3>
+    <Span className="text-neutralSteady">
+      Your project is now published.
+    </Span>
+    <View className="w-full pt-2 pb-4">
+      <Span className="text-neutralSteady !font-medium">
+          Reach out to your fans in your socials and ask them to support you.
       </Span>
-      <View className="w-full pt-2 pb-4">
-        <Span className="text-neutralSteady !font-medium">
-            Reach out to your fans in your socials and ask them to support you.
-        </Span>
-      </View>
-      <Button
-        title="Share"
-        theme={ButtonThemes.secondary}
-        onPress={() =>
-          shareProjectInvitation(account, project, artist && artist.attributes)
-        }
-      />
     </View>
-  );
-};
+    <Button
+      title="Share"
+      theme={ButtonThemes.secondary}
+      onPress={() =>
+        shareProjectInvitation(account, project, artist && artist.attributes)
+      }
+    />
+  </View>
+);
 
-const SuccessfulProjectOwner: FC<SuccessfulProjectOwnerProps> = ({
+export const SuccessfulProjectOwner: FC<SuccessfulProjectOwnerProps> = ({
   projectId,
 }) => {
-  const mutation = usePatchData(ENDPOINTS.PROJECTS);
-  const {show} = useModal();
-  const withdraw = () => {
-    show({
-      title: 'Congratulation!',
-      description:
-        'We are happy that you have succeed in raising funds. Everybody is looking forward to hear more about your music. Use the funds to make the dream come true!',
-      onPrimaryPress: async () => {
-        try {
-          await mutation.mutate({
-            id: projectId,
-            data: {
-              status: ProjectStatus.Withdrawn,
-            },
-          });
-        } catch (e) {
-          console.error('Error updating project status:', e);
-        }
-      },
-    });
-  };
-  const postExclusiveContent = () => {
-    show({
-      title: 'Post Exclusive content',
-      description: 'Improvement is always a good thing',
-      content: <PostExclusiveContentsForm projectId={projectId} />,
-    });
-  };
+  const withdraw = () => {};
+  const postExclusiveContent = () => {};
 
   return (
     <View className="bg-skyWeak p-4 rounded-md mt-6">
@@ -241,7 +159,7 @@ const SuccessfulProjectOwner: FC<SuccessfulProjectOwnerProps> = ({
   );
 };
 
-const SuccessfulProjectContributor: FC = () => (
+export const SuccessfulProjectContributor: FC = () => (
   <View className="bg-skyWeak p-4 rounded-md mt-6">
     <H3 className="text-primaryStrong !font-normal pb-2">Successful</H3>
     <Span className="text-neutralSteady">
@@ -252,7 +170,7 @@ const SuccessfulProjectContributor: FC = () => (
   </View>
 );
 
-const FailingProjectOwner: FC = () => (
+export const FailingProjectOwner: FC = () => (
   <View className="bg-amberWeak p-4 rounded-md mt-6">
     <H3 className="text-primaryStrong !font-normal pb-2">We are Sorry</H3>
     <Span className="text-neutralSteady">
@@ -261,12 +179,3 @@ const FailingProjectOwner: FC = () => (
     <Image alt="Failed" source={errorImage} className="w-[60px] py-4" />
   </View>
 );
-
-export {
-  EditProject,
-  SupportProject,
-  PublishedProjectOwner,
-  SuccessfulProjectOwner,
-  SuccessfulProjectContributor,
-  FailingProjectOwner,
-};

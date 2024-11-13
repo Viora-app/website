@@ -1,40 +1,40 @@
 import React, {FC} from 'react';
 
-import {ENDPOINTS} from '@/app/config/endpoints';
-import {getProjectDetails} from '@/app/utils/api';
+import {getProjectDetails} from '@/app/actions/getProjectDetails';
 import {ScrollView, H2, H3, Span, View} from '@/app/components/Polyfills';
-import Gallery from '../ProjectGallery';
+// import Gallery from '@/app/components/ProjectGallery';
 import Deadline from './Deadline';
 import Artist from './Artist';
-// import Actions from './Actions';
 import NotFound from '../NotFound/Screen';
 import FundingProgress from './FundingProgress';
+import Actions from './Actions';
 import {ProjectDetailsProps} from './types';
 
 
 
-const ProjectDetails: FC<ProjectDetailsProps> = async ({id}) => {
-  let {artist, project} = await getProjectDetails(id);
+const ProjectDetails: FC<ProjectDetailsProps> = async ({projectId}) => {
+  let {artist, project} = await getProjectDetails(projectId);
 
   const refresh = async () => {
-    const result = await getProjectDetails(id);
+    'use server'
+    const result = await getProjectDetails(projectId);
     artist = result.artist;
     project = result.project;
   };
 
-  if (id && project.id != id) {
+  if (projectId && project.id != projectId) {
     return <NotFound />;
   }
 
   return (
     <ScrollView>
-      <Gallery
+      {/* <Gallery
         images={project.attributes.images?.data || undefined}
         id={project.id}
         projectStatus={project.attributes.status}
         ownerId={project.attributes.users_permissions_user?.data.id}
         refresh={refresh}
-      />
+      /> */}
       <View className="p-4">
         <H2 className="dark:!text-primaryStrong">
           {project.attributes.name}
@@ -54,11 +54,11 @@ const ProjectDetails: FC<ProjectDetailsProps> = async ({id}) => {
           softGoal={project.attributes.soft_goal}
           hardGoal={project.attributes.hard_goal}
         />
-        {/* <Actions
+        <Actions
           project={project}
           owner={artist}
           refresh={refresh}
-        /> */}
+        />
       </View>
     </ScrollView>
   );

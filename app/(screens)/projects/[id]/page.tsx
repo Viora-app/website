@@ -1,14 +1,15 @@
 import React, {FC} from 'react';
 
+import {Params} from '@/app/config/types';
 import {SafeArea} from '@/app/components/Elements';
 import ProjectDetails from '@/app/components/ProjectDetails';
 
-const ProjectDetailsScreen: FC = async ({params}) => {
+const ProjectDetailsScreen: FC<{params: Params<{id: number}>}> = async ({params}) => {
   const awaitedParams = await params;
 
   return (
     <SafeArea safeArea>
-      <ProjectDetails id={awaitedParams.id} />
+      <ProjectDetails projectId={awaitedParams.id} />
     </SafeArea>
   );
 }

@@ -9,6 +9,8 @@ export enum Routes {
   Splash = '/splash',
   Settings = '/settings',
   Picture = '/picture',
+  ContributionTiers = '/contribution-tiers',
+  CreateContributionTier = '/contribution-tiers/create',
   Logout = '/logout',
 }
 

@@ -2,7 +2,7 @@
 
 import React, {FC, useEffect, useRef, useState} from 'react';
 
-import {Account, Timeout} from '@/app/config/types';
+import {AccountAttrs, Timeout} from '@/app/config/types';
 import {truncateAddress} from '@/app/utils/formatters';
 import {View, H1, H2, H4, Span, TouchableHighlight} from '@/app/components/Polyfills';
 import {Icon, Input} from '@/app/components/Elements';
@@ -18,7 +18,7 @@ const Carrot = () => {
   );
 }
 
-const Wallet: FC<{data: Account;}> = ({data}) => {
+const Wallet: FC<{data: AccountAttrs;}> = ({data}) => {
   const [copied, setCopied] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({

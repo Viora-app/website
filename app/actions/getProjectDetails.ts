@@ -1,7 +1,16 @@
+'use server'
+
 import {ENDPOINTS} from '@/app/config/endpoints';
 import {apiClient} from '@/app/utils/apiClient';
+import {Account, AccountAttrs} from '@/app/config/types';
+import {Project, ProjectAttrs} from '../components/Projects/types';
 
-export const getProjectDetails = async (id: string) => {
+interface ProjectDetailsResponse {
+  project: Project;
+  artist: Account;
+}
+
+export const getProjectDetails = async (id: number): Promise<ProjectDetailsResponse> => {
   const projectParams = {
     include: {
       users_permissions_user: ['email'],
@@ -18,8 +27,8 @@ export const getProjectDetails = async (id: string) => {
     },
   };
 
-  let project = {attributes: {}};
-  let artist = {attributes: {}};
+  let project = {attributes: {} as ProjectAttrs, id: 0};
+  let artist = {attributes: {} as AccountAttrs, id: 0};
   try {
     const data = await apiClient(`${ENDPOINTS.PROJECTS}/${id}`, {params: projectParams});
     if (Array.isArray(data?.data)) {
