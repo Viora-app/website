@@ -27,7 +27,7 @@ const EditProfileReview = ({data}: ProfileEditReviewProps) => {
     // Keyboard.dismiss();
     const response = await update(data);
     onDone({
-      status: response.success ? FetchStatus.success : FetchStatus.error,
+      status: response.success ? FetchStatus.Success : FetchStatus.Error,
       message: response.success ? '' : 'Error updating your profile.',
     });
   };

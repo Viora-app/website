@@ -19,7 +19,9 @@ const SubmitTitle = {
   [FetchStatus.Success]: 'Succeeded',
 };
 
-const CreateProjectReview: FC<EditProjectReviewProps> = ({data, onEdit, onSubmit, feedback, projectId}) => {
+const CreateProjectReview: FC<EditProjectReviewProps> = ({
+  data, onEdit, onSubmit, feedback, projectId,
+}) => {
   const handleSubmit = async () => {
     try {
       const result = await onSubmit({

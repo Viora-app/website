@@ -53,7 +53,7 @@ export interface ImageFormats {
   };
 }
 
-export interface Account {
+export interface AccountAttrs {
   first_name: string;
   last_name: string;
   points: number;
@@ -66,6 +66,11 @@ export interface Account {
     id: number;
     formats: ImageFormats;
   };
+}
+
+export interface Account {
+  id: number;
+  attributes: AccountAttrs;
 }
 
 export interface SongAttributes {
@@ -167,3 +172,8 @@ export interface QuickAction {
     url: string;
   };
 }
+
+type SearchParamsDefault = { [key: string]: string | string[] | undefined };
+type ParamsDefault = Record<string, unknown>;
+export type Params<T = ParamsDefault> = T extends object ? Promise<T> : Promise<ParamsDefault>;
+export type SearchParams<T = SearchParamsDefault> = T extends object ? Promise<T> : Promise<SearchParamsDefault>;

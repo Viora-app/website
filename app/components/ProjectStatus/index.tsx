@@ -37,7 +37,7 @@ export const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh})
         </Span>
       </View>
       <View className="flex flex-row justify-stretch gap-4 my-4">
-        <Link to={{screen: Routes.CreateContributionTier, params: {projectId}}}>
+        <Link to={{screen: `${Routes.Projects}/${projectId}/add-contribution-tier`}}>
           <Button
             title="Add contribution tier"
             theme={ButtonThemes.secondary}
@@ -49,11 +49,13 @@ export const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh})
             theme={ButtonThemes.secondary}
           />
         </Link>
-        <Button
-          title="Go live"
-          theme={ButtonThemes.primary}
-          onPress={publish}
-        />
+        <Link to={{screen: `${Routes.Projects}/${projectId}/publish`}}>
+          <Button
+            title="Go live"
+            theme={ButtonThemes.primary}
+            onPress={publish}
+          />
+        </Link>
       </View>
     </View>
   );
