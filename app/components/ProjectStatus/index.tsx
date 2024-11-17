@@ -65,10 +65,7 @@ export const SupportProject: FC<FullDataComponentProps> = ({
   account,
   project,
   artist,
-  refresh,
 }) => {
-  const support = () => {};
-
   return (
     <View className="bg-skyWeak p-4 rounded-md mt-6">
       <H3 className="text-primaryStrong !font-normal pb-2">
@@ -83,11 +80,13 @@ export const SupportProject: FC<FullDataComponentProps> = ({
         </Span>
       </View>
       <View className="flex flex-row justify-stretch gap-4">
-        <Button
-          title="Support"
-          theme={ButtonThemes.secondary}
-          onPress={support}
-        />
+        <Link className="grow" to={{screen: `${Routes.Projects}/${project.id}/contribute`}}>
+          <Button
+            className="w-full"
+            title="Support"
+            theme={ButtonThemes.secondary}
+          />
+        </Link>
         <Button
           title="Share"
           theme={ButtonThemes.secondary}
