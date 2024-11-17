@@ -11,8 +11,8 @@ export interface ContributionTier {
 }
 
 export interface ContributeProps {
-  projectId: string;
-  refresh: () => Promise<void>;
+  projectId: number;
+  options: ContributionTier[];
 }
 
 export interface ContributeOptionProps {
