@@ -1,15 +1,18 @@
+'use server'
+
 import React, {FC} from 'react';
 
-import {ProjectStatus} from '../Projects/types';
-// import {useAccount} from '@/app/hooks/useAccount';
-// import Editable from './Editable';
+import {ProjectStatus} from '@/app/components/Projects/types';
+import Editable from './Editable';
 import Readable from './Readable';
 import {GalleryProps} from './types';
+import {getUserAccount} from '@/app/actions/getUserAccount';
 
-const Gallery: FC<GalleryProps> = ({id, images, ownerId, projectStatus, refresh}) => {
-  const account = {}
+const Gallery: FC<GalleryProps> = async ({id, images, ownerId, projectStatus, refresh}) => {
+  const account = await getUserAccount();
+
   if (ownerId === account?.id && projectStatus === ProjectStatus.Draft) {
-    // return <Editable id={id} images={images} refresh={refresh} />;
+    return <Editable id={id} images={images} refresh={refresh} />;
   }
   return <Readable id={id} images={images} />;
 };
