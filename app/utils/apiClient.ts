@@ -1,4 +1,5 @@
 import {cookies} from 'next/headers';
+import {AUTH_COOKIE} from '@/app/config/constants';
 import {apiBaseUrl} from '@/app/config/endpoints';
 import {constructQueryParams} from './queryParams';
 import type {ApiOptions} from './types';
@@ -6,7 +7,7 @@ import type {ApiOptions} from './types';
 export const apiClient = async (endpoint: string, options: ApiOptions = {}) => {
   const query = constructQueryParams(options?.params ?? {});
   const awaitedCookies = await cookies();
-  const jwt = awaitedCookies.get('auth-jwt')?.value;
+  const jwt = awaitedCookies.get(AUTH_COOKIE)?.value;
 
   // Set up headers
   const headers = {
