@@ -1,14 +1,18 @@
+'use server'
 import React from 'react';
-import {cookies} from 'next/headers';
+// import {cookies} from 'next/headers';
 
 import {Routes} from '@/app/config/routes';
-import {getFeed} from '@/app/actions/getFeed';
+// import {getFeed} from '@/app/actions/getFeed';
 import {Link} from '../components/Polyfills';
 import {SafeArea, Icon} from '@/app/components/Elements';
 import Feed from '@/app/components/Feed';
 
 const FeedScreen = async () => {
-  const data = await getFeed();
+//   const data = await getFeed();
+const data:unknown = {
+    data: []
+  };
 
   return (
     <SafeArea>

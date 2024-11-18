@@ -7,8 +7,7 @@ import {View, H4, Span, Image, Link} from '@/app/components/Polyfills';
 import {ImageFormats} from '@/app/config/types';
 import SectionHeader from '../SectionHeader';
 import type {ContributionProps, Contribution as ContributionType} from './types';
-import {getUserContributions} from '@/app/actions/getUserContributions';
-import {getUserAccount} from '@/app/actions/getUserAccount';
+
 
 const Contribution: FC<ContributionProps> = ({data}) => {
   const projectId = data.attributes.project.data?.id ?? '';
@@ -44,16 +43,16 @@ const Contribution: FC<ContributionProps> = ({data}) => {
 };
 
 // @todo implement loading state
-const Contributions: FC = async () => {
-  const account = await getUserAccount();
-  const contributions: ContributionType[] = await getUserContributions(account.id);
-
+type ContributionsProps = {
+    contributions: ContributionType[];
+};
+const Contributions: FC<ContributionsProps> = async ({ contributions }) => {
   return (
     <View className="w-full p-6">
       {contributions.length > 0 && (
         <SectionHeader title="Contributions" />
       )}
-      {contributions.map(item => (
+      {contributions.map((item: ContributionType) => (
         <Contribution data={item} key={item.id} />
       ))}
     </View>

@@ -3,7 +3,7 @@
 import React, {FC, useState} from 'react';
 import {useRouter} from 'next/navigation';
 
-import {mapObject} from '@/app/utils/convertors';
+// import {mapObject} from '@/app/utils/convertors';
 import {validateForm} from '@/app/utils/validators';
 import {ProjectAttrs, ProjectType} from '@/app/components/Projects/types';
 import {View, ScrollView} from '@/app/components/Polyfills';

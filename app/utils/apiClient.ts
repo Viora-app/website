@@ -1,3 +1,5 @@
+'use server'
+
 import {cookies} from 'next/headers';
 import {AUTH_COOKIE} from '@/app/config/constants';
 import {apiBaseUrl} from '@/app/config/endpoints';

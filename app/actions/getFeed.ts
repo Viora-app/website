@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 
 import {ENDPOINTS} from '@/app/config/endpoints';
 import {apiClient} from '@/app/utils/apiClient';

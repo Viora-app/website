@@ -16,7 +16,7 @@ import {
 } from './type';
 import { Routes } from '@/app/config/routes';
 
-export const EditProject: FC<DefaultProjectStatusProps> = ({projectId, refresh}) => {
+export const EditProject: FC<DefaultProjectStatusProps> = ({projectId}) => {
   const publish = () => {
     // publish first, then
 
@@ -127,7 +127,7 @@ export const PublishedProjectOwner: FC<PublishedProjectOwnerProps> = ({
 );
 
 export const SuccessfulProjectOwner: FC<SuccessfulProjectOwnerProps> = ({
-  projectId,
+//   projectId,
 }) => {
   const withdraw = () => {};
   const postExclusiveContent = () => {};
