@@ -1,37 +1,46 @@
-'use client'
+'use client';
 
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
+import {useRouter} from 'next/navigation';
 
-import {useModal} from '@/app/hooks/useModal';
 import {validateForm} from '@/app/utils/validators';
-import {ProjectAttrs, ProjectType} from '../../../Projects/types';
+import {ProjectAttrs, ProjectType} from '@/app/components/Projects/types';
 import ValidationFeedback from '@/app/components/FormElements/ValidationFeedback';
 import {View, ScrollView} from '@/app/components/Polyfills';
 import {ButtonThemes} from '@/app/components/Elements/Button/types';
 import {Button, Input} from '@/app/components/Elements';
-import CreateProjectReview from './Review';
+import SectionHeader from '@/app/components/SectionHeader';
 import {schema} from './schema';
+import {CreateProjectFormProps} from './types';
+import { Routes } from '@/app/config/routes';
 
-const CreateProjectForm = () => {
-  const [data, setData] = useState<Partial<ProjectAttrs>>({
-    name: '',
-    summary: '',
-    description: '',
-    project_type: ProjectType.Single,
-    planned_release_date: '',
-    soft_goal: 0,
-    hard_goal: 0,
-    deadline: '',
-  });
-  const {show} = useModal();
+const emptyFormValues = {
+  name: '',
+  summary: '',
+  description: '',
+  project_type: ProjectType.Single,
+  planned_release_date: '',
+  soft_goal: 0,
+  hard_goal: 0,
+  deadline: '',
+};
 
-  const onSubmit = async () => {
-    // Keyboard.dismiss();
-    show({
-      title: 'Looking good!',
-      description: '',
-      content: <CreateProjectReview data={data} />,
-    });
+const CreateProjectForm: FC<CreateProjectFormProps> = ({
+  initialData,
+  onProceed,
+}) => {
+  const {push} = useRouter();
+  const [data, setData] = useState<Partial<ProjectAttrs>>(
+    initialData || emptyFormValues,
+  );
+  const validity = validateForm(schema, data);
+
+  const handleSubmit = () => {
+    onProceed(data);
+  };
+
+  const handleCancel = () => {
+    push(Routes.Home);
   };
 
   const onChange = (fieldName: string) => (value: string) => {
@@ -41,11 +50,13 @@ const CreateProjectForm = () => {
     });
   };
 
-  const validity = validateForm(schema, data);
-
   return (
-    <View className="w-full h-[calc(100%-160px)]">
-      <ScrollView className="w-full h-full">
+    <ScrollView className="w-full h-full p-4">
+      <SectionHeader
+        title="Let the world know"
+        subtitle="and receive love and support"
+      />
+      <View>
         <Input
           placeholder="Name"
           onChange={onChange}
@@ -92,17 +103,22 @@ const CreateProjectForm = () => {
           value={data.deadline}
           name="deadline"
         />
-      </ScrollView>
+      </View>
       <ValidationFeedback {...validity} />
-      <View className="w-full flex flex-row justify-center pt-4">
+      <View className="w-full flex flex-row justify-center gap-4 pt-4">
+        <Button
+          title="Cancel"
+          theme={ButtonThemes.secondary}
+          onPress={handleCancel}
+        />
         <Button
           title="Continue"
           theme={ButtonThemes.primary}
-          onPress={onSubmit}
+          onPress={handleSubmit}
           disabled={!validity.isValid}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

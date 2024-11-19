@@ -1,34 +1,28 @@
-'use client'
-
-import React, {useEffect, useState, useCallback} from 'react';
-import {useRouter} from 'next/navigation';
+import React from 'react';
+import NextImage from 'next/image';
+import {redirect} from 'next/navigation';
 
 import {Routes} from '@/app/config/routes';
-import {H3} from '@/app/components/Polyfills';
-import {SafeArea} from '@/app/components/Elements';
-import {useAccount} from '@/app/hooks/useAccount';
+import loading from '@/public/images/loading.svg';
+import {View, H4} from '@/app/components/Polyfills';
+import {logout} from '@/app/actions/logout';
 
-const Logout = () => {
-  const {push: navigate} = useRouter();
-  const {signOut, account} = useAccount();
-  const [isNavigating, setIsNavigating] = useState(false);
+const Logout = async () => {
+  const result = await logout();
 
-  const logout = useCallback(async () => {
-    if (!!account?.jwt && !isNavigating) {
-      await signOut();
-    }
-    setIsNavigating(true);
-    navigate(Routes.Login as never);
-  }, [account?.jwt, isNavigating])
-
-  useEffect(() => {
-    logout();
-  }, [logout]);
+  if (result.success) {
+    redirect(Routes.Login);
+  } else {
+    redirect(Routes.Home);
+  }
 
   return (
-    <SafeArea className="!bg-neutralPure flex flex-col justify-center items-center">
-      <H3>Logging you out</H3>
-    </SafeArea>
+    <View className="w-full h-full flex flex-row justify-center items-center">
+      <View className="flex flex-col justify-center items-center">
+        <NextImage alt="Loading" src={loading} className="animate-spin" />
+        <H4 className="mt-6 text-neutralSteady">Logging out</H4>
+      </View>
+    </View>
   );
 };
 

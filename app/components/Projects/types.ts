@@ -1,43 +1,11 @@
+import {ImageFormats} from '@/app/config/types';
+
 interface User {
   data: {
     id: string;
     attributes: {
       email: string;
     };
-  };
-}
-
-export enum ImageSizes {
-  Large = 'large',
-  Medium = 'medium',
-  Small = 'small',
-  Thumbnail = 'thumbnail',
-}
-
-export interface ImageFormats {
-  [ImageSizes.Large]: {
-    url: string;
-    name: string;
-    width: number;
-    height: number;
-  };
-  [ImageSizes.Medium]: {
-    url: string;
-    name: string;
-    width: number;
-    height: number;
-  };
-  [ImageSizes.Small]: {
-    url: string;
-    name: string;
-    width: number;
-    height: number;
-  };
-  [ImageSizes.Thumbnail]: {
-    url: string;
-    name: string;
-    width: number;
-    height: number;
   };
 }
 
@@ -75,9 +43,9 @@ export interface ProjectAttrs {
   description: string;
   project_type: ProjectType;
   planned_release_date: string;
-  soft_goal: number;
+  soft_goal: number | string;
   deadline: string;
-  hard_goal: number;
+  hard_goal: number | string;
 }
 
 export interface Project {

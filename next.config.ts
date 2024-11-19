@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   typescript: {
@@ -7,9 +7,15 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: process.env.NEXT_PUBLIC_IMAGE_PROTOCOL || 'http',
-        hostname: process.env.NEXT_PUBLIC_IMAGE_HOSTNAME || 'localhost',
-        port: process.env.NEXT_PUBLIC_IMAGE_PORT || '3000',
+        protocol: 'https',
+        hostname: 'api-development-492a.up.railway.app',
+        port: '',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
         pathname: '/uploads/**',
       },
     ],

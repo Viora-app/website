@@ -81,3 +81,19 @@ export interface ValidationResult {
   isValid: boolean;
   message: string;
 }
+
+export interface QueryParams {
+  include?: Record<string, (string)[]>;
+  filters?: Record<string, string|number|boolean>;
+  pagination?: {
+    page: number;
+    pageSize?: number;
+  };
+}
+
+export interface ApiOptions {
+  headers?: IncomingHttpHeaders;
+  params?: QueryParams;
+  method?: 'POST'|'GET'|'DELETE'|'PUT';
+  body?: string;
+}

@@ -1,74 +1,61 @@
 'use client'
 
-import React, {useCallback, useEffect, useState} from 'react';
-import {View} from '@/app/components/Polyfills';
+import React, {FC} from 'react';
 
-import {useModal} from '@/app/hooks/useModal';
-import {usePostData} from '@/app/hooks/useQuery';
-import {FetchStatus} from '@/app/config/types';
+import {View, ScrollView} from '@/app/components/Polyfills';
 import {toBaseToken} from '@/app/utils/formatters';
-import {finalMessages} from '@/app/utils/modal';
 import {ButtonThemes} from '@/app/components/Elements/Button/types';
-import {ENDPOINTS} from '@/app/config/endpoints';
 import FormSummary from '@/app/components/FormElements/GenericSummary';
 import {Button} from '@/app/components/Elements';
-import type {CreateProjectReviewProps, Feedback} from './types';
+import type {CreateProjectReviewProps} from './types';
+import {FetchStatus} from '@/app/config/types';
+import Feedback from '@/app/components/Feedback';
 
-const CreateProjectReview = ({data}: CreateProjectReviewProps) => {
-  const {show} = useModal();
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const mutation = usePostData(ENDPOINTS.PROJECTS);
+const SubmitTitle = {
+  [FetchStatus.Idle]: 'Submit',
+  [FetchStatus.Pending]: 'Submitting',
+  [FetchStatus.Error]: 'Failed',
+  [FetchStatus.Success]: 'Succeeded',
+};
 
-  const onDone = useCallback(
-    (feedback: Feedback) => {
-      show(finalMessages(feedback));
-    },
-    [show],
-  );
-
-  const onSubmit = async () => {
-    setIsSubmitted(true);
-    // Keyboard.dismiss();
+const CreateProjectReview: FC<CreateProjectReviewProps> = ({data, onEdit, onSubmit, feedback}) => {
+  const handleSubmit = async () => {
     try {
-      await mutation.mutateAsync({
-        data: {
-          ...data,
-          soft_goal: toBaseToken(data.soft_goal ?? ''),
-          hard_goal: toBaseToken(data.hard_goal ?? ''),
-        },
+      const result = await onSubmit({
+        ...data,
+        soft_goal: toBaseToken(data?.soft_goal ?? ''),
+        hard_goal: toBaseToken(data?.hard_goal ?? ''),
       });
+      console.log('result', result);
     } catch (e) {
       console.error('Error creating project:', e);
     }
   };
 
-  useEffect(() => {
-    if (!mutation.isLoading && (mutation.isError || mutation.isSuccess)) {
-      onDone({
-        status: mutation.isSuccess ? FetchStatus.success : FetchStatus.error,
-        message: mutation.isSuccess ? '' : 'Error creating your project.',
-      });
-    }
-  }, [mutation, onDone]);
-
   const formattedValue = {
     ...data,
-    soft_goal: `${data.soft_goal} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
-    hard_goal: `${data.hard_goal} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
+    soft_goal: `${data?.soft_goal} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
+    hard_goal: `${data?.hard_goal} ${process.env.NEXT_PUBLIC_TOKEN_SYMBOL}`,
   };
 
   return (
-    <View className="w-full h-[calc(100%-100px)]">
+    <ScrollView className="w-full h-full p-4">
       <FormSummary data={formattedValue} />
-      <View className="flex flex-row justify-center">
+      <View className="flex flex-row justify-center gap-4">
         <Button
-          title={isSubmitted ? 'Updating' : 'Continue'}
+          title={'Edit'}
+          theme={ButtonThemes.secondary}
+          onPress={onEdit}
+        />
+        <Button
+          title={SubmitTitle[feedback.status]}
           theme={ButtonThemes.primary}
-          onPress={onSubmit}
-          disabled={isSubmitted}
+          disabled={feedback.status !== FetchStatus.Idle}
+          onPress={handleSubmit}
         />
       </View>
-    </View>
+      <Feedback {...feedback} />
+    </ScrollView>
   );
 };
 

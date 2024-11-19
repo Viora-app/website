@@ -1,14 +1,8 @@
-'use client'
+'use server'
 
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
+
 import {View} from '@/app/components/Polyfills';
-
-import {ENDPOINTS} from '@/app/config/endpoints';
-import {FetchStatus} from '@/app/config/types';
-import {finalMessages} from '@/app/utils/modal';
-import {useModal} from '@/app/hooks/useModal';
-import {usePatchData} from '@/app/hooks/useQuery';
-import {useAccount} from '@/app/hooks/useAccount';
 import {
   EditProject,
   SupportProject,
@@ -17,35 +11,12 @@ import {
   SuccessfulProjectContributor,
   PublishedProjectOwner,
 } from '../ProjectStatus';
+import {getUserAccount} from '@/app/actions/getUserAccount';
 import {ProjectStatus} from '../Projects/types';
 import {ActionsProps} from './types';
 
-const Actions: FC<ActionsProps> = ({owner, project, refresh}) => {
-  const {show} = useModal();
-  const mutation = usePatchData(ENDPOINTS.PROJECTS);
-  const {account} = useAccount();
-
-  const onProjectStatusChange = () => {
-    let feedback = {
-      status: FetchStatus.success,
-      message: '',
-    };
-    if (mutation.error) {
-      feedback = {
-        status: FetchStatus.error,
-        message: 'Oops! Something went wrong.',
-      };
-    }
-    show(finalMessages(feedback));
-  };
-
-  useEffect(() => {
-    if (!mutation.isLoading && (mutation.isError || mutation.isSuccess)) {
-      mutation.reset();
-      onProjectStatusChange();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mutation.isError, mutation.isSuccess, mutation.isLoading]);
+const Actions: FC<ActionsProps> = async ({owner, project, refresh}) => {
+  const account = await getUserAccount();
 
   const ownerId = Number(project?.attributes.users_permissions_user.data.id);
   const accountId = account?.id;

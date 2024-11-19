@@ -6,6 +6,7 @@ const TextInput: FC<TextInputProps> = ({
   onChangeText,
   keyboardType = 'text',
   multiline,
+  className,
   ...rest
 }) => {
   const onChange = (e) => {
@@ -15,7 +16,7 @@ const TextInput: FC<TextInputProps> = ({
   if (multiline) {
     return (
       <textarea
-        className="w-full h-[44px] bg-inputBg text-neutralMighty rounded-md mt-2 mb-4 px-4"
+        className={`w-full h-[44px] bg-inputBg text-neutralMighty rounded-md mt-2 mb-4 px-4 ${className}`}
         onChange={onChange}
         {...(rest || {})}
       />
@@ -24,7 +25,7 @@ const TextInput: FC<TextInputProps> = ({
 
   return (
     <input
-      className="w-full h-[44px] bg-inputBg text-neutralMighty rounded-md mt-2 mb-4 px-4"
+      className={`w-full h-[44px] bg-inputBg text-neutralMighty rounded-md mt-2 mb-4 px-4 ${className}`}
       type={keyboardType}
       onChange={onChange}
       {...(rest || {})}

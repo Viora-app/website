@@ -1,4 +1,4 @@
-import {ImageFormats} from '../Projects/types';
+import {ImageFormats} from '@/app/config/types';
 
 export interface AvatarProps {
   className?: string;

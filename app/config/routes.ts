@@ -4,10 +4,13 @@ export enum Routes {
   Login = '/login',
   SignUp = '/signUp',
   Projects = '/projects',
+  CreateProjects = '/projects/create',
   Profile = '/profile',
   Splash = '/splash',
   Settings = '/settings',
   Picture = '/picture',
+  ContributionTiers = '/contribution-tiers',
+  CreateContributionTier = '/contribution-tiers/create',
   Logout = '/logout',
 }
 

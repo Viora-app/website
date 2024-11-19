@@ -19,6 +19,60 @@ export interface Auth {
   mandatoryKeys: Buffer[];
 }
 
+export enum ImageSizes {
+  Large = 'large',
+  Medium = 'medium',
+  Small = 'small',
+  Thumbnail = 'thumbnail',
+}
+
+export interface ImageFormats {
+  [ImageSizes.Large]: {
+    url: string;
+    name: string;
+    width: number;
+    height: number;
+  };
+  [ImageSizes.Medium]: {
+    url: string;
+    name: string;
+    width: number;
+    height: number;
+  };
+  [ImageSizes.Small]: {
+    url: string;
+    name: string;
+    width: number;
+    height: number;
+  };
+  [ImageSizes.Thumbnail]: {
+    url: string;
+    name: string;
+    width: number;
+    height: number;
+  };
+}
+
+export interface AccountAttrs {
+  first_name: string;
+  last_name: string;
+  points: number;
+  email: string;
+  id: number;
+  profileId: number;
+  address: string;
+  avatarUrl: string | null;
+  avatar: {
+    id: number;
+    formats: ImageFormats;
+  };
+}
+
+export interface Account {
+  id: number;
+  attributes: AccountAttrs;
+}
+
 export interface SongAttributes {
   apple_music_url?: string;
   spotify_url?: string;
@@ -87,10 +141,10 @@ export interface Badge {
   claimed: boolean;
 }
 export enum FetchStatus {
-  idle = 'idle',
-  pending = 'pending',
-  success = 'success',
-  error = 'error',
+  Idle = 'idle',
+  Pending = 'pending',
+  Success = 'success',
+  Error = 'error',
 }
 
 export interface Feedback {
@@ -118,3 +172,8 @@ export interface QuickAction {
     url: string;
   };
 }
+
+type SearchParamsDefault = { [key: string]: string | string[] | undefined };
+type ParamsDefault = Record<string, unknown>;
+export type Params<T = ParamsDefault> = T extends object ? Promise<T> : Promise<ParamsDefault>;
+export type SearchParams<T = SearchParamsDefault> = T extends object ? Promise<T> : Promise<SearchParamsDefault>;

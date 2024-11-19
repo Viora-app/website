@@ -1,24 +1,24 @@
-import {Account} from '@/app/context/accountContext/types';
+import {AccountAttrs} from '@/app/config/types';
 import {ArtistShareProp} from '../ProjectDetails/types';
 import {Project} from '../Projects/types';
 
 export interface PublishedProjectOwnerProps {
   project: Project;
-  account?: Account;
+  account?: AccountAttrs;
   artist: ArtistShareProp;
 }
 export interface FullDataComponentProps {
   project: Project;
-  account?: Account;
+  account?: AccountAttrs;
   artist: ArtistShareProp;
   refresh: () => Promise<void>;
 }
 
 export interface SuccessfulProjectOwnerProps {
-  projectId: string;
+  projectId: number;
 }
 
 export interface DefaultProjectStatusProps {
-  projectId: string;
+  projectId: number;
   refresh: () => Promise<void>;
 }

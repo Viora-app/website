@@ -1,17 +1,13 @@
-'use client'
-
 import React, {FC} from 'react';
 
-import {ENDPOINTS} from '@/app/config/endpoints';
 import {Routes} from '@/app/config/routes';
-import {useAccount} from '@/app/hooks/useAccount';
-import {useGetData} from '@/app/hooks/useQuery';
 import {getSmallestSize} from '@/app/utils/image';
 import {fromBaseToken} from '@/app/utils/formatters';
 import {View, H4, Span, Image, Link} from '@/app/components/Polyfills';
-import {ImageFormats} from '../Projects/types';
+import {ImageFormats} from '@/app/config/types';
 import SectionHeader from '../SectionHeader';
 import type {ContributionProps, Contribution as ContributionType} from './types';
+
 
 const Contribution: FC<ContributionProps> = ({data}) => {
   const projectId = data.attributes.project.data?.id ?? '';
@@ -47,24 +43,16 @@ const Contribution: FC<ContributionProps> = ({data}) => {
 };
 
 // @todo implement loading state
-const Contributions: FC = () => {
-  const {account} = useAccount();
-  const {data} = useGetData(ENDPOINTS.CONTRIBUTIONS, {
-    filters: {users_permissions_user: account?.id},
-    include: {
-      project: ['*'],
-      contribution_tier: ['*'],
-    },
-  });
-
-  const contributions: ContributionType[] = data?.data ?? [];
-
+type ContributionsProps = {
+    contributions: ContributionType[];
+};
+const Contributions: FC<ContributionsProps> = async ({ contributions }) => {
   return (
     <View className="w-full p-6">
       {contributions.length > 0 && (
         <SectionHeader title="Contributions" />
       )}
-      {contributions.map(item => (
+      {contributions.map((item: ContributionType) => (
         <Contribution data={item} key={item.id} />
       ))}
     </View>

@@ -2,7 +2,6 @@ import {ReactNode} from 'react';
 import type {Metadata} from 'next';
 import NextImage from 'next/image';
 
-import Providers from '../context';
 import {Routes} from '@/app/config/routes';
 import {Icon} from '@/app/components/Elements';
 import {Link} from '@/app/components/Polyfills';
@@ -38,16 +37,14 @@ export default function RootLayout({
                 <div className="bg-wrapperBg border-wrapperBg rounded-3xl border-[13px] overflow-hidden flex flex-row md:flex-col gap-4">
                   <Link to={{screen: Routes.Home}} className="block w-[50px] h-[50px] p-[13px] bg-menuBg rounded-xl"><Icon name="Home" size={28} color="#fff" /></Link>
                   <Link to={{screen: Routes.Profile}} className="block w-[50px] h-[50px] p-[13px] bg-menuBg rounded-xl"><Icon name="Profile" size={28} color="#fff" /></Link>
-                  <Link to={{screen: Routes.Settings}} className="block w-[50px] h-[50px] p-[13px] bg-menuBg rounded-xl"><Icon name="Settings" size={28} color="#fff" /></Link>
+                  {/* <Link to={{screen: Routes.Settings}} className="block w-[50px] h-[50px] p-[13px] bg-menuBg rounded-xl"><Icon name="Settings" size={28} color="#fff" /></Link> */}
                 </div>
                 <div className="bg-wrapperBg border-wrapperBg rounded-3xl border-[13px] overflow-hidden">
                   <Link to={{screen: Routes.Logout}} className="block w-[50px] h-[50px] p-[13px] bg-menuBg rounded-xl"><Icon name="logout" size={28} color="#fff" /></Link>
                 </div>
               </aside>
               <main id="app-main" className="h-full relative bg-wrapperBg border-wrapperBg rounded-3xl border-[13px] overflow-hidden grow order-1 md:order-2">
-                <Providers>
-                  {children}
-                </Providers>
+                {children}
               </main>
             </div>
           </section>

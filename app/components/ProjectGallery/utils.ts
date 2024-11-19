@@ -1,5 +1,5 @@
 import {getSmallestSize, getLargestSize} from '@/app/utils/image';
-import {ImageFormats} from '../Projects/types';
+import {ImageFormats} from '@/app/config/types';
 
 export const getPreferredSize = (
   obj: ImageFormats | undefined,
