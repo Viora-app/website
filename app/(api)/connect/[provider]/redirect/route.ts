@@ -10,6 +10,7 @@ const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
   path: '/',
   httpOnly: true,
+  domain: baseUrl,
   secure: process.env.NODE_ENV === 'production',
 };
 
@@ -20,8 +21,6 @@ export async function GET(
 ) {
   try {
     const {searchParams} = new URL(request.url);
-    console.log('request.url', request.url);
-    console.log('baseUrl', baseUrl);
     const token = searchParams.get('access_token');
     if (!token) {
       throw new Error('Failed to authenticated by provider');
@@ -34,16 +33,13 @@ export async function GET(
     const res = await fetch(url);
     const data = await res.json();
     const awaitedCookie = await cookies();
-    awaitedCookie.set(AUTH_COOKIE, data.jwt, {...config, domain: request.url});
-    awaitedCookie.set(AUTH_COOKIE, data.jwt, {...config, domain: baseUrl});
-    console.log('data.jwt', data.jwt);
+    awaitedCookie.set(AUTH_COOKIE, data.jwt, config);
     const redirectionUrl = new URL(Routes.Home, baseUrl);
-    console.log('Redirect: Cookies set, redirecting to ', redirectionUrl);
-    return NextResponse.redirect(redirectionUrl);
+    const response =  NextResponse.redirect(redirectionUrl);
+    return response.cookies.set(AUTH_COOKIE, data.jwt, config);
   } catch (error) {
     console.log('Error connecting account', error);
     const redirectionUrl = new URL(Routes.Login, baseUrl);
-    console.log('Error, redirecting');
     return NextResponse.redirect(redirectionUrl);
   }
 }
