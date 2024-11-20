@@ -5,13 +5,12 @@ import {apiBaseUrl} from '@/app/config/endpoints';
 import {Routes} from '@/app/config/routes';
 import {AUTH_COOKIE} from '@/app/config/constants';
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL as string;
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
   path: '/',
-  httpOnly: true,
-  domain: baseUrl,
-  secure: process.env.NODE_ENV === 'production',
+  httpOnly: false,
+  secure: true,
+  sameSite: 'none',
 };
 
 export const dynamic = 'force-dynamic';
@@ -33,14 +32,14 @@ export async function GET(
     const res = await fetch(url);
     const data = await res.json();
     const awaitedCookie = await cookies();
-    awaitedCookie.set(AUTH_COOKIE, data.jwt, config);
-    const redirectionUrl = new URL(Routes.Home, baseUrl);
+    awaitedCookie.set(AUTH_COOKIE, data.jwt, {...config, domain: request.url});
+    const redirectionUrl = new URL(Routes.Home, request.url);
     const response =  NextResponse.redirect(redirectionUrl);
     response.cookies.set(AUTH_COOKIE, data.jwt, config);
     return response;
   } catch (error) {
     console.log('Error connecting account', error);
-    const redirectionUrl = new URL(Routes.Login, baseUrl);
+    const redirectionUrl = new URL(Routes.Login, request.url);
     return NextResponse.redirect(redirectionUrl);
   }
 }
