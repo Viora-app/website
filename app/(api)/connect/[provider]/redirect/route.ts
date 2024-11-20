@@ -9,7 +9,6 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL as string;
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
   path: '/',
-  domain: baseUrl,
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
 };
@@ -35,7 +34,8 @@ export async function GET(
     const res = await fetch(url);
     const data = await res.json();
     const awaitedCookie = await cookies();
-    awaitedCookie.set(AUTH_COOKIE, data.jwt, config);
+    awaitedCookie.set(AUTH_COOKIE, data.jwt, {...config, domain: request.url});
+    awaitedCookie.set(AUTH_COOKIE, data.jwt, {...config, domain: baseUrl});
     console.log('data.jwt', data.jwt);
     const redirectionUrl = new URL(Routes.Home, baseUrl);
     console.log('Redirect: Cookies set, redirecting to ', redirectionUrl);
