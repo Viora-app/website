@@ -20,4 +20,4 @@ RUN yarn build
 
 EXPOSE 8080
 
-CMD ["yarn", "start", "--port", "8080"]
+CMD ["yarn", "start", "--port", "8080", "--hostname", "0.0.0.0"]
