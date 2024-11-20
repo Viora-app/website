@@ -10,7 +10,7 @@ const config = {
   path: '/',
   httpOnly: false,
   secure: true,
-  sameSite: 'none',
+  sameSite: false ,
 };
 
 export const dynamic = 'force-dynamic';
@@ -33,13 +33,12 @@ export async function GET(
     const data = await res.json();
     const awaitedCookie = await cookies();
     awaitedCookie.set(AUTH_COOKIE, data.jwt, {...config, domain: request.url});
-    const redirectionUrl = new URL(Routes.Home, request.url);
-    const response =  NextResponse.redirect(redirectionUrl);
-    response.cookies.set(AUTH_COOKIE, data.jwt, config);
+    const response =  NextResponse.redirect(Routes.Home);
+    response.cookies.set(AUTH_COOKIE, data.jwt, {...config, domain: request.url});
     return response;
+
   } catch (error) {
     console.log('Error connecting account', error);
-    const redirectionUrl = new URL(Routes.Login, request.url);
-    return NextResponse.redirect(redirectionUrl);
+    return NextResponse.redirect(Routes.Login);
   }
 }
