@@ -33,10 +33,7 @@ export async function GET(
     const data = await res.json();
     const awaitedCookie = await cookies();
     awaitedCookie.set(AUTH_COOKIE, data.jwt, {...config, domain: request.url});
-    const response =  NextResponse.redirect(Routes.Home);
-    response.cookies.set(AUTH_COOKIE, data.jwt, {...config, domain: request.url});
-    return response;
-
+    return  NextResponse.redirect(Routes.Home);
   } catch (error) {
     console.log('Error connecting account', error);
     return NextResponse.redirect(Routes.Login);
