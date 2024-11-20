@@ -1,6 +1,5 @@
 'use server'
 import React, {FC} from 'react';
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 // import {cookies} from 'next/headers';
 
 import {Routes} from '@/app/config/routes';
@@ -9,13 +8,7 @@ import {Link} from '../components/Polyfills';
 import {SafeArea, Icon} from '@/app/components/Elements';
 import Feed from '@/app/components/Feed';
 
-export const getServerSideProps = (async ({ req }) => {
-  console.log('req', req);
-
-  return { props: {} };
-}) satisfies GetServerSideProps
-
-const FeedScreen: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = async () => {
+const FeedScreen: FC = async () => {
   // const data = await getFeed();
   const data:unknown = {
     data: []
