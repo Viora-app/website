@@ -29,9 +29,13 @@ export async function middleware(request: NextRequest) {
     
         const res = await fetch(url);
         const data = await res.json();
-        awaitedCookies.set(AUTH_COOKIE, data.jwt, {...config, domain: request.nextUrl.origin});
 
-        return NextResponse.redirect(new URL(Routes.Home, request.url));
+        const redirect = NextResponse.redirect(new URL(Routes.Home, request.url))
+        redirect.cookies.set(AUTH_COOKIE, data.jwt, {
+            ...config,
+            domain: new URL(request.nextUrl.origin).hostname,
+          });
+        return redirect;
       }
     } catch (error) {
       console.log('Error connecting account', error);
