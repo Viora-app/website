@@ -11,6 +11,7 @@ const config = {
   httpOnly: false,
   secure: true,
   sameSite: false ,
+  domain: '.railway.app',
 };
 
 export const dynamic = 'force-dynamic';
