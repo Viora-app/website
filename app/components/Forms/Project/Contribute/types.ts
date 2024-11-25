@@ -1,4 +1,6 @@
 import {FetchStatus} from '@/app/config/types';
+import {Account} from '@/app/config/types';
+import {Project} from '@/app/components/Projects/types';
 
 export interface ContributionTier {
   id: string;
@@ -11,7 +13,8 @@ export interface ContributionTier {
 }
 
 export interface ContributeProps {
-  projectId: number;
+  project: Project;
+  artist: Account;
   options: ContributionTier[];
 }
 

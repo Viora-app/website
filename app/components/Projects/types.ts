@@ -2,7 +2,7 @@ import {ImageFormats} from '@/app/config/types';
 
 interface User {
   data: {
-    id: string;
+    id: number;
     attributes: {
       email: string;
     };
@@ -46,17 +46,20 @@ export interface ProjectAttrs {
   soft_goal: number | string;
   deadline: string;
   hard_goal: number | string;
+  users_permissions_user?: User;
+}
+
+export interface ProjectReadOnlyAttrs {
+  current_funding: number;
+  reaction_count: number;
+  users_permissions_user: User;
+  images: Images;
+  status?: ProjectStatus;
 }
 
 export interface Project {
   id: number;
-  attributes: ProjectAttrs & {
-    current_funding: number;
-    reaction_count: number;
-    users_permissions_user: User;
-    images: Images;
-    status?: ProjectStatus;
-  };
+  attributes: ProjectAttrs & ProjectReadOnlyAttrs;
 }
 
 export interface ProjectProps {

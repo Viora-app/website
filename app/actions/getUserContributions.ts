@@ -2,7 +2,7 @@
 import {ENDPOINTS} from '@/app/config/endpoints';
 import {apiClient} from '@/app/utils/apiClient';
 
-export const getUserContributions = async (id: string | undefined) => {
+export const getUserContributions = async (id?: number) => {
   let contributions = [];
   if (id) {
     try {

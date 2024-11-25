@@ -3,7 +3,7 @@
 import {ENDPOINTS} from '@/app/config/endpoints';
 import {apiClient} from '@/app/utils/apiClient';
 import {Account, AccountAttrs} from '@/app/config/types';
-import {Project, ProjectAttrs} from '../components/Projects/types';
+import {Project, ProjectAttrs, ProjectReadOnlyAttrs} from '@/app/components/Projects/types';
 
 interface ProjectDetailsResponse {
   project: Project;
@@ -23,11 +23,11 @@ export const getProjectDetails = async (id: number): Promise<ProjectDetailsRespo
       avatar: ['*'],
     },
     filters: {
-      users_permissions_user: '',
+      users_permissions_user: -1,
     },
   };
 
-  let project = {attributes: {} as ProjectAttrs, id: 0};
+  let project = {attributes: {} as (ProjectAttrs & ProjectReadOnlyAttrs), id: 0};
   let artist = {attributes: {} as AccountAttrs, id: 0};
   try {
     const data = await apiClient(`${ENDPOINTS.PROJECTS}/${id}`, {params: projectParams});
