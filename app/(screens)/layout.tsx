@@ -40,7 +40,7 @@ export default function RootLayout({
                   {/* <Link to={{screen: Routes.Settings}} className="block w-[50px] h-[50px] p-[13px] bg-menuBg rounded-xl"><Icon name="Settings" size={28} color="#fff" /></Link> */}
                 </div>
                 <div className="bg-wrapperBg border-wrapperBg rounded-3xl border-[13px] overflow-hidden">
-                  <Link to={{screen: Routes.Logout}} className="block w-[50px] h-[50px] p-[13px] bg-menuBg rounded-xl"><Icon name="logout" size={28} color="#fff" /></Link>
+                  <Link to={{screen: Routes.Logout}} prefetch={false} className="block w-[50px] h-[50px] p-[13px] bg-menuBg rounded-xl"><Icon name="logout" size={28} color="#fff" /></Link>
                 </div>
               </aside>
               <main id="app-main" className="h-full relative bg-wrapperBg border-wrapperBg rounded-3xl border-[13px] overflow-hidden grow order-1 md:order-2">

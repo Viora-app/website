@@ -23,6 +23,7 @@ export interface LinkProps {
   className?: string;
   markActive?: boolean;
   disabled?: boolean;
+  prefetch?: boolean;
 }
 
 export interface TextInputProps {
