@@ -1,7 +1,8 @@
 import React, {FC} from 'react';
 import {View} from '@/app/components/Polyfills';
 
-import {addProjectPhoto, deleteProjectPhoto} from '@/app/utils/api';
+import {addProjectPhoto} from '@/app/actions/addProjectPhoto';
+import {deleteProjectPhoto} from '@/app/actions/deleteProjectPhoto';
 import ImageItem from './EditableItem';
 import type {GalleryEditableProps} from './types';
 

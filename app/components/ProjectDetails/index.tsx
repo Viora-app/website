@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 
 import {getProjectDetails} from '@/app/actions/getProjectDetails';
 import {ScrollView, H2, H3, Span, View} from '@/app/components/Polyfills';
-// import Gallery from '@/app/components/ProjectGallery';
+import Gallery from '@/app/components/ProjectGallery';
 import Deadline from './Deadline';
 import Artist from './Artist';
 import NotFound from '../NotFound/Screen';
@@ -28,13 +28,13 @@ const ProjectDetails: FC<ProjectDetailsProps> = async ({projectId}) => {
 
   return (
     <ScrollView>
-      {/* <Gallery
+      <Gallery
         images={project.attributes.images?.data || undefined}
         id={project.id}
         projectStatus={project.attributes.status}
         ownerId={project.attributes.users_permissions_user?.data.id}
         refresh={refresh}
-      /> */}
+      />
       <View className="p-4">
         <H2 className="dark:!text-primaryStrong">
           {project.attributes.name}

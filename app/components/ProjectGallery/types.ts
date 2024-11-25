@@ -54,20 +54,20 @@ export interface EditableImageProps {
 
 export interface GalleryReadableProps {
   images: ImageData[];
-  id: string;
+  id: number;
 }
 
 export interface GalleryEditableProps {
   images: ImageData[];
-  id: string;
+  id: number;
   refresh: () => Promise<void>;
 }
 
 export interface GalleryProps {
   images: ImageData[];
-  id: string;
-  ownerId: number;
-  projectStatus: ProjectStatus;
+  id: number;
+  ownerId?: number;
+  projectStatus?: ProjectStatus;
   refresh: () => Promise<void>;
 }
 
