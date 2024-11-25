@@ -7,6 +7,13 @@ interface User {
   };
 }
 
+interface Owner {
+  first_name: string;
+  last_name: string;
+  user_id: number;
+  profile_id: number;
+}
+
 export interface Image {
   id: string;
   attributes: {
@@ -65,13 +72,6 @@ export interface ProjectAttrs {
   hard_goal: number;
 }
 
-interface Owner {
-  first_name: string;
-  last_name: string;
-  user_id: number;
-  profile_id: number;
-}
-
 export interface ArtistProps {
   data: Owner;
 }
@@ -85,29 +85,33 @@ export interface ExclusiveContentAttrs {
   description: string;
 }
 
+export type Project = ProjectAttrs & {
+  id: number;
+  current_funding: number;
+  reaction_count: number;
+  users_permissions_user: User;
+  images: Images;
+  owner: Owner;
+  type: FeedType.Project;
+}
+
 export interface ProjectProps {
-  data: ProjectAttrs & {
-    id: number;
-    current_funding: number;
-    reaction_count: number;
-    users_permissions_user: User;
-    images: Images;
-    owner: Owner;
-    type: FeedType.Project;
+  data: Project;
+}
+
+export type Content = ExclusiveContentAttrs & {
+  id: number;
+  reaction_count: number;
+  owner: Owner;
+  project: {
+    name: string;
+    id: string;
   };
+  type: FeedType.Content;
 }
 
 export interface ContentProps {
-  data: ExclusiveContentAttrs & {
-    id: number;
-    reaction_count: number;
-    owner: Owner;
-    project: {
-      name: string;
-      id: string;
-    };
-    type: FeedType.Content;
-  };
+  data: Content;
 }
 
 export interface ContributionTierAttrs {
@@ -127,4 +131,11 @@ export interface MetaProps {
   backers?: number;
   type: FeedType;
   status?: ProjectStatus;
+}
+
+export interface FeedProps {
+  data: {
+    data: (Project | Content)[];
+  };
+  isLoading?: boolean;
 }

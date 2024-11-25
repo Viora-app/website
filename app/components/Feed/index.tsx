@@ -1,14 +1,13 @@
 import React, {FC} from 'react';
 
-// import {ENDPOINTS} from '@/app/config/endpoints';
-// import {useGetData} from '@/app/hooks/useQuery';
 import {ScrollView} from '@/app/components/Polyfills';
-import ScreenNotFound from '../NotFound/Screen';
-import ScreenLoading from '../Loading';
+import ScreenNotFound from '@/app/components/NotFound/Screen';
+import ScreenLoading from '@/app/components/Loading';
 import Project from './Project';
 import Content from './Content';
+import {FeedProps} from './types';
 
-const Feed: FC = ({data, isLoading}) => {
+const Feed: FC<FeedProps> = ({data, isLoading}) => {
   if (isLoading && !data?.data.length) {
     return <ScreenLoading />;
   }
