@@ -17,6 +17,10 @@ export async function middleware(request: NextRequest) {
   const awaitedCookies = await cookies();
   const jwt = awaitedCookies.get(AUTH_COOKIE)?.value;
 
+  console.log('jwt', jwt);
+  
+  console.log('request', request);
+//   console.log('NEXTREQUEST', request.nextUrl);
   if (request.nextUrl.pathname.match(/^\/login\/*/)) {
     const urlSearchParams = new URLSearchParams(request.nextUrl.search)
     const params = Object.fromEntries(urlSearchParams.entries());
@@ -29,9 +33,15 @@ export async function middleware(request: NextRequest) {
     
         const res = await fetch(url);
         const data = await res.json();
-        awaitedCookies.set(AUTH_COOKIE, data.jwt, {...config, domain: request.nextUrl.origin});
+        console.log('data jwt', data.jwt);
 
-        return NextResponse.redirect(new URL(Routes.Home, request.url));
+        const redirect = NextResponse.redirect(new URL(Routes.Home, request.url))
+        redirect.cookies.set(AUTH_COOKIE, data.jwt, {
+            ...config,
+            domain: new URL(request.nextUrl.origin).hostname,
+          });
+          console.log('redirect', redirect);
+        return redirect;
       }
     } catch (error) {
       console.log('Error connecting account', error);
