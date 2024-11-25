@@ -1,3 +1,5 @@
+import {AUTH_PROVIDERS} from './constants';
+
 export enum Routes {
   Home = '/',
   Feed = '/feed',
@@ -21,3 +23,5 @@ export const privateRoutes = [
   Routes.Profile,
   Routes.Picture,
 ];
+
+export const LoginCallBackRoutes = AUTH_PROVIDERS.map(provider => `${Routes.Login}/${provider}`)

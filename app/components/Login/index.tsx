@@ -1,35 +1,38 @@
 'use client'
 
-import React, {FC} from 'react';
-import {redirect} from 'next/navigation';
+import React, { FC } from 'react';
+import { redirect } from 'next/navigation';
 import NextImage from 'next/image';
 
+import {AUTH_PROVIDERS} from '@/app/config/constants';
+import {apiBaseUrl} from '@/app/config/endpoints';
 import {H3, View} from '@/app/components/Polyfills';
-import {Button, SafeArea} from '@/app/components/Elements';
+import {Button} from '@/app/components/Elements';
 import appLogo from '@/public/images/applogo.png';
 
 const Login: FC = () => {
-  const onPress = () => {
-    const baseApiUrl = `${process.env.NEXT_PUBLIC_IMAGE_PROTOCOL}://${process.env.NEXT_PUBLIC_IMAGE_HOSTNAME}${process.env.NEXT_PUBLIC_IMAGE_PORT ? ':' + process.env.NEXT_PUBLIC_IMAGE_PORT : ''}`
-    console.log('TO HERE:', `${baseApiUrl}/api/connect/google`);
-    redirect(`${baseApiUrl}/api/connect/google`);
+  const onPress = (provider: string) => {
+    redirect(`${apiBaseUrl}/connect/${provider}`);
   }
 
   return (
-    <SafeArea className="!bg-neutralPure flex flex-col justify-center items-center">
-      <View className="px-6 w-[510px]">
-        <View className="p-6 flex flex-row justify-center items-center">
-          <NextImage alt="App Logo" src={appLogo} />
-        </View>
-
-        <H3 className="text-primaryStrong py-6">Login</H3>
-
-        <Button
-          onPress={onPress}
-          title="Google"
-        />
+    <View className="px-6 w-[510px]">
+      <View className="p-6 flex flex-row justify-center items-center">
+        <NextImage alt="App Logo" src={appLogo} />
       </View>
-    </SafeArea>
+
+      <H3 className="text-primaryStrong py-6">Login</H3>
+
+      {
+        AUTH_PROVIDERS.map(provider => (
+          <Button
+            key={provider}
+            onPress={() => onPress(provider)}
+            title={provider}
+          />
+        ))
+      }
+    </View>
   );
 };
 

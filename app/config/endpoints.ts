@@ -22,4 +22,3 @@ const IMAGE_HOSTNAME = process.env.NEXT_PUBLIC_IMAGE_HOSTNAME;
 const IMAGE_PORT = process.env.NEXT_PUBLIC_IMAGE_PORT;
 
 export const apiBaseUrl = `${IMAGE_PROTOCOL}://${IMAGE_HOSTNAME}${IMAGE_PORT ? ':' + IMAGE_PORT : ''}/api`
-export const proxyBaseUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/proxy`;

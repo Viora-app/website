@@ -1,27 +1,25 @@
-import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
-import type { NextRequest } from 'next/server';
-import {Routes, privateRoutes} from '@/app/config/routes';
-import {AUTH_COOKIE} from '@/app/config/constants';
+import {NextResponse} from 'next/server';
+import {cookies} from 'next/headers';
+import type {NextRequest} from 'next/server';
+import {Routes, privateRoutes, LoginCallBackRoutes} from '@/app/config/routes';
+import {AUTH_COOKIE, DEAD_COOKIE, LIVE_COOKIE} from '@/app/config/constants';
 import {apiBaseUrl} from '@/app/config/endpoints';
-
-const config = {
-  maxAge: 60 * 60 * 24 * 7, // 1 week
-  path: '/',
-  httpOnly: false,
-  secure: true,
-  sameSite: false ,
-};
 
 export async function middleware(request: NextRequest) {
   const awaitedCookies = await cookies();
   const jwt = awaitedCookies.get(AUTH_COOKIE)?.value;
+  const loginUrl = new URL(Routes.Login, request.url);
+  const homeUrl = new URL(Routes.Home, request.url);
 
-  console.log('jwt', jwt);
-  
-  console.log('request', request);
-//   console.log('NEXTREQUEST', request.nextUrl);
-  if (request.nextUrl.pathname.match(/^\/login\/*/)) {
+  // Remove cookies on Logout
+  if (request.nextUrl.pathname === Routes.Logout) {
+    const response = NextResponse.redirect(loginUrl);
+    response.cookies.set(AUTH_COOKIE, '', DEAD_COOKIE);
+    return response;
+  }
+
+  // Set cookies on Login
+  else if (!jwt && LoginCallBackRoutes.includes(request.nextUrl.pathname)) {
     const urlSearchParams = new URLSearchParams(request.nextUrl.search)
     const params = Object.fromEntries(urlSearchParams.entries());
     const provider = request.nextUrl.pathname.replace(/^\/login\//, '');
@@ -30,27 +28,27 @@ export async function middleware(request: NextRequest) {
       if (token) {
         const path = `/auth/${provider}/callback`;
         const url = `${apiBaseUrl}${path}?access_token=${token}`;
-    
+
         const res = await fetch(url);
         const data = await res.json();
-        console.log('data jwt', data.jwt);
 
-        const redirect = NextResponse.redirect(new URL(Routes.Home, request.url))
-        redirect.cookies.set(AUTH_COOKIE, data.jwt, {
-            ...config,
-            domain: new URL(request.nextUrl.origin).hostname,
-          });
-          console.log('redirect', redirect);
-        return redirect;
+        const response = NextResponse.redirect(homeUrl);
+        response.cookies.set(AUTH_COOKIE, data.jwt, LIVE_COOKIE);
+        return response;
+      } else {
+        throw new Error('Token is required to sign in');
       }
     } catch (error) {
       console.log('Error connecting account', error);
+      return NextResponse.redirect(loginUrl);
     }
   }
 
-  if (!jwt && privateRoutes.includes(request.nextUrl.pathname as Routes)) {
-    return NextResponse.redirect(new URL(Routes.Login, request.url));
+  // Redirect to login if not authenticated
+  else if (!jwt && privateRoutes.includes(request.url as Routes)) {
+    return NextResponse.redirect(loginUrl);
   }
 
+  // Pass other routes
   return NextResponse.next();
 }

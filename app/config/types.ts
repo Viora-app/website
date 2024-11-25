@@ -177,3 +177,5 @@ type SearchParamsDefault = { [key: string]: string | string[] | undefined };
 type ParamsDefault = Record<string, unknown>;
 export type Params<T = ParamsDefault> = T extends object ? Promise<T> : Promise<ParamsDefault>;
 export type SearchParams<T = SearchParamsDefault> = T extends object ? Promise<T> : Promise<SearchParamsDefault>;
+
+export type SamSite = true | false | 'lax' | 'strict' | 'none' | undefined;
