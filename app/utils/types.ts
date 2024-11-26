@@ -36,6 +36,7 @@ export interface ErrorResponse {
 }
 
 export interface IncomingHttpHeaders {
+  'Content-Type'?: string;
   'accept-patch'?: string;
   'accept-ranges'?: string;
   'www-authenticate'?: string;
@@ -95,5 +96,5 @@ export interface ApiOptions {
   headers?: IncomingHttpHeaders;
   params?: QueryParams;
   method?: 'POST'|'GET'|'DELETE'|'PUT';
-  body?: string;
+  body?: string | FormData;
 }

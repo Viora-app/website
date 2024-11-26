@@ -13,12 +13,15 @@ export const apiClient = async (endpoint: string, options: ApiOptions = {}) => {
 
   // Set up headers
   const headers = {
-    'Content-Type': 'application/json',
     ...(jwt && { Authorization: `Bearer ${jwt}` }),
     ...options.headers,
   };
+  const isFormData = options?.body instanceof FormData;
+  if (!isFormData) {
+    headers['Content-Type'] = 'application/json';
+  }
 
-  const res = await fetch(`${apiBaseUrl}${endpoint}?${query}`.replace('//', '/'), {
+  const res = await fetch(`${apiBaseUrl}${endpoint}${query ? '?' + query : ''}`, {
     ...options,
     headers,
   });

@@ -15,11 +15,11 @@ const ImageItem: FC<EditableImageProps> = ({
   onAdd,
 }) => {
   const onPress = (event) => {
+    event.preventDefault();
     if (image) {
       onRemove(index);
     } else {
       const file = (event.target as HTMLInputElement).files![0];
-      
       const formData = new FormData();
       formData.append('files.images', file);
       formData.append('data', JSON.stringify({}));

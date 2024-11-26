@@ -49,7 +49,7 @@ export interface EditableImageProps {
   image: FileEvent;
   disabled: boolean;
   onRemove: (index: number) => Promise<void>;
-  onAdd: () => Promise<void>;
+  onAdd: (data: FormData) => Promise<void>;
 }
 
 export interface GalleryReadableProps {

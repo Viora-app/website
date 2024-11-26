@@ -10,7 +10,7 @@ interface User {
 }
 
 export interface ImageData {
-  id: string;
+  id: number;
   attributes: {
     formats: ImageFormats;
   };
