@@ -1,4 +1,4 @@
-import {ReactNode} from 'react';
+import {ChangeEvent, ReactNode} from 'react';
 
 export interface BaseElementProps {
   children?: ReactNode;
@@ -30,13 +30,13 @@ export interface TextInputProps {
   className?: string;
   keyboardType?: string;
   multiline?: boolean;
-  onChangeText: (e: unknown) => void;
+  onChangeText: (e: ChangeEvent) => void;
 }
 
 export interface TouchableProps {
   className?: string;
   type?: 'submit' | 'reset' | 'button' | undefined;
-  onPress?: (e: unknown) => void;
+  onPress?: (e: MouseEvent) => void;
   children?: ReactNode;
   disabled?: boolean;
 }

@@ -1,6 +1,6 @@
 import thumbnailPlaceholder from '@/public/images/gallerymini.png';
 import largePlaceholder from '@/public/images/gallerymain.png';
-import {ImageFormats, ImageSizes} from '@/app/config/types';
+import {ImageFormats, ImageSizes, ImageSource} from '@/app/config/types';
 
 const priorities = [
   ImageSizes.Thumbnail,
@@ -11,32 +11,36 @@ const priorities = [
 
 const baseURl = `${process.env.NEXT_PUBLIC_IMAGE_PROTOCOL}://${process.env.NEXT_PUBLIC_IMAGE_HOSTNAME}${process.env.NEXT_PUBLIC_IMAGE_PORT ? ':' + process.env.NEXT_PUBLIC_IMAGE_PORT : ''}`
 
-export const getSmallestSize = (obj: ImageFormats) => {
+export const getSmallestSize = (obj: ImageFormats): ImageSource => {
+  let source = {...thumbnailPlaceholder};
   for (const size of priorities) {
     if (obj.hasOwnProperty(size)) {
-      return {
+      source = {
         src: `${baseURl}${obj[size].url}`,
         width: obj[size].width,
         height: obj[size].height,
       };
-    } else {
-      return {src: thumbnailPlaceholder};
+      break;
     }
   }
+
+  return source;
 };
 
-export const getLargestSize = (obj: ImageFormats) => {
+export const getLargestSize = (obj: ImageFormats): ImageSource => {
   const reversePriorities = priorities.reverse();
+  let source = {...largePlaceholder};
 
   for (const size of reversePriorities) {
     if (obj.hasOwnProperty(size)) {
-      return {
+      source = {
         src: `${baseURl}${obj[size].url}`,
         width: obj[size].width,
         height: obj[size].height,
       };
-    } else {
-      return {src: largePlaceholder};
+      break;
     }
   }
+
+  return source;
 };

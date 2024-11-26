@@ -7,9 +7,9 @@ import {TouchableProps} from './types';
 const Touchable: FC<TouchableProps> = ({children, onPress, disabled, className, ...restProps}) => (
   <button
     className={`block ${className}`}
-    onClick={(...rest) => {
+    onClick={(e) => {
       if (!disabled && typeof onPress === 'function') {
-        onPress(...rest);
+        onPress(e);
      }
    }}
     {...(restProps || {})}

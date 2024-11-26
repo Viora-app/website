@@ -1,5 +1,4 @@
 import type {Project, ProjectStatus, ImageData} from '../Projects/types';
-import type {FileEvent} from '../Profile/types';
 import type {FetchStatus, ImageFormats} from '@/app/config/types';
 
 export interface ProjectDetailsProps {
@@ -46,8 +45,8 @@ export interface ReadableImageProps {
 
 export interface EditableImageProps {
   index: number;
-  image: FileEvent;
-  disabled: boolean;
+  image: ImageData;
+  disabled?: boolean;
   onRemove: (index: number) => Promise<void>;
   onAdd: (data: FormData) => Promise<void>;
 }
@@ -60,7 +59,6 @@ export interface GalleryReadableProps {
 export interface GalleryEditableProps {
   images: ImageData[];
   id: number;
-  refresh: () => Promise<void>;
 }
 
 export interface GalleryProps {

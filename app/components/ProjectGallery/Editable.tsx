@@ -8,12 +8,9 @@ import {deleteProjectPhoto} from '@/app/actions/deleteProjectPhoto';
 import ImageItem from './EditableItem';
 import type {GalleryEditableProps} from './types';
 
-const Editable: FC<GalleryEditableProps> = ({images = [], id, refresh}) => {
-  const onAdd = async (formData) => {
-    const result = await addProjectPhoto(id, formData);
-    if (result.data) {
-      refresh();
-    }
+const Editable: FC<GalleryEditableProps> = ({images = [], id}) => {
+  const onAdd = async (formData: FormData) => {
+    await addProjectPhoto(id, formData);
   };
 
   const onRemove = async (index: number) => {
@@ -21,18 +18,15 @@ const Editable: FC<GalleryEditableProps> = ({images = [], id, refresh}) => {
     const remainingIds = images
       .map(item => item.id)
       .filter((_, i) => i !== index);
-    const result = await deleteProjectPhoto(id, imageId, remainingIds);
-    if (result.data) {
-      refresh();
-    }
+    await deleteProjectPhoto(id, imageId, remainingIds);
   };
 
   // Format images array to always have 5 items (either images or placeholders)
-  const formatImages = () => {
-    return Array(5)
+  const formatImages = () =>
+    Array(5)
       .fill(null)
       .map((_, index) => images[index] || null);
-  };
+
 
   return (
     <View className="p-5">

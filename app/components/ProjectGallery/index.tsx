@@ -8,11 +8,11 @@ import Readable from './Readable';
 import {GalleryProps} from './types';
 import {getUserAccount} from '@/app/actions/getUserAccount';
 
-const Gallery: FC<GalleryProps> = async ({id, images, ownerId, projectStatus, refresh}) => {
+const Gallery: FC<GalleryProps> = async ({id, images, ownerId, projectStatus}) => {
   const account = await getUserAccount();
 
   if (ownerId === account?.id && projectStatus === ProjectStatus.Draft) {
-    return <Editable id={id} images={images} refresh={refresh} />;
+    return <Editable id={id} images={images} />;
   }
   return <Readable id={id} images={images} />;
 };

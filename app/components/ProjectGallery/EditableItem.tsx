@@ -1,7 +1,7 @@
 'use client'
 
-import React, {FC} from 'react';
-import {View, Image, TouchableHighlight} from '@/app/components/Polyfills';
+import React, {FC, ChangeEvent, MouseEvent} from 'react';
+import {Image, TouchableHighlight} from '@/app/components/Polyfills';
 
 import {Icon} from '@/app/components/Elements';
 import {getLargestSize} from '@/app/utils/image';
@@ -14,21 +14,22 @@ const ImageItem: FC<EditableImageProps> = ({
   onRemove,
   onAdd,
 }) => {
-  const onChange = (event) => {
-    event.preventDefault();
-    const file = (event.target as HTMLInputElement).files![0];
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const file = (e.target as HTMLInputElement).files![0];
     const formData = new FormData();
     formData.append('files.images', file);
     formData.append('data', JSON.stringify({}));
     onAdd(formData);
   };
 
-  const onClick = (event) => {
-    event.preventDefault();
+  const onClick = (e: MouseEvent) => {
+    e.preventDefault();
     onRemove(index);
   }
 
-  const img = getLargestSize(image?.attributes.formats ?? {});
+  const source = getLargestSize(image?.attributes.formats ?? {});
+
   return (
     <label
       className={`${index === 0 ? 'flex-[4] h-full' : 'flex-1'} bg-[#FFEEFF] relative overflow-hidden ${typeof img === 'string' ? '' : 'flex flex-row justify-center items-center'}`}
@@ -48,9 +49,9 @@ const ImageItem: FC<EditableImageProps> = ({
         }
       <Image
         alt="Some Photo"
-        source={image ? img?.src : img?.src?.src}
-        width={img?.src?.width}
-        height={img?.src?.height}
+        source={source.src}
+        width={source.width}
+        height={source.height}
         className="min-w-full min-h-full object-cover"
       />
       {image && (

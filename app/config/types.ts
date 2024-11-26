@@ -53,6 +53,12 @@ export interface ImageFormats {
   };
 }
 
+export interface ImageSource {
+  src: string;
+  width: number;
+  height: number;
+}
+
 export interface AccountAttrs {
   first_name: string;
   last_name: string;

@@ -1,9 +1,9 @@
 import {ENDPOINTS} from '@/app/config/endpoints';
 import {apiClient} from '@/app/utils/apiClient';
+import {ProjectProps} from '@/app/components/Feed/types';
 
-// @todo not used yet
-export const addProjectPhoto = async (projectId: number, body: FormData) => {
-  let result = {};
+export const addProjectPhoto = async (projectId: number, body: FormData): Promise<ProjectProps | undefined> => {
+  let result;
   try {
     const project = await apiClient(`${ENDPOINTS.PROJECTS}/${projectId}`, {
       method: 'PUT',
