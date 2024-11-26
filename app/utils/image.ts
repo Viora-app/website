@@ -8,6 +8,7 @@ const priorities = [
   ImageSizes.Medium,
   ImageSizes.Large,
 ];
+const reversePriorities = priorities.reverse();
 
 const baseURl = `${process.env.NEXT_PUBLIC_IMAGE_PROTOCOL}://${process.env.NEXT_PUBLIC_IMAGE_HOSTNAME}${process.env.NEXT_PUBLIC_IMAGE_PORT ? ':' + process.env.NEXT_PUBLIC_IMAGE_PORT : ''}`
 
@@ -28,7 +29,6 @@ export const getSmallestSize = (obj: ImageFormats): ImageSource => {
 };
 
 export const getLargestSize = (obj: ImageFormats): ImageSource => {
-  const reversePriorities = priorities.reverse();
   let source = {...largePlaceholder};
 
   for (const size of reversePriorities) {
