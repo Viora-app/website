@@ -11,9 +11,14 @@ const AddContributionTierScreen: FC<{params: Params<{id: number}>}> = async ({pa
   const projectId = awaitedParams.id;
   const options = await getProjectContributionTier(projectId);
   const {artist, project} = await getProjectDetails(projectId);
+
   return (
     <SafeArea>
-      <Contribute artist={artist} project={project} options={options} />
+      <Contribute
+        artist={artist}
+        project={project}
+        options={options}
+      />
     </SafeArea>
   );
 };

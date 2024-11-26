@@ -6,16 +6,37 @@ import {View, ScrollView} from '@/app/components/Polyfills';
 import {Button} from '@/app/components/Elements';
 import {ButtonThemes} from '@/app/components/Elements/Button/types';
 import SectionHeader from '@/app/components/SectionHeader';
+import Feedback from '@/app/components/Feedback';
+import {contribute} from '@/app/actions/contribute';
+import {FetchStatus} from '@/app/config/types';
 import {ContributeProps} from './types';
 import Option from './Option';
 
-const Contribute: FC<ContributeProps> = ({project, artist, options}) => {
-  const [selected, setSelected] = useState<string>('');
+const SubmitTitle = {
+  [FetchStatus.Idle]: 'Submit',
+  [FetchStatus.Pending]: 'Submitting',
+  [FetchStatus.Error]: 'Failed',
+  [FetchStatus.Success]: 'Succeeded',
+};
 
-  const handleSubmit = () => {
+const Contribute: FC<ContributeProps> = ({project, artist, options}) => {
+  const [selected, setSelected] = useState<number>(0);
+  const [feedback, setFeedback] = useState({
+    status: FetchStatus.Idle,
+    message: ','
+  });
+
+  const handleSubmit = async () => {
+    setFeedback({
+      status: FetchStatus.Pending,
+      message: '',
+    });
     const optionData = options.find(item => item.id === selected);
-    // @todo Call the action function
-    console.log('optionData', project.id, optionData);
+    const result = await contribute(optionData?.id ?? 0);
+    setFeedback({
+      status: result.success ? FetchStatus.Success : FetchStatus.Error,
+      message: result.error,
+    });
   };
 
   return (
@@ -35,10 +56,12 @@ const Contribute: FC<ContributeProps> = ({project, artist, options}) => {
         ))}
       </View>
       <Button
-        title="Continue"
+        title={SubmitTitle[feedback.status]}
         theme={ButtonThemes.primary}
         onPress={handleSubmit}
+        disabled={feedback.status !== FetchStatus.Idle}
       />
+      <Feedback {...feedback} />
     </ScrollView>
   );
 };

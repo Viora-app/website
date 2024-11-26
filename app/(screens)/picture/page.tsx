@@ -6,11 +6,10 @@ import {apiBaseUrl} from '@/app/config/endpoints';
 
 const PictureScreen: FC = async ({searchParams}) => {
   const awaitedSearchParams = await searchParams;
-  const uri = `${apiBaseUrl}${awaitedSearchParams.url}`.replace('api/uploads', 'uploads');
 
   return (
     <SafeArea>
-      <Image alt="Project photo" source={uri} />
+      <Image alt="Project photo" source={awaitedSearchParams.url} />
     </SafeArea>
   );
 };

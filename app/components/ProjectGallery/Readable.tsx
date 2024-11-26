@@ -10,14 +10,14 @@ const ImageItem: FC<ReadableImageProps> = ({index, image}) => {
   return (
     <Link
       disabled={typeof img === 'number'}
-      to={{screen: Routes.Picture, params: {url: image?.attributes.formats?.large.url}}}
+      to={{screen: Routes.Picture, params: {url: img.src}}}
       className={`${index === 0 ? 'flex-[4] h-full' : 'flex-1'} bg-[#FFEEFF] overflow-hidden ${typeof img === 'string' ? '' : 'flex flex-row justify-center items-center'}`}
       >
       <Image
         alt="Gallery photo"
-        source={image ? img?.src : img?.src?.src}
-        width={img?.width}
-        height={img?.height}
+        source={img.src}
+        width={img.width}
+        height={img.height}
         className="min-w-full min-h-full object-cover"
       />
     </Link>

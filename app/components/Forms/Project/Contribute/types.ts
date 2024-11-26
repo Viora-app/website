@@ -3,7 +3,7 @@ import {Account} from '@/app/config/types';
 import {Project} from '@/app/components/Projects/types';
 
 export interface ContributionTier {
-  id: string;
+  id: number;
   attributes: {
     name: string;
     description: string;
@@ -21,7 +21,7 @@ export interface ContributeProps {
 export interface ContributeOptionProps {
   data: ContributionTier;
   selected: boolean;
-  onSelected: (id: string) => void;
+  onSelected: (id: number) => void;
 }
 
 export interface ContributionReviewProps {

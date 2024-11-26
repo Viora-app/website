@@ -11,7 +11,7 @@ export interface EditProjectReviewProps {
   projectId: number;
   data?: Partial<ProjectAttrs>;
   onEdit: () => void;
-  onSubmit: (data: Partial<ProjectAttrs>) => Promise<void>;
+  onSubmit: (data: Partial<ProjectAttrs>, id: number) => Promise<void>;
   feedback: {
     status: FetchStatus;
     message: string;

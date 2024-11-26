@@ -24,12 +24,11 @@ const CreateProjectReview: FC<EditProjectReviewProps> = ({
 }) => {
   const handleSubmit = async () => {
     try {
-      const result = await onSubmit({
+      await onSubmit({
         ...data,
         soft_goal: toBaseToken(data?.soft_goal ?? ''),
         hard_goal: toBaseToken(data?.hard_goal ?? ''),
       }, projectId);
-      console.log('result', result);
     } catch (e) {
       console.error('Error editing project:', e);
     }
