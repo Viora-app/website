@@ -1,7 +1,7 @@
 'use client'
 
 import React, {FC} from 'react';
-import {View, Image} from '@/app/components/Polyfills';
+import {View, Image, TouchableHighlight} from '@/app/components/Polyfills';
 
 import {Icon} from '@/app/components/Elements';
 import {getLargestSize} from '@/app/utils/image';
@@ -14,18 +14,19 @@ const ImageItem: FC<EditableImageProps> = ({
   onRemove,
   onAdd,
 }) => {
-  const onPress = (event) => {
+  const onChange = (event) => {
     event.preventDefault();
-    if (image) {
-      onRemove(index);
-    } else {
-      const file = (event.target as HTMLInputElement).files![0];
-      const formData = new FormData();
-      formData.append('files.images', file);
-      formData.append('data', JSON.stringify({}));
-      onAdd(formData);
-    }
+    const file = (event.target as HTMLInputElement).files![0];
+    const formData = new FormData();
+    formData.append('files.images', file);
+    formData.append('data', JSON.stringify({}));
+    onAdd(formData);
   };
+
+  const onClick = (event) => {
+    event.preventDefault();
+    onRemove(index);
+  }
 
   const img = getLargestSize(image?.attributes.formats ?? {});
   return (
@@ -33,14 +34,18 @@ const ImageItem: FC<EditableImageProps> = ({
       className={`${index === 0 ? 'flex-[4] h-full' : 'flex-1'} bg-[#FFEEFF] relative overflow-hidden ${typeof img === 'string' ? '' : 'flex flex-row justify-center items-center'}`}
       htmlFor={`image-item-${index}`}
       >
-        <input
-          className="text-[0px] invisible absolute"
-          disabled={disabled}
-          id={`image-item-${index}`}
-          type="file"
-          accept="image/*"
-          onChange={onPress}
-        />
+        {
+          !image && (
+            <input
+              className="text-[0px] invisible absolute"
+              disabled={disabled}
+              id={`image-item-${index}`}
+              type="file"
+              accept="image/*"
+              onChange={onChange}
+            />
+          )
+        }
       <Image
         alt="Some Photo"
         source={image ? img?.src : img?.src?.src}
@@ -49,9 +54,9 @@ const ImageItem: FC<EditableImageProps> = ({
         className="min-w-full min-h-full object-cover"
       />
       {image && (
-        <View className="absolute left-2 top-2 bg-neutralPure rounded-md">
+        <TouchableHighlight onPress={onClick} className="absolute left-2 top-2 bg-neutralPure rounded-md">
           <Icon name="cross" size={20} />
-        </View>
+        </TouchableHighlight>
       )}
     </label>
   );
