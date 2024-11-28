@@ -1120,6 +1120,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clsx@npm:^2.1.0":
+  version: 2.1.1
+  resolution: "clsx@npm:2.1.1"
+  checksum: acd3e1ab9d8a433ecb3cc2f6a05ab95fe50b4a3cfc5ba47abb6cbf3754585fcb87b84e90c822a1f256c4198e3b41c7f6c391577ffc8678ad587fc0976b24fd57
+  languageName: node
+  linkType: hard
+
 "color-convert@npm:^2.0.1":
   version: 2.0.1
   resolution: "color-convert@npm:2.0.1"
@@ -3596,6 +3603,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-toastify@npm:^10.0.6":
+  version: 10.0.6
+  resolution: "react-toastify@npm:10.0.6"
+  dependencies:
+    clsx: ^2.1.0
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  checksum: 89fa24718eba0800e2bc1f88121a6e119efd87df26344d5b3c86442d4a13fbd65b67932e01bd6442758f4fe3f5eca6c8fc80c1dfb51c8dc2a4ec06bdaf9762da
+  languageName: node
+  linkType: hard
+
 "react@npm:19.0.0-rc-69d4b800-20241021":
   version: 19.0.0-rc-69d4b800-20241021
   resolution: "react@npm:19.0.0-rc-69d4b800-20241021"
@@ -4486,6 +4505,7 @@ __metadata:
     react-dom: 19.0.0-rc-69d4b800-20241021
     react-modal: ^3.16.1
     react-query: ^3.39.3
+    react-toastify: ^10.0.6
     tailwindcss: ^3.4.1
     typescript: ^5
   languageName: unknown

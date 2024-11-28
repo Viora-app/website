@@ -1,10 +1,11 @@
 import {Project} from '@/app/components/Projects/types';
-import {ArtistShareProp} from '@/app/components/ProjectDetails/types';
+import { AccountAttrs } from '../config/types';
+import { toast } from 'react-toastify';
 
 export const shareProjectInvitation = async (
-  user: unknown,
+  user: AccountAttrs,
   project: Project,
-  artist: ArtistShareProp['attributes'],
+  artist: AccountAttrs,
 ) => {
   // Fetch user's name and family, fallback to email if not available
   const userName =
@@ -25,11 +26,12 @@ export const shareProjectInvitation = async (
     New to Viora? Visit https://viora.app/install
   `;
 
-  try {
+  if (typeof navigator?.share === 'function') {
     await navigator.share({
       text: message.trim(),
     });
-  } catch (err) {
-    console.log('Error', err.message);
+  } else {
+    navigator.clipboard.writeText(message.trim() ?? '');
+    toast('Message copied to clipboard');
   }
 };

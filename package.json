@@ -16,7 +16,8 @@
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
     "react-modal": "^3.16.1",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "react-toastify": "^10.0.6"
   },
   "devDependencies": {
     "@types/node": "^20",

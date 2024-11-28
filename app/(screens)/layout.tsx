@@ -1,6 +1,8 @@
 import {ReactNode} from 'react';
 import type {Metadata} from 'next';
 import NextImage from 'next/image';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {Routes} from '@/app/config/routes';
 import {Icon} from '@/app/components/Elements';
@@ -46,6 +48,11 @@ export default function RootLayout({
               <main id="app-main" className="h-full relative bg-wrapperBg border-wrapperBg rounded-3xl border-[13px] overflow-hidden grow order-1 md:order-2">
                 {children}
               </main>
+              <ToastContainer
+                position="bottom-right"
+                hideProgressBar
+                theme="dark"
+              />
             </div>
           </section>
         </section>

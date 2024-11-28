@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import {View, ScrollView} from '@/app/components/Polyfills';
+import {View, ScrollView, Link} from '@/app/components/Polyfills';
 import {toBaseToken} from '@/app/utils/formatters';
 import {ButtonThemes} from '@/app/components/Elements/Button/types';
 import FormSummary from '@/app/components/FormElements/GenericSummary';
@@ -10,6 +10,7 @@ import {Button} from '@/app/components/Elements';
 import Feedback from '@/app/components/Feedback';
 import {FetchStatus} from '@/app/config/types';
 import type {CreateContributionTierReviewProps} from './types';
+import {Routes} from '@/app/config/routes';
 
 const SubmitTitle = {
   [FetchStatus.Idle]: 'Submit',
@@ -44,6 +45,12 @@ const CreateProjectReview = ({
     <ScrollView className="w-full h-full p-4">
       <FormSummary data={formattedValue} />
       <View className="flex flex-row justify-center gap-4">
+        <Link to={{screen: `${Routes.Projects}/${projectId}`}}>
+          <Button
+            title={'Back to project'}
+            theme={ButtonThemes.secondary}
+          />
+        </Link>
         <Button
           title={'Edit'}
           theme={ButtonThemes.secondary}

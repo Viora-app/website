@@ -4,7 +4,7 @@ import React, {FC, useState} from 'react';
 import {useRouter} from 'next/navigation';
 
 import SectionHeader from '@/app/components/SectionHeader';
-import {View, ScrollView} from '@/app/components/Polyfills';
+import {View, ScrollView, Link} from '@/app/components/Polyfills';
 import {validateForm} from '@/app/utils/validators';
 import {ContributionTierAttrs} from '@/app/components/Projects/types';
 import ValidationFeedback from '@/app/components/FormElements/ValidationFeedback';
@@ -82,6 +82,12 @@ const CreateContributionTierForm: FC<ContributionTier> = ({
       />
       <ValidationFeedback {...validity} />
       <View className="w-full flex flex-row justify-center gap-4 pt-4">
+        <Link to={{screen: `${Routes.Projects}/${projectId}`}}>
+          <Button
+            title={'Back to project'}
+            theme={ButtonThemes.secondary}
+          />
+        </Link>
         <Button
           title="Cancel"
           theme={ButtonThemes.secondary}
